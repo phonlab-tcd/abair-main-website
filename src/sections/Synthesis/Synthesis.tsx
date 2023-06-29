@@ -78,7 +78,7 @@ const Synthesis = ({
         </div>
       </div>
 
-      <div className="flex mt-4 justify-center items-center">
+      <div className="flex -mt-5 justify-center items-center">
         <div>
           <Button
             label="advanced options"

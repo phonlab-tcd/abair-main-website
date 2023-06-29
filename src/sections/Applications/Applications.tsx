@@ -25,7 +25,7 @@ const Applications = () => {
         }`}
       >
         <div className="text-center">
-          <div className="text-xl md:text-2xl pt-[50px] font-mono text-white">
+          <div className="text-xl md:text-2xl pt-[40px] font-mono text-white">
             Applications
           </div>
         </div>
@@ -36,7 +36,7 @@ const Applications = () => {
         }`}
       >
         <div className="flex justify-center ">
-          <div className="max-w-6xl w-full h-full mt-[-70px]">
+          <div className="max-w-6xl w-full h-full mt-[-90px]">
             <div className="w-full flex flex-col justify-center ">
               <div className="flex justify-center">
                 <div className="ml-[-70px]">
