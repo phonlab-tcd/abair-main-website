@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
 
-import Image from "next/image";
 import { Button } from "abair-web-components";
 
 interface RecognitionProps {
@@ -50,7 +50,7 @@ const Recognition = ({
       <div className="w-full flex justify-center">
         <div className="h-[270px] w-full flex justify-center items-center">
           <div>
-            <Image
+            <img
               src="/microphone-svgrepo-com.svg"
               width={60}
               height={60}

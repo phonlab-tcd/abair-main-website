@@ -3,7 +3,6 @@
 import { DropdownMenu } from "@/components";
 import languageDropdownArgs from "./languageDropdownArgs";
 import userDropdownArgs from "./userDropdownArgs";
-import Image from "next/image";
 
 import Link from "next/link";
 import { Button, Sidebar } from "abair-web-components";

@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "abair-web-components";
-import Image from "next/image";
+
 import { useEffect, useState } from "react";
 const Applications = () => {
   const [startApplicationsAnimation, setStartApplicationsAnimation] =
@@ -39,7 +40,7 @@ const Applications = () => {
             <div className="w-full flex flex-col justify-center ">
               <div className="flex justify-center">
                 <div className="ml-[-70px]">
-                  <Image
+                  <img
                     src={"/abair-applications.png"}
                     width={700}
                     height={500}

@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import Image from "next/image";
+import img from "next/image";
 
 // import { useTranslation } from 'react-i18next';
 
@@ -11,7 +12,7 @@ function Footer() {
         <div className="flex flex-row spacing-2 justify-center items-center">
           <div>
             <a href="https://www.chg.gov.ie/">
-              <Image
+              <img
                 src={"/funders/DCHG_logo_small.png"}
                 width={200}
                 height={400}
@@ -21,7 +22,7 @@ function Footer() {
           </div>
           <div>
             <a href="https://www.chg.gov.ie/gaeltacht/20-year-strategy-for-the-irish-language-2010-2030/">
-              <Image
+              <img
                 src={"/funders/COGG_logo_red.png"}
                 width={200}
                 height={400}
@@ -31,7 +32,7 @@ function Footer() {
           </div>
           <div>
             <a href="https://www.cogg.ie/en/">
-              <Image
+              <img
                 src={"/funders/S20.png"}
                 width={200}
                 height={600}
