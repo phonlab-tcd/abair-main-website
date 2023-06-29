@@ -17,7 +17,8 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
     <div className="w-full overflow-x-hidden z-1">
       <div className="flex">
         {images.map((image, index) => (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             key={index}
             src={"/frontPageImages" + image.path}
             width={220 * image.ratio}
