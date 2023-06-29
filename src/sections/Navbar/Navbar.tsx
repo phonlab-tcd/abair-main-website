@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { DropdownMenu } from "@/components";
@@ -62,14 +63,12 @@ const Navbar = () => {
               }}
             >
               <div className="relative w-10 lg:w-14 h-8 lg:h-10">
-                <Image
+                <img
                   src={
                     abairLogoHover
                       ? "/abair-logo-outline-green.png"
                       : "/abair-logo-outline-white.png"
                   }
-                  fill={true}
-                  object-fit="contain"
                   alt="ABAIR logo"
                 />
               </div>

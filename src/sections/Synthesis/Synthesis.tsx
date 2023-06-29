@@ -77,13 +77,7 @@ const Synthesis = ({
           </div>
         </div>
       </div>
-      {/* <div
-        className={`w-full absolute bottom-0 bg-secondary-400 rounded-b-lg h-[48px] transition-all duration-500 ${
-          startSynthesisBorderAnimation
-            ? flashSynthesisTitleColor
-            : "bg-secondary-400"
-        }`}
-      > */}
+
       <div className="flex mt-4 justify-center items-center">
         <div>
           <Button
@@ -94,7 +88,6 @@ const Synthesis = ({
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
