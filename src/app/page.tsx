@@ -7,6 +7,12 @@ export default function Page() {
     <div className="w-screen">
       <div>
         <ImageCarousel images={imageCarouselData} />
+        <div className="absolute top-[150px] w-full flex justify-center">
+          {/* <div className="absolute w-80 background bg-black h-full bg-gradient-to-r from-opacity-100 to-opacity-0"></div> */}
+          <div className="text-6xl md:text-8xl text-white text-center drop-shadow-ABAIR">
+            ABAIR
+          </div>
+        </div>
       </div>
       <div className="flex w-full justify-center relative">
         <IntroAnimation />

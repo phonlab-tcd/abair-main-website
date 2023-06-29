@@ -40,8 +40,12 @@ module.exports = {
         synthRecCardLarge: "470px",
       },
       height: {
-        synthRecCard: "450px",
-        synthRecCardLarge: "550px",
+        synthRecCard: "350px",
+        synthRecCardLarge: "380px",
+      },
+      dropShadow: {
+        ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",
+        applications: "0px 10px 10px rgba(0, 0, 0, 0.5)",
       },
     },
   },

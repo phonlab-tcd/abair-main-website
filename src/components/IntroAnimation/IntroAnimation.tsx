@@ -32,17 +32,17 @@ const IntroAnimation = () => {
     if (["xl", "lg"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 2, 0],
-        [windowWidth / 2 - 2, 90],
-        [windowWidth / 2 - 30, 90],
+        [windowWidth / 2 - 2, 200],
+        [windowWidth / 2 - 35, 200],
       ]);
       setRecognitionCoords([
         [2, 0],
-        [2, 90],
-        [30, 90],
+        [2, 200],
+        [35, 200],
       ]);
       setApplicationsCoords([
         [2, 0],
-        [2, 400],
+        [2, 500],
       ]);
     } else if (["md"].includes(breakpoint)) {
       setSynthesisCoords([
@@ -93,10 +93,7 @@ const IntroAnimation = () => {
   }, []);
 
   return (
-    <div className="my-12 md:my-20">
-      <h1 className="w-full text-6xl md:text-8xl text-black mb-8 text-center drop-shadow-lg drop-shadow-black">
-        ABAIR
-      </h1>
+    <div className="my-6 md:my-10">
       <div className="flex w-screen justify-center relative">
         <div className="w-1/2 absolute top-[164px] left-0 h-[1000px]">
           {["synthesis"].includes(animatedLineState) &&

@@ -1,5 +1,5 @@
 import DropdownMenu from "./DropdownMenu/DropdownMenu";
-
+import GenderButtons from "./GenderButtons/GenderButtons";
 import ImageCarousel from "./ImageCarousel/ImageCarousel";
 import FadeInText from "./FadeInText/FadeInText";
 import TypingText from "./TypingText/TypingText";
@@ -17,4 +17,5 @@ export {
   IntroAnimation,
   AnimatedLines,
   Map,
+  GenderButtons,
 };

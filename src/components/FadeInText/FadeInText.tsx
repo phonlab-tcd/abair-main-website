@@ -62,11 +62,11 @@ const FadeInText = ({ startAnimation, typingState }: FadeInTextProps) => {
         </div>
       </div>
       <div
-        className={`text-3xl md:text-4xl my-2 md:my-4 font-light transition-opacity duration-1000 delay-2800 ${
+        className={`text-2xl md:text-3xl my-2 md:my-4 font-light transition-opacity duration-1000 delay-2800 ${
           startAnimation ? "opacity-100" : "opacity-0"
         }`}
       >
-        Irish
+        Irish Language
       </div>
 
       <div className=" w-70 flex relative font-mono">

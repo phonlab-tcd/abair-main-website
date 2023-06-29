@@ -4,24 +4,20 @@ import { DropdownMenu } from "@/components";
 import languageDropdownArgs from "./languageDropdownArgs";
 import userDropdownArgs from "./userDropdownArgs";
 import Image from "next/image";
-import { getBreakpoint } from "@/utils";
+
 import Link from "next/link";
 import { Button, Sidebar } from "abair-web-components";
 import { useState } from "react";
 import { routes } from "@/routes";
-import { useHandleWindowResize } from "@/hooks";
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(true);
   const [abairLogoHover, setAbairLogoHover] = useState(false);
   const [burgerMenuHover, setBurgerMenuHover] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  // const handleWindowResize = useHandleWindowResize();
-
-  // window.addEventListener("resize", handleWindowResize);
 
   return (
-    <div className="fixed w-screen shadow-black bg-gradient-to-b from-navbar-top via-navbar-middle to-navbar-bottom flex justify-center z-101">
+    <div className="fixed w-screen shadow-black bg-gradient-to-b from-navbar-top via-navbar-middle to-navbar-bottom flex justify-center z-[1001]">
       <div className="h-12 lg:h-16 flex flex-row justify-between max-w-6xl w-full">
         <div className="flex flex-row h-full w-auto">
           <div className="h-full items-center hover:bg-grey-100 transition-colors ease-in-out duration-200">
