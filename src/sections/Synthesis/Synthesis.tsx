@@ -63,7 +63,7 @@ const Synthesis = ({
             <Map height={280} />
           </div>
           <div className="w-[60%] pt-14 px-4">
-            <textarea className="bg-inherit w-full h-24 resize-none border-2 rounded-md border-secondary-300 focus:border-secondary-700"></textarea>
+            <textarea className="bg-inherit w-full h-24 resize-none border rounded-md border-secondary-300 focus:border-secondary-700"></textarea>
 
             <div className="w-full grid grid-cols-2 pt-4 pr-4">
               <GenderButtons />
