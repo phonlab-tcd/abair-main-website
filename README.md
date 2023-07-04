@@ -1,4 +1,4 @@
-2023 updated homepage for [ABAIR](abair.ie) a [Next.js](https://nextjs.org/)
+2023 updated homepage for [ABAIR](abair.ie) using [Next.js](https://nextjs.org/)
 
 # Getting Started
 
