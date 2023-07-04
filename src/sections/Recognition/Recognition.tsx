@@ -11,8 +11,8 @@ interface RecognitionProps {
 }
 
 const Recognition = ({
-  flashRecognitionColor = "bg-warning-50",
-  flashRecognitionTitleColor = "bg-warning-500",
+  flashRecognitionColor = "bg-recognition-50",
+  flashRecognitionTitleColor = "bg-recognition-500",
 }: RecognitionProps) => {
   const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
     useState(false);
@@ -34,10 +34,10 @@ const Recognition = ({
     >
       <div className="flex justify-center">
         <div
-          className={`w-full bg-warning-400 rounded-t-lg h-[48px] transition-all duration-500  ${
+          className={`w-full bg-recognition-400 rounded-t-lg h-[48px] transition-all duration-500  ${
             startRecognitionBorderAnimation
               ? flashRecognitionTitleColor
-              : "bg-warning-400"
+              : "bg-recognition-400"
           }`}
         >
           <div className="flex h-full justify-center">
@@ -59,13 +59,24 @@ const Recognition = ({
           </div>
         </div>
       </div>
-      <div className="flex -mt-5 justify-center items-center">
-        <div>
-          <Button
-            label="advanced options"
-            colors="bg-inherit text-warning-400 border border-warning-400 hover:bg-warning-100"
-            sizes="py-1 px-2 rounded-md"
-          />
+
+      <div className="absolute bottom-0 w-full flex justify-center">
+        <div
+          className={`w-full bg-recognition-400 rounded-b-lg h-[48px] transition-all duration-500  ${
+            startRecognitionBorderAnimation
+              ? flashRecognitionTitleColor
+              : "bg-recognition-400"
+          }`}
+        >
+          <div className="flex justify-center h-full items-center">
+            <div>
+              <Button
+                label="advanced options"
+                colors="bg-inherit text-white border border-white hover:bg-recognition-100"
+                sizes="py-1 px-2 rounded-md"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

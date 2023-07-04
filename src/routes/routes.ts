@@ -23,6 +23,11 @@ const routes = [
     path: "/news",
     name: "news",
   },
+  ,
+  {
+    path: "/publications",
+    name: "publications",
+  },
 ];
 
 export default routes;

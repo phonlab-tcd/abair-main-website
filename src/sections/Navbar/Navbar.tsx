@@ -17,7 +17,7 @@ const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div className="fixed w-screen shadow-black bg-gradient-to-b from-navbar-top via-navbar-middle to-navbar-bottom flex justify-center z-[1001]">
+    <div className="fixed w-screen shadow-navbar-shadow shadow-md bg-white flex justify-center z-[1001]">
       <div className="h-12 lg:h-16 flex flex-row justify-between max-w-6xl w-full">
         <div className="flex flex-row h-full w-auto">
           <div className="h-full items-center hover:bg-grey-100 transition-colors ease-in-out duration-200">
@@ -38,7 +38,7 @@ const Navbar = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
-                stroke={burgerMenuHover ? "black" : "white"}
+                stroke={burgerMenuHover ? "green" : "green"}
                 className="w-8 h-8 mx-2 md:hidden"
               >
                 <path
@@ -50,46 +50,51 @@ const Navbar = () => {
             </button>
           </div>
           <div className="h-full items-center hover:bg-grey-100 transition-colors ease-in-out duration-200">
-            <button
-              className="mx-2 md:px-1 lg:px-2 h-full"
-              onClick={() => {
-                console.log("go home");
-              }}
-              onMouseEnter={() => {
-                setAbairLogoHover(true);
-              }}
-              onMouseLeave={() => {
-                setAbairLogoHover(false);
-              }}
-            >
-              <div className="relative w-10 lg:w-14 h-8 lg:h-10">
-                <img
-                  src={
-                    abairLogoHover
-                      ? "/abair-logo-outline-green.png"
-                      : "/abair-logo-outline-white.png"
-                  }
-                  alt="ABAIR logo"
-                />
-              </div>
-            </button>
+            <Link href={"/"}>
+              <button
+                className="mx-2 md:px-1 lg:px-2 h-full"
+                onClick={() => {
+                  console.log("go home");
+                }}
+                onMouseEnter={() => {
+                  setAbairLogoHover(true);
+                }}
+                onMouseLeave={() => {
+                  setAbairLogoHover(false);
+                }}
+              >
+                <div className="relative w-10 lg:w-14 h-8 lg:h-10">
+                  <img
+                    src={
+                      abairLogoHover
+                        ? "/abair-logo-outline-green.png"
+                        : "/abair-logo-outline-green.png"
+                    }
+                    alt="ABAIR logo"
+                  />
+                </div>
+              </button>
+            </Link>
           </div>
         </div>
 
         <div id="siteLinks" className="h-full flex">
           <div className="pr-2 lg:pr-4 hidden md:block">
-            {routes.map((route, i) => (
-              <Link key={i} href={route.path}>
-                <Button
-                  label={route.name}
-                  sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
-                  colors="hover:bg-grey-100 text-white hover:text-grey-700"
-                />
-              </Link>
-            ))}
+            {routes.map(
+              (route, i) =>
+                route && (
+                  <Link key={i} href={route.path}>
+                    <Button
+                      label={route.name}
+                      sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
+                      colors="hover:bg-grey-100 text-primary-700"
+                    />
+                  </Link>
+                )
+            )}
           </div>
           <div className="h-full flex items-center">
-            <div className="h-8 lg:h-10 border-l border-white-900 hidden md:block"></div>
+            <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
           <DropdownMenu
             label="GA"
@@ -145,7 +150,7 @@ const Navbar = () => {
               <Button
                 label={route.name}
                 sizes="text-left text-sm lg:text-base py-2 pl-4 w-full"
-                colors="text-black hover:bg-grey-300 hover:text-white"
+                colors="text-primary-700 hover:bg-grey-100"
               />
             </Link>
           ))}

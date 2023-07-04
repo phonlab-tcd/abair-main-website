@@ -20,8 +20,8 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
           <img
             key={index}
             src={"/frontPageImages" + image.path}
-            width={200 * image.ratio}
-            height={200}
+            width={160 * image.ratio}
+            height={160}
             alt={`Image ${index}`}
           />
         ))}

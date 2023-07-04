@@ -12,12 +12,14 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.green,
-        secondary: colors.blue,
-        warning: colors.red,
+        synthesis: colors.sky,
+        recognition: colors.rose,
+        applications: colors.green,
         grey: colors.gray,
-        "navbar-top": "rgba(0, 0, 0, 0.8)",
-        "navbar-middle": "rgba(0, 0, 0, 0.6)",
-        "navbar-bottom": "rgba(0, 0, 0, 0.001)",
+        // "navbar-top": "rgba(0, 0, 0, 0.8)",
+        // "navbar-middle": "rgba(0, 0, 0, 0.6)",
+        // "navbar-bottom": "rgba(0, 0, 0, 0.001)",
+        "navbar-shadow": "rgba(0, 0, 0, 0.15)",
       },
       transitionDelay: {
         1500: "1500ms",
@@ -41,7 +43,7 @@ module.exports = {
       },
       height: {
         synthRecCard: "340px",
-        synthRecCardLarge: "340px",
+        synthRecCardLarge: "440px",
       },
       dropShadow: {
         ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",

@@ -4,7 +4,15 @@
 import { Button } from "abair-web-components";
 
 import { useEffect, useState } from "react";
-const Applications = () => {
+interface ApplicationsProps {
+  flashApplicationColor?: string;
+  applicationColor?: string;
+}
+
+const Applications = ({
+  flashApplicationColor = "bg-applications-500",
+  applicationColor = "bg-applications-400",
+}: ApplicationsProps) => {
   const [startApplicationsAnimation, setStartApplicationsAnimation] =
     useState(false);
 
@@ -21,7 +29,7 @@ const Applications = () => {
     <div className="z-0 -mt-[20px] w-screen overflow-x-hidden">
       <div
         className={`ml-[-25%] h-[150px] w-[150%] rounded-t-[40%] md:rounded-t-[100%] transition-colors duration-500 ${
-          startApplicationsAnimation ? "bg-primary-500" : "bg-primary-400"
+          startApplicationsAnimation ? flashApplicationColor : applicationColor
         }`}
       >
         <div className="text-center">
@@ -32,7 +40,7 @@ const Applications = () => {
       </div>
       <div
         className={`w-full transition-colors duration-500 ${
-          startApplicationsAnimation ? "bg-primary-500" : "bg-primary-400"
+          startApplicationsAnimation ? flashApplicationColor : applicationColor
         }`}
       >
         <div className="flex justify-center ">
@@ -55,7 +63,7 @@ const Applications = () => {
         <div className="flex justify-center py-8">
           <Button
             label="see all"
-            colors="bg-inherit text-lg text-white border-2 border-white hover:bg-primary-300"
+            colors="bg-inherit text-lg text-white border-2 border-white hover:bg-applications-300"
             sizes="w-48 p-1.5 rounded-md"
           />
         </div>

@@ -75,11 +75,14 @@ const FadeInText = ({ startAnimation, typingState }: FadeInTextProps) => {
             <TypingText
               text=" Speech Synthesis"
               delayToStart={1200}
-              color="text-secondary-700"
+              color="text-synthesis-700"
             />
           )}
           {typingState === "recognition" && (
-            <TypingText text="Speech Recognition" color="text-warning-700" />
+            <TypingText
+              text="Speech Recognition"
+              color="text-recognition-700"
+            />
           )}
           {typingState === "applications" && (
             <TypingText text="Speech Applications" color="text-primary-700" />

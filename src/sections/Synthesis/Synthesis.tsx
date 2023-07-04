@@ -10,8 +10,8 @@ interface SynthesisProps {
 }
 
 const Synthesis = ({
-  flashSynthesisColor = "bg-secondary-50",
-  flashSynthesisTitleColor = "bg-secondary-500",
+  flashSynthesisColor = "bg-synthesis-50",
+  flashSynthesisTitleColor = "bg-synthesis-500",
 }: SynthesisProps) => {
   const [startSynthesisBorderAnimation, setStartSynthesisBorderAnimation] =
     useState(false);
@@ -45,10 +45,10 @@ const Synthesis = ({
       }`}
     >
       <div
-        className={`w-full bg-secondary-400 rounded-t-lg h-[48px] transition-all duration-500 ${
+        className={`w-full bg-synthesis-400 rounded-t-lg h-[48px] transition-all duration-500 ${
           startSynthesisBorderAnimation
             ? flashSynthesisTitleColor
-            : "bg-secondary-400"
+            : "bg-synthesis-400"
         }`}
       >
         <div className="flex h-full justify-center">
@@ -63,28 +63,38 @@ const Synthesis = ({
             <Map height={280} />
           </div>
           <div className="w-[60%] pt-14 px-4">
-            <textarea className="bg-inherit w-full h-24 resize-none border rounded-md border-secondary-300 focus:border-secondary-700"></textarea>
+            <textarea className="bg-inherit w-full h-24 resize-none border rounded-md border-synthesis-300 focus:border-synthesis-700"></textarea>
 
             <div className="w-full grid grid-cols-2 pt-4 pr-4">
               <GenderButtons />
 
               <Button
                 label="synthesise"
-                colors="bg-secondary-400 hover:bg-secondary-500 text-white"
-                sizes="rounded-md p-1.5 text-lg"
+                colors="bg-inherit hover:bg-synthesis-100 text-synthesis-500 border border-synthesis-500"
+                sizes="rounded-md p-1 "
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex -mt-5 justify-center items-center">
-        <div>
-          <Button
-            label="advanced options"
-            colors="bg-inherit text-secondary-400 border border-secondary-400 hover:bg-secondary-100"
-            sizes="py-1 px-2 rounded-md"
-          />
+      <div className="absolute bottom-0 w-full flex justify-center">
+        <div
+          className={`w-full bg-synthesis-400 rounded-b-lg h-[48px] transition-all duration-500  ${
+            startSynthesisBorderAnimation
+              ? flashSynthesisTitleColor
+              : "bg-synthesis-400"
+          }`}
+        >
+          <div className="flex justify-center h-full items-center">
+            <div>
+              <Button
+                label="advanced options"
+                colors="bg-inherit text-white border border-white hover:bg-synthesis-100"
+                sizes="py-1 px-2 rounded-md"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
