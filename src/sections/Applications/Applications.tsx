@@ -62,7 +62,7 @@ const Applications = ({
         </div>
         <div className="flex justify-center py-8">
           <Button
-            label="see all"
+            children="see all"
             colors="bg-inherit text-lg text-white border-2 border-white hover:bg-applications-300"
             sizes="w-48 p-1.5 rounded-md"
           />

@@ -30,11 +30,11 @@ const Map = ({
   const getMapColor = (c: mapDataModel) => {
     return gaeltachts.includes(c.name)
       ? c.name === hoverCounty
-        ? ["#1d4ed8", "#1d4ed8"]
+        ? ["rgb(30 58 138)", "rgb(30 58 138)"]
         : c.name === selectCounty
-        ? ["#1d4ed8", "#1d4ed8"]
-        : ["#93c5fd", "#60a5fa"]
-      : ["#bbf7d0", "#bbf7d0"];
+        ? ["rgb(30 64 175)", "rgb(30 58 138)"]
+        : ["rgb(191 219 254)", "rgb(96 165 250)"]
+      : ["rgb(220 252 231)", "rgb(74 222 128)"];
   };
 
   const handleMouseEnter = (county: string) => {
@@ -56,7 +56,7 @@ const Map = ({
 
   return (
     <div className="relative">
-      <svg viewBox="0 520 450 600" height={height > 220 ? height * 0.9 : 200}>
+      <svg viewBox="0 520 450 600" height={height}>
         <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
           {mapData.map((c: mapDataModel, i: number) => (
             <g
@@ -72,7 +72,7 @@ const Map = ({
             >
               <path
                 d={c.coordinates}
-                strokeWidth={gaeltachts.includes(c.name) ? "3.5" : "0.5"}
+                strokeWidth={gaeltachts.includes(c.name) ? "2.5" : "0.5"}
               />
             </g>
           ))}

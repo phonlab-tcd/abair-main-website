@@ -10,7 +10,7 @@ import {
 
 interface DropdownMenuProps {
   dropdownMenuItems: DropdownMenuItemProps[];
-  label?: string;
+  children?: string;
   image?: ThumbnailImageProps;
   dropdownPosition?: "left" | "right";
   showArrow?: boolean;
@@ -19,7 +19,7 @@ interface DropdownMenuProps {
 
 const DropdownMenu = ({
   dropdownMenuItems,
-  label,
+  children,
   image,
   dropdownPosition = "left",
   showArrow = false,
@@ -50,7 +50,7 @@ const DropdownMenu = ({
   return (
     <div ref={menuRef} className={"relative h-full"}>
       <DropdownMenuButton
-        label={label}
+        children={children}
         onClickHandler={toggleMenu}
         isOpen={isOpen}
         image={image}
@@ -63,14 +63,14 @@ const DropdownMenu = ({
             dropdownPosition === "right" ? "left-0" : "right-0",
           ].join(" ")}
         >
-          <ul aria-labelledby="dropdownDefaultButton">
+          <ul aria-childrenledby="dropdownDefaultButton">
             {Array.isArray(dropdownMenuItems) &&
               dropdownMenuItems.map((dropdownMenuItem, i) => (
                 <DropdownMenuItem
                   key={i}
                   disabled={dropdownMenuItem.disabled}
                   title={dropdownMenuItem.title}
-                  label={dropdownMenuItem.label}
+                  children={dropdownMenuItem.children}
                   image={dropdownMenuItem.image}
                   onClickHandler={dropdownMenuItem.onClickHandler}
                 />

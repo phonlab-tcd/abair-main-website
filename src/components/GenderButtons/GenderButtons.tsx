@@ -2,9 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { MaleIcon, FemaleIcon } from "abair-web-components";
+import { MaleIcon, FemaleIcon, Button } from "abair-web-components";
 
-const GenderButtons = () => {
+interface GenderButtonsProps {
+  height: number;
+}
+
+const GenderButtons = ({ height }: GenderButtonsProps) => {
   const [gender, setGender] = useState<"male" | "female">("male");
   const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
   const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
@@ -22,7 +26,7 @@ const GenderButtons = () => {
   return (
     <div className="flex justify-center w-full">
       <button
-        className="mx-2"
+        className=" p-1 rounded-xl"
         onMouseEnter={() => {
           setMaleIconColor("#1d4ed8");
         }}
@@ -35,10 +39,10 @@ const GenderButtons = () => {
           setGender("male");
         }}
       >
-        <MaleIcon color={maleIconColor} />
+        <MaleIcon color={maleIconColor} height={height} />
       </button>
       <button
-        className="mx-2"
+        className=" p-1 rounded-xl"
         onMouseEnter={() => {
           setFemaleIconColor("#1d4ed8");
         }}
@@ -51,7 +55,7 @@ const GenderButtons = () => {
           setGender("female");
         }}
       >
-        <FemaleIcon color={femaleIconColor} />
+        <FemaleIcon color={femaleIconColor} height={height} />
       </button>
     </div>
   );

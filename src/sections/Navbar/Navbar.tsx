@@ -85,7 +85,7 @@ const Navbar = () => {
                 route && (
                   <Link key={i} href={route.path}>
                     <Button
-                      label={route.name}
+                      children={route.name}
                       sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
                       colors="hover:bg-grey-100 text-primary-700"
                     />
@@ -97,7 +97,7 @@ const Navbar = () => {
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
           <DropdownMenu
-            label="GA"
+            children="GA"
             dropdownMenuItems={languageDropdownArgs}
             image={{
               URL: "/ie.svg",
@@ -119,7 +119,7 @@ const Navbar = () => {
           ) : (
             <div className="h-full flex items-center p-2 lg:p-4">
               <Button
-                label="login/sign up"
+                children="login/sign up"
                 sizes="px-2 lg:px-4 py-1 lg:py-1 text-sm lg:text-lg"
                 colors="border border-white hover:border-black-600 hover:text-black-600 hover:bg-black-100"
               ></Button>
@@ -148,7 +148,7 @@ const Navbar = () => {
           {routes.map((route, i) => (
             <Link key={i} href={route.path}>
               <Button
-                label={route.name}
+                children={route.name}
                 sizes="text-left text-sm lg:text-base py-2 pl-4 w-full"
                 colors="text-primary-700 hover:bg-grey-100"
               />

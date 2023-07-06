@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Map, GenderButtons } from "@/components";
-import { MaleIcon, FemaleIcon, Button } from "abair-web-components";
+import {
+  SpeakIcon,
+  PlayIcon,
+  DownloadIcon,
+  SettingsIcon,
+  Button,
+  SynthesisPlaybackCard,
+} from "abair-web-components";
 
 interface SynthesisProps {
   flashSynthesisColor?: string;
@@ -40,15 +47,15 @@ const Synthesis = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge rounded-lg relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-500 delay-0 ${
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge rounded-lg relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-600 delay-0 ${
         startSynthesisBorderAnimation ? flashSynthesisColor : "bg-white"
       }`}
     >
       <div
-        className={`w-full bg-synthesis-400 rounded-t-lg h-[48px] transition-all duration-500 ${
+        className={`w-full bg-synthesis-600 rounded-t-lg h-[48px] transition-all duration-600 ${
           startSynthesisBorderAnimation
             ? flashSynthesisTitleColor
-            : "bg-synthesis-400"
+            : "bg-synthesis-600"
         }`}
       >
         <div className="flex h-full justify-center">
@@ -57,43 +64,60 @@ const Synthesis = ({
           </div>
         </div>
       </div>
-      <div className="w-full h-[260px] ">
-        <div className="flex flex-row mt-2">
-          <div className="w-[40%] flex flex-col justify-center">
-            <Map height={280} />
-          </div>
-          <div className="w-[60%] pt-14 px-4">
-            <textarea className="bg-inherit w-full h-24 resize-none border rounded-md border-synthesis-300 focus:border-synthesis-700"></textarea>
 
-            <div className="w-full grid grid-cols-2 pt-4 pr-4">
-              <GenderButtons />
-
-              <Button
-                label="synthesise"
-                colors="bg-inherit hover:bg-synthesis-100 text-synthesis-500 border border-synthesis-500"
-                sizes="rounded-md p-1 "
-              />
+      <div className="w-full">
+        <div className="flex flex-row h-52">
+          <div className="w-[30%] ml-2 flex flex-col justify-center">
+            <div>
+              <Map height={170} />
             </div>
+            <div className="w-full mb-2 -mt-2 -ml-1">
+              <GenderButtons height={20} />
+            </div>
+          </div>
+          <div className="w-[70%] pt-5 pr-5">
+            <textarea className="p-1bg-inherit w-full h-44 resize-none border rounded-sm border-synthesis-600 focus:border-synthesis-700"></textarea>
           </div>
         </div>
       </div>
-
+      <div className="flex justify-center m-1 items-center">
+        <Button
+          colors="bg-synthesis-600 w-44 hover:bg-synthesis-600 text-white border border-synthesis-600"
+          sizes="rounded-md p-1"
+        >
+          Synthesise
+        </Button>
+      </div>
+      <div className="mt-4">
+        <SynthesisPlaybackCard />
+      </div>
       <div className="absolute bottom-0 w-full flex justify-center">
         <div
-          className={`w-full bg-synthesis-400 rounded-b-lg h-[48px] transition-all duration-500  ${
+          className={`w-full bg-synthesis-600 rounded-b-lg h-12 transition-all duration-600  ${
             startSynthesisBorderAnimation
               ? flashSynthesisTitleColor
-              : "bg-synthesis-400"
+              : "bg-synthesis-600"
           }`}
         >
-          <div className="flex justify-center h-full items-center">
-            <div>
-              <Button
-                label="advanced options"
-                colors="bg-inherit text-white border border-white hover:bg-synthesis-100"
-                sizes="py-1 px-2 rounded-md"
-              />
-            </div>
+          <div className="flex justify-around h-full items-center">
+            <Button
+              colors="bg-inherit hover:bg-synthesis-300"
+              sizes="py-0.5 px-1 rounded-md"
+            >
+              <DownloadIcon color="white" />
+            </Button>
+            <Button
+              colors="bg-inherit hover:bg-synthesis-300"
+              sizes="py-1 px-1 rounded-md"
+            >
+              <PlayIcon color="white" height={24} />
+            </Button>
+            <Button
+              colors="bg-inherit hover:bg-synthesis-300"
+              sizes="py-0.5 px-1 rounded-md"
+            >
+              <SettingsIcon color="white" />
+            </Button>
           </div>
         </div>
       </div>

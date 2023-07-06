@@ -71,7 +71,7 @@ const Recognition = ({
           <div className="flex justify-center h-full items-center">
             <div>
               <Button
-                label="advanced options"
+                children="advanced options"
                 colors="bg-inherit text-white border border-white hover:bg-recognition-100"
                 sizes="py-1 px-2 rounded-md"
               />

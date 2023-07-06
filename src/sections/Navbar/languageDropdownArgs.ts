@@ -2,7 +2,7 @@ import { DropdownMenuItemProps } from "abair-web-components";
 
 const languageDropdownArgs: DropdownMenuItemProps[] = [
   {
-    label: "Irish",
+    children: "Irish",
     image: {
       URL: "/ie.svg",
       width: "w-6",
@@ -13,7 +13,7 @@ const languageDropdownArgs: DropdownMenuItemProps[] = [
     },
   },
   {
-    label: "English",
+    children: "English",
     image: {
       URL: "/us.svg",
       width: "w-6",
@@ -23,7 +23,7 @@ const languageDropdownArgs: DropdownMenuItemProps[] = [
     },
   },
   {
-    label: "French",
+    children: "French",
     image: {
       URL: "/fr.svg",
       width: "w-6",

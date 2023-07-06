@@ -21,7 +21,6 @@
     "react-dom": "18.2.0",
     "recoil": "^0.7.7",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4",
-    "abair-web-components": "0.0.1"
+    "typescript": "5.0.4"
   }
 }
