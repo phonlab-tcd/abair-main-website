@@ -23,10 +23,14 @@ const routes = [
     path: "/news",
     name: "news",
   },
-  ,
+
   {
     path: "/publications",
     name: "publications",
+  },
+  {
+    path: "/people",
+    name: "people",
   },
 ];
 
