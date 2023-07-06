@@ -5,6 +5,7 @@ import News from "./News/News";
 import Footer from "./Footer/Footer";
 import Synthesis from "./Synthesis/Synthesis";
 import Recognition from "./Recognition/Recognition";
+import PublicationsData from "./PublicationsData/PublicationsData";
 
 export {
   Navbar,
@@ -14,4 +15,5 @@ export {
   Footer,
   Synthesis,
   Recognition,
+  PublicationsData,
 };

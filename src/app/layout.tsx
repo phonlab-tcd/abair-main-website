@@ -15,6 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-grey-100">
         <Navbar />
+
         <div className="pt-12 lg:pt-16">{children}</div>
       </body>
     </html>

@@ -52,7 +52,7 @@ const Synthesis = ({
       }`}
     >
       <div
-        className={`w-full bg-synthesis-600 rounded-t-lg h-[48px] transition-all duration-600 ${
+        className={`w-full rounded-t-lg h-[48px] transition-all duration-1000 ${
           startSynthesisBorderAnimation
             ? flashSynthesisTitleColor
             : "bg-synthesis-600"
@@ -93,7 +93,7 @@ const Synthesis = ({
       </div>
       <div className="absolute bottom-0 w-full flex justify-center">
         <div
-          className={`w-full bg-synthesis-600 rounded-b-lg h-12 transition-all duration-600  ${
+          className={`w-full rounded-b-lg h-12 transition-all duration-1000  ${
             startSynthesisBorderAnimation
               ? flashSynthesisTitleColor
               : "bg-synthesis-600"
