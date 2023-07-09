@@ -68,7 +68,10 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
   };
 
   return (
-    <div className="sticky top-0 h-full bg-white shadow-lg p-4">
+    <div className="h-22 bg-white shadow-md p-4 items-center justify-center">
+      <label className="block text-gray-700 text-sm font-bold mb-2 text-center">
+        Filter and Sort
+      </label>
       <SearchBar
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
@@ -83,7 +86,7 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
         }
       />
 
-      <div className="mt-6 space-y-20">
+      <div className="mt-6 space-y-10">
         <CategoryFilter
           selectedCategory={selectedCategory}
           onCategoryChange={(category) => {
