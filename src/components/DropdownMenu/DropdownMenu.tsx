@@ -9,8 +9,8 @@ import {
 } from "abair-web-components";
 
 interface DropdownMenuProps {
+  label?: string;
   dropdownMenuItems: DropdownMenuItemProps[];
-  children?: string;
   image?: ThumbnailImageProps;
   dropdownPosition?: "left" | "right";
   showArrow?: boolean;
@@ -18,8 +18,8 @@ interface DropdownMenuProps {
 }
 
 const DropdownMenu = ({
+  label,
   dropdownMenuItems,
-  children,
   image,
   dropdownPosition = "left",
   showArrow = false,
@@ -50,9 +50,9 @@ const DropdownMenu = ({
   return (
     <div ref={menuRef} className={"relative h-full"}>
       <DropdownMenuButton
-        children={children}
         onClickHandler={toggleMenu}
         isOpen={isOpen}
+        label={label}
         image={image}
         showArrow={showArrow}
       />
@@ -63,14 +63,14 @@ const DropdownMenu = ({
             dropdownPosition === "right" ? "left-0" : "right-0",
           ].join(" ")}
         >
-          <ul aria-childrenledby="dropdownDefaultButton">
+          <ul>
             {Array.isArray(dropdownMenuItems) &&
               dropdownMenuItems.map((dropdownMenuItem, i) => (
                 <DropdownMenuItem
                   key={i}
                   disabled={dropdownMenuItem.disabled}
                   title={dropdownMenuItem.title}
-                  children={dropdownMenuItem.children}
+                  label={dropdownMenuItem.label}
                   image={dropdownMenuItem.image}
                   onClickHandler={dropdownMenuItem.onClickHandler}
                 />

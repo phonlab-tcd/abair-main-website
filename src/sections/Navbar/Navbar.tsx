@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
@@ -7,7 +8,7 @@ import userDropdownArgs from "./userDropdownArgs";
 
 import Link from "next/link";
 import { Button, Sidebar } from "abair-web-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { routes } from "@/routes";
 
 const Navbar = () => {
@@ -15,6 +16,10 @@ const Navbar = () => {
   const [abairLogoHover, setAbairLogoHover] = useState(false);
   const [burgerMenuHover, setBurgerMenuHover] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+
+  useEffect(() => {
+    console.log("userDropdownArgs:", userDropdownArgs);
+  }, [userDropdownArgs]);
 
   return (
     <div className="fixed w-screen shadow-navbar-shadow shadow-md bg-white flex justify-center z-[1001]">
@@ -85,10 +90,11 @@ const Navbar = () => {
                 route && (
                   <Link key={i} href={route.path}>
                     <Button
-                      children={route.name}
                       sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
                       colors="hover:bg-grey-100 text-primary-700"
-                    />
+                    >
+                      {route.name}
+                    </Button>
                   </Link>
                 )
             )}
@@ -97,7 +103,7 @@ const Navbar = () => {
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
           <DropdownMenu
-            children="GA"
+            label="GA"
             dropdownMenuItems={languageDropdownArgs}
             image={{
               URL: "/ie.svg",
@@ -119,10 +125,11 @@ const Navbar = () => {
           ) : (
             <div className="h-full flex items-center p-2 lg:p-4">
               <Button
-                children="login/sign up"
                 sizes="px-2 lg:px-4 py-1 lg:py-1 text-sm lg:text-lg"
                 colors="border border-white hover:border-black-600 hover:text-black-600 hover:bg-black-100"
-              ></Button>
+              >
+                login/sign up
+              </Button>
             </div>
           )}
         </div>

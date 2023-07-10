@@ -2,20 +2,20 @@ import { DropdownMenuItemProps } from "abair-web-components";
 
 const userLoggedInDropdownArgs: DropdownMenuItemProps[] = [
   {
-    children: "Jim Jimson",
+    label: "Jim Jimson",
     onClickHandler: () => {
       console.log("nothing");
     },
     title: true,
   },
   {
-    children: "Profile",
+    label: "Profile",
     onClickHandler: () => {
       console.log("go to profile");
     },
   },
   {
-    children: "Log Out",
+    label: "Log Out",
     onClickHandler: () => {
       console.log("log out");
     },
