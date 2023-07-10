@@ -88,9 +88,9 @@ const Synthesis = ({
           Synthesise
         </Button>
       </div>
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <SynthesisPlaybackCard />
-      </div>
+      </div> */}
       <div className="absolute bottom-0 w-full flex justify-center">
         <div
           className={`w-full rounded-b-lg h-12 transition-all duration-1000  ${

@@ -155,10 +155,11 @@ const Navbar = () => {
           {routes.map((route, i) => (
             <Link key={i} href={route.path}>
               <Button
-                children={route.name}
                 sizes="text-left text-sm lg:text-base py-2 pl-4 w-full"
                 colors="text-primary-700 hover:bg-grey-100"
-              />
+              >
+                {route.name}
+              </Button>
             </Link>
           ))}
         </Sidebar>
