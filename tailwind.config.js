@@ -43,7 +43,7 @@ module.exports = {
       },
       height: {
         synthRecCard: "340px",
-        synthRecCardLarge: "436px",
+        synthRecCardLarge: "410px",
       },
       dropShadow: {
         ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",
