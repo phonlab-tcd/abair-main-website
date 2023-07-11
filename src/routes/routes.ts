@@ -29,8 +29,8 @@ const routes = [
     name: "publications",
   },
   {
-    path: "/people",
-    name: "people",
+    path: "/people_authors",
+    name: "people_authors",
   },
 ];
 
