@@ -59,22 +59,9 @@ const Synthesis = ({
             : "bg-synthesis-500"
         }`}
       >
-        <div className="grid grid-cols-3 h-full">
-          <div></div>
-          <div className="flex h-full justify-center">
-            <div className="flex items-center text-xl md:text-2xl font-mono text-white">
-              Synthesis
-            </div>
-          </div>
-          <div className="flex w-full h-full justify-end pr-2 items-center">
-            <div>
-              <Button
-                colors="bg-inherit text-white text-sm hover:text-synthesis-100"
-                sizes="py-0.5 px-1 rounded-sm"
-              >
-                more options &#9656;
-              </Button>
-            </div>
+        <div className="flex h-full justify-center">
+          <div className="flex items-center text-xl md:text-2xl font-mono text-white">
+            Synthesis
           </div>
         </div>
       </div>
