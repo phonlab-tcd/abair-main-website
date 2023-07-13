@@ -69,7 +69,7 @@ const Synthesis = ({
           <div className="flex w-full h-full justify-end pr-2 items-center">
             <div>
               <Button
-                colors="bg-inherit text-white text-sm hover:bg-synthesis-600"
+                colors="bg-inherit text-white text-sm hover:text-synthesis-100"
                 sizes="py-0.5 px-1 rounded-sm"
               >
                 more options &#9656;
@@ -80,24 +80,32 @@ const Synthesis = ({
       </div>
 
       <div className="w-full">
-        <div className="flex flex-row relative">
+        <div className="flex flex-row">
           <div className="w-[40%] ml-2 flex flex-col justify-center">
-            <Map height={240} />
+            <Map height={220} />
+            <div className="w-[90%] border -mt-4">
+              <GenderButtons height={26} />
+            </div>
           </div>
 
-          <div className="w-[60%] pt-6 pr-6">
+          <div className="w-[60%] pt-8 pr-6">
+            {/* <div className="w-full h-24"></div> */}
             <textarea className="p-1 bg-inherit w-full h-24 resize-none border  border-synthesis-600 focus:border-synthesis-700"></textarea>
-            <div className="w-[100%] ">
-              <div className="w-full h-full">
-                <GenderButtons height={30} />
-              </div>
+            {/* <div className="w-[100%] "> */}
+
+            <div className="flex justify-center items-center p-2">
+              <Button>
+                <div className="bg-synthesis-500 p-2 rounded-[100%] hover:bg-synthesis-600">
+                  <SpeakIcon height={36} width={36} color="white" />
+                </div>
+              </Button>
             </div>
-            <div className="flex justify-center m-1 items-center">
+            <div className="absolute bottom-2 right-4">
               <Button
-                colors="bg-synthesis-500 w-44 hover:bg-synthesis-600 text-white "
-                sizes="rounded-md p-1"
+                colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600"
+                sizes="py-0.5 px-1 rounded-sm"
               >
-                Synthesise
+                more options &#9656;
               </Button>
             </div>
           </div>

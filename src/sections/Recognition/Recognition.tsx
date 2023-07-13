@@ -50,7 +50,7 @@ const Recognition = ({
             <div className="flex w-full h-full justify-end pr-2 items-center">
               <div>
                 <Button
-                  colors="bg-inherit text-white text-sm hover:bg-recognition-600"
+                  colors="bg-inherit text-white text-sm hover:text-recognition-100"
                   sizes="py-0.5 px-1 rounded-sm"
                 >
                   more options &#9656;

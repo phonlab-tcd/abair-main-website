@@ -24,7 +24,7 @@ const GenderButtons = ({ height }: GenderButtonsProps) => {
   }, [gender]);
 
   return (
-    <div className="flex flex-row justify-center h-full w-full p-2">
+    <div className="flex flex-row justify-center h-full w-full p-1">
       <div className="px-2">
         <button
           className=" p-1 rounded-xl"
