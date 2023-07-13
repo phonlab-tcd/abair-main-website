@@ -20,6 +20,7 @@ module.exports = {
         // "navbar-middle": "rgba(0, 0, 0, 0.6)",
         // "navbar-bottom": "rgba(0, 0, 0, 0.001)",
         "navbar-shadow": "rgba(0, 0, 0, 0.15)",
+        "popup-shadow": "rgba(128, 128, 128, 0.67)",
       },
       transitionDelay: {
         1500: "1500ms",
@@ -43,7 +44,7 @@ module.exports = {
       },
       height: {
         synthRecCard: "340px",
-        synthRecCardLarge: "290px",
+        synthRecCardLarge: "288px",
       },
       dropShadow: {
         ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",

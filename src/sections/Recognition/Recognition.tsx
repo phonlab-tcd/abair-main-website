@@ -28,21 +28,34 @@ const Recognition = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge rounded-lg relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-500 ${
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-500 ${
         startRecognitionBorderAnimation ? flashRecognitionColor : "bg-white"
       }`}
     >
       <div className="flex justify-center">
         <div
-          className={`w-full bg-recognition-400 rounded-t-lg h-[48px] transition-all duration-500  ${
+          className={`w-full bg-recognition-400 h-[48px] transition-all duration-500  ${
             startRecognitionBorderAnimation
               ? flashRecognitionTitleColor
               : "bg-recognition-400"
           }`}
         >
-          <div className="flex h-full justify-center">
-            <div className="flex items-center text-xl md:text-2xl font-mono text-white">
-              Recognition
+          <div className="grid grid-cols-3 h-full">
+            <div></div>
+            <div className="flex h-full justify-center">
+              <div className="flex items-center text-xl md:text-2xl font-mono text-white">
+                Recognition
+              </div>
+            </div>
+            <div className="flex w-full h-full justify-end pr-2 items-center">
+              <div>
+                <Button
+                  colors="bg-inherit text-white text-sm hover:bg-recognition-600"
+                  sizes="py-0.5 px-1 rounded-sm"
+                >
+                  more options &#9656;
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -56,27 +69,6 @@ const Recognition = ({
               height={60}
               alt="Microphone Icon"
             />
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 w-full flex justify-center">
-        <div
-          className={`w-full bg-recognition-400 rounded-b-lg h-[48px] transition-all duration-500  ${
-            startRecognitionBorderAnimation
-              ? flashRecognitionTitleColor
-              : "bg-recognition-400"
-          }`}
-        >
-          <div className="flex justify-center h-full items-center">
-            <div>
-              <Button
-                colors="bg-inherit text-white border border-white hover:bg-recognition-100"
-                sizes="py-1 px-2 rounded-md"
-              >
-                advanced options
-              </Button>
-            </div>
           </div>
         </div>
       </div>
