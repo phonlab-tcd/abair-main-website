@@ -70,7 +70,7 @@ const Synthesis = ({
         <div className="flex flex-row">
           <div className="w-[40%] ml-2 flex flex-col justify-center">
             <Map height={220} />
-            <div className="w-[90%] border -mt-4">
+            <div className="w-[90%] -mt-4">
               <GenderButtons height={26} />
             </div>
           </div>
@@ -80,10 +80,10 @@ const Synthesis = ({
             <textarea className="p-1 bg-inherit w-full h-24 resize-none border  border-synthesis-600 focus:border-synthesis-700"></textarea>
             {/* <div className="w-[100%] "> */}
 
-            <div className="flex justify-center items-center p-2">
+            <div className="flex justify-center items-center p-4">
               <Button>
                 <div className="bg-synthesis-500 p-2 rounded-[100%] hover:bg-synthesis-600">
-                  <SpeakIcon height={36} width={36} color="white" />
+                  <SpeakIcon height={32} width={32} color="white" />
                 </div>
               </Button>
             </div>
