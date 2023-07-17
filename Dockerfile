@@ -19,6 +19,8 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+RUN mkdir /.next/standalone
+RUN mkdir /.next/static
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
