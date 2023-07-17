@@ -77,14 +77,15 @@ const Synthesis = ({
 
           <div className="w-[60%] pt-8 pr-6">
             {/* <div className="w-full h-24"></div> */}
-            <textarea className="p-1 bg-inherit w-full h-24 resize-none border  border-synthesis-600 focus:border-synthesis-700"></textarea>
+            <textarea className="p-1 bg-inherit w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"></textarea>
             {/* <div className="w-[100%] "> */}
 
             <div className="flex justify-center items-center p-4">
-              <Button>
-                <div className="bg-synthesis-500 p-2 rounded-[100%] hover:bg-synthesis-600">
-                  <SpeakIcon height={32} width={32} color="white" />
-                </div>
+              <Button
+                sizes="w-32 p-1 flex justify-center rounded-sm"
+                colors="bg-synthesis-500 hover:bg-synthesis-600"
+              >
+                <SpeakIcon height={26} width={26} color="white" />
               </Button>
             </div>
             <div className="absolute bottom-2 right-4">
