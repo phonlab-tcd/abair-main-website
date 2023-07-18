@@ -15,11 +15,11 @@ interface ImageCarouselProps {
 const ImageCarousel = ({ images }: ImageCarouselProps) => {
   return (
     <div className="w-full overflow-x-hidden z-1 border absolute">
-      <div className="absolute w-full bottom-0 left-0 flex">
-        <div className="flex flex-auto bg-grey-100"></div>
-        <div className="flex flex-none">
+      <div className="absolute w-full -top-8 left-0 flex">
+        <div className="z-100 flex flex-auto bg-grey-100"></div>
+        <div className="flex flex-none pt-">
           <img
-            className="drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]"
+            className="drop-shadow-[2px_2px_2px_rgba(0,0,0,0.5)]"
             src={"/frontPageImages" + "/ABAIR-transparent.png"}
             width={580}
             alt={`ABAIR text`}

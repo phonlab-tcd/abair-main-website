@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Map, GenderButtons, PopupBackground } from "@/components";
-import {
-  SpeakIcon,
-  PlayIcon,
-  DownloadIcon,
-  SettingsIcon,
-  Button,
-  SynthesisPlaybackCard,
-} from "abair-web-components";
+import { SpeakIcon, Button, SynthesisPlaybackCard } from "abair-web-components";
 
 interface SynthesisProps {
   flashSynthesisColor?: string;

@@ -5,7 +5,7 @@ import imageCarouselData from "./imageCarouselData";
 export default function Page() {
   return (
     <div className="w-screen">
-      <div className="relative h-[154px]">
+      <div className="relative h-[160px] border-2 border-black">
         <ImageCarousel images={imageCarouselData} />
         <div className="absolute top-[60px] w-full flex justify-center">
           {/* <div className="absolute w-80 background bg-black h-full bg-gradient-to-r from-opacity-100 to-opacity-0"></div> */}
