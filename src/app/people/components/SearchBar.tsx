@@ -32,7 +32,7 @@ const SearchBar = ({
           //console.log("value: " + e.target.value);
           //console.log("searchQuery: " + newSearchQuery);
         }}
-        style={{ height: "40px", marginLeft: "20px" }}
+        style={{ width: "150px", height: "40px", marginLeft: "20px" }}
       />
     </div>
   );

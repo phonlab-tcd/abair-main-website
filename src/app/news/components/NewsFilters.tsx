@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { News } from "../data/NewsData";
 import SearchBar from "./SearchBar";
 import CategoryFilter from "./CategoryFilter";
 import SortMenu from "./SortMenu";
 import DateRangePicker from "./DateRangePicker";
+import { News } from "./NewsClient";
 
 interface NewsFiltersProps {
   newsData: News[];
@@ -43,9 +43,11 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
     }
 
     if (category !== "All" && category !== "") {
-      filteredData = filteredData.filter((news) => news.category === category);
+      filteredData = filteredData.filter(
+        (news) => news.news_category === category
+      );
     } else {
-      filteredData = filteredData.filter((news) => news.altText === "image");
+      filteredData = filteredData.filter((news) => news.title_en !== "");
     }
 
     if (sortOption !== "") {
@@ -61,7 +63,7 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
         news.title_en.toLowerCase().includes(searchQuery.toLowerCase())
       );
     } else {
-      filteredData = filteredData.filter((news) => news.altText === "image");
+      filteredData = filteredData.filter((news) => news.title_en !== "");
     }
 
     onFilteredData(filteredData);
