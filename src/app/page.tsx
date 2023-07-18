@@ -4,16 +4,16 @@ import imageCarouselData from "./imageCarouselData";
 
 export default function Page() {
   return (
-    <div className="w-screen">
-      <div className="relative h-[160px] border-2 border-black">
+    <div className="w-screen relative">
+      <div className="relative h-[210px]">
         <ImageCarousel images={imageCarouselData} />
-        <div className="absolute top-[60px] w-full flex justify-center">
-          {/* <div className="absolute w-80 background bg-black h-full bg-gradient-to-r from-opacity-100 to-opacity-0"></div> */}
-          {/* <div className="text-6xl md:text-9xl text-white text-center drop-shadow-ABAIR">
-            ABAIR
-          </div> */}
+        <div className=" top-0 absolute flex w-full h-[240px]">
+          <div className="h-full flex flex-auto bg-grey-100"></div>
+          <div className="flex flex-none w-[550px]"></div>
+          <div className="z-100 border-2flex flex-auto bg-grey-100"></div>
         </div>
       </div>
+
       <div className="flex w-full justify-center relative">
         <IntroAnimation />
       </div>
