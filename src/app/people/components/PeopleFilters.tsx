@@ -1,39 +1,34 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import RoleFilter from "./RoleFilter";
+import { PersonProps } from "./PeopleClient";
 
-interface People {
-  id: number;
-  name: string;
-  image: string;
-  bio: string;
-  role: string;
-}
 interface PeopleFiltersProps {
-  peopleData: People[];
-  onFilteredData: (filteredData: People[]) => void;
+  peopleData: PersonProps[];
+  onFilteredData: (filteredData: PersonProps[]) => void;
 }
 
 const PeopleFilters: React.FC<PeopleFiltersProps> = ({
   peopleData,
   onFilteredData,
 }) => {
-  const [selectedRole, setSelectedRole] = useState("");
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filterPeopleData = (role: string, searchQuery: string) => {
-    let filteredData: People[] = peopleData;
+  const filterPeopleData = (selectedRoles: string[], searchQuery: string) => {
+    let filteredData: PersonProps[] = peopleData;
 
-    console.log("searching by: " + searchQuery);
-    console.log("filtering by: " + role);
-
+    console.log("original data: ");
     console.log(filteredData);
+    console.log("selected roles: " + selectedRoles);
 
-    if (role !== "All" && role !== "") {
-      filteredData = filteredData.filter((person) => person.role === role);
-      console.log(filteredData);
-    } else {
+    if (selectedRoles.length > 0 && !selectedRoles.includes("All")) {
+      filteredData = filteredData.filter((person) =>
+        selectedRoles.includes(person.role)
+      );
+    } else if (selectedRoles.includes("All")) {
       filteredData = filteredData.filter((person) => person.role !== "");
+      console.log("elseif");
     }
 
     if (searchQuery !== "") {
@@ -48,6 +43,7 @@ const PeopleFilters: React.FC<PeopleFiltersProps> = ({
 
     filteredData.sort((a, b) => a.id - b.id);
 
+    console.log(filteredData);
     onFilteredData(filteredData);
   };
 
@@ -59,15 +55,15 @@ const PeopleFilters: React.FC<PeopleFiltersProps> = ({
       <SearchBar
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
-        onSearch={() => filterPeopleData(selectedRole, searchQuery)}
+        onSearch={() => filterPeopleData(selectedRoles, searchQuery)}
       />
 
       <div className="mt-6 space-y-10">
         <RoleFilter
-          selectedRole={selectedRole}
-          onRoleChange={(role) => {
-            setSelectedRole(role);
-            filterPeopleData(role, searchQuery);
+          selectedRoles={selectedRoles}
+          onRoleChange={(roles) => {
+            setSelectedRoles(roles);
+            filterPeopleData(roles, searchQuery);
           }}
         />
       </div>

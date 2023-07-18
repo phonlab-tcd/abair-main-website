@@ -1,39 +1,16 @@
-"use client";
+/* eslint-disable @next/next/no-img-element */
+import { supabase } from "@/services/supabase";
+import NewsClient from "./components/NewsClient";
 
-import React, { useState } from "react";
-import NewsList from "./components/NewsList";
-import NewsFilters from "./components/NewsFilters";
-import { News, initialNewsData } from "./data/NewsData";
+export default async function Page() {
+  const { data: news } = await supabase
+    .from("news_stories")
+    .select(
+      "id, created_at, date, title_en, blurb_en, body_en, images, title_ga, blurb_ga, body_ga, video, news_category"
+    );
 
-export default function Page() {
-  const [filteredData, setFilteredData] = useState(initialNewsData);
-
-  const handleFilteredData = (data: News[]) => {
-    setFilteredData(data);
-  };
-
-  return (
-    <div className="w-screen">
-      <div className="w-full flex justify-center">
-        <div className="container flex">
-          <div className="w-1/5 mt-[93px]">
-            <div className="">
-              <NewsFilters
-                newsData={initialNewsData}
-                onFilteredData={handleFilteredData}
-              />
-            </div>
-          </div>
-          <div className="w-4/5 h-24 pl-8">
-            <div className="text-4xl md:text-6xl text-black text-center">
-              News
-            </div>
-            <div>
-              <NewsList newsData={filteredData} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  if (!news) {
+    return <p>No News Found</p>;
+  }
+  return <NewsClient news={news} />;
 }
