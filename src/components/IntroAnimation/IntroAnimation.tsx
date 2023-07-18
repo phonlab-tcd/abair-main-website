@@ -43,7 +43,7 @@ const IntroAnimation = () => {
       ]);
       setApplicationsCoords([
         [2, 0],
-        [2, 400],
+        [2, 500],
       ]);
     } else if (["md"].includes(breakpoint)) {
       setSynthesisCoords([

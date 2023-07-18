@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Button } from "abair-web-components";
+import { MicrophoneIcon, Button } from "abair-web-components";
 
 interface RecognitionProps {
   flashRecognitionColor?: string;
@@ -16,6 +16,7 @@ const Recognition = ({
 }: RecognitionProps) => {
   const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
     useState(false);
+  const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,56 +29,72 @@ const Recognition = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge rounded-lg relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-500 ${
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-500 ${
         startRecognitionBorderAnimation ? flashRecognitionColor : "bg-white"
       }`}
     >
       <div className="flex justify-center">
         <div
-          className={`w-full bg-recognition-400 rounded-t-lg h-[48px] transition-all duration-500  ${
+          className={`w-full bg-recognition-400 h-[48px] transition-all duration-500  ${
             startRecognitionBorderAnimation
               ? flashRecognitionTitleColor
               : "bg-recognition-400"
           }`}
         >
-          <div className="flex h-full justify-center">
-            <div className="flex items-center text-xl md:text-2xl font-mono text-white">
-              Recognition
+          <div className="grid grid-cols-3 h-full">
+            <div></div>
+            <div className="flex h-full justify-center">
+              <div className="flex items-center text-xl md:text-2xl font-mono text-white">
+                Recognition
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center">
-        <div className="h-[270px] w-full flex justify-center items-center">
-          <div>
-            <img
-              src="/microphone-svgrepo-com.svg"
-              width={60}
-              height={60}
-              alt="Microphone Icon"
-            />
-          </div>
-        </div>
-      </div>
+      <div className="w-full">
+        <div className="flex flex-row">
+          <div className="w-full pt-8">
+            <div className=" bg-inherit w-full h-28 px-8">
+              <div className="relative h-full">
+                <div className="absolute h-full w-full">
+                  <div className="w-4 h-4 bg-recognition-200 rounded-full absolute top-12 -left-2"></div>
+                  <div className="w-full h-14 border-b-2 border-recognition-200"></div>
+                  <div className="w-full h-14 border-t-2 border-recognition-200"></div>
 
-      <div className="absolute bottom-0 w-full flex justify-center">
-        <div
-          className={`w-full bg-recognition-400 rounded-b-lg h-[48px] transition-all duration-500  ${
-            startRecognitionBorderAnimation
-              ? flashRecognitionTitleColor
-              : "bg-recognition-400"
-          }`}
-        >
-          <div className="flex justify-center h-full items-center">
-            <div>
+                  <div className="w-4 h-4 bg-recognition-200 rounded-full absolute top-12 -right-2"></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center items-center p-6">
               <Button
-                colors="bg-inherit text-white border border-white hover:bg-recognition-100"
-                sizes="py-1 px-2 rounded-md"
+                sizes="w-32 p-1 flex justify-center rounded-sm"
+                colors="bg-recognition-400 hover:bg-recognition-500"
               >
-                advanced options
+                <MicrophoneIcon height={26} width={26} color="white" />
+              </Button>
+            </div>
+
+            <div className="absolute bottom-2 right-4">
+              <Button
+                colors="bg-inherit text-recognition-500 text-sm hover:text-recognition-600"
+                sizes="py-0.5 px-1 rounded-sm"
+              >
+                more options &#9656;
               </Button>
             </div>
           </div>
+          {/* {recognitizedTextShowing && (
+            <PopupBackground
+              onClick={() => {
+                setRecognitizedTextShowing(false);
+              }}
+            >
+              <div className="w-full px-4 transition-all duration-600">
+                <RecognitionPlaybackCard />
+              </div>
+            </PopupBackground>
+          )} */}
         </div>
       </div>
     </div>

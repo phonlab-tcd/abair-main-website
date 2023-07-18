@@ -24,39 +24,43 @@ const GenderButtons = ({ height }: GenderButtonsProps) => {
   }, [gender]);
 
   return (
-    <div className="flex justify-center w-full">
-      <button
-        className=" p-1 rounded-xl"
-        onMouseEnter={() => {
-          setMaleIconColor("#1d4ed8");
-        }}
-        onMouseLeave={() => {
-          if (gender !== "male") {
-            setMaleIconColor("#93c5fd");
-          }
-        }}
-        onClick={() => {
-          setGender("male");
-        }}
-      >
-        <MaleIcon color={maleIconColor} height={height} />
-      </button>
-      <button
-        className=" p-1 rounded-xl"
-        onMouseEnter={() => {
-          setFemaleIconColor("#1d4ed8");
-        }}
-        onMouseLeave={() => {
-          if (gender !== "female") {
-            setFemaleIconColor("#93c5fd");
-          }
-        }}
-        onClick={() => {
-          setGender("female");
-        }}
-      >
-        <FemaleIcon color={femaleIconColor} height={height} />
-      </button>
+    <div className="flex flex-row justify-center h-full w-full p-1">
+      <div className="px-2">
+        <button
+          className=" p-1 rounded-xl"
+          onMouseEnter={() => {
+            setMaleIconColor("#1d4ed8");
+          }}
+          onMouseLeave={() => {
+            if (gender !== "male") {
+              setMaleIconColor("#93c5fd");
+            }
+          }}
+          onClick={() => {
+            setGender("male");
+          }}
+        >
+          <MaleIcon color={maleIconColor} height={height} />
+        </button>
+      </div>
+      <div className="px-2">
+        <button
+          className=" p-1 rounded-xl"
+          onMouseEnter={() => {
+            setFemaleIconColor("#1d4ed8");
+          }}
+          onMouseLeave={() => {
+            if (gender !== "female") {
+              setFemaleIconColor("#93c5fd");
+            }
+          }}
+          onClick={() => {
+            setGender("female");
+          }}
+        >
+          <FemaleIcon color={femaleIconColor} height={height} />
+        </button>
+      </div>
     </div>
   );
 };

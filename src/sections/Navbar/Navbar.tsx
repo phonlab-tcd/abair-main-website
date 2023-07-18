@@ -22,7 +22,7 @@ const Navbar = () => {
   }, [userDropdownArgs]);
 
   return (
-    <div className="fixed w-screen shadow-navbar-shadow shadow-md bg-white flex justify-center z-[1001]">
+    <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">
       <div className="h-12 lg:h-16 flex flex-row justify-between max-w-6xl w-full">
         <div className="flex flex-row h-full w-auto">
           <div className="h-full items-center hover:bg-grey-100 transition-colors ease-in-out duration-200">
