@@ -58,15 +58,17 @@ const RoleFilter: React.FC<RoleFilterProps> = ({
   return (
     <div>
       {roleOptions.map((role) => (
-        <label key={role}>
-          <input
-            type="checkbox"
-            value={role}
-            checked={selectedRoles.includes(role)}
-            onChange={handleCategoryChange}
-          />
-          {role}
-        </label>
+        <div key={role}>
+          <label>
+            <input
+              type="checkbox"
+              value={role}
+              checked={selectedRoles.includes(role)}
+              onChange={handleCategoryChange}
+            />
+            {role}
+          </label>
+        </div>
       ))}
     </div>
   );

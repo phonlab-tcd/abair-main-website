@@ -14,7 +14,7 @@ const PaperCard: React.FC<Paper> = ({
   const titleLines = 4; // Number of lines for the title
 
   const subheading =
-    abstract.length > 250 ? `${abstract.slice(0, 250)}...` : abstract;
+    abstract.length > 200 ? `${abstract.slice(0, 200)}...` : abstract;
   const titleText = title;
 
   const authorNames = authors.join(",  "); // Join author names with a comma separator
@@ -31,7 +31,10 @@ const PaperCard: React.FC<Paper> = ({
               {titleText}
             </h2>
           </div>
-          <div className="mt-[36px] mb-[8px]">
+          <div
+            className="mt-[36px] mb-[8px]"
+            style={{ height: `${3 * 1.2}em` }}
+          >
             <p className="text-sm text-gray-1000 mb-2">{authorNames}</p>
           </div>
           <div className="flex-1 mt-[20px]">
