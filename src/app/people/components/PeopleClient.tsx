@@ -44,7 +44,7 @@ export default function PeopleClient({ people }: PeopleProps) {
           <div className="w-1/5 mt-[93px]">
             <div className="">
               <PeopleFilters
-                peopleData={filteredData}
+                peopleData={initialData}
                 onFilteredData={handleFilteredData}
               />
             </div>
