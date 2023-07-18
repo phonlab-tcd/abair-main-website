@@ -68,29 +68,32 @@ const IntroAnimation = () => {
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
-    setStartAnimation(true);
 
     setTimeout(() => {
-      setTypingState("synthesis");
+      setStartAnimation(true);
+
       setTimeout(() => {
-        setAnimatedLineState("synthesis");
-      }, 1300);
-    }, 3800);
-    setTimeout(() => {
-      setTypingState("recognition");
+        setTypingState("synthesis");
+        setTimeout(() => {
+          setAnimatedLineState("synthesis");
+        }, 1300);
+      }, 3800);
       setTimeout(() => {
-        setAnimatedLineState("recognition");
-      }, 200);
-    }, 7700);
-    setTimeout(() => {
-      setTypingState("applications");
+        setTypingState("recognition");
+        setTimeout(() => {
+          setAnimatedLineState("recognition");
+        }, 200);
+      }, 7700);
       setTimeout(() => {
-        setAnimatedLineState("applications");
-      }, 200);
-    }, 10100);
-    setTimeout(() => {
-      setTypingState("technologies");
-    }, 13000);
+        setTypingState("applications");
+        setTimeout(() => {
+          setAnimatedLineState("applications");
+        }, 200);
+      }, 10100);
+      setTimeout(() => {
+        setTypingState("technologies");
+      }, 13000);
+    }, 1000);
   }, []);
 
   return (

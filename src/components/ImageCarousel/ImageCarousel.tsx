@@ -13,6 +13,12 @@ interface ImageCarouselProps {
 }
 
 const ImageCarousel = ({ images }: ImageCarouselProps) => {
+  const [coverOpacity, setCoverOpacity] = useState("100");
+
+  useEffect(() => {
+    setCoverOpacity("0");
+  }, []);
+
   return (
     <div className="w-full overflow-hidden z-1 h-full absolute -mt-4">
       <div className="mt-16">
@@ -41,12 +47,19 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
           </div>
         </div>
       </div>
+
       <div className="absolute w-full -top-16 left-0 flex">
         <div className="flex flex-auto"></div>
-        <div className="flex flex-none">
+        <div className="flex flex-none relative">
           <img
             className="drop-shadow-[4px_2px_2px_rgba(0,0,0,0.33)]"
             src={"/frontPageImages" + "/ABAIR-transparent.png"}
+            width={580}
+            alt={`ABAIR text`}
+          />
+          <img
+            className={`absolute drop-shadow-[4px_2px_2px_rgba(0,0,0,0.33)] duration-2000 transition-opacity opacity-${coverOpacity}`}
+            src={"/frontPageImages" + "/ABAIRLettersBigLogo.png"}
             width={580}
             alt={`ABAIR text`}
           />
@@ -58,6 +71,9 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
         <div className="flex flex-none w-[550px]"></div>
         <div className="z-100 border-2flex flex-auto bg-grey-100"></div>
       </div>
+      <div
+        className={`absolute w-full h-full left-0 top-0 bg-grey-100 duration-1000 transition-opacity opacity-${coverOpacity}`}
+      ></div>
     </div>
   );
 };
