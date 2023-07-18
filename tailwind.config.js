@@ -52,6 +52,20 @@ module.exports = {
         ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",
         applications: "0px 10px 10px rgba(0, 0, 0, 0.5)",
       },
+      animation: {
+        marquee: "marquee 120s linear infinite",
+        marquee2: "marquee2 120s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+      },
     },
   },
   plugins: [],

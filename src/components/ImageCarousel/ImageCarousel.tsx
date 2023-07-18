@@ -15,6 +15,32 @@ interface ImageCarouselProps {
 const ImageCarousel = ({ images }: ImageCarouselProps) => {
   return (
     <div className="w-full overflow-hidden z-1 h-full absolute -mt-4">
+      <div className="mt-16">
+        <div className="relative flex overflowx-hidden">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={"/frontPageImages" + image.path}
+                width={128 * image.ratio}
+                height={128}
+                alt={`Image ${index}`}
+              />
+            ))}
+          </div>
+          <div className="flex absolute top-0 animate-marquee2 whitespace-nowrap">
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={"/frontPageImages" + image.path}
+                width={128 * image.ratio}
+                height={128}
+                alt={`Image ${index}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="absolute w-full -top-16 left-0 flex">
         <div className="flex flex-auto"></div>
         <div className="flex flex-none">
@@ -26,17 +52,6 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
           />
         </div>
         <div className="border-2 flex flex-auto"></div>
-      </div>
-      <div className="flex mt-16">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={"/frontPageImages" + image.path}
-            width={128 * image.ratio}
-            height={128}
-            alt={`Image ${index}`}
-          />
-        ))}
       </div>
       <div className=" top-0 absolute flex w-full h-[240px]">
         <div className="h-full flex flex-auto bg-grey-100"></div>

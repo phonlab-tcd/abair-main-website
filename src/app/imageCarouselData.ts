@@ -27,9 +27,14 @@ const imageCarouselData = [
     path: "/ronan_leitheoir_scaileain2.jpg",
     ratio: 1.5,
   },
+
   {
-    path: "/scealai-image.png",
-    ratio: 1,
+    path: "/UK_speech_attendees.jpg",
+    ratio: 1.5,
+  },
+  {
+    path: "/Liam_best_presenter.jpeg",
+    ratio: 1.5,
   },
 ];
 
