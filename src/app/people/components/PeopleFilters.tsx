@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import RoleFilter from "./RoleFilter";
+import { PersonProps } from "./PeopleClient";
 
-interface People {
-  id: number;
-  name: string;
-  image: string;
-  bio: string;
-  role: string;
-}
 interface PeopleFiltersProps {
-  peopleData: People[];
-  onFilteredData: (filteredData: People[]) => void;
+  peopleData: PersonProps[];
+  onFilteredData: (filteredData: PersonProps[]) => void;
 }
 
 const PeopleFilters: React.FC<PeopleFiltersProps> = ({
@@ -22,7 +16,7 @@ const PeopleFilters: React.FC<PeopleFiltersProps> = ({
   const [searchQuery, setSearchQuery] = useState("");
 
   const filterPeopleData = (role: string, searchQuery: string) => {
-    let filteredData: People[] = peopleData;
+    let filteredData: PersonProps[] = peopleData;
 
     console.log("searching by: " + searchQuery);
     console.log("filtering by: " + role);

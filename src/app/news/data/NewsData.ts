@@ -13,9 +13,9 @@ export interface News {
 
   // new props
 
-  link: string;
+
   category: string;
-  altText: string;
+
 }
   
 export const initialNewsData: News[] = [
@@ -35,9 +35,7 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Taifeadtaí a chabhróidh Córais Aitheanta Cainte a thógáil",
     "body_ga": "Tá feachtas MÍLE GLÓR faoi lán seoil! Tá ABAIR ag lorg go dtabharfadh MÍLE DUINE 15 nóiméad dóibh chun taifeadadh a dhéanamh ar a nguthanna, trí abairtí atá ar scáileán a léamh os ard.",
     "video": null,
-    "link": "https://google.com",
     "category": "misc",
-    "altText": "image"
   },
   {
     "id": 11,
@@ -55,9 +53,7 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Is ag Oireachtas 2022 a chéad chloisfidh an pobal an glór nua “Sibéal”, tógtha le hinneall cainte Nemo. Tá foireann ABAIR.ie ag tnúth go mór le haiseolas a fháil ón bpobal.",
     "body_ga": null,
     "video": null,
-    "link": "https://google.com",
     "category": "launch",
-    "altText": "image"
   },
   {
     "id": 10,
@@ -75,9 +71,9 @@ export const initialNewsData: News[] = [
     "blurb_ga": "ag Oireachtas na Samhna 2022, 2 Samhain 2022",
     "body_ga": "Spléachadh ar an obair atá ar siúl sa tSaotharlann Foghraíochta agus Urlabhra, Coláiste na Tríonóide",
     "video": "<iframe title=\"vimeo-player\" src=\"https://player.vimeo.com/video/368653020?h=55db86f7b3\" width=\"360\" height=\"220\" frameborder=\"0\" allowfullscreen></iframe>",
-    "link": "https://google.com",
+
     "category": "launch",
-    "altText": "image"
+
   },
   {
     "id": 13,
@@ -95,9 +91,9 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Bronnfar An Séala Eorpach Teanga ar thionscadal ABAIR-An Scéalaí ag ócáid i bPáirc an Chrócaigh, 10 Samhain.",
     "body_ga": "Is duais é seo a bhronntar ar na tionscadail fhoghlama teanga is nuálaí. Tá an Séala seo comhordnaithe ag an gCoimisiún Eorpach agus á riaradh ag Léargas in Éirinn ó 1999",
     "video": null,
-    "link": "https://google.com",
+
     "category": "misc",
-    "altText": "image"
+
   },
   {
     "id": 14,
@@ -121,9 +117,9 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Seolann Patrick O’Donovan, Aire Stáit na Gaeltachta, líonra nua NEARTÚ i gcomhar le ABAIR ",
     "body_ga": "D’fhógair Aire Stáit na Gaeltachta, Patrick O’Donovan, líonra nua ­­– NEARTÚ – ina dtugtar le chéile grúpaí pobail ar spéis leo teicneolaíochtaí inrochtaineachta don Ghaeilge.  Beidh an líonra NEARTÚ – a sheasann do Nasc Eolais: Abhcóideacht & Rochtain ar Theicneolaíocht na hUrlabhra – ag obair go dlúth leis an tionscadal ‘ABAIR' i gColáiste na Tríonóide, Baile Átha Cliath.\nCuirfidh baill an líonra nua NEARTÚ comhairle ar fáil maidir le tosaíochtaí forbartha agus maidir le dearadh agus tástáil ar acmhainní agus sa tréimhse romhainn cuirfear le leathanach NEARTÚ ar shuíomh Gréasáin www.abair.iechun eolas a scaipeadh i measc an phobail faoi na féidearthachtaí atá ann dóibh siúd atá faoi mhíchumas feidhmiú trí Ghaeilge ag baint úsáid as teicneolaíochtaí urlabhra agus teanga. Tá sé i gceist go mbeidh an líonra in ann aghaidh a thabhairt ar an ngá atá ag pobal na Gaeilge le heolas faoi gach a mbaineann le sealbhú agus úsáid na Gaeilge dóibh siúd atá faoi mhíchumas mar aon le heolas taighde-bhunaithe a chur ar fáil faoi bhuntáistí an dátheangachais. Tá sé mar sprioc go mbeidh baill an líonra seo ag glacadh páirt sa taighde agus sa bhforbairt leanúnach atá ag teastáil.\n\nCheana féin, tá áiseanna ar shuíomh ABAIR a chuireann na guthanna téacs-go-hurlabhra Gaeilge sna canúintí éagsúla ar fáil i dteicneolaíochtaí rochtana, mar shampla, léitheoir scáileáin dóibh siúd atá faoi mhíchumas radhairc.\n\nD’aithin an tAire gur cloch mhíle shuntasach é bunú an líonra NEARTÚ, agus go luíonn sé go dlúth le spriocanna Phlean Digiteach don Ghaeilge na Roinne ina bhfuil an-bhéim ar riachtanais inrochtaineachta lucht an mhíchumais. Freagraíonn sé chomh maith don Choinbhinsiún um Cearta Daoine atá faoi Mhíchumas, a dhaingnigh Rialtas na hÉireann le déanaí. Tréaslaíonn an tAire leis na foirne atá ag obair chun rochtain don Ghaeilge a chur ar fáil do gach aon duine i bpobal na Gaeilge.\n\nAg labhairt dó ag an seoladh, dúirt an tAire Stáit O’Donovan:\n\n“D’fhoilsigh mo Roinn Plean Digiteach don Ghaeilge ag deireadh na bliana seo caite. Leagtar amach san fhoilseachán sin treochlár chun a chinntiú go mbeidh rath ar an nGaeilge sa ré dhigiteach sna blianta amach romhainn. Aithnítear sa Phlean an tábhacht a bhaineann le hacmhainní Gaeilge a dhéanamh níos inrochtana agus níos éasca le húsáid, agus aithnítear ann freisin an gá atá le guthanna téacs-go-hurlabhra i gcanúintí éagsúla na Gaeilge chomh maith le córais aitheanta cainte.\n\n\"Tá sé luaite go sonrach sa Phlean gur gá líonraí abhcóideachta a bhunú a threoróidh agus a thacóidh leis an bhforbairt seo ar áiseanna rochtana. Le déanaí dhaingnigh Rialtas na hÉireann an Coinbhinsiún maidir le Cearta Daoine atá faoi Mhíchumas. Tá an líonra nua NEARTÚ á bhunú chun dul i dtreo an riachtanas sin a chomhlíonadh.”\nDar le ceannairí taighde ABAIR i gColáiste na Tríonóide, Neasa Ní Chiaráin agus Ailbhe Ní Chasaide, gur cloch mhíle thábhachtach í forbairt an lae inné chun comhpháirtíocht a chruthú idir grúpa taighde ABAIR agus pobail úsáideoirí a dteastaíonn na teicneolaíochtaí seo uathu le haghaidh inrochtaineachta agus cumarsáide.\n\nDúirt an Dr Neasa Ní Chiaráin, Scoil na nEolaíochtaí Teangeolaíochta, Urlabhra agus Cumarsáide\n\n\"Is croí-mhisean de chuid thionscnamh ABAIR é rochtain ar theicneolaíocht urlabhra agus teanga na Gaeilge a bheith ann do chách. Tá an-áthas orainn go gcuirfidh an líonra nua NEARTÚ seo ar chumas ghrúpa taighde ABAIR dul i gcomhpháirtíocht le pobail úsáideoirí. Cinnteoidh an gréasán seo go mbeidh forbairtí teicneolaíochta urlabhra agus teanga na Gaeilge oiriúnach do gach úsáideoir – ní hamháin dóibh siúd a bhfuil an Ghaeilge fite fuaite ina saol, ach do gach duine a bhfuil suim acu sa teanga.\"\n\nAgus í ag cur leis an méid sin, dúirt an tOllamh Ailbhe Ní Chasaide,Scoil na nEolaíochtaí Teangeolaíochta, Urlabhra agus Cumarsáide:\n\n\"Is toradh iad teicneolaíochtaí cainte ABAIR ar an chomhpháirtíocht idir ABAIR agus pobal na teanga, a thug, agus a thugann go fóill, an oiread sin dá nguthanna di. Neartóidh an líonra nua seo an chomhpháirtíocht leis an phobal i gcoitinne agus beidh comhoibriú fairsing ann le grúpaí úsáideoirí ar leith. Gabhaimid buíochas leis an phobal inniu as a dtacaíocht leanúnach.\"",
     "video": null,
-    "link": "https://google.com",
+
     "category": "misc",
-    "altText": "image"
+
   },
   {
     "id": 15,
@@ -141,9 +137,9 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Ball ABAIR Madeline Comtois ag fáil a Céim Mháistreachta!",
     "body_ga": "",
     "video": null,
-    "link": "https://google.com",
+
     "category": "misc",
-    "altText": "image"
+
   },
   {
     "id": 16,
@@ -164,9 +160,9 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Thug an tOllamh Neasa Ní Chiaráin an phríomhóráid ag Ollscoil Sheffield do na saineolaithe is fearr sa Teicneolaíocht Urlabhra sa RA agus in Éirinn",
     "body_ga": null,
     "video": null,
-    "link": "https://google.com",
+
     "category": "presentation",
-    "altText": "image"
+
   },
   {
     "id": 17,
@@ -184,8 +180,8 @@ export const initialNewsData: News[] = [
     "blurb_ga": "Bhuaigh ball ABAIR Liam Lonergan gradam an Láithreoir Óg is Fearr as an óráid a thug sé do chomhdháil Teangeolaíocht na Gaeilge a bhí á reachtáil ag Acadamh Ríoga na hÉireann",
     "body_ga": null,
     "video": null,
-    "link": "https://google.com",
+
     "category": "presentation",
-    "altText": "image"
+
   }
 ]

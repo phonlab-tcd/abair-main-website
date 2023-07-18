@@ -13,7 +13,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   endDate,
   onStartDateChange,
   onEndDateChange,
-  onApplyDateRange,
 }) => {
   const handleStartDateChange = (
     event: React.ChangeEvent<HTMLInputElement>

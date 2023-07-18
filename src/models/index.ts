@@ -1,13 +1,13 @@
 type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
 interface PublicationModel {
-  abstract: string | null;
-  authors: Json | null;
-  created_at: string | null;
-  id: number;
-  pdf_url: string | null;
-  title: string | null;
-  year_published: number | null;
+  abstract?: string | null;
+  authors?: Json | null;
+  created_at?: string | null;
+  id?: number;
+  pdf_url?: string | null;
+  title?: string | null;
+  year_published?: number | null;
 }
 
 interface PersonModel {

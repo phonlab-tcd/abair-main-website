@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paper } from "../data/PaperData";
+import { Paper } from "./PaperClient";
 import SearchBar from "./SearchBar";
 import CategoryFilter from "./CategoryFilter";
 import SortMenu from "./SortMenu";
@@ -39,7 +39,7 @@ const PaperFilters: React.FC<PaperFiltersProps> = ({
 
     if (category !== "All" && category !== "") {
       filteredData = filteredData.filter(
-        (paper) => paper.category === category
+        (paper) => paper.publication_category === category
       );
     } else {
       filteredData = filteredData.filter((paper) => paper.title !== "");
