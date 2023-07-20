@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
@@ -7,11 +8,15 @@ import { useEffect, useState } from "react";
 interface ApplicationsProps {
   flashApplicationColor?: string;
   applicationColor?: string;
+  delayToStartFlash: number;
+  flashDuration: number;
 }
 
 const Applications = ({
   flashApplicationColor = "bg-applications-500",
   applicationColor = "bg-applications-400",
+  delayToStartFlash,
+  flashDuration,
 }: ApplicationsProps) => {
   const [startApplicationsAnimation, setStartApplicationsAnimation] =
     useState(false);
@@ -21,14 +26,15 @@ const Applications = ({
       setStartApplicationsAnimation(true);
       setTimeout(() => {
         setStartApplicationsAnimation(false);
-      }, 1800);
-    }, 11100);
+      }, flashDuration);
+    }, delayToStartFlash);
+    console.log("delayToStartFlash:", delayToStartFlash);
   }, []);
 
   return (
     <div className="z-0 -mt-[20px] w-screen overflow-x-hidden">
       <div
-        className={`ml-[-25%] h-[150px] w-[150%] rounded-t-[40%] md:rounded-t-[100%] transition-colors duration-500 ${
+        className={`ml-[-25%] h-[150px] w-[150%] rounded-t-[40%] md:rounded-t-[100%] transition-colors duration-${flashDuration} ${
           startApplicationsAnimation ? flashApplicationColor : applicationColor
         }`}
       >

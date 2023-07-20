@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -7,11 +8,15 @@ import { SpeakIcon, Button, SynthesisPlaybackCard } from "abair-web-components";
 interface SynthesisProps {
   flashSynthesisColor?: string;
   flashSynthesisTitleColor?: string;
+  delayToStartFlash: number;
+  flashDuration: number;
 }
 
 const Synthesis = ({
   flashSynthesisColor = "bg-synthesis-50",
   flashSynthesisTitleColor = "bg-synthesis-600",
+  delayToStartFlash,
+  flashDuration,
 }: SynthesisProps) => {
   const [startSynthesisBorderAnimation, setStartSynthesisBorderAnimation] =
     useState(false);
@@ -25,8 +30,8 @@ const Synthesis = ({
       setStartSynthesisBorderAnimation(true);
       setTimeout(() => {
         setStartSynthesisBorderAnimation(false);
-      }, 1800);
-    }, 5800);
+      }, flashDuration);
+    }, delayToStartFlash);
   }, []);
 
   useEffect(() => {
@@ -41,12 +46,12 @@ const Synthesis = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge  relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-600 delay-0 ${
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge  relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-${flashDuration} delay-0 ${
         startSynthesisBorderAnimation ? flashSynthesisColor : "bg-white"
       }`}
     >
       <div
-        className={`w-full h-[48px] transition-all duration-1000 ${
+        className={`w-full h-[48px] transition-all duration-${flashDuration} ${
           startSynthesisBorderAnimation
             ? flashSynthesisTitleColor
             : "bg-synthesis-500"
@@ -69,9 +74,7 @@ const Synthesis = ({
           </div>
 
           <div className="w-[60%] pt-8 pr-6">
-            {/* <div className="w-full h-24"></div> */}
             <textarea className="p-1 bg-inherit w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"></textarea>
-            {/* <div className="w-[100%] "> */}
 
             <div className="flex justify-center items-center p-4">
               <Button

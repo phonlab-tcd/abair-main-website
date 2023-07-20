@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
@@ -8,11 +9,15 @@ import { MicrophoneIcon, Button } from "abair-web-components";
 interface RecognitionProps {
   flashRecognitionColor?: string;
   flashRecognitionTitleColor?: string;
+  delayToStartFlash: number;
+  flashDuration: number;
 }
 
 const Recognition = ({
   flashRecognitionColor = "bg-recognition-50",
   flashRecognitionTitleColor = "bg-recognition-500",
+  delayToStartFlash,
+  flashDuration,
 }: RecognitionProps) => {
   const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
     useState(false);
@@ -23,19 +28,19 @@ const Recognition = ({
       setStartRecognitionBorderAnimation(true);
       setTimeout(() => {
         setStartRecognitionBorderAnimation(false);
-      }, 1800);
-    }, 8600);
+      }, flashDuration);
+    }, delayToStartFlash);
   }, []);
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-500 ${
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-${flashDuration} ${
         startRecognitionBorderAnimation ? flashRecognitionColor : "bg-white"
       }`}
     >
       <div className="flex justify-center">
         <div
-          className={`w-full bg-recognition-400 h-[48px] transition-all duration-500  ${
+          className={`w-full bg-recognition-400 h-[48px] transition-all duration-${flashDuration}  ${
             startRecognitionBorderAnimation
               ? flashRecognitionTitleColor
               : "bg-recognition-400"

@@ -5,7 +5,15 @@ import { FadeInText, AnimatedLines } from "@/components";
 import { useEffect, useState } from "react";
 import { getBreakpoint } from "@/utils";
 
-const IntroAnimation = () => {
+interface IntroIntroDescriptionAnimationProps {
+  initialDelay: number;
+  delayForLineToStartAfterTyping: number;
+}
+
+const IntroDescriptionAnimation = ({
+  initialDelay,
+  delayForLineToStartAfterTyping,
+}: IntroIntroDescriptionAnimationProps) => {
   const [startAnimation, setStartAnimation] = useState(false);
   const [typingState, setTypingState] = useState("");
   const [animatedLineState, setAnimatedLineState] = useState("");
@@ -33,24 +41,24 @@ const IntroAnimation = () => {
     if (["xl", "lg"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 2, 0],
-        [windowWidth / 2 - 2, 40],
-        [windowWidth / 2 - 35, 40],
+        [windowWidth / 2 - 2, 70],
+        [windowWidth / 2 - 35, 70],
       ]);
       setRecognitionCoords([
         [2, 0],
-        [2, 40],
-        [35, 40],
+        [2, 70],
+        [35, 70],
       ]);
       setApplicationsCoords([
         [2, 0],
-        [2, 500],
+        [2, 400],
       ]);
     } else if (["md"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 1, 0],
-        [windowWidth / 2 - 1, 40],
-        [windowWidth / 2 - 176 - 12, 40],
-        [windowWidth / 2 - 176 - 12, 80],
+        [windowWidth / 2 - 1, 70],
+        [windowWidth / 2 - 176 - 12, 70],
+        [windowWidth / 2 - 176 - 12, 140],
       ]);
       setRecognitionCoords([
         [0, 0],
@@ -76,23 +84,23 @@ const IntroAnimation = () => {
         setTypingState("synthesis");
         setTimeout(() => {
           setAnimatedLineState("synthesis");
-        }, 1300);
-      }, 3800);
+        }, 1100 + delayForLineToStartAfterTyping);
+      }, initialDelay);
       setTimeout(() => {
         setTypingState("recognition");
         setTimeout(() => {
           setAnimatedLineState("recognition");
-        }, 200);
-      }, 7700);
+        }, delayForLineToStartAfterTyping);
+      }, initialDelay + 3900);
       setTimeout(() => {
         setTypingState("applications");
         setTimeout(() => {
           setAnimatedLineState("applications");
-        }, 200);
-      }, 10100);
+        }, delayForLineToStartAfterTyping);
+      }, initialDelay + 6800);
       setTimeout(() => {
         setTypingState("technologies");
-      }, 13000);
+      }, initialDelay + 10000);
     }, 1000);
   }, []);
 
@@ -143,4 +151,4 @@ const IntroAnimation = () => {
   );
 };
 
-export default IntroAnimation;
+export default IntroDescriptionAnimation;

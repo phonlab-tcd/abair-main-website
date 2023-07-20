@@ -10,9 +10,10 @@ interface ImageCarouselDataModel {
 
 interface ImageCarouselProps {
   images: ImageCarouselDataModel[];
+  fadeInDuration: number;
 }
 
-const ImageCarousel = ({ images }: ImageCarouselProps) => {
+const ImageCarousel = ({ images, fadeInDuration }: ImageCarouselProps) => {
   const [coverOpacity, setCoverOpacity] = useState("100");
 
   useEffect(() => {
@@ -58,7 +59,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
             alt={`ABAIR text`}
           />
           <img
-            className={`absolute drop-shadow-[4px_2px_2px_rgba(0,0,0,0.33)] duration-2000 transition-opacity opacity-${coverOpacity}`}
+            className={`absolute drop-shadow-[4px_2px_2px_rgba(0,0,0,0.33)] duration-${fadeInDuration} transition-opacity opacity-${coverOpacity}`}
             src={"/frontPageImages" + "/ABAIRLettersBigLogo.png"}
             width={580}
             alt={`ABAIR text`}
@@ -72,7 +73,7 @@ const ImageCarousel = ({ images }: ImageCarouselProps) => {
         <div className="z-100 border-2flex flex-auto bg-grey-100"></div>
       </div>
       <div
-        className={`absolute w-full h-full left-0 top-0 bg-grey-100 duration-1000 transition-opacity opacity-${coverOpacity}`}
+        className={`absolute w-full h-full left-0 top-0 bg-grey-100 duration-${fadeInDuration} transition-opacity opacity-${coverOpacity}`}
       ></div>
     </div>
   );
