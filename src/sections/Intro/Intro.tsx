@@ -11,7 +11,7 @@ const Intro = () => {
     delayToStartSynthesisCardFlash + 2800;
   const cardFlashDuration = 1800;
   const delayForLineToStartAfterTyping = 200;
-  const delayToStartApplicationsFlash = delayToStartRecognitionCardFlash + 3050;
+  const delayToStartApplicationsFlash = delayToStartRecognitionCardFlash + 2900;
 
   return (
     <>

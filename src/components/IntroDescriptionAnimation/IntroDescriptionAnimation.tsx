@@ -97,10 +97,10 @@ const IntroDescriptionAnimation = ({
         setTimeout(() => {
           setAnimatedLineState("applications");
         }, delayForLineToStartAfterTyping);
-      }, initialDelay + 6800);
+      }, initialDelay + 6700);
       setTimeout(() => {
         setTypingState("technologies");
-      }, initialDelay + 10000);
+      }, initialDelay + 9500);
     }, 1000);
   }, []);
 
