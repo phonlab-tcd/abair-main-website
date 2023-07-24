@@ -1,21 +1,15 @@
-type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
-
 interface PublicationModel {
-  abstract?: string | null;
-  authors?: Json | null;
-  created_at?: string | null;
-  id?: number;
-  pdf_url?: string | null;
-  title?: string | null;
-  year_published?: number | null;
+  id: number;
+  title: string;
 }
 
 interface PersonModel {
-  created_at: string | null;
   id: number;
-  name: string | null;
-  bio: string | null;
-  image: string | null;
+  name: string;
+  image: string;
+  bio: string;
+  role: string;
+  ab_publications?: PublicationModel[];
 }
 
 export type { PublicationModel, PersonModel };

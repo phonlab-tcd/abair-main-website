@@ -3,28 +3,15 @@
 import React, { useState, useEffect } from "react";
 import PeopleList from "./PeopleList";
 import PeopleFilters from "./PeopleFilters";
-
-interface PublicationModel {
-  id: number;
-  title: string;
-}
-
-export interface PersonProps {
-  id: number;
-  name: string;
-  image: string;
-  bio: string;
-  role: string;
-  ab_publications: PublicationModel[];
-}
+import { PersonModel } from "@/models";
 
 interface PeopleProps {
-  people: PersonProps[];
+  people: PersonModel[];
 }
 
 export default function PeopleClient({ people }: PeopleProps) {
-  const [filteredData, setFilteredData] = useState<PersonProps[]>([]);
-  const [initialData, setInitialData] = useState<PersonProps[]>([]);
+  const [filteredData, setFilteredData] = useState<PersonModel[]>([]);
+  const [initialData, setInitialData] = useState<PersonModel[]>([]);
   useEffect(() => {
     if (people) {
       const sortedData = people.sort((a, b) => a.id - b.id); // Sort by ID in ascending order
@@ -33,7 +20,7 @@ export default function PeopleClient({ people }: PeopleProps) {
     }
   }, [people]);
 
-  const handleFilteredData = (data: PersonProps[]) => {
+  const handleFilteredData = (data: PersonModel[]) => {
     setFilteredData(data);
   };
 
