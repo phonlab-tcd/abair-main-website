@@ -3,23 +3,28 @@ import supabase from "@/services/supabase/supabase";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const { data: posts } = await supabase.from("people").select("id");
-  console.log("poasting");
+  const { data: person } = await supabase.from("people").select("id");
 
-  return posts?.map(({ id }) => ({
-    id,
-  }));
+  interface StaticParamsProps {
+    id: string;
+  }
+
+  return person
+    ? person.map(({ id }: StaticParamsProps) => ({
+        id,
+      }))
+    : [];
 }
 
-export default async function Page({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
+interface PageProps {
+  params?: { id: string };
+}
+
+export default async function Page({ params }: PageProps) {
   const { data: person } = await supabase
     .from("people")
     .select("id, name, image, bio, role, ab_publications (id, title)")
-    .match({ id })
+    .match({ id: params?.id })
     .single();
 
   console.log("fds");
