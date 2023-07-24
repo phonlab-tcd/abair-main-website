@@ -5,9 +5,15 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   const { data: posts } = await supabase.from("news_stories").select("id");
 
-  return posts?.map(({ id }) => ({
-    id,
-  }));
+  interface StaticParamsProps {
+    id: string;
+  }
+
+  return posts
+    ? posts.map(({ id }: StaticParamsProps) => ({
+        id,
+      }))
+    : [];
 }
 
 export default async function Page({

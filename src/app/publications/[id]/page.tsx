@@ -5,8 +5,12 @@ import { notFound } from "next/navigation";
 export async function generateStaticParams() {
   const { data: posts } = await supabase.from("ab_publications").select("id");
 
+  interface StaticParamsProps {
+    id: string;
+  }
+
   return posts
-    ? posts.map(({ id }) => ({
+    ? posts.map(({ id }: StaticParamsProps) => ({
         id,
       }))
     : [];
