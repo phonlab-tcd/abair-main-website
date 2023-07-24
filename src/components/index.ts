@@ -8,6 +8,8 @@ import IntroDescriptionAnimation from "./IntroDescriptionAnimation/IntroDescript
 import AnimatedLines from "./AnimatedLines/AnimatedLines";
 import PopupBackground from "./PopupBackground/PopupBackground";
 import Map from "./Map/Map";
+import Media from "./Media/Media";
+import RecognitionRecordStopButtons from "./RecognitionRecordStopButtons/RecognitionRecordStopButtons";
 
 export {
   DropdownMenu,
@@ -18,6 +20,8 @@ export {
   IntroDescriptionAnimation,
   AnimatedLines,
   Map,
+  Media,
   GenderButtons,
   PopupBackground,
+  RecognitionRecordStopButtons,
 };

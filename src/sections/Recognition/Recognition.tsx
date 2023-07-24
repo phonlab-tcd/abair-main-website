@@ -3,8 +3,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import { MicrophoneIcon, Button } from "abair-web-components";
+import { Media, RecognitionRecordStopButtons } from "@/components";
+import { Button } from "abair-web-components";
 
 interface RecognitionProps {
   flashRecognitionColor?: string;
@@ -22,6 +22,18 @@ const Recognition = ({
   const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
     useState(false);
   const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
+
+  // Media Recorder State
+  const [mediaRecorder, setMediaRecorder] = useState<
+    MediaRecorder | undefined
+  >();
+  const [voiceRecording, setVoiceRecording] = useState(false);
+  const [awaitingTranscription, setAwaitingTranscription] = useState(false);
+  const [transcription, setTranscription] = useState<string | undefined>();
+  const [recognitionAudio, setRecognitionAudio] = useState<string | undefined>(
+    undefined
+  );
+  const [stream, setStream] = useState<MediaStream | undefined>(undefined);
 
   useEffect(() => {
     setTimeout(() => {
@@ -71,13 +83,22 @@ const Recognition = ({
               </div>
             </div>
 
-            <div className="flex justify-center items-center p-6">
+            {/* <div className="flex justify-center items-center p-6">
               <Button
                 sizes="w-32 p-1 flex justify-center rounded-sm"
                 colors="bg-recognition-400 hover:bg-recognition-500"
               >
                 <MicrophoneIcon height={26} width={26} color="white" />
               </Button>
+            </div> */}
+
+            <div className="flex justify-center items-center p-6">
+              <RecognitionRecordStopButtons
+                mediaRecorder={mediaRecorder}
+                awaitingTranscription={awaitingTranscription}
+                voiceRecording={voiceRecording}
+                setVoiceRecording={setVoiceRecording}
+              />
             </div>
 
             <div className="absolute bottom-2 right-4">
@@ -102,6 +123,16 @@ const Recognition = ({
           )} */}
         </div>
       </div>
+      <Media
+        stream={stream}
+        setStream={setStream}
+        mediaRecorder={mediaRecorder}
+        setMediaRecorder={setMediaRecorder}
+        setRecognitionAudio={setRecognitionAudio}
+        setTranscription={setTranscription}
+        voiceRecording={voiceRecording}
+        setAwaitingTranscription={setAwaitingTranscription}
+      />
     </div>
   );
 };
