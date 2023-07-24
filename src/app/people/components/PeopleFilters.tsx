@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import RoleFilter from "./RoleFilter";
-import { PersonProps } from "./PeopleClient";
-
-interface PeopleFiltersProps {
-  peopleData: PersonProps[];
-  onFilteredData: (filteredData: PersonProps[]) => void;
+import { PersonModel } from "@/models";
+interface PeopleFiltersModel {
+  peopleData: PersonModel[];
+  onFilteredData: (filteredData: PersonModel[]) => void;
 }
 
-const PeopleFilters: React.FC<PeopleFiltersProps> = ({
-  peopleData,
-  onFilteredData,
-}) => {
+const PeopleFilters = ({ peopleData, onFilteredData }: PeopleFiltersModel) => {
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filterPeopleData = (selectedRoles: string[], searchQuery: string) => {
-    let filteredData: PersonProps[] = peopleData;
+    let filteredData: PersonModel[] = peopleData;
 
     console.log("original data: ");
     console.log(filteredData);
