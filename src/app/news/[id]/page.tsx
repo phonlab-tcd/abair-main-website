@@ -3,8 +3,7 @@ import supabase from "@/services/supabase/supabase";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const { data: posts } = await supabase.from("people").select("id");
-  console.log("poasting");
+  const { data: posts } = await supabase.from("news_stories").select("id");
 
   return posts?.map(({ id }) => ({
     id,
@@ -16,17 +15,17 @@ export default async function Page({
 }: {
   params: { id: string };
 }) {
-  const { data: person } = await supabase
-    .from("people")
-    .select("id, name, image, bio, role, ab_publications (id, title)")
+  const { data: story } = await supabase
+    .from("news_stories")
+    .select(
+      "id, created_at, date, title_en, blurb_en, body_en, images, title_ga, blurb_ga, body_ga, video, news_category"
+    )
     .match({ id })
     .single();
 
-  console.log("fds");
-
-  if (!person) {
+  if (!story) {
     notFound();
   }
 
-  return <pre>{JSON.stringify(person, null, 2)}</pre>;
+  return <pre>{JSON.stringify(story, null, 2)}</pre>;
 }
