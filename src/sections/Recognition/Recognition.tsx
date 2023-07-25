@@ -3,8 +3,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Media, RecognitionRecordStopButtons } from "@/components";
+import {
+  Media,
+  RecognitionRecordStopButtons,
+  RecognitionWaveVisual,
+} from "@/components";
 import { Button } from "abair-web-components";
+import { themeWidth } from "@/theme";
 
 interface RecognitionProps {
   flashRecognitionColor?: string;
@@ -74,11 +79,35 @@ const Recognition = ({
             <div className=" bg-inherit w-full h-28 px-8">
               <div className="relative h-full">
                 <div className="absolute h-full w-full">
-                  <div className="w-4 h-4 bg-recognition-200 rounded-full absolute top-12 -left-2"></div>
-                  <div className="w-full h-14 border-b-2 border-recognition-200"></div>
-                  <div className="w-full h-14 border-t-2 border-recognition-200"></div>
+                  {voiceRecording ? (
+                    <div className="w-full h-28 absolute left-2 right-2 top-0">
+                      <RecognitionWaveVisual
+                        stream={stream}
+                        height={112}
+                        width={themeWidth.synthRecCardLarge - 64 - 16}
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <div className="w-full h-14 border-b-2 border-recognition-200"></div>
+                      <div className="w-full h-14 border-t-2 border-recognition-200"></div>
+                    </>
+                  )}
+                  <div
+                    className={`w-4 h-4 ${
+                      voiceRecording
+                        ? "bg-recognition-500"
+                        : "bg-recognition-200"
+                    } rounded-full absolute top-12 -left-2`}
+                  ></div>
 
-                  <div className="w-4 h-4 bg-recognition-200 rounded-full absolute top-12 -right-2"></div>
+                  <div
+                    className={`w-4 h-4 ${
+                      voiceRecording
+                        ? "bg-recognition-500"
+                        : "bg-recognition-200"
+                    } rounded-full absolute top-12 -right-2`}
+                  ></div>
                 </div>
               </div>
             </div>

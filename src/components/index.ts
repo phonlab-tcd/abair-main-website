@@ -10,6 +10,7 @@ import PopupBackground from "./PopupBackground/PopupBackground";
 import Map from "./Map/Map";
 import Media from "./Media/Media";
 import RecognitionRecordStopButtons from "./RecognitionRecordStopButtons/RecognitionRecordStopButtons";
+import RecognitionWaveVisual from "./RecognitionWaveVisual/RecognitionWaveVisual";
 
 export {
   DropdownMenu,
@@ -24,4 +25,5 @@ export {
   GenderButtons,
   PopupBackground,
   RecognitionRecordStopButtons,
+  RecognitionWaveVisual,
 };

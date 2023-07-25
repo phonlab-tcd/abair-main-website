@@ -36,13 +36,15 @@ const RecognitionRecordStopButtons = ({
       {awaitingTranscription ? (
         <p>loading</p>
       ) : !voiceRecording ? (
-        <Button
-          sizes="w-32 p-1 flex justify-center rounded-sm"
-          colors="bg-recognition-400 hover:bg-recognition-500"
-          onClick={handleClick}
-        >
-          <MicrophoneIcon height={26} width={26} color="white" />
-        </Button>
+        <>
+          <Button
+            sizes="w-32 p-1 flex justify-center rounded-sm"
+            colors="bg-recognition-400 hover:bg-recognition-500"
+            onClick={handleClick}
+          >
+            <MicrophoneIcon height={26} width={26} color="white" />
+          </Button>
+        </>
       ) : (
         <Button
           sizes="w-32 p-1 flex justify-center rounded-sm"
@@ -51,7 +53,7 @@ const RecognitionRecordStopButtons = ({
             setVoiceRecording(false);
           }}
         >
-          <MicrophoneIcon height={26} width={26} color="white" />
+          <StopIcon height={26} width={26} color="white" />
         </Button>
       )}
     </>
