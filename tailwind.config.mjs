@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 /** @type {import('tailwindcss').Config} */
 import {
   themeColors,
@@ -6,7 +7,7 @@ import {
   themeWidth,
 } from "./src/theme";
 
-module.exports = {
+export default {
   content: [
     "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",

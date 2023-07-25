@@ -18,9 +18,8 @@ const getBreakpoint = (): "xs" | "sm" | "md" | "lg" | "xl" => {
     return "md";
   } else if (isSmallScreen) {
     return "sm";
-  } else {
-    return "xs";
   }
+  return "xs";
 };
 
 export default getBreakpoint;

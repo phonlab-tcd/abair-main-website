@@ -7,9 +7,11 @@ import {
   Media,
   RecognitionRecordStopButtons,
   RecognitionWaveVisual,
+  PopupBackground,
 } from "@/components";
-import { Button } from "abair-web-components";
+import { Button, RecognitionPlaybackCard } from "abair-web-components";
 import { themeWidth } from "@/theme";
+import { getBreakpoint } from "@/utils";
 
 interface RecognitionProps {
   flashRecognitionColor?: string;
@@ -26,9 +28,8 @@ const Recognition = ({
 }: RecognitionProps) => {
   const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
     useState(false);
-  const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
+  const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
 
-  // Media Recorder State
   const [mediaRecorder, setMediaRecorder] = useState<
     MediaRecorder | undefined
   >();
@@ -39,6 +40,14 @@ const Recognition = ({
     undefined
   );
   const [stream, setStream] = useState<MediaStream | undefined>(undefined);
+  // const [breakpoint, setBreakpoint] = useState<string>();
+
+  // const handleResize = () => {
+  //   const breakpointNow = getBreakpoint();
+
+  //   setBreakpoint(breakpointNow);
+  //   console.log("breakpointNow:", breakpointNow);
+  // };
 
   useEffect(() => {
     setTimeout(() => {
@@ -49,6 +58,12 @@ const Recognition = ({
     }, delayToStartFlash);
   }, []);
 
+  useEffect(() => {
+    if (!awaitingTranscription && recognitionAudio) {
+      setRecognisedTextShowing(true);
+    }
+  }, [awaitingTranscription]);
+
   return (
     <div
       className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-${flashDuration} ${
@@ -57,7 +72,7 @@ const Recognition = ({
     >
       <div className="flex justify-center">
         <div
-          className={`w-full bg-recognition-400 h-[48px] transition-all duration-${flashDuration}  ${
+          className={`w-full h-[48px] transition-all duration-${flashDuration}  ${
             startRecognitionBorderAnimation
               ? flashRecognitionTitleColor
               : "bg-recognition-400"
@@ -74,7 +89,7 @@ const Recognition = ({
         </div>
       </div>
       <div className="w-full">
-        <div className="flex flex-row">
+        <div className="flex flex-row relative h-synthRecCardLargeInner">
           <div className="w-full pt-8">
             <div className=" bg-inherit w-full h-28 px-8">
               <div className="relative h-full">
@@ -84,7 +99,11 @@ const Recognition = ({
                       <RecognitionWaveVisual
                         stream={stream}
                         height={112}
-                        width={themeWidth.synthRecCardLarge - 64 - 16}
+                        width={
+                          getBreakpoint() === "xl"
+                            ? themeWidth.synthRecCardLarge - 64 - 8
+                            : themeWidth.synthRecCard - 64 - 8
+                        }
                       />
                     </div>
                   ) : (
@@ -112,22 +131,19 @@ const Recognition = ({
               </div>
             </div>
 
-            {/* <div className="flex justify-center items-center p-6">
-              <Button
-                sizes="w-32 p-1 flex justify-center rounded-sm"
-                colors="bg-recognition-400 hover:bg-recognition-500"
-              >
-                <MicrophoneIcon height={26} width={26} color="white" />
-              </Button>
-            </div> */}
-
-            <div className="flex justify-center items-center p-6">
-              <RecognitionRecordStopButtons
-                mediaRecorder={mediaRecorder}
-                awaitingTranscription={awaitingTranscription}
-                voiceRecording={voiceRecording}
-                setVoiceRecording={setVoiceRecording}
-              />
+            <div className="flex justify-center items-center p-6 relative h-16">
+              {awaitingTranscription ? (
+                <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center">
+                  <div className="w-6 h-6 border-t-2 border-r-2 border-recognition-400 border-solid rounded-full animate-spin"></div>
+                </div>
+              ) : (
+                <RecognitionRecordStopButtons
+                  mediaRecorder={mediaRecorder}
+                  awaitingTranscription={awaitingTranscription}
+                  voiceRecording={voiceRecording}
+                  setVoiceRecording={setVoiceRecording}
+                />
+              )}
             </div>
 
             <div className="absolute bottom-2 right-4">
@@ -139,17 +155,23 @@ const Recognition = ({
               </Button>
             </div>
           </div>
-          {/* {recognitizedTextShowing && (
-            <PopupBackground
-              onClick={() => {
-                setRecognitizedTextShowing(false);
-              }}
-            >
-              <div className="w-full px-4 transition-all duration-600">
-                <RecognitionPlaybackCard />
+          {recognisedTextShowing && (
+            <PopupBackground>
+              <div className="w-full px-4 transition-all duration-600 relative">
+                {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
+                <Button
+                  colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
+                  sizes="absolute -top-3 right-1 font-bold rounded-full px-2"
+                  onClick={() => {
+                    setRecognisedTextShowing(false);
+                  }}
+                >
+                  x
+                </Button>
+                <RecognitionPlaybackCard text={transcription} />
               </div>
             </PopupBackground>
-          )} */}
+          )}
         </div>
       </div>
       <Media

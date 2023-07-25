@@ -23,7 +23,7 @@ const Synthesis = ({
   const [gender, setGender] = useState<"male" | "female">("male");
   const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
   const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
-  const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
+  const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -65,7 +65,7 @@ const Synthesis = ({
       </div>
 
       <div className="w-full">
-        <div className="flex flex-row">
+        <div className="flex flex-row relative h-synthRecCardLargeInner">
           <div className="w-[40%] ml-2 flex flex-col justify-center">
             <Map height={220} />
             <div className="w-[90%] -mt-4">
@@ -94,12 +94,18 @@ const Synthesis = ({
             </div>
           </div>
           {synthesisedTextShowing && (
-            <PopupBackground
-              onClick={() => {
-                setSynthesisedTextShowing(false);
-              }}
-            >
-              <div className="w-full px-4 transition-all duration-600">
+            <PopupBackground>
+              <div className="w-full px-4 transition-all duration-600 relative">
+                <Button
+                  colors="border-2 border-synthesis-500 bg-white text-synthesis-500 hover:bg-synthesis-50"
+                  sizes="absolute -top-3 right-1 font-bold rounded-full px-2"
+                  onClick={() => {
+                    setSynthesisedTextShowing(false);
+                  }}
+                >
+                  x
+                </Button>
+
                 <SynthesisPlaybackCard />
               </div>
             </PopupBackground>

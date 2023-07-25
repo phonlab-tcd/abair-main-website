@@ -23,6 +23,7 @@ const RecognitionWaveVisual = ({
         setAudioContext(new AudioContext());
       }
     }
+    console.log("width:", width);
   }, [stream]);
 
   useEffect(() => {

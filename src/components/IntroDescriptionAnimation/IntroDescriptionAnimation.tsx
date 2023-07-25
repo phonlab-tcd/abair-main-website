@@ -37,7 +37,6 @@ const IntroDescriptionAnimation = ({
   };
 
   useEffect(() => {
-    console.log("breakpoint:", breakpoint);
     if (["xl", "lg"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 2, 0],
@@ -102,6 +101,10 @@ const IntroDescriptionAnimation = ({
         setTypingState("technologies");
       }, initialDelay + 9500);
     }, 1000);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
