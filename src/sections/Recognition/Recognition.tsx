@@ -2,26 +2,24 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Media,
   RecognitionRecordStopButtons,
   RecognitionWaveVisual,
   PopupBackground,
 } from "@/components";
-import { Button, RecognitionPlaybackCard } from "abair-web-components";
+import { Button, PlaybackCard } from "abair-web-components";
 import { themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
 
 interface RecognitionProps {
-  flashRecognitionColor?: string;
   flashRecognitionTitleColor?: string;
   delayToStartFlash: number;
   flashDuration: number;
 }
 
 const Recognition = ({
-  flashRecognitionColor = "bg-recognition-50",
   flashRecognitionTitleColor = "bg-recognition-500",
   delayToStartFlash,
   flashDuration,
@@ -40,14 +38,47 @@ const Recognition = ({
     undefined
   );
   const [stream, setStream] = useState<MediaStream | undefined>(undefined);
-  // const [breakpoint, setBreakpoint] = useState<string>();
+  const [recentlyCopied, setRecentlyCopied] = useState(false);
+  const [recognitionAudioPlaying, setRecognitionAudioPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const anchorRef = useRef<HTMLAnchorElement>(null);
 
-  // const handleResize = () => {
-  //   const breakpointNow = getBreakpoint();
+  const playRecognitionAudio = () => {
+    if (audioRef.current !== undefined) {
+      if (audioRef.current !== null) {
+        audioRef.current.play();
+        setRecognitionAudioPlaying(true);
+      } else {
+        console.log("audio.current === null");
+      }
+    } else {
+      console.log("audio.current === undefined");
+    }
+  };
 
-  //   setBreakpoint(breakpointNow);
-  //   console.log("breakpointNow:", breakpointNow);
-  // };
+  const stopRecognitionAudio = () => {
+    console.log("in stop");
+    if (audioRef.current !== undefined) {
+      if (audioRef.current !== null) {
+        audioRef.current.pause();
+        setRecognitionAudioPlaying(false);
+      } else {
+        console.log("audio.current === null");
+      }
+    } else {
+      console.log("audio.current === undefined");
+    }
+  };
+
+  const downloadRecognitionAudio = () => {
+    if (anchorRef.current !== undefined) {
+      if (anchorRef.current !== null) {
+        anchorRef.current.href = recognitionAudio as string;
+        anchorRef.current.download = `${new Date()}.wav`;
+        anchorRef.current.click();
+      }
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -66,9 +97,7 @@ const Recognition = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-${flashDuration} ${
-        startRecognitionBorderAnimation ? flashRecognitionColor : "bg-white"
-      }`}
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 bg-white`}
     >
       <div className="flex justify-center">
         <div
@@ -156,21 +185,51 @@ const Recognition = ({
             </div>
           </div>
           {recognisedTextShowing && (
-            <PopupBackground>
-              <div className="w-full px-4 transition-all duration-600 relative">
-                {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
-                <Button
-                  colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
-                  sizes="absolute -top-3 right-1 font-bold rounded-full px-2"
-                  onClick={() => {
-                    setRecognisedTextShowing(false);
-                  }}
-                >
-                  x
-                </Button>
-                <RecognitionPlaybackCard text={transcription} />
-              </div>
-            </PopupBackground>
+            <>
+              <PopupBackground>
+                <div className="w-full px-4 transition-all duration-600 relative">
+                  {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
+                  <Button
+                    colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
+                    sizes="absolute -top-3 right-1 font-bold rounded-full px-2"
+                    onClick={() => {
+                      setRecognisedTextShowing(false);
+                    }}
+                  >
+                    x
+                  </Button>
+                  <PlaybackCard
+                    text={transcription}
+                    version="recognition"
+                    recentlyCopied={recentlyCopied}
+                    sidebar={false}
+                    handleCopy={() => {
+                      setRecentlyCopied(true);
+                      setTimeout(() => {
+                        setRecentlyCopied(false);
+                      }, 2000);
+                    }}
+                    handlePlay={() => {
+                      playRecognitionAudio();
+                    }}
+                    handleStop={() => {
+                      stopRecognitionAudio();
+                    }}
+                    handleDownload={() => {
+                      downloadRecognitionAudio();
+                    }}
+                    audioPlaying={recognitionAudioPlaying}
+                  >
+                    <audio
+                      src={recognitionAudio}
+                      ref={audioRef}
+                      onEnded={stopRecognitionAudio}
+                    />
+                    <a href={""} ref={anchorRef} download={"tester.wav"} />
+                  </PlaybackCard>
+                </div>
+              </PopupBackground>
+            </>
           )}
         </div>
       </div>

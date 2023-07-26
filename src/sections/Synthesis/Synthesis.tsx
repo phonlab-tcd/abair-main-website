@@ -1,29 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Map, GenderButtons, PopupBackground } from "@/components";
-import { SpeakIcon, Button, SynthesisPlaybackCard } from "abair-web-components";
+import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
+import { getVoicesMetadata } from "@/services/abair/synthesis";
 
 interface SynthesisProps {
-  flashSynthesisColor?: string;
   flashSynthesisTitleColor?: string;
   delayToStartFlash: number;
   flashDuration: number;
 }
 
 const Synthesis = ({
-  flashSynthesisColor = "bg-synthesis-50",
   flashSynthesisTitleColor = "bg-synthesis-600",
   delayToStartFlash,
   flashDuration,
 }: SynthesisProps) => {
   const [startSynthesisBorderAnimation, setStartSynthesisBorderAnimation] =
     useState(false);
-  const [gender, setGender] = useState<"male" | "female">("male");
-  const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
-  const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
+  // const [gender, setGender] = useState<"male" | "female">("male");
+  // const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
+  // const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
+  const [synthesisVoices, setSynthesisVoices] = useState([]);
   const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(true);
+  const [recentlyCopied, setRecentlyCopied] = useState(false);
+  const [synthesisAudioPlaying, setSynthesisAudioPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const anchorRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,23 +36,57 @@ const Synthesis = ({
         setStartSynthesisBorderAnimation(false);
       }, flashDuration);
     }, delayToStartFlash);
+
+    if (synthesisVoices.length === 0) {
+      getVoicesMetadata().then((res) => {
+        setSynthesisVoices(res);
+        console.log("res:", res);
+      });
+    } else {
+      null;
+    }
   }, []);
 
-  useEffect(() => {
-    if (gender === "male") {
-      setMaleIconColor("#1d4ed8");
-      setFemaleIconColor("#93c5fd");
+  const playSynthesisAudio = () => {
+    if (audioRef.current !== undefined) {
+      if (audioRef.current !== null) {
+        audioRef.current.play();
+        setSynthesisAudioPlaying(true);
+      } else {
+        console.log("audio.current === null");
+      }
     } else {
-      setMaleIconColor("#93c5fd");
-      setFemaleIconColor("#1d4ed8");
+      console.log("audio.current === undefined");
     }
-  }, [gender]);
+  };
+
+  const stopSynthesisAudio = () => {
+    console.log("in stop");
+    if (audioRef.current !== undefined) {
+      if (audioRef.current !== null) {
+        audioRef.current.pause();
+        setSynthesisAudioPlaying(false);
+      } else {
+        console.log("audio.current === null");
+      }
+    } else {
+      console.log("audio.current === undefined");
+    }
+  };
+
+  const downloadSynthesisAudio = () => {
+    if (anchorRef.current !== undefined) {
+      if (anchorRef.current !== null) {
+        // anchorRef.current.href = synthesisAudio as string;
+        // anchorRef.current.download = `${new Date()}.wav`;
+        anchorRef.current.click();
+      }
+    }
+  };
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge  relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 transition-all duration-${flashDuration} delay-0 ${
-        startSynthesisBorderAnimation ? flashSynthesisColor : "bg-white"
-      }`}
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge  relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 bg-white`}
     >
       <div
         className={`w-full h-[48px] transition-all duration-${flashDuration} ${
@@ -106,7 +144,35 @@ const Synthesis = ({
                   x
                 </Button>
 
-                <SynthesisPlaybackCard />
+                <PlaybackCard
+                  text={"cad é sin"}
+                  version="synthesis"
+                  recentlyCopied={recentlyCopied}
+                  sidebar={false}
+                  handleCopy={() => {
+                    setRecentlyCopied(true);
+                    setTimeout(() => {
+                      setRecentlyCopied(false);
+                    }, 2000);
+                  }}
+                  handlePlay={() => {
+                    playSynthesisAudio();
+                  }}
+                  handleStop={() => {
+                    stopSynthesisAudio();
+                  }}
+                  handleDownload={() => {
+                    downloadSynthesisAudio();
+                  }}
+                  audioPlaying={synthesisAudioPlaying}
+                >
+                  {/* <audio
+                    src={synthesisAudio}
+                    ref={audioRef}
+                    onEnded={stopSynthesisAudio}
+                  /> */}
+                  <a href={""} ref={anchorRef} download={"tester.wav"} />
+                </PlaybackCard>
               </div>
             </PopupBackground>
           )}
