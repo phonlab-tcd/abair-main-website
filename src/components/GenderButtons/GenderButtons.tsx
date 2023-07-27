@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { themeColors } from "@/theme";
 import { MaleIcon, FemaleIcon, Button } from "abair-web-components";
 
 interface GenderButtonsProps {
@@ -10,16 +10,20 @@ interface GenderButtonsProps {
 
 const GenderButtons = ({ height }: GenderButtonsProps) => {
   const [gender, setGender] = useState<"male" | "female">("male");
-  const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
-  const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
+  const [maleIconColor, setMaleIconColor] = useState<string>(
+    themeColors.synthesis[200]
+  );
+  const [femaleIconColor, setFemaleIconColor] = useState<string>(
+    themeColors.synthesis[200]
+  );
 
   useEffect(() => {
     if (gender === "male") {
-      setMaleIconColor("#1d4ed8");
-      setFemaleIconColor("#93c5fd");
+      setMaleIconColor(themeColors.synthesis[600]);
+      setFemaleIconColor(themeColors.synthesis[200]);
     } else {
-      setMaleIconColor("#93c5fd");
-      setFemaleIconColor("#1d4ed8");
+      setFemaleIconColor(themeColors.synthesis[600]);
+      setMaleIconColor(themeColors.synthesis[200]);
     }
   }, [gender]);
 
@@ -29,11 +33,11 @@ const GenderButtons = ({ height }: GenderButtonsProps) => {
         <button
           className=" p-1 rounded-xl"
           onMouseEnter={() => {
-            setMaleIconColor("#1d4ed8");
+            setMaleIconColor(themeColors.synthesis[600]);
           }}
           onMouseLeave={() => {
             if (gender !== "male") {
-              setMaleIconColor("#93c5fd");
+              setMaleIconColor(themeColors.synthesis[200]);
             }
           }}
           onClick={() => {
@@ -47,11 +51,11 @@ const GenderButtons = ({ height }: GenderButtonsProps) => {
         <button
           className=" p-1 rounded-xl"
           onMouseEnter={() => {
-            setFemaleIconColor("#1d4ed8");
+            setFemaleIconColor(themeColors.synthesis[600]);
           }}
           onMouseLeave={() => {
             if (gender !== "female") {
-              setFemaleIconColor("#93c5fd");
+              setFemaleIconColor(themeColors.synthesis[200]);
             }
           }}
           onClick={() => {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import irelandMapData from "./irelandMapData";
+import { themeColors } from "@/theme";
 interface mapDataModel {
   name: string;
   coordinates: string;
@@ -30,11 +31,11 @@ const Map = ({
   const getMapColor = (c: mapDataModel) => {
     return gaeltachts.includes(c.name)
       ? c.name === hoverCounty
-        ? ["rgb(30 58 138)", "rgb(30 58 138)"]
+        ? [themeColors.synthesis[500], themeColors.synthesis[500]]
         : c.name === selectCounty
-        ? ["rgb(30 64 175)", "rgb(30 58 138)"]
-        : ["rgb(191 219 254)", "rgb(96 165 250)"]
-      : ["rgb(220 252 231)", "rgb(74 222 128)"];
+        ? [themeColors.synthesis[500], themeColors.synthesis[500]]
+        : [themeColors.synthesis[200], themeColors.synthesis[500]]
+      : [themeColors.primary[200], themeColors.primary[200]];
   };
 
   const handleMouseEnter = (county: string) => {
@@ -63,7 +64,7 @@ const Map = ({
               key={i}
               fill={getMapColor(c)[0]}
               stroke={getMapColor(c)[1]}
-              opacity={gaeltachts.includes(c.name) ? 0.6 : 1}
+              opacity={gaeltachts.includes(c.name) ? 0.8 : 1}
               onMouseEnter={() => handleMouseEnter(c.name)}
               onClick={() => {
                 handleClick(c.name);
@@ -72,7 +73,7 @@ const Map = ({
             >
               <path
                 d={c.coordinates}
-                strokeWidth={gaeltachts.includes(c.name) ? "2.5" : "0.5"}
+                strokeWidth={gaeltachts.includes(c.name) ? "4" : "0.5"}
               />
             </g>
           ))}

@@ -28,7 +28,6 @@ const Applications = ({
         setStartApplicationsAnimation(false);
       }, flashDuration);
     }, delayToStartFlash);
-    console.log("delayToStartFlash:", delayToStartFlash);
   }, []);
 
   return (
