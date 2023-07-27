@@ -31,7 +31,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
   return (
     <div>
-      <label text-center>From</label>
+      <label>From</label>
       <select
         className="border rounded px-3 py-2 ml-4"
         value={startYear}
@@ -44,7 +44,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
         <option value={2018}>2018</option>
         <option value={2017}>2017</option>
       </select>
-      <label text-center>To</label>
+      <label>To</label>
       <select
         className="border rounded px-3 py-2 ml-4"
         value={endYear}

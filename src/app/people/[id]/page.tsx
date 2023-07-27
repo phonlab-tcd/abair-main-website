@@ -1,24 +1,22 @@
-"use client";
 import supabase from "@/services/supabase/supabase";
 import { notFound } from "next/navigation";
-import { useEffect } from "react";
 
 export async function generateStaticParams() {
-  const { data: person } = await supabase.from("people").select("id");
+  const { data: people } = await supabase.from("people").select("id");
 
   interface StaticParamsProps {
-    id: string;
+    id: number;
   }
 
-  return person
-    ? person.map(({ id }: StaticParamsProps) => ({
-        id,
+  return people
+    ? people.map((p) => ({
+        id: String(p.id),
       }))
     : [];
 }
 
 interface PageProps {
-  params?: { id: string };
+  params?: { id: number };
 }
 
 export default async function Page({ params }: PageProps) {
