@@ -37,4 +37,14 @@ interface NewsModel {
   news_category?: string;
 }
 
-export type { PaperModel, PersonModel, NewsModel };
+interface synthesisVoiceModel {
+  name: string;
+  gender: string;
+  locale: string;
+  mode?: string;
+  shortCode?: string;
+  voices?: string[];
+  voicenames?: string[];
+}
+
+export type { PaperModel, PersonModel, NewsModel, synthesisVoiceModel };

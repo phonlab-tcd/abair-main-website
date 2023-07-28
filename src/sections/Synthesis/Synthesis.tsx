@@ -4,7 +4,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Map, GenderButtons, PopupBackground } from "@/components";
 import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
-import { getVoicesMetadata } from "@/services/abair/synthesis";
+import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
+import { synthesisVoiceModel } from "@/models";
 
 interface SynthesisProps {
   flashSynthesisTitleColor?: string;
@@ -19,13 +20,22 @@ const Synthesis = ({
 }: SynthesisProps) => {
   const [startSynthesisBorderAnimation, setStartSynthesisBorderAnimation] =
     useState(false);
-  // const [gender, setGender] = useState<"male" | "female">("male");
-  // const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
-  // const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
-  const [synthesisVoices, setSynthesisVoices] = useState([]);
+  const [availableGenders, setAvailableGenders] = useState<
+    Set<string> | undefined
+  >();
+  const [dialect, setDialect] = useState<string | undefined>(undefined);
+  const [gender, setGender] = useState<string | undefined>(undefined);
+  const [synthesisVoices, setSynthesisVoices] = useState<
+    synthesisVoiceModel[] | undefined
+  >(undefined);
+  const [selectedVoice, setSelectedVoice] = useState<synthesisVoiceModel>();
+
   const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
   const [recentlyCopied, setRecentlyCopied] = useState(false);
   const [synthesisAudioPlaying, setSynthesisAudioPlaying] = useState(false);
+  const [synthesisText, setSynthesisText] = useState("");
+  const [synthesisAudio, setSynthesisAudio] = useState("");
+  const [awaitingSynthesis, setAwaitingSynthesis] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -37,15 +47,50 @@ const Synthesis = ({
       }, flashDuration);
     }, delayToStartFlash);
 
-    if (synthesisVoices.length === 0) {
+    if (!synthesisVoices) {
       getVoicesMetadata().then((res) => {
         setSynthesisVoices(res);
-        console.log("res:", res);
       });
     } else {
       null;
     }
   }, []);
+
+  useEffect(() => {
+    synthesisVoices && setDialect(synthesisVoices[0].locale);
+  }, [synthesisVoices]);
+
+  useEffect(() => {
+    synthesisVoices &&
+      setAvailableGenders(
+        new Set(
+          synthesisVoices
+            .filter((v) => v.locale === dialect)
+            .map((v) => v.gender)
+        )
+      );
+  }, [dialect]);
+
+  useEffect(() => {
+    availableGenders
+      ? availableGenders.size === 1
+        ? setGender(Array.from(availableGenders)[0])
+        : availableGenders.size === 2 && !gender
+        ? setGender(Array.from(availableGenders)[0])
+        : null
+      : null;
+  }, [availableGenders]);
+
+  useEffect(() => {
+    if (gender && dialect && synthesisVoices) {
+      const selectedVoices = synthesisVoices.filter(
+        (v) => v.locale === dialect && v.gender === gender
+      );
+      if (selectedVoices.length > 0) {
+        setSelectedVoice(selectedVoices[0]);
+      }
+    }
+  }, [gender, dialect]);
 
   const playSynthesisAudio = () => {
     if (audioRef.current !== undefined) {
@@ -77,10 +122,31 @@ const Synthesis = ({
   const downloadSynthesisAudio = () => {
     if (anchorRef.current !== undefined) {
       if (anchorRef.current !== null) {
-        // anchorRef.current.href = synthesisAudio as string;
-        // anchorRef.current.download = `${new Date()}.wav`;
+        anchorRef.current.href = synthesisAudio as string;
+        anchorRef.current.download = `${new Date()}.wav`;
         anchorRef.current.click();
       }
+    }
+  };
+
+  const initTTS = () => {
+    console.log("selectedVoice:", selectedVoice);
+    console.log("synthesisText:", synthesisText);
+    setAwaitingSynthesis(true);
+    if (synthesisText !== "") {
+      if (selectedVoice) {
+        getSynthesis(synthesisText, selectedVoice, "NEMO", 1, 1).then(
+          (res: any) => {
+            setSynthesisAudio("data:audio/wav;base64," + res.audioContent);
+            setAwaitingSynthesis(false);
+            setSynthesisedTextShowing(true);
+          }
+        );
+      } else {
+        alert("select a voice");
+      }
+    } else {
+      alert("type something");
     }
   };
 
@@ -105,19 +171,29 @@ const Synthesis = ({
       <div className="w-full">
         <div className="flex flex-row relative h-synthRecCardLargeInner">
           <div className="w-[40%] ml-2 flex flex-col justify-center">
-            <Map height={220} />
-            <div className="w-[90%] -mt-4">
-              <GenderButtons height={26} />
+            <Map height={220} setDialect={setDialect} dialect={dialect} />
+            <div className="w-[90%] -mt-4 h-24">
+              <GenderButtons
+                height={26}
+                availableGenders={availableGenders}
+                setGender={setGender}
+                gender={gender}
+              />
             </div>
           </div>
 
           <div className="w-[60%] pt-8 pr-6">
-            <textarea className="p-1 bg-inherit w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"></textarea>
+            <textarea
+              onChange={(e) => setSynthesisText(e.target.value)}
+              value={synthesisText}
+              className="p-1 bg-inherit w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"
+            ></textarea>
 
             <div className="flex justify-center items-center p-4">
               <Button
                 sizes="w-32 p-1 flex justify-center rounded-sm"
                 colors="bg-synthesis-500 hover:bg-synthesis-600"
+                onClick={initTTS}
               >
                 <SpeakIcon height={26} width={26} color="white" />
               </Button>
@@ -166,11 +242,11 @@ const Synthesis = ({
                   }}
                   audioPlaying={synthesisAudioPlaying}
                 >
-                  {/* <audio
+                  <audio
                     src={synthesisAudio}
                     ref={audioRef}
                     onEnded={stopSynthesisAudio}
-                  /> */}
+                  />
                   <a href={""} ref={anchorRef} download={"tester.wav"} />
                 </PlaybackCard>
               </div>

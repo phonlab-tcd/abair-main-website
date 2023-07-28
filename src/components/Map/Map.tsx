@@ -7,32 +7,25 @@ interface mapDataModel {
   name: string;
   coordinates: string;
 }
+import { Dispatch, SetStateAction } from "react";
 
 interface MapProps {
   height?: number;
-  mapData?: mapDataModel[];
-  gaeltachts?: string[];
-  selectedCounty?: string;
-  setSelectedCounty?: (name: string) => void;
+  dialect: string | undefined;
+  setDialect: Dispatch<SetStateAction<string | undefined>>;
 }
 
-const Map = ({
-  height = 400,
-  mapData = irelandMapData,
-  gaeltachts = ["Ulster", "Connemara", "Munster"],
-  selectedCounty = "Ulster",
-  setSelectedCounty = () => {
-    console.log("setSelectedCounty complete");
-  },
-}: MapProps) => {
+const Map = ({ height = 400, dialect, setDialect }: MapProps) => {
   const [hoverCounty, setHoverCounty] = useState("");
-  const [selectCounty, setSelectCounty] = useState(selectedCounty);
+
+  const mapData = irelandMapData;
+  const gaeltachts = ["Ulster", "Connemara", "Munster"];
 
   const getMapColor = (c: mapDataModel) => {
     return gaeltachts.includes(c.name)
       ? c.name === hoverCounty
         ? [themeColors.synthesis[500], themeColors.synthesis[500]]
-        : c.name === selectCounty
+        : c.name === dialect
         ? [themeColors.synthesis[500], themeColors.synthesis[500]]
         : [themeColors.synthesis[200], themeColors.synthesis[500]]
       : [themeColors.primary[200], themeColors.primary[200]];
@@ -47,10 +40,9 @@ const Map = ({
   };
 
   const handleClick = (county: string) => {
-    if (county !== selectCounty) {
+    if (county !== dialect) {
       if (gaeltachts.includes(county)) {
-        setSelectCounty(county);
-        setSelectedCounty(county);
+        setDialect(county);
       }
     }
   };

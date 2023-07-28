@@ -6,7 +6,7 @@ const getVoicesMetadata = async () => {
 
     if (response.ok) {
       const data = await response.json();
-      return data;
+      return data.data;
     } else {
       // Handle non-2xx HTTP error status codes
       const errorText = await response.text();
