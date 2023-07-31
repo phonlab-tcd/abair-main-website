@@ -3,6 +3,7 @@ import News from "./News/News";
 import Synthesis from "./Synthesis/Synthesis";
 import Recognition from "./Recognition/Recognition";
 import IntroDescription from "./IntroDescription/IntroDescription";
+import TopText from "./TopText/TopText";
 import TopImages from "./TopImages/TopImages";
 
 export {
@@ -12,4 +13,5 @@ export {
   Recognition,
   TopImages,
   IntroDescription,
+  TopText,
 };

@@ -15,8 +15,8 @@ const TopImages = () => {
             <Image
               key={index}
               src={"/frontPageImages" + image.path}
-              width={128 * image.ratio}
-              height={128}
+              width={144 * image.ratio}
+              height={144}
               alt={`Image ${index}`}
             />
           ))}
@@ -26,8 +26,8 @@ const TopImages = () => {
             <Image
               key={index}
               src={"/frontPageImages" + image.path}
-              width={128 * image.ratio}
-              height={128}
+              width={144 * image.ratio}
+              height={144}
               alt={`Image ${index}`}
             />
           ))}

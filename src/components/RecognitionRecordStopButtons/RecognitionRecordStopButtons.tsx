@@ -38,7 +38,7 @@ const RecognitionRecordStopButtons = ({
       ) : !voiceRecording ? (
         <>
           <Button
-            sizes="w-32 p-1 flex justify-center rounded-sm"
+            sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
             colors="bg-recognition-400 hover:bg-recognition-500"
             onClick={handleClick}
           >
@@ -47,7 +47,7 @@ const RecognitionRecordStopButtons = ({
         </>
       ) : (
         <Button
-          sizes="w-32 p-1 flex justify-center rounded-sm"
+          sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
           colors="bg-recognition-400 hover:bg-recognition-500"
           onClick={() => {
             setVoiceRecording(false);

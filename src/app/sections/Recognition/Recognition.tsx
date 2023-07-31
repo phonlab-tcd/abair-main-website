@@ -9,7 +9,12 @@ import {
   RecognitionWaveVisual,
   PopupBackground,
 } from "@/components";
-import { Button, PlaybackCard } from "abair-web-components";
+import {
+  Button,
+  PlaybackCard,
+  MicrophoneIcon,
+  StopIcon,
+} from "abair-web-components";
 import { themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
 import {
@@ -40,8 +45,29 @@ const Recognition = ({
   const [stream, setStream] = useState<MediaStream | undefined>(undefined);
   const [recentlyCopied, setRecentlyCopied] = useState(false);
   const [recognitionAudioPlaying, setRecognitionAudioPlaying] = useState(false);
+  const [breakpoint, setBreakpoint] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
+
+  const handleResize = () => {
+    setBreakpoint(getBreakpoint());
+  };
+
+  const handleClick = () => {
+    // if (mediaRecorderExists) {
+    if (mediaRecorder !== undefined) {
+      // if (tempConsent) {
+      if (true) {
+        setVoiceRecording(true);
+      } else {
+        // setShowTempConsent(true);
+      }
+    } else {
+      alert(
+        "To use this feature, you must give permission for this site to use your microphone, and then refresh."
+      );
+    }
+  };
 
   const playRecognitionAudio = () => {
     if (audioRef.current !== undefined) {
@@ -81,6 +107,7 @@ const Recognition = ({
   };
 
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
     setTimeout(() => {
       setStartRecognitionBorderAnimation(true);
       setTimeout(() => {
@@ -99,37 +126,24 @@ const Recognition = ({
     <div
       className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge bg-white`}
     >
-      <div className="flex justify-center">
-        <div
-          className={`w-full h-[48px] transition-all duration-${cardFlashDuration}  ${
-            startRecognitionBorderAnimation
-              ? flashRecognitionTitleColor
-              : "bg-recognition-400"
-          }`}
-        >
-          <div className="grid grid-cols-3 h-full">
-            <div></div>
-            <div className="flex h-full justify-center">
-              <div className="flex items-center text-xl md:text-2xl font-mono text-white">
-                Recognition
-              </div>
-            </div>
-          </div>
+      <div className="w-full h-[40px] lg:h-[48px] bg-recognition-400 flex justify-center">
+        <div className="flex items-center text-xl lg:text-2xl font-mono text-white">
+          Recognition
         </div>
       </div>
       <div className="w-full">
-        <div className="flex flex-row relative h-synthRecCardLargeInner">
-          <div className="w-full pt-8">
+        <div className="flex flex-row relative h-synthRecCardInner lg:h-synthRecCardLargeInner">
+          <div className="w-full pt-6">
             <div className=" bg-inherit w-full h-28 px-8">
               <div className="relative h-full">
                 <div className="absolute h-full w-full">
                   {voiceRecording ? (
-                    <div className="w-full h-28 absolute left-2 right-2 top-0">
+                    <div className="w-full h-20 lg:h-28 absolute left-2 right-2 top-0">
                       <RecognitionWaveVisual
                         stream={stream}
-                        height={112}
+                        height={["lg", "xl"].includes(breakpoint) ? 112 : 80}
                         width={
-                          getBreakpoint() === "xl"
+                          ["xl", "lg"].includes(breakpoint)
                             ? themeWidth.synthRecCardLarge - 64 - 8
                             : themeWidth.synthRecCard - 64 - 8
                         }
@@ -137,8 +151,8 @@ const Recognition = ({
                     </div>
                   ) : (
                     <>
-                      <div className="w-full h-14 border-b-2 border-recognition-200"></div>
-                      <div className="w-full h-14 border-t-2 border-recognition-200"></div>
+                      <div className="w-full h-10 lg:h-14 border-b-2 border-recognition-200"></div>
+                      <div className="w-full h-10 lg:h-14 border-t-2 border-recognition-200"></div>
                     </>
                   )}
                   <div
@@ -146,7 +160,7 @@ const Recognition = ({
                       voiceRecording
                         ? "bg-recognition-500"
                         : "bg-recognition-200"
-                    } rounded-full absolute top-12 -left-2`}
+                    } rounded-full absolute top-8 lg:top-12 -left-2`}
                   ></div>
 
                   <div
@@ -154,28 +168,49 @@ const Recognition = ({
                       voiceRecording
                         ? "bg-recognition-500"
                         : "bg-recognition-200"
-                    } rounded-full absolute top-12 -right-2`}
+                    } rounded-full absolute top-8 lg:top-12 -right-2`}
                   ></div>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-center items-center p-6 relative h-16">
+            <div className="flex justify-center items-center -mt-[2px] lg:mt-[6px] h-12 lg:h-16 border relative">
               {awaitingTranscription ? (
                 <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center">
                   <div className="w-6 h-6 border-t-2 border-r-2 border-recognition-400 border-solid rounded-full animate-spin"></div>
                 </div>
+              ) : !voiceRecording ? (
+                <div className="flex justify-center items-center p-2 lg:p-4 h-12 lg:h-16">
+                  <Button
+                    sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                    colors="bg-recognition-400 hover:bg-recognition-500"
+                    onClick={handleClick}
+                  >
+                    <MicrophoneIcon
+                      height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                      width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                      color="white"
+                    />
+                  </Button>
+                </div>
               ) : (
-                <RecognitionRecordStopButtons
-                  mediaRecorder={mediaRecorder}
-                  awaitingTranscription={awaitingTranscription}
-                  voiceRecording={voiceRecording}
-                  setVoiceRecording={setVoiceRecording}
-                />
+                <Button
+                  sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                  colors="bg-recognition-400 hover:bg-recognition-500"
+                  onClick={() => {
+                    setVoiceRecording(false);
+                  }}
+                >
+                  <StopIcon
+                    height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                    width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                    color="white"
+                  />
+                </Button>
               )}
             </div>
 
-            <div className="absolute bottom-2 right-4">
+            <div className="absolute bottom-1 right-2 lg:right-4">
               <Button
                 colors="bg-inherit text-recognition-500 text-sm hover:text-recognition-600"
                 sizes="py-0.5 px-1 rounded-sm"

@@ -1,5 +1,5 @@
 const themeWidth = {
-  synthRecCard: 250,
+  synthRecCard: 360,
   synthRecCardLarge: 470,
 };
 

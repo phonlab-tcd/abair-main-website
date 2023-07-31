@@ -10,6 +10,7 @@ import {
   delayToStartSynthesisCardFlash,
   cardFlashDuration,
 } from "../animationTimings/animationTimings";
+import { getBreakpoint } from "@/utils";
 
 interface SynthesisProps {
   flashSynthesisTitleColor?: string;
@@ -36,10 +37,16 @@ const Synthesis = ({
   const [synthesisText, setSynthesisText] = useState("");
   const [synthesisAudio, setSynthesisAudio] = useState("");
   const [awaitingSynthesis, setAwaitingSynthesis] = useState(false);
+  const [breakpoint, setBreakpoint] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
 
+  const handleResize = () => {
+    setBreakpoint(getBreakpoint());
+  };
+
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
     setTimeout(() => {
       setStartSynthesisBorderAnimation(true);
       setTimeout(() => {
@@ -54,6 +61,9 @@ const Synthesis = ({
     } else {
       null;
     }
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -154,29 +164,25 @@ const Synthesis = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge bg-white`}
+      className={`w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge bg-white`}
     >
-      <div
-        className={`w-full h-[48px] transition-all ease-out duration-${cardFlashDuration} ${
-          startSynthesisBorderAnimation
-            ? flashSynthesisTitleColor
-            : "bg-synthesis-500"
-        }`}
-      >
-        <div className="flex h-full justify-center">
-          <div className="flex items-center text-xl md:text-2xl font-mono text-white">
-            Synthesis
-          </div>
+      <div className="w-full h-[40px] lg:h-[48px] bg-synthesis-500 flex justify-center">
+        <div className="flex items-center text-xl lg:text-2xl font-mono text-white">
+          Synthesis
         </div>
       </div>
 
       <div className="w-full">
-        <div className="flex flex-row relative h-synthRecCardLargeInner">
-          <div className="w-[40%] ml-2 flex flex-col justify-center">
-            <Map height={220} setDialect={setDialect} dialect={dialect} />
-            <div className="w-[90%] -mt-4 h-24">
+        <div className="flex flex-row relative h-synthRecCardInner lg:h-synthRecCardLargeInner">
+          <div className="w-[40%] lg:w-[37%] ml-1 lg:ml-2 flex flex-col justify-center">
+            <Map
+              height={["lg", "xl"].includes(breakpoint) ? 220 : 180}
+              setDialect={setDialect}
+              dialect={dialect}
+            />
+            <div className="w-[90%] -mt-2 lg:-mt-4 h-24">
               <GenderButtons
-                height={26}
+                height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
                 availableGenders={availableGenders}
                 setGender={setGender}
                 gender={gender}
@@ -184,23 +190,27 @@ const Synthesis = ({
             </div>
           </div>
 
-          <div className="w-[60%] pt-8 pr-6">
+          <div className="w-[60%] lg:w-[63%] pt-4 lg:pt-6 pr-4 lg:pr-4">
             <textarea
               onChange={(e) => setSynthesisText(e.target.value)}
               value={synthesisText}
-              className="p-1 bg-inherit w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"
+              className="p-1 bg-inherit text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"
             ></textarea>
 
-            <div className="flex justify-center items-center p-4">
+            <div className="flex justify-center items-center border h-12 lg:h-16">
               <Button
-                sizes="w-32 p-1 flex justify-center rounded-sm"
+                sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
                 colors="bg-synthesis-500 hover:bg-synthesis-600"
                 onClick={initTTS}
               >
-                <SpeakIcon height={26} width={26} color="white" />
+                <SpeakIcon
+                  height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                  width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                  color="white"
+                />
               </Button>
             </div>
-            <div className="absolute bottom-2 right-4">
+            <div className="absolute bottom-1 right-2 lg:right-4">
               <Button
                 colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600"
                 sizes="py-0.5 px-1 rounded-sm"
