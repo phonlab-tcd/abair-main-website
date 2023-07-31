@@ -154,10 +154,10 @@ const Synthesis = ({
 
   return (
     <div
-      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge  relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 bg-white`}
+      className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge bg-white`}
     >
       <div
-        className={`w-full h-[48px] transition-all duration-${cardFlashDuration} ${
+        className={`w-full h-[48px] transition-all ease-out duration-${cardFlashDuration} ${
           startSynthesisBorderAnimation
             ? flashSynthesisTitleColor
             : "bg-synthesis-500"

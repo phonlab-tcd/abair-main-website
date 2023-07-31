@@ -17,7 +17,7 @@ const TypingText = ({
   text,
   color,
   delayToStart = 0,
-  delayForward = 50,
+  delayForward = 40,
 }: TypingTextProps) => {
   const [displayText, setDisplayText] = useState("");
   const [index, setIndex] = useState(0);

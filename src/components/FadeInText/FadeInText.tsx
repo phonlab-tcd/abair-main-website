@@ -87,10 +87,18 @@ const FadeInText = ({ startAnimation, typingState }: FadeInTextProps) => {
           {typingState === "applications" && (
             <TypingText text="Speech Applications" color="text-primary-700" />
           )}
-          {typingState === "technologies" && (
-            <TypingText text="Speech Technologies" color="text-black" />
-          )}
+          {/* {typingState === "technologies" && (
+            // <TypingText text="Speech Technologies" color="text-black" /> */}
+
+          {/* )} */}
         </div>
+      </div>
+      <div
+        className={`text-3xl absolute bottom-0 transition-opacity duration-1000 delay-12000 ${
+          startAnimation ? "opacity-100" : "opacity-0"
+        } `}
+      >
+        Speech Technologies
       </div>
     </div>
   );

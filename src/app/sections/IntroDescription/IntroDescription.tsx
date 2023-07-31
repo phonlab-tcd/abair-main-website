@@ -7,6 +7,7 @@ import { getBreakpoint } from "@/utils";
 import {
   delayToFirstTyping,
   delayForLineToStartAfterTyping,
+  delayBetweenTyping,
 } from "../animationTimings/animationTimings";
 
 const IntroDescription = () => {
@@ -36,13 +37,13 @@ const IntroDescription = () => {
     if (["xl", "lg"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 2, 0],
-        [windowWidth / 2 - 2, 70],
-        [windowWidth / 2 - 35, 70],
+        [windowWidth / 2 - 2, 60],
+        [windowWidth / 2 - 30, 60],
       ]);
       setRecognitionCoords([
         [2, 0],
-        [2, 70],
-        [35, 70],
+        [2, 60],
+        [30, 60],
       ]);
       setApplicationsCoords([
         [2, 0],
@@ -51,8 +52,8 @@ const IntroDescription = () => {
     } else if (["md"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 1, 0],
-        [windowWidth / 2 - 1, 70],
-        [windowWidth / 2 - 176 - 12, 70],
+        [windowWidth / 2 - 1, 60],
+        [windowWidth / 2 - 176 - 12, 60],
         [windowWidth / 2 - 176 - 12, 140],
       ]);
       setRecognitionCoords([
@@ -86,16 +87,16 @@ const IntroDescription = () => {
         setTimeout(() => {
           setAnimatedLineState("recognition");
         }, delayForLineToStartAfterTyping);
-      }, delayToFirstTyping + 3900);
+      }, delayToFirstTyping + delayBetweenTyping + 1100);
       setTimeout(() => {
         setTypingState("applications");
         setTimeout(() => {
           setAnimatedLineState("applications");
         }, delayForLineToStartAfterTyping);
-      }, delayToFirstTyping + 6700);
+      }, delayToFirstTyping + 2 * delayBetweenTyping + 1100);
       setTimeout(() => {
         setTypingState("technologies");
-      }, delayToFirstTyping + 9500);
+      }, delayToFirstTyping + 3 * delayBetweenTyping + 1100);
     }, 1000);
 
     return () => {
@@ -104,47 +105,42 @@ const IntroDescription = () => {
   }, []);
 
   return (
-    <div className="my-6 md:my-8">
-      <div className="flex w-screen justify-center relative">
-        <div className="w-1/2 absolute top-[164px] left-0 h-[1000px]">
-          {["synthesis"].includes(animatedLineState) &&
-            !["recognition"].includes(typingState) && (
-              <AnimatedLines
-                width={windowWidth / 2}
-                coords={synthesisCoords}
-                seconds={0.8}
-                color="#3b82f6"
-              />
-            )}
-        </div>
-        <div className="w-1/2 absolute top-[164px] right-0 h-[1000px]">
-          {["recognition"].includes(animatedLineState) &&
-            !["applications"].includes(typingState) && (
-              <AnimatedLines
-                width={windowWidth / 2}
-                coords={recognitionCoords}
-                seconds={0.8}
-                color="#ef4444"
-              />
-            )}
-        </div>
-        <div className="w-1/2 absolute top-[164px] right-0 h-[1000px]">
-          {["applications"].includes(animatedLineState) &&
-            !["technologies"].includes(typingState) && (
-              <AnimatedLines
-                width={windowWidth / 2}
-                coords={applicationsCoords}
-                seconds={1}
-                color="#22c55e"
-              />
-            )}
-        </div>
-        <div className="">
-          <FadeInText
-            startAnimation={startAnimation}
-            typingState={typingState}
-          />
-        </div>
+    <div className="flex w-screen justify-center relative">
+      <div className="w-1/2 absolute top-[164px] left-0 h-[1000px]">
+        {["synthesis"].includes(animatedLineState) &&
+          !["recognition"].includes(typingState) && (
+            <AnimatedLines
+              width={windowWidth / 2}
+              coords={synthesisCoords}
+              seconds={0.7}
+              color="#3b82f6"
+            />
+          )}
+      </div>
+      <div className="w-1/2 absolute top-[164px] right-0 h-[1000px]">
+        {["recognition"].includes(animatedLineState) &&
+          !["applications"].includes(typingState) && (
+            <AnimatedLines
+              width={windowWidth / 2}
+              coords={recognitionCoords}
+              seconds={0.7}
+              color="#ef4444"
+            />
+          )}
+      </div>
+      <div className="w-1/2 absolute top-[164px] right-0 h-[1000px]">
+        {["applications"].includes(animatedLineState) &&
+          !["technologies"].includes(typingState) && (
+            <AnimatedLines
+              width={windowWidth / 2}
+              coords={applicationsCoords}
+              seconds={0.9}
+              color="#22c55e"
+            />
+          )}
+      </div>
+      <div className="">
+        <FadeInText startAnimation={startAnimation} typingState={typingState} />
       </div>
     </div>
   );

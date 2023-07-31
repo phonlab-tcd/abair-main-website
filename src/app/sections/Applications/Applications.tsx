@@ -10,7 +10,7 @@ interface ApplicationsProps {
   applicationColor?: string;
 }
 import {
-  delayToStartRecognitionCardFlash,
+  delayToStartApplicationsFlash,
   cardFlashDuration,
 } from "../animationTimings/animationTimings";
 
@@ -27,29 +27,21 @@ const Applications = ({
       setTimeout(() => {
         setStartApplicationsAnimation(false);
       }, cardFlashDuration);
-    }, delayToStartRecognitionCardFlash);
+    }, delayToStartApplicationsFlash);
   }, []);
 
   return (
-    <div className="z-0 -mt-[20px] w-screen overflow-x-hidden">
-      <div
-        className={`ml-[-25%] h-[150px] w-[150%] rounded-t-[40%] md:rounded-t-[100%] transition-colors duration-${cardFlashDuration} ${
-          startApplicationsAnimation ? flashApplicationColor : applicationColor
-        }`}
-      >
-        <div className="text-center">
-          <div className="text-xl md:text-2xl pt-[40px] font-mono text-white">
-            Applications
-          </div>
-        </div>
-      </div>
+    <div className="w-full">
       <div
         className={`w-full transition-colors duration-500 ${
           startApplicationsAnimation ? flashApplicationColor : applicationColor
         }`}
       >
+        <div className="text-center text-xl md:text-2xl pt-16 font-mono text-white">
+          Applications
+        </div>
         <div className="flex justify-center ">
-          <div className="max-w-6xl w-full h-full mt-[-90px]">
+          <div className="max-w-6xl w-full h-full">
             <div className="w-full flex flex-col justify-center ">
               <div className="flex justify-center">
                 <div className="ml-[-70px]">

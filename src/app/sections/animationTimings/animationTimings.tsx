@@ -1,17 +1,19 @@
-const fadeInMainLogo = 1000;
 const delayToFirstTyping = 3800;
-const delayToStartSynthesisCardFlash = delayToFirstTyping + 3000;
-const delayToStartRecognitionCardFlash = delayToStartSynthesisCardFlash + 2800;
-const cardFlashDuration = 1800;
+const delayBetweenTyping = 2100;
+const delayToStartSynthesisCardFlash = delayToFirstTyping + 2800;
+const delayToStartRecognitionCardFlash =
+  delayToStartSynthesisCardFlash + delayBetweenTyping;
+const cardFlashDuration = 1000;
 const delayForLineToStartAfterTyping = 200;
-const delayToStartApplicationsFlash = delayToStartRecognitionCardFlash + 2900;
+const delayToStartApplicationsFlash =
+  delayToStartRecognitionCardFlash + delayBetweenTyping;
 
 export {
-  fadeInMainLogo,
   delayToFirstTyping,
   delayToStartSynthesisCardFlash,
   delayToStartRecognitionCardFlash,
   cardFlashDuration,
   delayForLineToStartAfterTyping,
   delayToStartApplicationsFlash,
+  delayBetweenTyping,
 };
