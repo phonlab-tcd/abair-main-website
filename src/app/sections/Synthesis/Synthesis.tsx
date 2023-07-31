@@ -197,7 +197,7 @@ const Synthesis = ({
               className="p-1 bg-inherit text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"
             ></textarea>
 
-            <div className="flex justify-center items-center border h-12 lg:h-16">
+            <div className="flex justify-center items-center h-12 lg:h-16">
               <Button
                 sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
                 colors="bg-synthesis-500 hover:bg-synthesis-600"

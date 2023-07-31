@@ -174,7 +174,7 @@ const Recognition = ({
               </div>
             </div>
 
-            <div className="flex justify-center items-center -mt-[2px] lg:mt-[6px] h-12 lg:h-16 border relative">
+            <div className="flex justify-center items-center -mt-[2px] lg:mt-[6px] h-12 lg:h-16 relative">
               {awaitingTranscription ? (
                 <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center">
                   <div className="w-6 h-6 border-t-2 border-r-2 border-recognition-400 border-solid rounded-full animate-spin"></div>
