@@ -28,7 +28,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="z-0 flex w-full justify-center relative">
+      <div className="flex w-full justify-center relative">
         <Applications />
       </div>
       <div className="flex w-full justify-center relative">
