@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  main-website:
+    # build: . # For local use, otherwise use the image from the registry.
+    image: "10.0.0.2:5000/abair-main-website:main"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data

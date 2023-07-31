@@ -4,16 +4,12 @@
 import { FadeInText, AnimatedLines } from "@/components";
 import { useEffect, useState } from "react";
 import { getBreakpoint } from "@/utils";
-
-interface IntroIntroDescriptionAnimationProps {
-  initialDelay: number;
-  delayForLineToStartAfterTyping: number;
-}
-
-const IntroDescriptionAnimation = ({
-  initialDelay,
+import {
+  delayToFirstTyping,
   delayForLineToStartAfterTyping,
-}: IntroIntroDescriptionAnimationProps) => {
+} from "../animationTimings/animationTimings";
+
+const IntroDescription = () => {
   const [startAnimation, setStartAnimation] = useState(false);
   const [typingState, setTypingState] = useState("");
   const [animatedLineState, setAnimatedLineState] = useState("");
@@ -37,7 +33,6 @@ const IntroDescriptionAnimation = ({
   };
 
   useEffect(() => {
-    console.log("breakpoint:", breakpoint);
     if (["xl", "lg"].includes(breakpoint)) {
       setSynthesisCoords([
         [windowWidth / 2 - 2, 0],
@@ -85,23 +80,27 @@ const IntroDescriptionAnimation = ({
         setTimeout(() => {
           setAnimatedLineState("synthesis");
         }, 1100 + delayForLineToStartAfterTyping);
-      }, initialDelay);
+      }, delayToFirstTyping);
       setTimeout(() => {
         setTypingState("recognition");
         setTimeout(() => {
           setAnimatedLineState("recognition");
         }, delayForLineToStartAfterTyping);
-      }, initialDelay + 3900);
+      }, delayToFirstTyping + 3900);
       setTimeout(() => {
         setTypingState("applications");
         setTimeout(() => {
           setAnimatedLineState("applications");
         }, delayForLineToStartAfterTyping);
-      }, initialDelay + 6700);
+      }, delayToFirstTyping + 6700);
       setTimeout(() => {
         setTypingState("technologies");
-      }, initialDelay + 9500);
+      }, delayToFirstTyping + 9500);
     }, 1000);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -151,4 +150,4 @@ const IntroDescriptionAnimation = ({
   );
 };
 
-export default IntroDescriptionAnimation;
+export default IntroDescription;

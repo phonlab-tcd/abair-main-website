@@ -1,66 +1,82 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import { themeColors } from "@/theme";
 import { MaleIcon, FemaleIcon, Button } from "abair-web-components";
+import { Dispatch, SetStateAction } from "react";
 
 interface GenderButtonsProps {
   height: number;
+  availableGenders: Set<string> | undefined;
+  gender: string | undefined;
+  setGender: Dispatch<SetStateAction<string | undefined>>;
 }
 
-const GenderButtons = ({ height }: GenderButtonsProps) => {
-  const [gender, setGender] = useState<"male" | "female">("male");
-  const [maleIconColor, setMaleIconColor] = useState("#93c5fd");
-  const [femaleIconColor, setFemaleIconColor] = useState("#93c5fd");
+const GenderButtons = ({
+  height,
+  availableGenders,
+  gender,
+  setGender,
+}: GenderButtonsProps) => {
+  const [maleIconColor, setMaleIconColor] = useState<string>(
+    themeColors.synthesis[200]
+  );
+  const [femaleIconColor, setFemaleIconColor] = useState<string>(
+    themeColors.synthesis[200]
+  );
 
   useEffect(() => {
     if (gender === "male") {
-      setMaleIconColor("#1d4ed8");
-      setFemaleIconColor("#93c5fd");
+      setMaleIconColor(themeColors.synthesis[600]);
+      setFemaleIconColor(themeColors.synthesis[200]);
     } else {
-      setMaleIconColor("#93c5fd");
-      setFemaleIconColor("#1d4ed8");
+      setFemaleIconColor(themeColors.synthesis[600]);
+      setMaleIconColor(themeColors.synthesis[200]);
     }
   }, [gender]);
 
   return (
     <div className="flex flex-row justify-center h-full w-full p-1">
-      <div className="px-2">
-        <button
-          className=" p-1 rounded-xl"
-          onMouseEnter={() => {
-            setMaleIconColor("#1d4ed8");
-          }}
-          onMouseLeave={() => {
-            if (gender !== "male") {
-              setMaleIconColor("#93c5fd");
-            }
-          }}
-          onClick={() => {
-            setGender("male");
-          }}
-        >
-          <MaleIcon color={maleIconColor} height={height} />
-        </button>
-      </div>
-      <div className="px-2">
-        <button
-          className=" p-1 rounded-xl"
-          onMouseEnter={() => {
-            setFemaleIconColor("#1d4ed8");
-          }}
-          onMouseLeave={() => {
-            if (gender !== "female") {
-              setFemaleIconColor("#93c5fd");
-            }
-          }}
-          onClick={() => {
-            setGender("female");
-          }}
-        >
-          <FemaleIcon color={femaleIconColor} height={height} />
-        </button>
-      </div>
+      {availableGenders && availableGenders.has("male") ? (
+        <div className="px-2">
+          <button
+            className="p-1 rounded-xl opacity-80 hover:opacity-100"
+            onMouseEnter={() => {
+              setMaleIconColor(themeColors.synthesis[600]);
+            }}
+            onMouseLeave={() => {
+              if (gender !== "male") {
+                setMaleIconColor(themeColors.synthesis[200]);
+              }
+            }}
+            onClick={() => {
+              setGender("male");
+            }}
+          >
+            <MaleIcon color={maleIconColor} height={height} />
+          </button>
+        </div>
+      ) : null}
+      {availableGenders && availableGenders.has("female") ? (
+        <div className="px-2">
+          <button
+            className=" p-1 rounded-xl"
+            onMouseEnter={() => {
+              setFemaleIconColor(themeColors.synthesis[600]);
+            }}
+            onMouseLeave={() => {
+              if (gender !== "female") {
+                setFemaleIconColor(themeColors.synthesis[200]);
+              }
+            }}
+            onClick={() => {
+              setGender("female");
+            }}
+          >
+            <FemaleIcon color={femaleIconColor} height={height} />
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

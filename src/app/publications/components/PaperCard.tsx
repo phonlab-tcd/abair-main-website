@@ -1,8 +1,8 @@
 import React from "react";
-import { Paper } from "./PaperClient";
 import Link from "next/link";
+import { PaperModel } from "@/models";
 
-const PaperCard: React.FC<Paper> = ({
+const PaperCard = ({
   id,
   title,
   abstract,
@@ -10,7 +10,9 @@ const PaperCard: React.FC<Paper> = ({
   pdf_url,
   publication_category,
   authors,
-}) => {
+}: PaperModel) => {
+  const imageUrl =
+    "https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/news/Neasa_UK_Speech_Keynote.JPG";
   const titleLines = 4; // Number of lines for the title
 
   const subheading =
@@ -20,8 +22,9 @@ const PaperCard: React.FC<Paper> = ({
   const authorNames = authors.join(",  "); // Join author names with a comma separator
 
   return (
-    <Link href={`/publications/${id}`}>
-      <div className="relative min-h-[250px] h-[400px] p-[16px] bg-white shadow-md rounded-md  transition-colors duration-300 hover:bg-green-100">
+    <div className="relative min-h-[250px] h-[400px] p-[16px] bg-white shadow-md rounded-md  transition-colors duration-300 hover:bg-green-100">
+      {/* <a href={pdf_url} target="_blank" rel="noopener noreferrer"> */}
+      <Link href={`/publications/${id}`}>
         <div className=" flex flex-1 flex-col">
           <div
             className="flex-none"
@@ -51,8 +54,9 @@ const PaperCard: React.FC<Paper> = ({
             {publication_category}
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+      {/* </a> */}
+    </div>
   );
 };
 

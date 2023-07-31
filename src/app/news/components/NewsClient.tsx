@@ -3,32 +3,15 @@
 import React, { useState, useEffect } from "react";
 import NewsList from "./NewsList";
 import NewsFilters from "./NewsFilters";
-
-export interface News {
-  id: number;
-  created_at: string;
-  date: string;
-  title_en: string;
-  blurb_en: string;
-  body_en: null | string;
-  images: { url: string }[];
-  title_ga: string;
-  blurb_ga: string;
-  body_ga: null | string;
-  video: null | string;
-
-  // new props
-
-  news_category: string;
-}
+import { NewsModel } from "@/models";
 
 interface NewsProps {
-  news: News[];
+  news: NewsModel[];
 }
 
 export default function NewsClient({ news }: NewsProps) {
-  const [filteredData, setFilteredData] = useState<News[]>([]);
-  const [initialData, setInitialData] = useState<News[]>([]);
+  const [filteredData, setFilteredData] = useState<NewsModel[]>([]);
+  const [initialData, setInitialData] = useState<NewsModel[]>([]);
 
   //const initialData: News[] = [];
   useEffect(() => {
@@ -39,7 +22,7 @@ export default function NewsClient({ news }: NewsProps) {
     }
   }, [news]);
 
-  const handleFilteredData = (data: News[]) => {
+  const handleFilteredData = (data: NewsModel[]) => {
     setFilteredData(data);
   };
 

@@ -1,25 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-
-import { News } from "./NewsClient";
 import Link from "next/link";
+import { NewsModel } from "@/models";
 
-const NewsCard: React.FC<News> = ({
+const NewsCard = ({
   id,
   title_en,
   blurb_en,
   date,
   images,
   news_category,
-}) => {
-  const imageUrl = images[0]?.url; // Safely access the URL of the first image
+}: NewsModel) => {
+  let imageUrl = "";
+  if (images) {
+    imageUrl = images[0]?.url; // Safely access the URL of the first image
+  }
   const headline = title_en; // Use title_en as headline
-  const subheading =
-    blurb_en.length > 136 ? `${blurb_en.slice(0, 136)}...` : blurb_en;
+
+  let subheading = "";
+  if (blurb_en) {
+    subheading =
+      blurb_en.length > 136 ? `${blurb_en?.slice(0, 136)}...` : blurb_en;
+  }
 
   return (
-    <Link href={`/news/${id}`}>
-      <div className="relative min-h-[250px] h-[400px] p-[16px] bg-white shadow-sm rounded-sm  transition-colors duration-300 hover:bg-primary-100">
+    <div className="relative min-h-[250px] h-[400px] p-[16px] bg-white shadow-sm rounded-sm  transition-colors duration-300 hover:bg-primary-100">
+      <Link href={`/news/${id}`}>
         <img
           src={imageUrl}
           alt={"altText"}
@@ -39,8 +45,9 @@ const NewsCard: React.FC<News> = ({
             {news_category}
           </span>
         </div>
-      </div>
-    </Link>
+        {/* </a> */}
+      </Link>
+    </div>
   );
 };
 

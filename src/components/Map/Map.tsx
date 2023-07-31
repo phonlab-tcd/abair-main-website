@@ -2,39 +2,33 @@
 
 import { useState } from "react";
 import irelandMapData from "./irelandMapData";
+import { themeColors } from "@/theme";
 interface mapDataModel {
   name: string;
   coordinates: string;
 }
+import { Dispatch, SetStateAction } from "react";
 
 interface MapProps {
   height?: number;
-  mapData?: mapDataModel[];
-  gaeltachts?: string[];
-  selectedCounty?: string;
-  setSelectedCounty?: (name: string) => void;
+  dialect: string | undefined;
+  setDialect: Dispatch<SetStateAction<string | undefined>>;
 }
 
-const Map = ({
-  height = 400,
-  mapData = irelandMapData,
-  gaeltachts = ["Ulster", "Connemara", "Munster"],
-  selectedCounty = "Ulster",
-  setSelectedCounty = () => {
-    console.log("setSelectedCounty complete");
-  },
-}: MapProps) => {
+const Map = ({ height = 400, dialect, setDialect }: MapProps) => {
   const [hoverCounty, setHoverCounty] = useState("");
-  const [selectCounty, setSelectCounty] = useState(selectedCounty);
+
+  const mapData = irelandMapData;
+  const gaeltachts = ["Ulster", "Connemara", "Munster"];
 
   const getMapColor = (c: mapDataModel) => {
     return gaeltachts.includes(c.name)
       ? c.name === hoverCounty
-        ? ["rgb(30 58 138)", "rgb(30 58 138)"]
-        : c.name === selectCounty
-        ? ["rgb(30 64 175)", "rgb(30 58 138)"]
-        : ["rgb(191 219 254)", "rgb(96 165 250)"]
-      : ["rgb(220 252 231)", "rgb(74 222 128)"];
+        ? [themeColors.synthesis[500], themeColors.synthesis[500]]
+        : c.name === dialect
+        ? [themeColors.synthesis[500], themeColors.synthesis[500]]
+        : [themeColors.synthesis[200], themeColors.synthesis[500]]
+      : [themeColors.primary[200], themeColors.primary[200]];
   };
 
   const handleMouseEnter = (county: string) => {
@@ -46,10 +40,9 @@ const Map = ({
   };
 
   const handleClick = (county: string) => {
-    if (county !== selectCounty) {
+    if (county !== dialect) {
       if (gaeltachts.includes(county)) {
-        setSelectCounty(county);
-        setSelectedCounty(county);
+        setDialect(county);
       }
     }
   };
@@ -63,7 +56,7 @@ const Map = ({
               key={i}
               fill={getMapColor(c)[0]}
               stroke={getMapColor(c)[1]}
-              opacity={gaeltachts.includes(c.name) ? 0.6 : 1}
+              opacity={gaeltachts.includes(c.name) ? 0.8 : 1}
               onMouseEnter={() => handleMouseEnter(c.name)}
               onClick={() => {
                 handleClick(c.name);
@@ -72,7 +65,7 @@ const Map = ({
             >
               <path
                 d={c.coordinates}
-                strokeWidth={gaeltachts.includes(c.name) ? "2.5" : "0.5"}
+                strokeWidth={gaeltachts.includes(c.name) ? "4" : "0.5"}
               />
             </g>
           ))}

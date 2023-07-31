@@ -17,10 +17,6 @@ const Navbar = () => {
   const [burgerMenuHover, setBurgerMenuHover] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
-  useEffect(() => {
-    console.log("userDropdownArgs:", userDropdownArgs);
-  }, [userDropdownArgs]);
-
   return (
     <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">
       <div className="h-12 lg:h-16 flex flex-row justify-between max-w-6xl w-full">

@@ -73,7 +73,6 @@ const CanvasDrawLine = ({
         ]);
       }
     });
-    console.log("animatedMovementCoords: ", animatedMovementCoords);
   };
 
   determineAnimatedMovements();

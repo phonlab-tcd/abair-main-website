@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/sections";
+import { Navbar, Footer } from "@/sections";
 
 export const metadata: Metadata = {
   title: "ABAIR",
@@ -17,6 +17,7 @@ export default function RootLayout({
         <Navbar />
 
         <div className="pt-12 lg:pt-16">{children}</div>
+        <Footer />
       </body>
     </html>
   );
