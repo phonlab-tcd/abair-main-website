@@ -8,15 +8,15 @@ import { useEffect, useState } from "react";
 interface ApplicationsProps {
   flashApplicationColor?: string;
   applicationColor?: string;
-  delayToStartFlash: number;
-  flashDuration: number;
 }
+import {
+  delayToStartRecognitionCardFlash,
+  cardFlashDuration,
+} from "../animationTimings/animationTimings";
 
 const Applications = ({
   flashApplicationColor = "bg-applications-500",
   applicationColor = "bg-applications-400",
-  delayToStartFlash,
-  flashDuration,
 }: ApplicationsProps) => {
   const [startApplicationsAnimation, setStartApplicationsAnimation] =
     useState(false);
@@ -26,14 +26,14 @@ const Applications = ({
       setStartApplicationsAnimation(true);
       setTimeout(() => {
         setStartApplicationsAnimation(false);
-      }, flashDuration);
-    }, delayToStartFlash);
+      }, cardFlashDuration);
+    }, delayToStartRecognitionCardFlash);
   }, []);
 
   return (
     <div className="z-0 -mt-[20px] w-screen overflow-x-hidden">
       <div
-        className={`ml-[-25%] h-[150px] w-[150%] rounded-t-[40%] md:rounded-t-[100%] transition-colors duration-${flashDuration} ${
+        className={`ml-[-25%] h-[150px] w-[150%] rounded-t-[40%] md:rounded-t-[100%] transition-colors duration-${cardFlashDuration} ${
           startApplicationsAnimation ? flashApplicationColor : applicationColor
         }`}
       >

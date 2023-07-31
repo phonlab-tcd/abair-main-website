@@ -12,17 +12,17 @@ import {
 import { Button, PlaybackCard } from "abair-web-components";
 import { themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
+import {
+  delayToStartRecognitionCardFlash,
+  cardFlashDuration,
+} from "../animationTimings/animationTimings";
 
 interface RecognitionProps {
   flashRecognitionTitleColor?: string;
-  delayToStartFlash: number;
-  flashDuration: number;
 }
 
 const Recognition = ({
   flashRecognitionTitleColor = "bg-recognition-500",
-  delayToStartFlash,
-  flashDuration,
 }: RecognitionProps) => {
   const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
     useState(false);
@@ -85,8 +85,8 @@ const Recognition = ({
       setStartRecognitionBorderAnimation(true);
       setTimeout(() => {
         setStartRecognitionBorderAnimation(false);
-      }, flashDuration);
-    }, delayToStartFlash);
+      }, cardFlashDuration);
+    }, delayToStartRecognitionCardFlash);
   }, []);
 
   useEffect(() => {
@@ -101,7 +101,7 @@ const Recognition = ({
     >
       <div className="flex justify-center">
         <div
-          className={`w-full h-[48px] transition-all duration-${flashDuration}  ${
+          className={`w-full h-[48px] transition-all duration-${cardFlashDuration}  ${
             startRecognitionBorderAnimation
               ? flashRecognitionTitleColor
               : "bg-recognition-400"

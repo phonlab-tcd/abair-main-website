@@ -6,17 +6,17 @@ import { Map, GenderButtons, PopupBackground } from "@/components";
 import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/models";
+import {
+  delayToStartSynthesisCardFlash,
+  cardFlashDuration,
+} from "../animationTimings/animationTimings";
 
 interface SynthesisProps {
   flashSynthesisTitleColor?: string;
-  delayToStartFlash: number;
-  flashDuration: number;
 }
 
 const Synthesis = ({
   flashSynthesisTitleColor = "bg-synthesis-600",
-  delayToStartFlash,
-  flashDuration,
 }: SynthesisProps) => {
   const [startSynthesisBorderAnimation, setStartSynthesisBorderAnimation] =
     useState(false);
@@ -44,8 +44,8 @@ const Synthesis = ({
       setStartSynthesisBorderAnimation(true);
       setTimeout(() => {
         setStartSynthesisBorderAnimation(false);
-      }, flashDuration);
-    }, delayToStartFlash);
+      }, cardFlashDuration);
+    }, delayToStartSynthesisCardFlash);
 
     if (!synthesisVoices) {
       getVoicesMetadata().then((res) => {
@@ -140,6 +140,8 @@ const Synthesis = ({
             setSynthesisAudio("data:audio/wav;base64," + res.audioContent);
             setAwaitingSynthesis(false);
             setSynthesisedTextShowing(true);
+            setSynthesisText(synthesisText);
+            setTimeout(playSynthesisAudio, 100); // allow
           }
         );
       } else {
@@ -155,7 +157,7 @@ const Synthesis = ({
       className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge  relative h-synthRecCard lg:h-synthRecCardLarge mb-[40px] md:mb-0 bg-white`}
     >
       <div
-        className={`w-full h-[48px] transition-all duration-${flashDuration} ${
+        className={`w-full h-[48px] transition-all duration-${cardFlashDuration} ${
           startSynthesisBorderAnimation
             ? flashSynthesisTitleColor
             : "bg-synthesis-500"
@@ -221,7 +223,7 @@ const Synthesis = ({
                 </Button>
 
                 <PlaybackCard
-                  text={"cad é sin"}
+                  text={synthesisText}
                   version="synthesis"
                   recentlyCopied={recentlyCopied}
                   sidebar={false}
