@@ -19,8 +19,6 @@ interface SynthesisProps {
 const Synthesis = ({
   flashSynthesisTitleColor = "bg-synthesis-600",
 }: SynthesisProps) => {
-  const [startSynthesisBorderAnimation, setStartSynthesisBorderAnimation] =
-    useState(false);
   const [availableGenders, setAvailableGenders] = useState<
     Set<string> | undefined
   >();
@@ -47,13 +45,7 @@ const Synthesis = ({
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    setTimeout(() => {
-      setStartSynthesisBorderAnimation(true);
-      setTimeout(() => {
-        setStartSynthesisBorderAnimation(false);
-      }, cardFlashDuration);
-    }, delayToStartSynthesisCardFlash);
-
+    handleResize();
     if (!synthesisVoices) {
       getVoicesMetadata().then((res) => {
         setSynthesisVoices(res);
@@ -172,8 +164,13 @@ const Synthesis = ({
         </div>
       </div>
 
-      <div className="w-full">
-        <div className="flex flex-row relative h-synthRecCardInner lg:h-synthRecCardLargeInner">
+      <div className="w-full relative h-synthRecCardInner lg:h-synthRecCardLargeInner ">
+        <div className="h-[24px] lg:h-[32px] w-full flex justify-center items-end">
+          <div className="text-sm lg:text-base font-light text-synthesis-700">
+            select dialect & gender &#8680; type &#8680; generate speech
+          </div>
+        </div>
+        <div className="flex flex-row lg:-mt-2">
           <div className="w-[40%] lg:w-[37%] ml-1 lg:ml-2 flex flex-col justify-center">
             <Map
               height={["lg", "xl"].includes(breakpoint) ? 220 : 180}
@@ -199,7 +196,7 @@ const Synthesis = ({
 
             <div className="flex justify-center items-center h-12 lg:h-16">
               <Button
-                sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                sizes="w-28 lg:w-36 p-1 flex justify-center rounded-sm"
                 colors="bg-synthesis-500 hover:bg-synthesis-600"
                 onClick={initTTS}
               >
@@ -221,10 +218,10 @@ const Synthesis = ({
           </div>
           {synthesisedTextShowing && (
             <PopupBackground>
-              <div className="w-full px-4 transition-all duration-600 relative">
+              <div className="w-full px-2 transition-all duration-600 relative">
                 <Button
                   colors="border-2 border-synthesis-500 bg-white text-synthesis-500 hover:bg-synthesis-50"
-                  sizes="absolute -top-3 right-1 font-bold rounded-full px-2"
+                  sizes="absolute -top-3 right-0 font-bold rounded-full px-2"
                   onClick={() => {
                     setSynthesisedTextShowing(false);
                   }}
@@ -253,6 +250,7 @@ const Synthesis = ({
                     downloadSynthesisAudio();
                   }}
                   audioPlaying={synthesisAudioPlaying}
+                  small={["lg", "xl"].includes(breakpoint) ? false : true}
                 >
                   <audio
                     src={synthesisAudio}

@@ -30,7 +30,7 @@ export default {
       height: themeHeight,
       dropShadow: {
         ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",
-        applications: "0px 5px 5px rgba(0, 0, 0, 0.4)",
+        applications: "0px 5px 8px rgba(0, 0, 0, 0.4)",
       },
       animation: {
         marquee: "marquee 120s linear infinite",

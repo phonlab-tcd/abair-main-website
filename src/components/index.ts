@@ -2,6 +2,7 @@ import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import GenderButtons from "./GenderButtons/GenderButtons";
 import FadeInText from "./FadeInText/FadeInText";
 import TypingText from "./TypingText/TypingText";
+import NewsCard from "./NewsCard/NewsCard";
 import CanvasDrawLine from "./CanvasDrawLine/CanvasDrawLine";
 
 import AnimatedLines from "./AnimatedLines/AnimatedLines";
@@ -12,6 +13,7 @@ import RecognitionRecordStopButtons from "./RecognitionRecordStopButtons/Recogni
 import RecognitionWaveVisual from "./RecognitionWaveVisual/RecognitionWaveVisual";
 
 export {
+  NewsCard,
   DropdownMenu,
   FadeInText,
   TypingText,

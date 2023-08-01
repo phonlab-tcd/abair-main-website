@@ -1,8 +1,8 @@
 const themeHeight = {
-  synthRecCard: 256,
-  synthRecCardInner: 256 - 40,
-  synthRecCardLarge: 300,
-  synthRecCardLargeInner: 300 - 48,
+  synthRecCard: 280,
+  synthRecCardInner: 240,
+  synthRecCardLarge: 320,
+  synthRecCardLargeInner: 272,
 };
 
 export default themeHeight;

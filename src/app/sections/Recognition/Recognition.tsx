@@ -29,8 +29,6 @@ interface RecognitionProps {
 const Recognition = ({
   flashRecognitionTitleColor = "bg-recognition-500",
 }: RecognitionProps) => {
-  const [startRecognitionBorderAnimation, setStartRecognitionBorderAnimation] =
-    useState(false);
   const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
 
   const [mediaRecorder, setMediaRecorder] = useState<
@@ -108,12 +106,7 @@ const Recognition = ({
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-    setTimeout(() => {
-      setStartRecognitionBorderAnimation(true);
-      setTimeout(() => {
-        setStartRecognitionBorderAnimation(false);
-      }, cardFlashDuration);
-    }, delayToStartRecognitionCardFlash);
+    handleResize();
   }, []);
 
   useEffect(() => {
@@ -131,8 +124,13 @@ const Recognition = ({
           Recognition
         </div>
       </div>
-      <div className="w-full">
-        <div className="flex flex-row relative h-synthRecCardInner lg:h-synthRecCardLargeInner">
+      <div className="w-full  relative h-synthRecCardInner lg:h-synthRecCardLargeInner">
+        <div className="h-[24px] lg:h-[32px] w-full flex justify-center items-end">
+          <div className="text-sm lg:text-base font-light text-recognition-700">
+            go to a quiet space &#8680; tap microphone &#8680; speak
+          </div>
+        </div>
+        <div className="lg:-mt-2 flex flex-row h-full">
           <div className="w-full pt-6">
             <div className=" bg-inherit w-full h-28 px-8">
               <div className="relative h-full">
@@ -222,11 +220,11 @@ const Recognition = ({
           {recognisedTextShowing && (
             <>
               <PopupBackground>
-                <div className="w-full px-4 transition-all duration-600 relative">
+                <div className="w-full px-2 transition-all duration-600 relative">
                   {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
                   <Button
                     colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
-                    sizes="absolute -top-3 right-1 font-bold rounded-full px-2"
+                    sizes="absolute -top-3 -right-1 font-bold rounded-full px-2"
                     onClick={() => {
                       setRecognisedTextShowing(false);
                     }}
@@ -254,6 +252,7 @@ const Recognition = ({
                       downloadRecognitionAudio();
                     }}
                     audioPlaying={recognitionAudioPlaying}
+                    small={["lg", "xl"].includes(breakpoint) ? false : true}
                   >
                     <audio
                       src={recognitionAudio}

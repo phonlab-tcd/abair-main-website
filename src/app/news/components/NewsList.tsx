@@ -1,12 +1,12 @@
 import React from "react";
-import NewsCard from "./NewsCard";
-import { News } from "./NewsClient";
+import NewsCard from "@/components/NewsCard/NewsCard";
+import { NewsModel } from "@/models";
 
 interface NewsListProps {
-  newsData: News[];
+  newsData: NewsModel[];
 }
 
-const NewsList: React.FC<NewsListProps> = ({ newsData }) => {
+const NewsList = ({ newsData }: NewsListProps) => {
   return (
     <div className="p-4">
       <div className="flex mb-4"></div>
