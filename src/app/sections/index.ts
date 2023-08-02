@@ -1,5 +1,6 @@
 import Applications from "./Applications/Applications";
 import News from "./News/News";
+import Publications from "./Publications/Publications";
 import Synthesis from "./Synthesis/Synthesis";
 import Recognition from "./Recognition/Recognition";
 import IntroDescription from "./IntroDescription/IntroDescription";
@@ -14,4 +15,5 @@ export {
   TopImages,
   IntroDescription,
   TopText,
+  Publications,
 };

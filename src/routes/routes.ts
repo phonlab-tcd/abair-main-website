@@ -28,10 +28,10 @@ const routes = [
     path: "/publications",
     name: "publications",
   },
-  {
-    path: "/people",
-    name: "people",
-  },
+  // {
+  //   path: "/people",
+  //   name: "people",
+  // },
 ];
 
 export default routes;

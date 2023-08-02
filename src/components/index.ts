@@ -11,6 +11,7 @@ import Map from "./Map/Map";
 import Media from "./Media/Media";
 import RecognitionRecordStopButtons from "./RecognitionRecordStopButtons/RecognitionRecordStopButtons";
 import RecognitionWaveVisual from "./RecognitionWaveVisual/RecognitionWaveVisual";
+import AccordionClient from "./AccordionClient/AccordionClient";
 
 export {
   NewsCard,
@@ -25,4 +26,5 @@ export {
   PopupBackground,
   RecognitionRecordStopButtons,
   RecognitionWaveVisual,
+  AccordionClient,
 };

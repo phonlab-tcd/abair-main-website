@@ -1,5 +1,9 @@
+"use client";
+
+import { getBreakpoint } from "@/utils";
 import imageCarouselData from "./imageCarouselData";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface ImageCarouselDataModel {
   path: string;
@@ -7,6 +11,20 @@ interface ImageCarouselDataModel {
 }
 
 const TopImages = () => {
+  const [breakpoint, setBreakpoint] = useState<string>("");
+
+  const handleResize = () => {
+    setBreakpoint(getBreakpoint());
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="w-full overflow-hidden h-full">
       <div className="relative flex overflowx-hidden">
@@ -15,8 +33,12 @@ const TopImages = () => {
             <Image
               key={index}
               src={"/frontPageImages" + image.path}
-              width={144 * image.ratio}
-              height={144}
+              width={
+                ["lg", "xl"].includes(breakpoint)
+                  ? 160 * image.ratio
+                  : 112 * image.ratio
+              }
+              height={["lg", "xl"].includes(breakpoint) ? 160 : 112}
               alt={`Image ${index}`}
             />
           ))}
@@ -26,8 +48,12 @@ const TopImages = () => {
             <Image
               key={index}
               src={"/frontPageImages" + image.path}
-              width={144 * image.ratio}
-              height={144}
+              width={
+                ["lg", "xl"].includes(breakpoint)
+                  ? 160 * image.ratio
+                  : 112 * image.ratio
+              }
+              height={["lg", "xl"].includes(breakpoint) ? 160 : 112}
               alt={`Image ${index}`}
             />
           ))}

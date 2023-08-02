@@ -17,12 +17,12 @@ const News = async () => {
   return (
     <div className="w-full ">
       <div className="w-full flex justify-center mt-8">
-        <div className="flex items-center  text-xl lg:text-2xl font-mono">
+        <div className="flex items-center text-grey-600 text-xl lg:text-2xl font-mono">
           Recent News & Events
         </div>
       </div>
-      <div className="w-full flex justify-center">
-        <div className="w-full flex max-w-6xl justify-center">
+      <div className="w-full flex justify-center my-4">
+        <div className="flex flex-wrap w-full max-w-6xl justify-center">
           {newsData.slice(0, 3).map((news, i) => (
             <div key={i} className="m-2">
               <Link href={`/news/${news.id}`}>
@@ -40,10 +40,10 @@ const News = async () => {
       </div>
       <div className="flex justify-center py-8">
         <Button
-          colors="bg-inherit text-grey-700 border border-grey-700 hover:bg-grey-200"
-          sizes="w-28 lg:w-36 p-1 rounded-sm"
+          colors="bg-inherit text-grey-600 text-lg lg:text-xl hover:text-grey-700 hover:underline"
+          sizes="py-0.5 px-1 rounded-sm"
         >
-          see all
+          see all <span className="text-3xl lg:text-4xl">&#8594;</span>
         </Button>
       </div>
     </div>

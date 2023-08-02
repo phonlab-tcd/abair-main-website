@@ -5,16 +5,17 @@ import {
   Recognition,
   Applications,
   News,
+  Publications,
 } from "./sections";
 
 export default function Page() {
   return (
-    <div className="w-screen relative">
-      <div className="w-full relative h-[144px]">
+    <div className="w-[100%] relative">
+      <div className="w-full relative">
         <TopImages />
       </div>
 
-      <div className="my-4 md:my-6 flex w-full justify-center relative">
+      <div className="py-4 md:py-6 flex w-full justify-center relative">
         <TopText />
       </div>
       <div className="flex w-full justify-center relative">
@@ -28,11 +29,15 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex w-full justify-center relative">
+      <div className="flex w-full justify-center relative bg-white">
         <Applications />
       </div>
       <div className="flex w-full justify-center relative">
+        {/* @ts-expect-error Server Component */}
         <News />
+      </div>
+      <div className="flex w-full justify-center relative bg-white">
+        <Publications />
       </div>
     </div>
   );

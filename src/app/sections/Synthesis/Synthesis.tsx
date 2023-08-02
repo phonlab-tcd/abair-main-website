@@ -209,10 +209,10 @@ const Synthesis = ({
             </div>
             <div className="absolute bottom-1 right-2 lg:right-4">
               <Button
-                colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600"
+                colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600 hover:underline"
                 sizes="py-0.5 px-1 rounded-sm"
               >
-                more options &#9656;
+                more options <span className="text-3xl">&#8594;</span>
               </Button>
             </div>
           </div>
