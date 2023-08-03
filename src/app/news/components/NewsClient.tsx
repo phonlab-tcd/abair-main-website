@@ -16,9 +16,8 @@ export default function NewsClient({ news }: NewsProps) {
   //const initialData: News[] = [];
   useEffect(() => {
     if (news) {
-      const sortedData = news.sort((a, b) => a.id - b.id); // Sort by ID in ascending order
-      setFilteredData(sortedData);
-      setInitialData(sortedData);
+      setFilteredData(news);
+      setInitialData(news);
     }
   }, [news]);
 
@@ -27,26 +26,20 @@ export default function NewsClient({ news }: NewsProps) {
   };
 
   return (
-    <div className="w-screen">
-      <div className="w-full flex justify-center">
-        <div className="container flex">
-          <div className="w-1/5 mt-[93px]">
-            <div className="">
-              <NewsFilters
-                newsData={initialData}
-                onFilteredData={handleFilteredData}
-              />
-            </div>
-          </div>
-          <div className="w-4/5 h-24 pl-8">
-            <div className="text-4xl md:text-6xl text-black text-center">
-              News
-            </div>
-            <div>
-              <NewsList newsData={filteredData} />
-            </div>
-          </div>
+    <div className="w-full flex justify-center">
+      <div className="w-full max-w-7xl">
+        <div className="text-4xl lg:text-6xl text-black text-center py-4">
+          News
         </div>
+
+        <div className="w-full">
+          <NewsFilters
+            newsData={initialData}
+            onFilteredData={handleFilteredData}
+          />
+        </div>
+
+        <NewsList newsData={filteredData} />
       </div>
     </div>
   );
