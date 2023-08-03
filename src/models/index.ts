@@ -4,7 +4,7 @@ interface PaperModel {
   title: string;
   abstract?: string;
   pdf_url?: string;
-  year_published?: string;
+  year_published?: number;
   authors?: string[];
   publication_category?: string;
 }
@@ -15,7 +15,7 @@ interface PersonModel {
   image: string;
   bio: string;
   role: string;
-  ab_publications: PaperModel[];
+  ab_publications?: PaperModel[];
 }
 
 interface NewsImagesModel {

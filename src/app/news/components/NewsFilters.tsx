@@ -3,11 +3,11 @@ import SearchBar from "./SearchBar";
 import CategoryFilter from "./CategoryFilter";
 import SortMenu from "./SortMenu";
 import DateRangePicker from "./DateRangePicker";
-import { News } from "./NewsClient";
+import { NewsModel } from "@/models";
 
 interface NewsFiltersProps {
-  newsData: News[];
-  onFilteredData: (filteredData: News[]) => void;
+  newsData: NewsModel[];
+  onFilteredData: (filteredData: NewsModel[]) => void;
 }
 
 const NewsFilters: React.FC<NewsFiltersProps> = ({
@@ -28,7 +28,7 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
     endDate: string,
     searchQuery: string
   ) => {
-    let filteredData: News[] = newsData;
+    let filteredData: NewsModel[] = newsData;
 
     console.log("filtering by: " + searchQuery);
 
@@ -37,7 +37,7 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
       const endDateObj = new Date(endDate);
 
       filteredData = filteredData.filter((news) => {
-        const newsDate = new Date(news.date);
+        const newsDate = new Date(news.date as string);
         return newsDate >= startDateObj && newsDate <= endDateObj;
       });
     }
@@ -52,15 +52,17 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
 
     if (sortOption !== "") {
       filteredData.sort((a, b) => {
-        const dateA = new Date(a.date).getTime();
-        const dateB = new Date(b.date).getTime();
+        const dateA = new Date(a.date as string).getTime();
+        const dateB = new Date(b.date as string).getTime();
         return sortOption === "oldest" ? dateA - dateB : dateB - dateA;
       });
     }
 
     if (searchQuery !== "") {
-      filteredData = filteredData.filter((news) =>
-        news.title_en.toLowerCase().includes(searchQuery.toLowerCase())
+      filteredData = filteredData.filter(
+        (news) =>
+          news.title_en &&
+          news.title_en.toLowerCase().includes(searchQuery.toLowerCase())
       );
     } else {
       filteredData = filteredData.filter((news) => news.title_en !== "");

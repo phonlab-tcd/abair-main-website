@@ -1,9 +1,9 @@
 import React from "react";
-import PaperCard from "./PaperCard";
-import { Paper } from "./PaperClient";
+import { PublicationCard } from "abair-web-components";
+import { PaperModel } from "@/models";
 
 interface PaperListProps {
-  paperData: Paper[];
+  paperData: PaperModel[];
 }
 
 const PaperList: React.FC<PaperListProps> = ({ paperData }) => {
@@ -12,7 +12,7 @@ const PaperList: React.FC<PaperListProps> = ({ paperData }) => {
       <div className="flex mb-4"></div>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {paperData.map((paper, index) => (
-          <PaperCard key={index} {...paper} />
+          <PublicationCard key={index} {...paper} />
         ))}
       </div>
     </div>

@@ -6,6 +6,7 @@ import Recognition from "./Recognition/Recognition";
 import IntroDescription from "./IntroDescription/IntroDescription";
 import TopText from "./TopText/TopText";
 import TopImages from "./TopImages/TopImages";
+import CoreTechnologies from "./CoreTechnologies/CoreTechnologies";
 
 export {
   Applications,
@@ -16,4 +17,5 @@ export {
   IntroDescription,
   TopText,
   Publications,
+  CoreTechnologies,
 };

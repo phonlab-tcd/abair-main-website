@@ -1,8 +1,7 @@
 import {
   TopImages,
   TopText,
-  Synthesis,
-  Recognition,
+  CoreTechnologies,
   Applications,
   News,
   Publications,
@@ -19,14 +18,7 @@ export default function Page() {
         <TopText />
       </div>
       <div className="flex w-full justify-center relative">
-        <div className="grid md:grid-cols-2 justify-center w-full max-w-6xl gap-[24px] lg:gap-[48px] mt-2 mb-12">
-          <div className="flex justify-center md:justify-end">
-            <Synthesis />
-          </div>
-          <div className="w-full flex justify-center md:justify-start">
-            <Recognition />
-          </div>
-        </div>
+        <CoreTechnologies />
       </div>
 
       <div className="flex w-full justify-center relative bg-white">
@@ -37,6 +29,7 @@ export default function Page() {
         <News />
       </div>
       <div className="flex w-full justify-center relative bg-white">
+        {/* @ts-expect-error Server Component */}
         <Publications />
       </div>
     </div>

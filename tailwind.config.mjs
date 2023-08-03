@@ -31,6 +31,7 @@ export default {
       dropShadow: {
         ABAIR: "0px 0px 10px rgba(0, 0, 0, 0.75)",
         applications: "0px 5px 8px rgba(0, 0, 0, 0.4)",
+        applicationsHover: "0px 5px 12px rgba(0, 0, 0, 0.4)",
       },
       animation: {
         marquee: "marquee 120s linear infinite",
@@ -45,6 +46,9 @@ export default {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0%)" },
         },
+      },
+      scale: {
+        102: "1.02",
       },
     },
   },

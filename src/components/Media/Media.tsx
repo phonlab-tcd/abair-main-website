@@ -70,7 +70,7 @@ const Media = ({
     if (mediaRecorder !== undefined) {
       mediaRecorder.onstop = (e: any) => {
         console.log("data available after MediaRecorder.stop() called.");
-        const blob = new Blob(chunks, { type: "audio/wav;" });
+        const blob = new Blob(chunks, { type: "audio/wav" });
         if (blob.size !== 0) {
           chunks = [];
           const audioURL = window.URL.createObjectURL(blob);

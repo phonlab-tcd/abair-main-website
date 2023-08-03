@@ -1,6 +1,7 @@
 "use client";
 import { getBreakpoint } from "@/utils";
 /* eslint-disable react-hooks/exhaustive-deps */
+import Link from "next/link";
 
 import { Button } from "abair-web-components";
 import Image from "next/image";
@@ -35,19 +36,21 @@ const Applications = () => {
         </div>
       </div>
       <div className="flex justify-center w-full py-4">
-        <Image
-          src={"/frontPageImages/applications.png"}
-          width={
-            ["lg", "xl"].includes(breakpoint)
-              ? 800
-              : breakpoint === "md"
-              ? 600
-              : 400
-          }
-          height={["lg", "xl"].includes(breakpoint) ? 400 : 250}
-          alt="ABAIR applications image"
-          className="drop-shadow-applications"
-        />
+        <Link href={`/applications`}>
+          <Image
+            src={"/frontPageImages/applications.png"}
+            width={
+              ["lg", "xl"].includes(breakpoint)
+                ? 800
+                : breakpoint === "md"
+                ? 600
+                : 400
+            }
+            height={["lg", "xl"].includes(breakpoint) ? 400 : 250}
+            alt="ABAIR applications image"
+            className="transition-all duration-300 drop-shadow-applications hover:drop-shadow-applicationsHover hover:scale-102"
+          />
+        </Link>
       </div>
       <div className="flex justify-center py-8">
         <Button

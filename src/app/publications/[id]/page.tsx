@@ -10,11 +10,13 @@ export async function generateStaticParams() {
     id: string;
   }
 
-  return publications
+  const publicationIds = publications
     ? publications.map((p) => ({
         id: String(p.id),
       }))
     : [];
+
+  return publicationIds;
 }
 
 interface PageProps {
