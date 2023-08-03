@@ -12,9 +12,9 @@ export default {
     "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "/home/john/Documents/abair/ABAIR-web-components/src/**/*.tsx", // needed to add this to import the tailwind css classes from the component library
-    "/home/john/johnsHDD/work/Irish/abairWebsite/ABAIR-web-components/src/**/*.tsx",
-    "./node_modules/abair-web-components/src/**/*.tsx",
+    "/home/john/Documents/abair/ABAIR-web-components/src/**/*.{js,ts,jsx,tsx,mdx}", // needed to add this to import the tailwind css classes from the component library
+    "/home/john/johnsHDD/work/Irish/abairWebsite/ABAIR-web-components/src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/abair-web-components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
