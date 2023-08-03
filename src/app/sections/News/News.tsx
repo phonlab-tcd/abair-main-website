@@ -42,12 +42,14 @@ const News = async () => {
         </div>
       </div>
       <div className="flex justify-center py-8">
-        <Button
-          colors="bg-inherit text-grey-800 text-lg lg:text-xl hover:text-grey-900 hover:underline"
-          sizes="py-0.5 px-1 rounded-sm"
-        >
-          see all <span className="text-3xl lg:text-4xl">&#8594;</span>
-        </Button>
+        <Link href={`/news`}>
+          <Button
+            colors="bg-inherit text-grey-800 text-lg lg:text-xl hover:text-grey-900 hover:underline"
+            sizes="py-0.5 px-1 rounded-sm"
+          >
+            see all <span className="text-3xl lg:text-4xl">&#8594;</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );

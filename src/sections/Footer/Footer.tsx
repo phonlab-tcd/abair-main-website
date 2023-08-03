@@ -7,10 +7,10 @@ import img from "next/image";
 function Footer() {
   // const { i18n } = useTranslation();
   return (
-    <div className="py-2 relative bg-grey-100">
-      <div>
-        <div className="flex flex-row spacing-2 justify-center items-center">
-          <div>
+    <div className="p-1 flex relativ w-full justify-center bg-grey-200">
+      <div className="w-full max-w-6xl">
+        <div className="flex flex-wrap justify-center">
+          <div className="m-1 lg:mx-4">
             <a href="https://www.chg.gov.ie/">
               <img
                 src={"/funders/DCHG_logo_small.png"}
@@ -20,7 +20,7 @@ function Footer() {
               />
             </a>
           </div>
-          <div>
+          <div className="m-1 lg:mx-4">
             <a href="https://www.chg.gov.ie/gaeltacht/20-year-strategy-for-the-irish-language-2010-2030/">
               <img
                 src={"/funders/COGG_logo_red.png"}
@@ -30,7 +30,7 @@ function Footer() {
               />
             </a>
           </div>
-          <div>
+          <div className="m-1 lg:mx-4">
             <a href="https://www.cogg.ie/en/">
               <img
                 src={"/funders/S20.png"}
@@ -42,7 +42,7 @@ function Footer() {
           </div>
         </div>
         {/* {i18n.language === 'en' ? ( */}
-        <div className="items-center">
+        <div className="text-center m-1 text-sm lg:text-base text-grey-600">
           Copyright © 2008&ndash;2022{" "}
           <a href="http://www.tcd.ie/slscs/clcs/psl/">
             Phonetics and Speech Laboratory
