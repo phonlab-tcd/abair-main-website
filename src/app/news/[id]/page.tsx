@@ -1,6 +1,6 @@
 import supabase from "@/services/supabase/supabase";
 import { notFound } from "next/navigation";
-
+import Image from "next/image";
 export async function generateStaticParams() {
   const { data: news } = await supabase.from("news_stories").select("id");
 
@@ -45,12 +45,14 @@ export default async function Page({ params }: PageProps) {
         <p className="text-gray-800 mb-4">{news.blurb_en}</p>
         <div className="flex space-x-2">
           {news.images.map((image: any, index: number) => (
-            <img
-              key={index}
-              src={image.url}
-              alt={image.toString()}
-              className="w-48 h-48 object-cover rounded-md"
-            />
+            <div key={index} className="w-48 h-48 object-cover rounded-md">
+              <Image
+                src={image.url}
+                alt={image.toString()}
+                height={200}
+                width={300}
+              />
+            </div>
           ))}
         </div>
         <div className="text-gray-800">{news.body_en}</div>

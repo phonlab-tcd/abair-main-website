@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { PaperModel } from "@/models";
-
+import DateRangePicker from "./DateRangePicker";
 import {
   AccordionClient,
   CategoryFilter,
   SortMenu,
-  DateRangePicker,
   SearchBar,
 } from "@/components";
 
@@ -42,7 +41,11 @@ const PaperFilters = ({
     if (startYear && endYear && yearRangeSelected) {
       filteredData = filteredData.filter((paper) => {
         const paperDate = paper.year_published;
-        return paperDate >= startYear && paperDate <= endYear;
+        if (paperDate) {
+          return paperDate >= startYear && paperDate <= endYear;
+        } else {
+          return true;
+        }
       });
     }
 
