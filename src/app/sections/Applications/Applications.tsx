@@ -35,18 +35,12 @@ const Applications = () => {
           accessibility and the public
         </div>
       </div>
-      <div className="flex justify-center w-full py-4">
+      <div className="flex justify-center w-full py-4 px-2">
         <Link href={`/applications`}>
           <Image
             src={"/frontPageImages/applications.png"}
-            width={
-              ["lg", "xl"].includes(breakpoint)
-                ? 800
-                : breakpoint === "md"
-                ? 600
-                : 400
-            }
-            height={["lg", "xl"].includes(breakpoint) ? 400 : 250}
+            width={800}
+            height={400}
             alt="ABAIR applications image"
             className="transition-all duration-300 drop-shadow-applications hover:drop-shadow-applicationsHover hover:scale-102"
           />
