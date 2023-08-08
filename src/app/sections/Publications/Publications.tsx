@@ -32,7 +32,12 @@ const Publications = async () => {
                 </div>
               </Link>
               <PublicationCard {...publication}>
-                <AccordionClient content={publication.abstract} />
+                <div>
+                  <AccordionClient
+                    title="abstract"
+                    content={publication.abstract}
+                  />
+                </div>
               </PublicationCard>
             </div>
           ))}

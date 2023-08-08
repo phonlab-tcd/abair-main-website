@@ -13,6 +13,11 @@ import RecognitionRecordStopButtons from "./RecognitionRecordStopButtons/Recogni
 import RecognitionWaveVisual from "./RecognitionWaveVisual/RecognitionWaveVisual";
 import AccordionClient from "./AccordionClient/AccordionClient";
 
+import CategoryFilter from "./Filters/CategoryFilter";
+import SortMenu from "./Filters/SortMenu";
+import DateRangePicker from "./Filters/DateRangePicker";
+import SearchBar from "./Filters/SearchBar";
+
 export {
   NewsCard,
   DropdownMenu,
@@ -27,4 +32,8 @@ export {
   RecognitionRecordStopButtons,
   RecognitionWaveVisual,
   AccordionClient,
+  CategoryFilter,
+  SortMenu,
+  DateRangePicker,
+  SearchBar,
 };

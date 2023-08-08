@@ -9,7 +9,7 @@ interface NewsListProps {
 
 const NewsList = ({ newsData }: NewsListProps) => {
   return (
-    <div className="flex flex-wrap border w-full justify-center min-w-[400px]">
+    <div className="flex flex-wrap w-full justify-center min-w-[400px]">
       {/* <div className="flex mb-4"></div>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
       {newsData.map((news, i) => (

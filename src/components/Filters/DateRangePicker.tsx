@@ -8,12 +8,12 @@ interface DateRangePickerProps {
   onApplyDateRange: () => void;
 }
 
-const DateRangePicker: React.FC<DateRangePickerProps> = ({
+const DateRangePicker = ({
   startDate,
   endDate,
   onStartDateChange,
   onEndDateChange,
-}) => {
+}: DateRangePickerProps) => {
   const handleStartDateChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -26,22 +26,23 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   };
 
   return (
-    <div>
-      <input
-        type="date"
-        placeholder="Start Date"
-        value={startDate}
-        onChange={handleStartDateChange}
-      />
-
-      <input
-        type="date"
-        placeholder="End Date"
-        value={endDate}
-        onChange={handleEndDateChange}
-      />
-
-      {/*<button onClick={onApplyDateRange}>Apply</button>*/}
+    <div className="my-1">
+      <div>
+        <input
+          type="date"
+          placeholder="Start Date"
+          value={startDate}
+          onChange={handleStartDateChange}
+        />
+      </div>
+      <div className="mt-2">
+        <input
+          type="date"
+          placeholder="End Date"
+          value={endDate}
+          onChange={handleEndDateChange}
+        />
+      </div>
     </div>
   );
 };

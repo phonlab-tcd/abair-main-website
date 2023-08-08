@@ -1,20 +1,25 @@
-import React, { useState } from "react";
-import SearchBar from "./SearchBar";
-import CategoryFilter from "./CategoryFilter";
-import SortMenu from "./SortMenu";
-import DateRangePicker from "./DateRangePicker";
+import React, { useEffect, useState } from "react";
 import { NewsModel } from "@/models";
-import { AccordionClient } from "@/components";
+import {
+  AccordionClient,
+  CategoryFilter,
+  SortMenu,
+  DateRangePicker,
+  SearchBar,
+} from "@/components";
 
 interface NewsFiltersProps {
+  largeScreen: boolean;
   newsData: NewsModel[];
   onFilteredData: (filteredData: NewsModel[]) => void;
 }
 
-const NewsFilters: React.FC<NewsFiltersProps> = ({
+const NewsFilters = ({
+  largeScreen,
   newsData,
   onFilteredData,
-}) => {
+}: NewsFiltersProps) => {
+  const [categories, setCategories] = useState<(string | undefined)[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -31,8 +36,6 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
   ) => {
     let filteredData: NewsModel[] = newsData;
 
-    console.log("filtering by: " + searchQuery);
-
     if (startDate && endDate && dateRangeSelected) {
       const startDateObj = new Date(startDate);
       const endDateObj = new Date(endDate);
@@ -43,7 +46,7 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
       });
     }
 
-    if (category !== "All" && category !== "") {
+    if (category !== "all" && category !== "") {
       filteredData = filteredData.filter(
         (news) => news.news_category === category
       );
@@ -72,11 +75,20 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
     onFilteredData(filteredData);
   };
 
+  useEffect(() => {
+    const categories = [...new Set(newsData.map((obj) => obj.news_category))];
+    setCategories(categories);
+  }, []);
+
   return (
-    <div className="flex flex-wrap w-full justify-center p-4 bg-teal-200">
+    <div className="w-full justify-center bg-teal-400">
       <AccordionClient
+        search={true}
+        title="category"
+        open={largeScreen}
         content={
           <CategoryFilter
+            categories={categories}
             selectedCategory={selectedCategory}
             onCategoryChange={(category) => {
               setSelectedCategory(category);
@@ -85,62 +97,88 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
           />
         }
       />
-
-      <SortMenu
-        sortBy={sortBy}
-        onSortChange={(sortOption) => {
-          setSortBy(sortOption);
-          filterNewsData(
-            selectedCategory,
-            sortOption,
-            startDate,
-            endDate,
-            searchQuery
-          );
-        }}
+      <AccordionClient
+        search={true}
+        title="sort by"
+        open={largeScreen}
+        content={
+          <SortMenu
+            sortBy={sortBy}
+            onSortChange={(sortOption) => {
+              setSortBy(sortOption);
+              filterNewsData(
+                selectedCategory,
+                sortOption,
+                startDate,
+                endDate,
+                searchQuery
+              );
+            }}
+          />
+        }
       />
 
-      <DateRangePicker
-        startDate={startDate}
-        endDate={endDate}
-        onStartDateChange={(date) => {
-          setStartDate(date);
-          setDateRangeSelected(true);
-          filterNewsData(selectedCategory, sortBy, date, endDate, searchQuery);
-        }}
-        onEndDateChange={(date) => {
-          setEndDate(date);
-          setDateRangeSelected(true);
-          filterNewsData(
-            selectedCategory,
-            sortBy,
-            startDate,
-            date,
-            searchQuery
-          );
-        }}
-        onApplyDateRange={() => {
-          setDateRangeSelected(true);
-          filterNewsData(
-            selectedCategory,
-            sortBy,
-            startDate,
-            endDate,
-            searchQuery
-          );
-        }}
+      <AccordionClient
+        search={true}
+        title="date range"
+        open={largeScreen}
+        content={
+          <DateRangePicker
+            startDate={startDate}
+            endDate={endDate}
+            onStartDateChange={(date) => {
+              setStartDate(date);
+              setDateRangeSelected(true);
+              filterNewsData(
+                selectedCategory,
+                sortBy,
+                date,
+                endDate,
+                searchQuery
+              );
+            }}
+            onEndDateChange={(date) => {
+              setEndDate(date);
+              setDateRangeSelected(true);
+              filterNewsData(
+                selectedCategory,
+                sortBy,
+                startDate,
+                date,
+                searchQuery
+              );
+            }}
+            onApplyDateRange={() => {
+              setDateRangeSelected(true);
+              filterNewsData(
+                selectedCategory,
+                sortBy,
+                startDate,
+                endDate,
+                searchQuery
+              );
+            }}
+          />
+        }
       />
-      <SearchBar
-        searchQuery={searchQuery}
-        onSearchQueryChange={setSearchQuery}
-        onSearch={() =>
-          filterNewsData(
-            selectedCategory,
-            sortBy,
-            startDate,
-            endDate,
-            searchQuery
-          )
+      <AccordionClient
+        search={true}
+        title="search"
+        open={largeScreen}
+        content={
+          <SearchBar
+            searchQuery={searchQuery}
+            onSearchQueryChange={setSearchQuery}
+            onSearch={() =>
+              filterNewsData(
+                selectedCategory,
+                sortBy,
+                startDate,
+                endDate,
+                searchQuery
+              )
+            }
+          />
         }
       />
     </div>

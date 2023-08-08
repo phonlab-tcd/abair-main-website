@@ -5,6 +5,7 @@ import NewsList from "./NewsList";
 import NewsFilters from "./NewsFilters";
 import { NewsModel } from "@/models";
 import { getBreakpoint } from "@/utils";
+import { AccordionClient } from "@/components";
 
 interface NewsProps {
   news: NewsModel[];
@@ -12,7 +13,7 @@ interface NewsProps {
 
 export default function NewsClient({ news }: NewsProps) {
   const [filteredData, setFilteredData] = useState<NewsModel[]>([]);
-  const [initialData, setInitialData] = useState<NewsModel[]>([]);
+  // const [initialData, setInitialData] = useState<NewsModel[]>([]);
   const [breakpoint, setBreakpoint] = useState<string>("");
 
   const handleResize = () => {
@@ -30,7 +31,7 @@ export default function NewsClient({ news }: NewsProps) {
   useEffect(() => {
     if (news) {
       setFilteredData(news);
-      setInitialData(news);
+      // setInitialData(news);
     }
   }, [news]);
 
@@ -40,15 +41,16 @@ export default function NewsClient({ news }: NewsProps) {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full max-w-7xl">
+      <div className="w-full max-w-6xl min-h-screen">
         <div className="text-4xl lg:text-6xl text-black text-center py-4">
           News
         </div>
         {["xl", "lg"].includes(breakpoint) ? (
-          <div className="flex">
+          <div className="flex ">
             <div className="flex-none w-48 m-2">
               <NewsFilters
-                newsData={initialData}
+                largeScreen={true}
+                newsData={news}
                 onFilteredData={handleFilteredData}
               />
             </div>
@@ -57,12 +59,23 @@ export default function NewsClient({ news }: NewsProps) {
             </div>
           </div>
         ) : (
-          <div className="">
-            <NewsFilters
-              newsData={initialData}
-              onFilteredData={handleFilteredData}
-            />
-
+          <div>
+            <div className="flex w-full justify-center">
+              <div className="w-72 bg-teal-400">
+                <AccordionClient
+                  title="filters"
+                  open={false}
+                  search={true}
+                  content={
+                    <NewsFilters
+                      largeScreen={false}
+                      newsData={news}
+                      onFilteredData={handleFilteredData}
+                    />
+                  }
+                />
+              </div>
+            </div>
             <NewsList newsData={filteredData} />
           </div>
         )}

@@ -21,7 +21,7 @@ const SearchBar = ({
   return (
     <div>
       <input
-        className="border-green-500"
+        className="border-green-500 w-full h-8 px-1"
         type="text"
         placeholder="Search..."
         value={searchQuery}
@@ -32,7 +32,6 @@ const SearchBar = ({
           //console.log("value: " + e.target.value);
           //console.log("searchQuery: " + newSearchQuery);
         }}
-        style={{ width: "150px", height: "40px", marginLeft: "20px" }}
       />
     </div>
   );

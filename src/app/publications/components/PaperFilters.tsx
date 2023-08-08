@@ -1,19 +1,28 @@
-import React, { useState } from "react";
-import { Paper } from "./PaperClient";
-import SearchBar from "./SearchBar";
-import CategoryFilter from "./CategoryFilter";
-import SortMenu from "./SortMenu";
-import DateRangePicker from "./DateRangePicker";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import { PaperModel } from "@/models";
+
+import {
+  AccordionClient,
+  CategoryFilter,
+  SortMenu,
+  DateRangePicker,
+  SearchBar,
+} from "@/components";
 
 interface PaperFiltersProps {
-  paperData: Paper[];
-  onFilteredData: (filteredData: Paper[]) => void;
+  largeScreen: boolean;
+  paperData: PaperModel[];
+  onFilteredData: (filteredData: PaperModel[]) => void;
 }
 
-const PaperFilters: React.FC<PaperFiltersProps> = ({
+const PaperFilters = ({
+  largeScreen,
   paperData,
   onFilteredData,
-}) => {
+}: PaperFiltersProps) => {
+  const [categories, setCategories] = useState<(string | undefined)[]>([]);
+
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [startYear, setStartYear] = useState(2017);
@@ -28,7 +37,7 @@ const PaperFilters: React.FC<PaperFiltersProps> = ({
     endYear: number,
     searchQuery: string
   ) => {
-    let filteredData: Paper[] = paperData;
+    let filteredData: PaperModel[] = paperData;
 
     if (startYear && endYear && yearRangeSelected) {
       filteredData = filteredData.filter((paper) => {
@@ -37,7 +46,7 @@ const PaperFilters: React.FC<PaperFiltersProps> = ({
       });
     }
 
-    if (category !== "All" && category !== "") {
+    if (category !== "all" && category !== "") {
       filteredData = filteredData.filter(
         (paper) => paper.publication_category === category
       );
@@ -47,8 +56,8 @@ const PaperFilters: React.FC<PaperFiltersProps> = ({
 
     if (sortOption !== "") {
       filteredData.sort((a, b) => {
-        const dateA = new Date(a.year_published).getTime();
-        const dateB = new Date(b.year_published).getTime();
+        const dateA = new Date(a.year_published as number).getTime();
+        const dateB = new Date(b.year_published as number).getTime();
         return sortOption === "oldest" ? dateA - dateB : dateB - dateA;
       });
     }
@@ -62,85 +71,120 @@ const PaperFilters: React.FC<PaperFiltersProps> = ({
     onFilteredData(filteredData);
   };
 
+  useEffect(() => {
+    const categories = [
+      ...new Set(paperData.map((obj) => obj.publication_category)),
+    ];
+    setCategories(categories);
+  }, []);
+
   return (
-    <div className="h-22 bg-white shadow-md p-4 items-center justify-center">
-      <label className="block text-gray-700 text-sm font-bold mb-2 text-center">
-        Filter and Sort
-      </label>
-      <SearchBar
-        searchQuery={searchQuery}
-        onSearchQueryChange={setSearchQuery}
-        onSearch={() =>
-          filterPaperData(
-            selectedCategory,
-            sortBy,
-            startYear,
-            endYear,
-            searchQuery
-          )
+    <div className="w-full justify-center bg-teal-400">
+      <AccordionClient
+        search={true}
+        title="category"
+        open={largeScreen}
+        content={
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={(category) => {
+              setSelectedCategory(category);
+              filterPaperData(
+                category,
+                sortBy,
+                startYear,
+                endYear,
+                searchQuery
+              );
+            }}
+          />
+        }
+      />
+      <AccordionClient
+        search={true}
+        title="sort by"
+        open={largeScreen}
+        content={
+          <SortMenu
+            sortBy={sortBy}
+            onSortChange={(sortOption) => {
+              setSortBy(sortOption);
+              filterPaperData(
+                selectedCategory,
+                sortOption,
+                startYear,
+                endYear,
+                searchQuery
+              );
+            }}
+          />
         }
       />
 
-      <div className="mt-6 space-y-10">
-        <CategoryFilter
-          selectedCategory={selectedCategory}
-          onCategoryChange={(category) => {
-            setSelectedCategory(category);
-            filterPaperData(category, sortBy, startYear, endYear, searchQuery);
-          }}
-        />
-
-        <SortMenu
-          sortBy={sortBy}
-          onSortChange={(sortOption) => {
-            setSortBy(sortOption);
-            filterPaperData(
-              selectedCategory,
-              sortOption,
-              startYear,
-              endYear,
-              searchQuery
-            );
-          }}
-        />
-
-        <DateRangePicker
-          startYear={startYear}
-          endYear={endYear}
-          onStartYearChange={(year) => {
-            setStartYear(year);
-            setYearRangeSelected(true);
-            filterPaperData(
-              selectedCategory,
-              sortBy,
-              year,
-              endYear,
-              searchQuery
-            );
-          }}
-          onEndYearChange={(year) => {
-            setEndYear(year);
-            setYearRangeSelected(true);
-            filterPaperData(
-              selectedCategory,
-              sortBy,
-              startYear,
-              year,
-              searchQuery
-            );
-          }}
-          onApplyYearRange={() => {
-            setYearRangeSelected(true);
-            filterPaperData(
-              selectedCategory,
-              sortBy,
-              startYear,
-              endYear,
-              searchQuery
-            );
-          }}
-        />
-      </div>
+      <AccordionClient
+        search={true}
+        title="date range"
+        open={largeScreen}
+        content={
+          <DateRangePicker
+            startYear={startYear}
+            endYear={endYear}
+            onStartYearChange={(year) => {
+              setStartYear(year);
+              setYearRangeSelected(true);
+              filterPaperData(
+                selectedCategory,
+                sortBy,
+                year,
+                endYear,
+                searchQuery
+              );
+            }}
+            onEndYearChange={(year) => {
+              setEndYear(year);
+              setYearRangeSelected(true);
+              filterPaperData(
+                selectedCategory,
+                sortBy,
+                startYear,
+                year,
+                searchQuery
+              );
+            }}
+            onApplyYearRange={() => {
+              setYearRangeSelected(true);
+              filterPaperData(
+                selectedCategory,
+                sortBy,
+                startYear,
+                endYear,
+                searchQuery
+              );
+            }}
+          />
+        }
+      />
+      <AccordionClient
+        search={true}
+        title="search"
+        open={largeScreen}
+        content={
+          <SearchBar
+            searchQuery={searchQuery}
+            onSearchQueryChange={setSearchQuery}
+            onSearch={() =>
+              filterPaperData(
+                selectedCategory,
+                sortBy,
+                startYear,
+                endYear,
+                searchQuery
+              )
+            }
+          />
+        }
+      />
     </div>
   );
 };
