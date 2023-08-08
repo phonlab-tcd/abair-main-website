@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { Accordion } from "abair-web-components";
 
 interface AccordionClientProps {
-  content: string;
+  content: ReactNode;
 }
 
 const AccordionClient = ({ content }: AccordionClientProps) => {

@@ -4,6 +4,7 @@ import CategoryFilter from "./CategoryFilter";
 import SortMenu from "./SortMenu";
 import DateRangePicker from "./DateRangePicker";
 import { NewsModel } from "@/models";
+import { AccordionClient } from "@/components";
 
 interface NewsFiltersProps {
   newsData: NewsModel[];
@@ -72,10 +73,63 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
   };
 
   return (
-    <div className="h-22 bg-white shadow-md p-4 items-center justify-center">
-      <label className="block text-gray-700 text-sm font-bold mb-2 text-center">
-        Filter and Sort
-      </label>
+    <div className="flex flex-wrap w-full justify-center p-4 bg-teal-200">
+      <AccordionClient
+        content={
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={(category) => {
+              setSelectedCategory(category);
+              filterNewsData(category, sortBy, startDate, endDate, searchQuery);
+            }}
+          />
+        }
+      />
+
+      <SortMenu
+        sortBy={sortBy}
+        onSortChange={(sortOption) => {
+          setSortBy(sortOption);
+          filterNewsData(
+            selectedCategory,
+            sortOption,
+            startDate,
+            endDate,
+            searchQuery
+          );
+        }}
+      />
+
+      <DateRangePicker
+        startDate={startDate}
+        endDate={endDate}
+        onStartDateChange={(date) => {
+          setStartDate(date);
+          setDateRangeSelected(true);
+          filterNewsData(selectedCategory, sortBy, date, endDate, searchQuery);
+        }}
+        onEndDateChange={(date) => {
+          setEndDate(date);
+          setDateRangeSelected(true);
+          filterNewsData(
+            selectedCategory,
+            sortBy,
+            startDate,
+            date,
+            searchQuery
+          );
+        }}
+        onApplyDateRange={() => {
+          setDateRangeSelected(true);
+          filterNewsData(
+            selectedCategory,
+            sortBy,
+            startDate,
+            endDate,
+            searchQuery
+          );
+        }}
+      />
       <SearchBar
         searchQuery={searchQuery}
         onSearchQueryChange={setSearchQuery}
@@ -89,67 +143,6 @@ const NewsFilters: React.FC<NewsFiltersProps> = ({
           )
         }
       />
-
-      <div className="mt-6 space-y-10">
-        <CategoryFilter
-          selectedCategory={selectedCategory}
-          onCategoryChange={(category) => {
-            setSelectedCategory(category);
-            filterNewsData(category, sortBy, startDate, endDate, searchQuery);
-          }}
-        />
-
-        <SortMenu
-          sortBy={sortBy}
-          onSortChange={(sortOption) => {
-            setSortBy(sortOption);
-            filterNewsData(
-              selectedCategory,
-              sortOption,
-              startDate,
-              endDate,
-              searchQuery
-            );
-          }}
-        />
-
-        <DateRangePicker
-          startDate={startDate}
-          endDate={endDate}
-          onStartDateChange={(date) => {
-            setStartDate(date);
-            setDateRangeSelected(true);
-            filterNewsData(
-              selectedCategory,
-              sortBy,
-              date,
-              endDate,
-              searchQuery
-            );
-          }}
-          onEndDateChange={(date) => {
-            setEndDate(date);
-            setDateRangeSelected(true);
-            filterNewsData(
-              selectedCategory,
-              sortBy,
-              startDate,
-              date,
-              searchQuery
-            );
-          }}
-          onApplyDateRange={() => {
-            setDateRangeSelected(true);
-            filterNewsData(
-              selectedCategory,
-              sortBy,
-              startDate,
-              endDate,
-              searchQuery
-            );
-          }}
-        />
-      </div>
     </div>
   );
 };
