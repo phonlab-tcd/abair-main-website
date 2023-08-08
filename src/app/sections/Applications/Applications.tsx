@@ -53,12 +53,14 @@ const Applications = () => {
         </Link>
       </div>
       <div className="flex justify-center py-8">
-        <Button
-          colors="bg-inherit text-applications-600 text-lg lg:text-xl hover:text-applications-700 hover:underline"
-          sizes="py-0.5 px-1 rounded-sm"
-        >
-          see all <span className="text-3xl lg:text-4xl">&#8594;</span>
-        </Button>
+        <Link href={`/applications`}>
+          <Button
+            colors="bg-inherit text-applications-600 text-lg lg:text-xl hover:text-applications-700 hover:underline"
+            sizes="py-0.5 px-1 rounded-sm"
+          >
+            see all <span className="text-3xl lg:text-4xl">&#8594;</span>
+          </Button>
+        </Link>
       </div>
     </div>
   );
