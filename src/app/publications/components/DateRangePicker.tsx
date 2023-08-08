@@ -31,32 +31,36 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
   return (
     <div>
-      <label>From</label>
-      <select
-        className="border rounded px-3 py-2 ml-4"
-        value={startYear}
-        onChange={handleStartYearChange}
-      >
-        <option value={2022}>2022</option>
-        <option value={2021}>2021</option>
-        <option value={2020}>2020</option>
-        <option value={2019}>2019</option>
-        <option value={2018}>2018</option>
-        <option value={2017}>2017</option>
-      </select>
-      <label>To</label>
-      <select
-        className="border rounded px-3 py-2 ml-4"
-        value={endYear}
-        onChange={handleEndYearChange}
-      >
-        <option value={2022}>2022</option>
-        <option value={2021}>2021</option>
-        <option value={2020}>2020</option>
-        <option value={2019}>2019</option>
-        <option value={2018}>2018</option>
-        <option value={2017}>2017</option>
-      </select>
+      <div className="flex">
+        <label>From</label>
+        <select
+          className="border rounded px-3 py-2 ml-4"
+          value={startYear}
+          onChange={handleStartYearChange}
+        >
+          <option value={2022}>2022</option>
+          <option value={2021}>2021</option>
+          <option value={2020}>2020</option>
+          <option value={2019}>2019</option>
+          <option value={2018}>2018</option>
+          <option value={2017}>2017</option>
+        </select>
+      </div>
+      <div className="flex">
+        <label>To</label>
+        <select
+          className="border rounded px-3 py-2 ml-4"
+          value={endYear}
+          onChange={handleEndYearChange}
+        >
+          <option value={2022}>2022</option>
+          <option value={2021}>2021</option>
+          <option value={2020}>2020</option>
+          <option value={2019}>2019</option>
+          <option value={2018}>2018</option>
+          <option value={2017}>2017</option>
+        </select>
+      </div>
     </div>
   );
 };
