@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Map, GenderButtons, PopupBackground } from "@/components";
 import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
@@ -208,12 +208,14 @@ const Synthesis = ({
               </Button>
             </div>
             <div className="absolute bottom-1 right-2 lg:right-4">
-              <Button
-                colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600 hover:underline"
-                sizes="py-0.5 px-1 rounded-sm"
-              >
-                more options <span className="text-3xl">&#8594;</span>
-              </Button>
+              <Link href={`/synthesis`}>
+                <Button
+                  colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600 hover:underline"
+                  sizes="py-0.5 px-1 rounded-sm"
+                >
+                  more options <span className="text-3xl">&#8594;</span>
+                </Button>
+              </Link>
             </div>
           </div>
           {synthesisedTextShowing && (

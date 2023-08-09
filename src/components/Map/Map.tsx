@@ -48,30 +48,28 @@ const Map = ({ height = 400, dialect, setDialect }: MapProps) => {
   };
 
   return (
-    <div className="relative">
-      <svg viewBox="0 520 450 600" height={height}>
-        <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
-          {mapData.map((c: mapDataModel, i: number) => (
-            <g
-              key={i}
-              fill={getMapColor(c)[0]}
-              stroke={getMapColor(c)[1]}
-              opacity={gaeltachts.includes(c.name) ? 0.8 : 1}
-              onMouseEnter={() => handleMouseEnter(c.name)}
-              onClick={() => {
-                handleClick(c.name);
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <path
-                d={c.coordinates}
-                strokeWidth={gaeltachts.includes(c.name) ? "4" : "0.5"}
-              />
-            </g>
-          ))}
-        </g>
-      </svg>
-    </div>
+    <svg viewBox="0 520 450 600" height={height}>
+      <g transform="scale(1.1)" onMouseLeave={() => handleMouseLeave()}>
+        {mapData.map((c: mapDataModel, i: number) => (
+          <g
+            key={i}
+            fill={getMapColor(c)[0]}
+            stroke={getMapColor(c)[1]}
+            opacity={gaeltachts.includes(c.name) ? 0.8 : 1}
+            onMouseEnter={() => handleMouseEnter(c.name)}
+            onClick={() => {
+              handleClick(c.name);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <path
+              d={c.coordinates}
+              strokeWidth={gaeltachts.includes(c.name) ? "4" : "0.5"}
+            />
+          </g>
+        ))}
+      </g>
+    </svg>
   );
 };
 

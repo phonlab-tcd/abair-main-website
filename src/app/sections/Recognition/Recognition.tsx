@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   Media,
@@ -212,12 +212,14 @@ const Recognition = ({
             </div>
 
             <div className="absolute bottom-1 right-2 lg:right-4">
-              <Button
-                colors="bg-inherit text-recognition-500 text-sm hover:text-recognition-600 hover:underline"
-                sizes="py-0.5 px-1 rounded-sm"
-              >
-                more options <span className="text-3xl">&#8594;</span>
-              </Button>
+              <Link href={`/recognition`}>
+                <Button
+                  colors="bg-inherit text-recognition-500 text-sm hover:text-recognition-600 hover:underline"
+                  sizes="py-0.5 px-1 rounded-sm"
+                >
+                  more options <span className="text-3xl">&#8594;</span>
+                </Button>
+              </Link>
             </div>
           </div>
           {recognisedTextShowing && (
