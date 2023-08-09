@@ -15,7 +15,7 @@ const News = async () => {
   }
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full">
       <div className="w-full flex justify-center mt-8">
         <div className="flex items-center text-grey-800 text-xl lg:text-2xl font-mono">
           Recent News & Events
