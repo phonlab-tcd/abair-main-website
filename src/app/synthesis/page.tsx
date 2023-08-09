@@ -1,15 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Map, GenderButtons, PopupBackground } from "@/components";
-import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
+import {
+  SpeakIcon,
+  Button,
+  PlaybackCard,
+  Slider,
+  SpeedometerIcon,
+  PitchIcon,
+  ModelIcon,
+  SpeakerIcon,
+} from "abair-web-components";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/models";
 
 import { getBreakpoint } from "@/utils";
 
-const Page = async () => {
+const Page = () => {
   const [availableGenders, setAvailableGenders] = useState<
     Set<string> | undefined
   >();
@@ -19,6 +28,8 @@ const Page = async () => {
     synthesisVoiceModel[] | undefined
   >(undefined);
   const [selectedVoice, setSelectedVoice] = useState<synthesisVoiceModel>();
+  const [selectedModel, setSelectedModel] = useState<string>("NEMO");
+  const [voiceOptions, setVoiceOptions] = useState<synthesisVoiceModel[]>();
 
   const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
   const [recentlyCopied, setRecentlyCopied] = useState(false);
@@ -27,6 +38,9 @@ const Page = async () => {
   const [synthesisAudio, setSynthesisAudio] = useState("");
   const [awaitingSynthesis, setAwaitingSynthesis] = useState(false);
   const [breakpoint, setBreakpoint] = useState<string>("");
+  const [synthesisPitch, setSynthesisPitch] = useState(100);
+  const [synthesisSpeed, setSynthesisSpeed] = useState(100);
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -80,10 +94,33 @@ const Page = async () => {
         (v) => v.locale === dialect && v.gender === gender
       );
       if (selectedVoices.length > 0) {
-        setSelectedVoice(selectedVoices[0]);
+        setVoiceOptions(selectedVoices);
       }
     }
   }, [gender, dialect]);
+
+  useEffect(() => {
+    if (voiceOptions) {
+      setSelectedVoice(voiceOptions[0]);
+    }
+  }, [voiceOptions]);
+
+  useEffect(() => {
+    if (selectedVoice && !selectedVoice.voices?.includes(selectedModel)) {
+      if (selectedVoice.voices) {
+        setSelectedModel(selectedVoice.voices[0]);
+      }
+    }
+  }, [selectedVoice]);
+
+  useEffect(() => {
+    console.log("selectedModel:", selectedModel);
+  }, [selectedModel]);
+
+  useEffect(() => {
+    console.log("pitch:", synthesisPitch);
+    console.log("speed:", synthesisSpeed);
+  }, [synthesisPitch, synthesisSpeed]);
 
   const playSynthesisAudio = () => {
     if (audioRef.current !== undefined) {
@@ -147,85 +184,163 @@ const Page = async () => {
 
   return (
     <div className="w-full min-h-screen flex justify-center">
-      <div className="w-full mt-8 max-w-6xl">
+      <div className="w-full mt-8 max-w-2xl">
         <div className="w-full border-2 text-center text-grey-800 text-xl lg:text-2xl font-mono">
           Synthesis
         </div>
 
-        <div className="w-full flex justify-center my-4">
+        <div className="w-full my-4">
           <div className="flex flex-row border border-black w-full">
             <div className="w-1/2 flex flex-col">
               <div className="w-full border-2 justify-center flex">
                 <Map
-                  height={["md", "lg", "xl"].includes(breakpoint) ? 400 : 180}
+                  height={
+                    ["sm", "md", "lg", "xl"].includes(breakpoint) ? 300 : 200
+                  }
                   setDialect={setDialect}
                   dialect={dialect}
                 />
               </div>
-              <div className="w-[90%] -mt-2 lg:-mt-4 h-24">
+            </div>
+
+            <div className="w-1/2">
+              <div className="w-full border border-black h-14">
                 <GenderButtons
-                  height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                  height={
+                    ["sm", "md", "lg", "xl"].includes(breakpoint) ? 48 : 26
+                  }
                   availableGenders={availableGenders}
                   setGender={setGender}
                   gender={gender}
                 />
               </div>
-            </div>
-
-            <div className="w-1/2 pt-4 lg:pt-6 pr-4 lg:pr-4">
-              <textarea
-                onChange={(e) => setSynthesisText(e.target.value)}
-                value={synthesisText}
-                className="p-1 bg-white text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"
-              ></textarea>
-
-              <div className="flex justify-center items-center h-12 lg:h-16">
-                <Button
-                  sizes="w-28 lg:w-36 p-1 flex justify-center rounded-sm"
-                  colors="bg-synthesis-500 hover:bg-synthesis-600"
-                  onClick={initTTS}
-                >
-                  <SpeakIcon
-                    height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
-                    width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
-                    color="white"
+              <div className="w-full border h-14 border-black flex items-center">
+                <div className="px-1">
+                  <PitchIcon height={32} width={32} />
+                </div>
+                <div className="w-full px-1">
+                  <Slider
+                    min={50}
+                    value={synthesisPitch}
+                    max={150}
+                    handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      setSynthesisPitch(parseInt(e.target.value));
+                    }}
                   />
-                </Button>
+                </div>
+              </div>
+              <div className="w-full border h-14 border-black flex items-center">
+                <div className="px-1">
+                  <SpeedometerIcon height={32} width={32} />
+                </div>
+                <div className="w-full px-1">
+                  <Slider
+                    min={50}
+                    value={synthesisSpeed}
+                    max={150}
+                    handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      setSynthesisSpeed(parseInt(e.target.value));
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="w-full border h-14 border-black flex items-center">
+                <div className="px-1">
+                  <SpeakerIcon height={32} width={32} />
+                </div>
+                <div className="w-full px-1">
+                  {voiceOptions?.map((v, i) => (
+                    <Button
+                      key={i}
+                      onClick={() => {
+                        setSelectedVoice(v);
+                      }}
+                      sizes="py-0.5 px-2 flex justify-center rounded-xl text-white"
+                      colors="bg-synthesis-500 hover:bg-synthesis-600"
+                    >
+                      {v.name}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              <div className="w-full border h-14 border-black flex items-center">
+                <div className="px-1">
+                  <ModelIcon height={32} width={32} />
+                </div>
+                <div className="w-full px-1 flex">
+                  {selectedVoice &&
+                    selectedVoice.voices?.map((v, i) => (
+                      <Button
+                        key={i}
+                        onClick={() => {
+                          setSelectedModel(v);
+                        }}
+                        sizes="py-0.5 px-2 flex justify-center rounded-xl text-white"
+                        colors="bg-synthesis-500 hover:bg-synthesis-600"
+                      >
+                        {v}
+                      </Button>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
+          <div className="w-full flex justify-center">
+            <div className="p-3 w-full max-w-xl">
+              <textarea
+                onChange={(e) => setSynthesisText(e.target.value)}
+                value={synthesisText}
+                className="p-1 bg-white text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2 "
+              ></textarea>
+            </div>
+          </div>
+          <div className="flex justify-center items-center h-12 lg:h-14">
+            <Button
+              sizes="w-28 lg:w-36 p-1 flex justify-center rounded-sm"
+              colors="bg-synthesis-500 hover:bg-synthesis-600"
+              onClick={initTTS}
+            >
+              <SpeakIcon
+                height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                color="white"
+              />
+            </Button>
+          </div>
         </div>
-        <div className="w-full px-2 transition-all duration-600 relative">
-          <PlaybackCard
-            text={synthesisText}
-            version="synthesis"
-            recentlyCopied={recentlyCopied}
-            sidebar={false}
-            handleCopy={() => {
-              setRecentlyCopied(true);
-              setTimeout(() => {
-                setRecentlyCopied(false);
-              }, 2000);
-            }}
-            handlePlay={() => {
-              playSynthesisAudio();
-            }}
-            handleStop={() => {
-              stopSynthesisAudio();
-            }}
-            handleDownload={() => {
-              downloadSynthesisAudio();
-            }}
-            audioPlaying={synthesisAudioPlaying}
-            small={["lg", "xl"].includes(breakpoint) ? false : true}
-          >
-            <audio
-              src={synthesisAudio}
-              ref={audioRef}
-              onEnded={stopSynthesisAudio}
-            />
-            <a href={""} ref={anchorRef} download={"tester.wav"} />
-          </PlaybackCard>
+        <div className="w-full flex justify-center">
+          <div className="w-full px-2 transition-all duration-600 relative max-w-xl">
+            <PlaybackCard
+              text={synthesisText}
+              version="synthesis"
+              recentlyCopied={recentlyCopied}
+              sidebar={false}
+              handleCopy={() => {
+                setRecentlyCopied(true);
+                setTimeout(() => {
+                  setRecentlyCopied(false);
+                }, 2000);
+              }}
+              handlePlay={() => {
+                playSynthesisAudio();
+              }}
+              handleStop={() => {
+                stopSynthesisAudio();
+              }}
+              handleDownload={() => {
+                downloadSynthesisAudio();
+              }}
+              audioPlaying={synthesisAudioPlaying}
+              small={["lg", "xl", "md"].includes(breakpoint) ? false : true}
+            >
+              <audio
+                src={synthesisAudio}
+                ref={audioRef}
+                onEnded={stopSynthesisAudio}
+              />
+              <a href={""} ref={anchorRef} download={"tester.wav"} />
+            </PlaybackCard>
+          </div>
         </div>
       </div>
     </div>
