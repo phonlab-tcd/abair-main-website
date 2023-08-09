@@ -9,13 +9,7 @@ import { synthesisVoiceModel } from "@/models";
 
 import { getBreakpoint } from "@/utils";
 
-interface SynthesisProps {
-  flashSynthesisTitleColor?: string;
-}
-
-const Page = ({
-  flashSynthesisTitleColor = "bg-synthesis-600",
-}: SynthesisProps) => {
+const Page = async () => {
   const [availableGenders, setAvailableGenders] = useState<
     Set<string> | undefined
   >();
