@@ -7,12 +7,14 @@ interface RecognitionWaveVisualisationProps {
   width: number;
   height: number;
   stream: MediaStream | undefined;
+  backgroundColor?: string;
 }
 
 const RecognitionWaveVisual = ({
   width,
   height,
   stream,
+  backgroundColor = "white",
 }: RecognitionWaveVisualisationProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
@@ -29,7 +31,7 @@ const RecognitionWaveVisual = ({
 
   useEffect(() => {
     if (audioContext) {
-      visualize(stream, "rgb(255, 255, 255)");
+      visualize(stream, backgroundColor);
     }
   }, [audioContext]);
 

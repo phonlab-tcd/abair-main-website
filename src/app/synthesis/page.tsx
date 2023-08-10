@@ -160,9 +160,6 @@ const Page = () => {
   };
 
   const initTTS = () => {
-    console.log("selectedVoice:", selectedVoice);
-    console.log("synthesisText:", synthesisText);
-
     if (synthesisText !== "") {
       setAwaitingSynthesis(true);
       if (selectedVoice) {

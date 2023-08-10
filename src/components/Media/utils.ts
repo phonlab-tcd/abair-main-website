@@ -12,4 +12,10 @@ const initMediaRecorder = async (stream: MediaStream) => {
   return mediaRecorder;
 };
 
-export { initStream, initMediaRecorder };
+const microphonePermissionAllowed = async () => {
+  return await navigator.permissions.query({
+    name: "microphone" as PermissionName,
+  });
+};
+
+export { initStream, initMediaRecorder, microphonePermissionAllowed };

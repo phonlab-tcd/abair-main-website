@@ -28,7 +28,7 @@ const Media = ({
   voiceRecording,
   setAwaitingTranscription,
 }: MediaProps) => {
-  // const [mediaRecorderExists, setMediaRecorderExists] = useState(false);
+  const [micAllowed, setMicAllowed] = useState(false);
 
   const resetRecognitionTranscriptionStates = () => {
     setRecognitionAudio("");

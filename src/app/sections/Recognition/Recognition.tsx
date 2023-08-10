@@ -17,8 +17,10 @@ import {
 } from "abair-web-components";
 import { themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
-
+import { microphonePermissionAllowed } from "@/components/Media/utils";
 const Recognition = () => {
+  const [microphonePermission, setMicrophonePermission] = useState(false);
+  const [askPermission, setAskPermission] = useState(false);
   const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
 
   const [mediaRecorder, setMediaRecorder] = useState<
@@ -42,18 +44,20 @@ const Recognition = () => {
   };
 
   const handleClick = () => {
-    // if (mediaRecorderExists) {
-    if (mediaRecorder !== undefined) {
-      // if (tempConsent) {
-      if (true) {
-        setVoiceRecording(true);
+    if (microphonePermission) {
+      if (mediaRecorder !== undefined) {
+        // if (tempConsent) {
+        if (true) {
+          setVoiceRecording(true);
+        } else {
+          // setShowTempConsent(true);
+        }
       } else {
-        // setShowTempConsent(true);
+        alert("Please allow microphone permission in you browser.");
       }
     } else {
-      alert(
-        "To use this feature, you must give permission for this site to use your microphone, and then refresh."
-      );
+      console.log("give permission");
+      setAskPermission(true);
     }
   };
 
@@ -95,6 +99,12 @@ const Recognition = () => {
   };
 
   useEffect(() => {
+    microphonePermissionAllowed().then((res: any) => {
+      if (res.state === "granted") {
+        setMicrophonePermission(true);
+      }
+    });
+
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => {
@@ -107,6 +117,10 @@ const Recognition = () => {
       setRecognisedTextShowing(true);
     }
   }, [awaitingTranscription]);
+
+  useEffect(() => {
+    console.log("microphonePermission:", microphonePermission);
+  }, [microphonePermission]);
 
   return (
     <div
@@ -260,18 +274,70 @@ const Recognition = () => {
               </PopupBackground>
             </>
           )}
+          {askPermission && (
+            <>
+              <PopupBackground>
+                <div className="w-full h-full px-2 transition-all duration-600 relative  p-4">
+                  {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
+                  <Button
+                    colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
+                    sizes="absolute top-1 -right-1 font-bold rounded-full px-2"
+                    onClick={() => {
+                      setAskPermission(false);
+                    }}
+                  >
+                    x
+                  </Button>
+                  <div className="w-full h-full border-2 bg-white border-recognition-400 rounded-md">
+                    <div className="flex flex-col w-full h-full justify-center items-center">
+                      <div className="text-lg text-center text-recognition-700">
+                        I am over 16 years old and I give permission...
+                      </div>
+                      <div className="flex w-full justify-center">
+                        <div className="p-2">
+                          <Button
+                            sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                            colors="bg-recognition-400 hover:bg-recognition-500 text-white"
+                            onClick={() => {
+                              setAskPermission(false);
+                            }}
+                          >
+                            No
+                          </Button>
+                        </div>
+                        <div className="p-2">
+                          <Button
+                            sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                            colors="bg-applications-500 hover:bg-applications-600 text-white"
+                            onClick={() => {
+                              setAskPermission(false);
+                              setMicrophonePermission(true);
+                            }}
+                          >
+                            Yes
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </PopupBackground>
+            </>
+          )}
         </div>
       </div>
-      <Media
-        stream={stream}
-        setStream={setStream}
-        mediaRecorder={mediaRecorder}
-        setMediaRecorder={setMediaRecorder}
-        setRecognitionAudio={setRecognitionAudio}
-        setTranscription={setTranscription}
-        voiceRecording={voiceRecording}
-        setAwaitingTranscription={setAwaitingTranscription}
-      />
+      {microphonePermission && (
+        <Media
+          stream={stream}
+          setStream={setStream}
+          mediaRecorder={mediaRecorder}
+          setMediaRecorder={setMediaRecorder}
+          setRecognitionAudio={setRecognitionAudio}
+          setTranscription={setTranscription}
+          voiceRecording={voiceRecording}
+          setAwaitingTranscription={setAwaitingTranscription}
+        />
+      )}
     </div>
   );
 };
