@@ -36,28 +36,31 @@ export default async function Page({ params }: PageProps) {
     <div className="w-full min-h-screen">
       <div className="w-full flex justify-center mt-8">
         <div className="max-w-6xl">
-          <div className="flex-shrink-0 pr-8 w-48">
-            <div className="text-gray-600 text-lg text-center">{news.date}</div>
-            <div className=" px-3 py-2 text-base bg-blue-500 text-white rounded-lg mt-3 text-center">
-              {news.news_category}
-            </div>
-          </div>
           <div className="flex-grow">
-            <h1 className="text-3xl font-semibold mb-2">{news.title_en}</h1>
-            <p className="text-gray-800 mb-4">{news.blurb_en}</p>
-            <div className="flex space-x-2">
+            <h1 className="text-3xl font-semibold mb-2 text-center">
+              {news.title_en}
+            </h1>
+            <div className="text-gray-600 text-lg text-center">{news.date}</div>
+            <p className="text-gray-800 mb-4 text-center">{news.blurb_en}</p>
+            <div className="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 justify-center">
               {news.images.map((image: any, index: number) => (
-                <div key={index} className="w-48 h-48 object-cover rounded-md">
+                <div
+                  key={index}
+                  className="w-full md:w-1/3 object-cover rounded-md"
+                >
                   <Image
                     src={image.url}
-                    alt={image.toString()}
-                    height={200}
-                    width={300}
+                    alt={image.url.toString()}
+                    height={300}
+                    width={450}
                   />
                 </div>
               ))}
             </div>
-            <div className="text-gray-800">{news.body_en}</div>
+
+            <div className="text-gray-800" style={{ whiteSpace: "pre-line" }}>
+              {news.body_en.replace(/~/g, "\n")}
+            </div>
           </div>
         </div>
       </div>
