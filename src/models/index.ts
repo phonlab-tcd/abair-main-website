@@ -39,8 +39,8 @@ interface NewsModel {
 
 interface synthesisVoiceModel {
   name: string;
-  gender: string;
-  locale: string;
+  gender?: string;
+  locale?: string;
   mode?: string;
   shortCode?: string;
   voices?: string[];
