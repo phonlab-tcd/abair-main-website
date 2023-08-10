@@ -44,7 +44,7 @@ const getSynthesis = async (
       voiceparams: {
         languageCode: "ga-IE",
         name:
-          returnDialectCode(currentVoice.locale) +
+          returnDialectCode(currentVoice.locale as string) +
           "_" +
           currentVoice.shortCode +
           "_" +

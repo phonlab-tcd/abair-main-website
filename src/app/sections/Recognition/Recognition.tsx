@@ -17,18 +17,8 @@ import {
 } from "abair-web-components";
 import { themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
-import {
-  delayToStartRecognitionCardFlash,
-  cardFlashDuration,
-} from "../animationTimings/animationTimings";
 
-interface RecognitionProps {
-  flashRecognitionTitleColor?: string;
-}
-
-const Recognition = ({
-  flashRecognitionTitleColor = "bg-recognition-500",
-}: RecognitionProps) => {
+const Recognition = () => {
   const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
 
   const [mediaRecorder, setMediaRecorder] = useState<

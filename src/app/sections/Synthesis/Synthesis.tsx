@@ -20,8 +20,8 @@ const Synthesis = ({
   flashSynthesisTitleColor = "bg-synthesis-600",
 }: SynthesisProps) => {
   const [availableGenders, setAvailableGenders] = useState<
-    Set<string> | undefined
-  >();
+    (string | undefined)[] | undefined
+  >(undefined);
   const [dialect, setDialect] = useState<string | undefined>(undefined);
   const [gender, setGender] = useState<string | undefined>(undefined);
   const [synthesisVoices, setSynthesisVoices] = useState<
@@ -65,19 +65,21 @@ const Synthesis = ({
   useEffect(() => {
     synthesisVoices &&
       setAvailableGenders(
-        new Set(
-          synthesisVoices
-            .filter((v) => v.locale === dialect)
-            .map((v) => v.gender)
+        Array.from(
+          new Set(
+            synthesisVoices
+              .filter((v) => v.locale === dialect)
+              .map((v) => v.gender)
+          )
         )
       );
   }, [dialect]);
 
   useEffect(() => {
     availableGenders
-      ? availableGenders.size === 1
+      ? availableGenders.length === 1
         ? setGender(Array.from(availableGenders)[0])
-        : availableGenders.size === 2 && !gender
+        : availableGenders.length === 2 && !gender
         ? setGender(Array.from(availableGenders)[0])
         : null
       : null;
@@ -134,8 +136,8 @@ const Synthesis = ({
   const initTTS = () => {
     console.log("selectedVoice:", selectedVoice);
     console.log("synthesisText:", synthesisText);
-    setAwaitingSynthesis(true);
     if (synthesisText !== "") {
+      setAwaitingSynthesis(true);
       if (selectedVoice) {
         getSynthesis(synthesisText, selectedVoice, "NEMO", 1, 1).then(
           (res: any) => {
@@ -194,18 +196,24 @@ const Synthesis = ({
               className="p-1 bg-inherit text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2"
             ></textarea>
 
-            <div className="flex justify-center items-center h-12 lg:h-16">
-              <Button
-                sizes="w-28 lg:w-36 p-1 flex justify-center rounded-sm"
-                colors="bg-synthesis-500 hover:bg-synthesis-600"
-                onClick={initTTS}
-              >
-                <SpeakIcon
-                  height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
-                  width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
-                  color="white"
-                />
-              </Button>
+            <div className="flex justify-center items-center h-12 lg:h-16 relative">
+              {awaitingSynthesis ? (
+                <div className="w-full absolute top-5 left-0 flex justify-center items-center">
+                  <div className="w-6 h-6 border-t-2 border-r-2 border-synthesis-400 border-solid rounded-full animate-spin"></div>
+                </div>
+              ) : (
+                <Button
+                  sizes="w-28 lg:w-36 p-1 flex justify-center rounded-sm"
+                  colors="bg-synthesis-500 hover:bg-synthesis-600"
+                  onClick={initTTS}
+                >
+                  <SpeakIcon
+                    height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                    width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                    color="white"
+                  />
+                </Button>
+              )}
             </div>
             <div className="absolute bottom-1 right-2 lg:right-4">
               <Link href={`/synthesis`}>

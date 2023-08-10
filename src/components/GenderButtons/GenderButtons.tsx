@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 
 interface GenderButtonsProps {
   height: number;
-  availableGenders: Set<string> | undefined;
+  availableGenders: (string | undefined)[] | undefined;
   gender: string | undefined;
   setGender: Dispatch<SetStateAction<string | undefined>>;
 }
@@ -37,7 +37,7 @@ const GenderButtons = ({
 
   return (
     <div className="flex flex-row justify-center h-full w-full p-1">
-      {availableGenders && availableGenders.has("male") ? (
+      {availableGenders && availableGenders.includes("male") ? (
         <div className="px-2">
           <button
             className="p-1 rounded-xl opacity-80 hover:opacity-100"
@@ -57,7 +57,7 @@ const GenderButtons = ({
           </button>
         </div>
       ) : null}
-      {availableGenders && availableGenders.has("female") ? (
+      {availableGenders && availableGenders.includes("female") ? (
         <div className="px-2">
           <button
             className=" p-1 rounded-xl"

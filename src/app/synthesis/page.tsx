@@ -20,7 +20,7 @@ import { getBreakpoint } from "@/utils";
 
 const Page = () => {
   const [availableGenders, setAvailableGenders] = useState<
-    Set<string> | undefined
+    (string | undefined)[] | undefined
   >(undefined);
   const [dialect, setDialect] = useState<string | undefined>(undefined);
   const [gender, setGender] = useState<string | undefined>(undefined);
@@ -68,21 +68,20 @@ const Page = () => {
   }, [synthesisVoices]);
 
   useEffect(() => {
-    synthesisVoices &&
-      setAvailableGenders(
-        new Set(
-          synthesisVoices
-            .filter((v) => v.locale === dialect)
-            .map((v) => v.gender)
-        )
-      );
+    if (synthesisVoices) {
+      const availableGenders = synthesisVoices
+        .filter((v) => v.locale === dialect)
+        .map((v) => v.gender);
+      console.log("availableGenders:", availableGenders);
+      setAvailableGenders(Array.from(new Set(availableGenders)));
+    }
   }, [dialect]);
 
   useEffect(() => {
     availableGenders
-      ? availableGenders.size === 1
+      ? availableGenders.length === 1
         ? setGender(Array.from(availableGenders)[0])
-        : availableGenders.size === 2 && !gender
+        : availableGenders.length === 2 && !gender
         ? setGender(Array.from(availableGenders)[0])
         : null
       : null;
@@ -163,8 +162,9 @@ const Page = () => {
   const initTTS = () => {
     console.log("selectedVoice:", selectedVoice);
     console.log("synthesisText:", synthesisText);
-    setAwaitingSynthesis(true);
+
     if (synthesisText !== "") {
+      setAwaitingSynthesis(true);
       if (selectedVoice) {
         getSynthesis(
           synthesisText,
@@ -302,18 +302,24 @@ const Page = () => {
               ></textarea>
             </div>
           </div>
-          <div className="flex justify-center items-center h-12 lg:h-14">
-            <Button
-              sizes="w-28 sm:w-40 p-1 sm:p-0.5 flex justify-center rounded-sm"
-              colors="bg-synthesis-500 hover:bg-synthesis-600"
-              onClick={initTTS}
-            >
-              <SpeakIcon
-                height={["xs"].includes(breakpoint) ? 22 : 32}
-                width={["xs"].includes(breakpoint) ? 22 : 32}
-                color="white"
-              />
-            </Button>
+          <div className="flex justify-center items-center h-12 lg:h-14 relative">
+            {awaitingSynthesis ? (
+              <div className="w-full absolute top-5 left-0 flex justify-center items-center">
+                <div className="w-6 h-6 border-t-2 border-r-2 border-synthesis-400 border-solid rounded-full animate-spin"></div>
+              </div>
+            ) : (
+              <Button
+                sizes="w-28 sm:w-40 p-1 sm:p-0.5 flex justify-center rounded-sm"
+                colors="bg-synthesis-500 hover:bg-synthesis-600"
+                onClick={initTTS}
+              >
+                <SpeakIcon
+                  height={["xs"].includes(breakpoint) ? 22 : 32}
+                  width={["xs"].includes(breakpoint) ? 22 : 32}
+                  color="white"
+                />
+              </Button>
+            )}
           </div>
         </div>
         <div className="w-full flex justify-center">
