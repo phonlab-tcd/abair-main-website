@@ -10,14 +10,14 @@ const AppFilters = ({
   applicationData,
   onFilteredData,
 }: ApplicationFiltersProps) => {
-  const [activeCategory, setActiveCategory] = useState<number>(1);
+  const [selectedCategory, setSelectedCategory] = useState<number>(1);
 
   const filterApplicationData = (category: number) => {
     const filteredData = applicationData.filter(
       (application) => application.category === category
     );
     onFilteredData(filteredData);
-    setActiveCategory(category);
+    setSelectedCategory(category);
   };
 
   return (
@@ -25,7 +25,7 @@ const AppFilters = ({
       <span className="space-x-4">
         <button
           className={`${
-            activeCategory === 1
+            selectedCategory === 1
               ? "border-b-2 border-primary-500 text-primary-500"
               : "text-gray-600 hover:text-primary-500"
           } px-4 py-2 font-medium transition duration-500 ease-in-out`}
@@ -35,7 +35,7 @@ const AppFilters = ({
         </button>
         <button
           className={`${
-            activeCategory === 3
+            selectedCategory === 3
               ? "border-b-2 border-primary-500 text-primary-500"
               : "text-gray-600 hover:text-primary-500"
           } px-4 py-2 font-medium transition duration-500 ease-in-out`}
@@ -45,7 +45,7 @@ const AppFilters = ({
         </button>
         <button
           className={`${
-            activeCategory === 2
+            selectedCategory === 2
               ? "border-b-2 border-primary-500 text-primary-500"
               : "text-gray-600 hover:text-primary-500"
           } px-4 py-2 font-medium transition duration-500 ease-in-out`}
