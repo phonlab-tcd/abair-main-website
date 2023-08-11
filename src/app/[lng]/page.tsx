@@ -6,14 +6,19 @@ import {
   News,
   Publications,
 } from "./sections";
+import { useTranslation } from "@/app/i18n";
 
-export default function Page() {
+export default async function Page({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+  const { t } = await useTranslation(lng);
   return (
     <div className="w-[100%] relative">
       <div className="w-full relative">
         <TopImages />
       </div>
-
       <div className="py-4 md:py-6 flex w-full justify-center relative">
         <TopText />
       </div>
@@ -30,7 +35,7 @@ export default function Page() {
       </div>
       <div className="flex w-full justify-center relative bg-white">
         {/* @ts-expect-error Server Component */}
-        <Publications />
+        <Publications lng={lng} />
       </div>
     </div>
   );

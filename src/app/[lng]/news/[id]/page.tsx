@@ -58,8 +58,11 @@ export default async function Page({ params }: PageProps) {
               ))}
             </div>
 
-            <div className="text-gray-800" style={{ whiteSpace: "pre-line" }}>
+            {/* <div className="text-gray-800" style={{ whiteSpace: "pre-line" }}>
               {news.body_en.replace(/~/g, "\n")}
+            </div> */}
+            <div className="text-gray-800" style={{ whiteSpace: "pre-line" }}>
+              {news.body_en}
             </div>
           </div>
         </div>

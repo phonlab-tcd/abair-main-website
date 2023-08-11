@@ -2,8 +2,11 @@ import { supabase } from "@/services/supabase";
 import { Button, PublicationCard } from "abair-web-components";
 import { AccordionClient } from "@/components";
 import Link from "next/link";
+import { useTranslation } from "@/app/i18n";
 
-const Publications = async () => {
+const Publications = async ({ lng }: any) => {
+  const { t } = await useTranslation(lng);
+
   const { data: publicationsData } = await supabase
     .from("ab_publications")
     .select(
@@ -19,7 +22,7 @@ const Publications = async () => {
     <div className="w-full max-w-lg md:max-w-2xl lg:max-w-5xl">
       <div className="w-full flex justify-center mt-8 ">
         <div className="flex items-center text-grey-600 text-xl lg:text-2xl font-mono">
-          Latest Publications
+          {t("pageTitles.publications")}
         </div>
       </div>
       <div className="w-full flex justify-center my-2">

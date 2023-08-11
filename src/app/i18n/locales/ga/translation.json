@@ -1,0 +1,183 @@
+{
+  "pageTitles": {
+    "home": "Baile",
+    "synthesis": "Guthanna Sintéiseacha",
+    "recognition": "Aithint Chainte",
+    "publications": "Foilseacháin",
+    "applications": "Feidhmchláir",
+    "about": "Eolas",
+    "news": "Nuacht",
+    "login": "Logáil Isteach",
+    "signUp": "Clarú",
+    "neartu": "Neartú",
+    "profile": "Próifíl",
+    "contact": "Teagmháil",
+    "APIs": "APIs",
+    "corpora": "Corpora",
+    "consent": "Consent",
+    "forgotPassword": "Dearmad ar Pasfhocal",
+    "updatePassword": "Pasfhocal a Nuashonrú"
+  },
+  "infoHeader": {
+    "home": {
+      "main": {
+        "title": "Teicneolaíocht Urlabhra agus Teanga don Ghaeilge"
+      },
+      "mileGlor": {
+        "title": "Míle Glór",
+        "description": "ABAIR sa Stiúideo"
+      },
+      "core": {
+        "title": "Bonnteicneolaíochtaí",
+        "description": "Faigh grinnsmacht ar ghuthanna sintéiseacha ABAIR, agus faigh an t-aschur ó chóras aitheanta cainte ÉIST."
+      },
+      "applications": {
+        "title": "Feidhmchláir",
+        "description": "Tá teacht anseo ar réimse leathan feidhmchlár atá bunaithe ar bhonnteicneolaíochtaí ABAIR i réimsí oiriúnaithe don phobal i gcoitinne, don oideachas agus don inrochtaineacht."
+      },
+      "news": {
+        "title": "An Nuacht is Déanaí",
+        "description": "Lean na scéalta is déanaí ón tSaotharlann Foghraíochta agus Urlabhra, Coláiste na Tríonóide"
+      },
+      "publications": {
+        "title": "Foilseacháin",
+        "description": "Féach anseo ar an taighde teangeolaíochta atá á dhéanamh sa tSaotharlann Foghraíochta agus Urlabhra, agus atá ina chrann taca do na forbairtí teicneolaíochta"
+      },
+      "neartu": {
+        "title": "Neartú",
+        "description": "Ag obair ar son cearta comhionanna do dhaoine faoi mhíchumas"
+      },
+      "APIs": {
+        "title": "APIs",
+        "description": "Access all the ABAIR APIs"
+      },
+      "corpora": {
+        "title": "Corpora",
+        "description": "Access all the ABAIR Corpora"
+      },
+      "profile": {
+        "title": "Próifíl",
+        "description": "Líon isteach an t-eolas seo a leanas, le do thoil"
+      }
+    }
+  },
+  "pages": {
+    "home": {
+      "speak": "ABAIR",
+      "listen": "ÉIST",
+      "writeHere": "scríobh anseo",
+      "speakInstructions": "roghnaigh canúint & inscne > scríobh rud éigin > déan sintéis",
+      "listenInstructions": "téigh go háit chiúin > cliceáil ar an micreafón > labhair amach",
+      "seeAll": "féach gach scéal",
+
+      "technologyCards": {
+        "synthesis": {
+          "description": "Cliceáil anseo chun triail a bhaint as guthanna sintéiseacha ABAIR. Tá teacht ar ár múnlaí rialaithe, socruithe luais agus tuinairde"
+        },
+        "recognition": {
+          "description": "Bain triail as córas ÉIST agus féach siar ar do chuid iarrachtaí"
+        }
+      },
+      "advancedSynthesisOptions": "tuilleadh roghanna sintéise",
+      "advancedRecognitionOptions": "tuilleadh roghanna aitheanta cainte",
+      "go": "ar aghaidh"
+    },
+    "auth": {
+      "login": "Logáil Isteach",
+      "logout": "Logáil Amach",
+      "incorrectEmailOrPassword": "Tá do ríomhphost nó pasfhocal mícheart.",
+      "signup": "Cláraigh",
+      "emailAddress": "Seoladh ríomhphoist",
+      "validEmail": "Cuir seoladh bailí ríomphoist ar fáil, le do thoil",
+      "password": "Pasfhocal",
+      "confirmPassword": "Deimhnigh an Pasfhocal",
+      "createAccount": "Cruthaigh Cuntas ABAIR",
+      "forgotPassword": "Pasfhocal dearmadta",
+      "updatePassword": "Pasfhocal a Nuashonrú",
+      "passwordUpdating": "(GA) Má tá an ríomhphost seo cláraithe, tá nasc athshlánaithe pasfhocail á sheoladh anois",
+      "haveAccount": "Tá cuntas agam cheana féin",
+      "name": "Ainm",
+      "sendEmail": "Ríomhphost a sheoladh",
+      "iAm": "Tá mé",
+      "over16": "os cionn 16",
+      "under16": "faoi bhun 16",
+      "minEight": "8 gcarachtar ar a laghad, ar a laghad ceannlitir amháin, litir bheag amháin, uimhir amháin agus carachtar speisialta amháin",
+      "passwordsDontMatch": "Ní hionann na pasfhocail"
+    },
+    "neartu": {
+      "expressionInterest": "Léiriú spéise",
+      "validName": "2 charachtar ar a laghad",
+      "interest": "An ghné a bhfuil spéis agat ann",
+      "otherInfo": "Aon sonraí eile a mba mhaith leat a chur in iúl dúinn",
+      "consent": "Tá mé sásta go gcuirfí ar liosta teagmhála de chuid an tionscadail ABAIR.ie mé",
+      "send": "seol sonraí",
+      "requestSubmitted": "Glacadh le do chuid sonraí. Beimid chugat go luath."
+    },
+    "geabaire": {
+      "description": "Córas cumarsáide AAC le Gaeilge",
+      "whatIsAACQuestion": "Céard atá i gceist le AAC?",
+      "whatIsAACAnswer": "Séard atá i gceist le AAC ná córas cumarsáide a ligeann do dhaoine atá faoi mhíchumas urlabhra cumarsáid a dhéanamh. Tá réimse mhór córas AAC ar fáil; cuid acu– cosúil le gothaí agus an teanga comharthaíochta - nach bhfuil gá le hacmhainn ar bith len iad a úsáid, cuid eile ina mbaintear úsáid as acmhainní bunúsacha cosúil le pictiúir nó clár litreacha agus cuid eile atá ag brath ar acmhainní teicneolaíochta agus a bhaineann úsáid as teicneolaíocht na hurlabhra le siombail agus méarchlár. Is acmhainn teicneolaíochta é an córas AAC – Geabaire - atá á fhorbairt sa tSaotharlann Foghraíochta agus Urlabhra, ina gcuirtear foclóir leathan ar fáil agus a fhágann gur féidir le daoine bheith páirteach i ngach réimse den saol agus den tsochaí.",
+      "exampleVideo": "Físeán Samplach",
+      "projectDetailsTitle": "Sonraí an tionscadail",
+      "projectDetailsDescription": "Is é an chéad chóras AAC don Ghaeilge é Geabaire. Thosaigh an tionscadal seo le cruthú coincheapa a tógadh ar an ardán Coughdrop, agus tá súil againn leagan a thógáil a bheidh ar fáil ar shuíomh ABAIR sar i bhfad. Is le maoiniú ó An Chomhairle um Oideachas Gaeltachta agus Gaelscolaíochta (COGG) atá an acmhainn seo á fhorbairt. Is deacracht ar leith é an easpa acmhainní cumarsáide do theaghlaigh a labhraíonn Gaeilge sa Ghaeltacht agus sa Ghalltacht chomh maith. Is constaic mhór í chomh maith ó thaobh an oideachais de, go háirithe dóibh siúd ag freastal ar Ghaelscoileanna nó ar scoileanna Gaeltachta. Táimid ag súil le córas dátheangach AAC a chur ar fáil a ligfidh don úsáideoir Gaeilge agus Béarla a úsáid in aon abairt amháin, más mian leo. Beidh gá le seiceálaithe gramadaí a bheith leabaithe sa chóras chomh maith le foclóir atá oiriúnach don chomhthéacs cultúrta (e.g. an CLG, focail a bhaineann le tíreolaíocht na hÉireann, etc). Cuirfear pacáiste traenalá ar fáil freisin do mhúinteoirí bunaithe ar bhealaí le Geabaire a úsáid sa seomra ranga. Fágann an comhpháirtíocht le tionscadal ABAIR go gcuirfear guthanna sintéiseacha atá oiriúnach do pháistí ar fáil sna príomhchanúintí sna blianta atá amach romhainn laistigh de chóras Geabaire. ",
+      "contactDetailsTitle": "Sonraí teagmhála"
+    },
+    "about": {
+      "aboutUsTitle": "Eolas Fúinn",
+      "aboutUsPin": "Is tionscadal de chuid na Saotharlainne Foghraíochta agus Urlabhra ag Scoil na nEolaíochtaí Teangeolaíochta, Urlabhra agus Cumarsáide, Coláiste na Tríonóide, BÁC, é ABAIR. Tá muid ag forbairt glórtha sintéise don Ghaeilge ó 2008. Tá na trí mhórchanúíntí clúdaithe againn – Gaeilge Uladh, Chonnacht agus na Mumhan. Chomh maith leis sin, tá muid ag obair ar chóras aithint chainte don Ghaeilge faoi láthair.",
+      "aboutUs": "Tá borradh faoi ghlórtha sintéise agus aithint chainte le cúpla bliain anuas. Tá an-éileamh ar threalamh fearacht Alexa agus is iomaí feidhm a bhaintear as glórtha sintéise. Níl aon dabht ach go dtiocfaidh tuilleadh fáis ar theicneolaíocht urlabhra sna blianta atá amach romhainn agus an Intleacht Shaorga ag dul i bhfeabhas an t-am ar fad. Tá muid ag cur teicneolaíocht urlabhra don Ghaeilge ar fáil ó bhí 2008 ann agus is iomaí dul chun cinn atá déanta againn ó shin i leith. Sa lá atá inniú ann, baintear úsáid as teicneolaíochtaí de chuid ABAIR i réimse an oideachais agus na rochtana agus tá muid meáite ar a thuilleadh teicneolaíochta a fhorbairt. Tá córas aithint chainte ar na bacáin againn faoi láthair.",
+      "synthesisTitle": "Sintéis",
+      "synthesis": "Is iomaí feidhm atá leis an tsintéis Téacs-go-hUrlabhra ('Text-to-Speech'). Úsáidtear í i gcórais phoiblí, m. sh. le haghaidh fógraí sa stáisiún traenach nó ag an aerfort. Tá sí thar a bheith tábhachtach do dhaoine atá faoi mhíchumas radhairc ionas go bhfuil siad in ann ríomhairí agus gutháin chliste a úsáid gan stró. Tá líon na n-acmhainní teagaisc ar dlúthchuid díobh í an tsintéis ag fás ó lá go lá. Agus is minic a bhaineann daoine úsáid as sintéis chun éisteacht leis na scéalta nuaíochta is deireanaí agus iad ag tiomaint sa gcarr nó ag bogshodar. Go deimhin, is rud nach foláir a bheith ag teanga na laethanta seo é sintéis Teacs-go-hUrlabhra. ",
+      "speechRecognitionTitle": "Aithint Chainte",
+      "speechRecognition": "Cuireann aithint chainte ar ár gcumas plé le ríomhairí go héasca trína bheith ag \"caint leo\", cuir i gcás ainm baile a thabhairt don chóras GPS sa gcarr nó scéal na haimsire a fhiosrú den ghuthán cliste. Tá éileamh mór ar chóras aithint chainte don Ghaeilge agus tá ABAIR ag díriú ar an mbearna a líonadh",
+      "challengeTitle": "An Dúshlán",
+      "challenge": "Murab ionann is mórtheangacha dála an Bhéarla nó na Spáinnise, ní bhíonn an oiread céanna acmhainní ag mionteanga fearacht na Gaeilge. Tá líon na gcainteoirí i bhfad níos lú agus is deacair bunachar mór taifeadtaí a chur le chéile, rud a theastaíonn le haghaidh glórtha sintéise is córais aithint chainte a fhorbairt. Chomh maith leis sin, teastaíonn saineolaithe a bhfuil léargas acu ar fhoghraíocht agus struchtúr na teanga agus is gá le hinnealltóirí a bhfuil tuisicnit mhaith ar phróiseáil urlabhra acu. Mar sin, ní bhíonn ach dornán beag daoine ag obair ar theicneolaíocht urlabhra do mhionteangacha.",
+      "aheadTitle": "Chun Cinn",
+      "ahead": "Tá feabhas thar chuimse tagtha ar an ríomhfhoghlaim le cúpla bliain anuas agus bíonn muid i gcónaí ag iarraidh leas a bhaint as na teicneolaíochtaí is nua chun snas a chur ar ár gcuid bogearraí agus áiseanna nua a chur ar fáil don phobal."
+    },
+    "applications": {
+      "comingSoon": "le teacht"
+    },
+    "recognition": {
+      "privacyTitle": "Príobháideachas",
+      "privacyRecordings": "GA - If you are over 16, you can use this feature anonymously. Your audio data will not be stored for longer than necessary to complete recognition. If you wish to help us improve our recognition models, please consider signing up for an account and consenting to use of your audio recordings for this purpose.",
+      "downloadConsent": "Íoslódáil an Fhoirm Thoilithe",
+      "over16": "Dearbhaím go bhfuilim 16 bliana d'aois nó níos sine.",
+      "accept": "glac leis",
+      "reject": "diúltaigh"
+    },
+    "profile": {
+      "thanks": "Go raibh maith agat as an eolas seo a sholáthar",
+      "updated": "Próifíl Nuashonraithe",
+      "username": "Ainm Úsáideora",
+      "birthYear": "Bliain Breithe",
+      "dialect": "Canúint",
+      "gender": "Inscne",
+      "male": "Fireann",
+      "female": "Baineann",
+      "ulster": "Ulaidh",
+      "connemara": "Connachta",
+      "munster": "Mumha",
+      "minimumThreeLetters": "3 litir ar a laghad",
+      "save": "sábháil"
+    }
+  },
+  "errorMessages": {
+    "app": {
+      "crash": {
+        "title": "Hmmmmm… chlis ar an gcóras. Is féidir leat:",
+        "options": {
+          "email": "Dul i dteagmháil le foireann ABAIR ag an seoladh - sloanjs@tcd.ie",
+          "reset": "Brúigh anseo chun an feidhmchlár a athshocrú"
+        }
+      }
+    },
+    "loader": {
+      "fail": "There is something wrong with this component loading process... please try again later"
+    },
+    "images": {
+      "failed": "something went wrong during image loading :("
+    },
+    "404": "No route for this URL"
+  }
+}

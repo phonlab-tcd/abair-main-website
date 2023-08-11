@@ -3,12 +3,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {
-  Media,
-  RecognitionRecordStopButtons,
-  RecognitionWaveVisual,
-  PopupBackground,
-} from "@/components";
+import { Media, RecognitionWaveVisual, PopupBackground } from "@/components";
 import {
   Button,
   PlaybackCard,
@@ -22,7 +17,6 @@ const Recognition = () => {
   const [microphonePermission, setMicrophonePermission] = useState(false);
   const [askPermission, setAskPermission] = useState(false);
   const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
-
   const [mediaRecorder, setMediaRecorder] = useState<
     MediaRecorder | undefined
   >();

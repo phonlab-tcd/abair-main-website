@@ -10,12 +10,22 @@ import Link from "next/link";
 import { Button, Sidebar } from "abair-web-components";
 import { useState, useEffect } from "react";
 import { routes } from "@/routes";
+import Image from "next/image";
+import { useTranslation } from "@/app/i18n/client";
+import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+const Navbar = ({ lng }: any) => {
   const [loggedIn, setLoggedIn] = useState(true);
   const [abairLogoHover, setAbairLogoHover] = useState(false);
   const [burgerMenuHover, setBurgerMenuHover] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const { t } = useTranslation(lng);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    console.log("lng:", lng);
+    console.log("pathname:", pathname.slice(3, pathname.length));
+  }, []);
 
   return (
     <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">
@@ -65,12 +75,13 @@ const Navbar = () => {
                 }}
               >
                 <div className="relative w-10 lg:w-14 h-8 lg:h-10">
-                  <img
+                  <Image
                     src={
                       abairLogoHover
-                        ? "/abair-logo-outline-green.png"
-                        : "/abair-logo-outline-green.png"
+                        ? "/images/abair-logo-outline-green.png"
+                        : "/images/abair-logo-outline-green.png"
                     }
+                    fill={true}
                     alt="ABAIR logo"
                   />
                 </div>
@@ -84,12 +95,12 @@ const Navbar = () => {
             {routes.map(
               (route, i) =>
                 route && (
-                  <Link key={i} href={route.path}>
+                  <Link key={i} href={`/${lng}${route.path}`}>
                     <Button
                       sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
                       colors="hover:bg-grey-100 text-primary-700"
                     >
-                      {route.name}
+                      {t(`pageTitles.${route.name}`)}
                     </Button>
                   </Link>
                 )
@@ -98,22 +109,37 @@ const Navbar = () => {
           <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
-          <DropdownMenu
+          <div className="h-full flex items-center">
+            <Link
+              href={`/${lng === "en" ? "ga" : "en"}${pathname.slice(
+                3,
+                pathname.length
+              )}`}
+            >
+              <Button
+                sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
+                colors="hover:bg-grey-100 text-primary-700"
+              >
+                {lng.toUpperCase()}
+              </Button>
+            </Link>
+          </div>
+          {/* <DropdownMenu
             label="GA"
             dropdownMenuItems={languageDropdownArgs}
             image={{
-              URL: "/ie.svg",
+              URL: "/images/ie.svg",
               width: "w-4 lg:w-6",
             }}
-          />
-          <div className="h-full flex items-center">
+          /> */}
+          {/* <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-white-900"></div>
           </div>
           {loggedIn ? (
             <DropdownMenu
               dropdownMenuItems={userDropdownArgs}
               image={{
-                URL: "/defaultProfileAvatar.png",
+                URL: "/images/defaultProfileAvatar.png",
                 width: "w-8 lg:w-10",
               }}
               showArrow={true}
@@ -127,7 +153,7 @@ const Navbar = () => {
                 login/sign up
               </Button>
             </div>
-          )}
+          )} */}
         </div>
       </div>
 

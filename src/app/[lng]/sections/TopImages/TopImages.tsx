@@ -47,7 +47,7 @@ const TopImages = () => {
           {imageCarouselData.map((image, index) => (
             <Image
               key={index}
-              src={"/frontPageImages" + image.path}
+              src={"/images/frontPageImages" + image.path}
               width={
                 ["lg", "xl"].includes(breakpoint)
                   ? 160 * image.ratio
