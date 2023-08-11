@@ -18,6 +18,17 @@ interface PersonModel {
   ab_publications?: PaperModel[];
 }
 
+interface ApplicationModel {
+  id: number;
+  name: string;
+  image: string;
+  url: string;
+  description_en: string;
+  description_ga: string;
+  category: number;
+  created_at: string;
+}
+
 interface NewsImagesModel {
   url: string;
 }
@@ -47,4 +58,4 @@ interface synthesisVoiceModel {
   voicenames?: string[];
 }
 
-export type { PaperModel, PersonModel, NewsModel, synthesisVoiceModel };
+export type { PaperModel, PersonModel, ApplicationModel, NewsModel, synthesisVoiceModel };
