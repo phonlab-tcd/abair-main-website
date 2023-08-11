@@ -38,7 +38,7 @@ const Applications = () => {
       <div className="flex justify-center w-full py-4 px-2">
         <Link href={`/applications`}>
           <Image
-            src={"/frontPageImages/applications.png"}
+            src={"/images/frontPageImages/applications.png"}
             width={800}
             height={400}
             alt="ABAIR applications image"
