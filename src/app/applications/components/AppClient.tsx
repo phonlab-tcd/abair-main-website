@@ -24,6 +24,13 @@ export default function AppClient({ applications }: ApplicationProps) {
     setFilteredData(data);
   };
 
+  // Separate app cards with no URL from others
+  const cardsWithUrl = filteredData.filter((card) => card.url !== "#");
+  const cardsWithoutUrl = filteredData.filter((card) => card.url === "#");
+
+  // Combine arrays to place cards without URL at the bottom
+  const sortedData = [...cardsWithUrl, ...cardsWithoutUrl];
+
   return (
     <div className="w-full flex justify-center">
       <div className="w-full max-w-6xl min-h-screen">
@@ -37,7 +44,7 @@ export default function AppClient({ applications }: ApplicationProps) {
           />
         </div>
         <div className="my-8 space-y-4 mx-auto max-w-6xl">
-          {filteredData.map((application, index) => (
+          {sortedData.map((application, index) => (
             <AppCard
               key={index}
               id={application.id}
