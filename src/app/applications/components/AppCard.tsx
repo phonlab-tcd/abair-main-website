@@ -25,7 +25,7 @@ const AppCard = ({
   return (
     <div
       className={`border ${
-        isDisabled ? "bg-gray-300" : "border-primary-300"
+        isDisabled ? "bg-gray-300" : "border-primary-200 border-2"
       } p-4 ${
         isDisabled ? "" : "cursor-pointer hover:bg-primary-200 duration-500"
       } relative`}
@@ -39,7 +39,7 @@ const AppCard = ({
           <img
             src={image}
             alt={name}
-            className="w-[225px] h-[200px] object-cover rounded-md"
+            className="w-[250px] h-[200px] object-cover rounded-md"
           />
           <div className="flex-grow">
             <h2 className="text-lg font-semibold">{name}</h2>

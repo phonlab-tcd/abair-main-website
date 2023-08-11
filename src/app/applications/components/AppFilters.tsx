@@ -21,14 +21,14 @@ const AppFilters = ({
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center border-b border-primary-500">
       <span className="space-x-4">
         <button
           className={`${
             activeCategory === 1
-              ? "bg-primary-200 text-primary-600"
-              : "bg-primary-500"
-          } text-white px-4 py-2 rounded`}
+              ? "border-b-2 border-primary-500 text-primary-500"
+              : "text-gray-600 hover:text-primary-500"
+          } px-4 py-2 font-medium transition duration-500 ease-in-out`}
           onClick={() => filterApplicationData(1)}
         >
           Education
@@ -36,9 +36,9 @@ const AppFilters = ({
         <button
           className={`${
             activeCategory === 3
-              ? "bg-primary-200 text-primary-600"
-              : "bg-primary-500"
-          } text-white px-4 py-2 rounded`}
+              ? "border-b-2 border-primary-500 text-primary-500"
+              : "text-gray-600 hover:text-primary-500"
+          } px-4 py-2 font-medium transition duration-500 ease-in-out`}
           onClick={() => filterApplicationData(3)}
         >
           Public
@@ -46,9 +46,9 @@ const AppFilters = ({
         <button
           className={`${
             activeCategory === 2
-              ? "bg-primary-200 text-primary-600"
-              : "bg-primary-500"
-          } text-white px-4 py-2 rounded`}
+              ? "border-b-2 border-primary-500 text-primary-500"
+              : "text-gray-600 hover:text-primary-500"
+          } px-4 py-2 font-medium transition duration-500 ease-in-out`}
           onClick={() => filterApplicationData(2)}
         >
           Accessibility
