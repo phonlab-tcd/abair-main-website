@@ -36,5 +36,32 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  return <pre>{JSON.stringify(publication, null, 2)}</pre>;
+  return (
+    <div className="w-full min-h-screen">
+      <div className="w-full flex justify-center mt-8">
+        <div className="max-w-6xl">
+          <div className="flex-grow">
+            <h1 className="text-3xl font-semibold mb-2 text-center">
+              {publication.title}
+            </h1>
+            <div className="text-gray-600 text-lg text-center">
+              {publication.year_published}
+            </div>
+            <p className="text-gray-1000 mb-4 text-center italic">
+              {publication.authors.join(",  ")}
+            </p>
+            <p className="text-gray-800 mb-4">{publication.abstract}</p>
+
+            <div className="flex justify-center">
+              <a href={publication.pdf_url}>
+                <button className="bg-primary-500 text-white px-4 py-2 rounded">
+                  Download PDF
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
