@@ -9,11 +9,11 @@ import { AccordionClient } from "@/components";
 
 interface NewsProps {
   news: NewsModel[];
+  lng: string;
 }
 
-export default function NewsClient({ news }: NewsProps) {
+export default function NewsClient({ news, lng }: NewsProps) {
   const [filteredData, setFilteredData] = useState<NewsModel[]>([]);
-  // const [initialData, setInitialData] = useState<NewsModel[]>([]);
   const [breakpoint, setBreakpoint] = useState<string>("");
 
   const handleResize = () => {
@@ -31,7 +31,6 @@ export default function NewsClient({ news }: NewsProps) {
   useEffect(() => {
     if (news) {
       setFilteredData(news);
-      // setInitialData(news);
     }
   }, [news]);
 
@@ -55,7 +54,7 @@ export default function NewsClient({ news }: NewsProps) {
               />
             </div>
             <div className="flex-1">
-              <NewsList newsData={filteredData} />
+              <NewsList newsData={filteredData} lng={lng} />
             </div>
           </div>
         ) : (
@@ -76,7 +75,7 @@ export default function NewsClient({ news }: NewsProps) {
                 />
               </div>
             </div>
-            <NewsList newsData={filteredData} />
+            <NewsList newsData={filteredData} lng={lng} />
           </div>
         )}
       </div>

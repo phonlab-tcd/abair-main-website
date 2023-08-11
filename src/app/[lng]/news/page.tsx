@@ -2,7 +2,11 @@
 import { supabase } from "@/services/supabase";
 import NewsClient from "./components/NewsClient";
 
-export default async function Page() {
+export default async function Page({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
   const { data: news } = await supabase
     .from("news_stories")
     .select()
@@ -11,5 +15,5 @@ export default async function Page() {
   if (!news) {
     return <p>No News Found</p>;
   }
-  return <NewsClient news={news} />;
+  return <NewsClient news={news} lng={lng} />;
 }

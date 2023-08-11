@@ -5,9 +5,10 @@ import Link from "next/link";
 
 interface NewsListProps {
   newsData: NewsModel[];
+  lng: string;
 }
 
-const NewsList = ({ newsData }: NewsListProps) => {
+const NewsList = ({ newsData, lng }: NewsListProps) => {
   return (
     <div className="flex flex-wrap w-full justify-center min-w-[400px]">
       {/* <div className="flex mb-4"></div>
@@ -17,7 +18,7 @@ const NewsList = ({ newsData }: NewsListProps) => {
           key={i}
           className="m-2 transition-all duration-300 hover:scale-102 shadow-sm hover:shadow-lg"
         >
-          <Link href={`/news/${news.id}`}>
+          <Link href={`/${lng}/news/${news.id}`}>
             <NewsCard
               title={news.title_en}
               blurb={news.blurb_en}

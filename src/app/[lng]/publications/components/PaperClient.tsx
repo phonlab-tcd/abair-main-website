@@ -9,9 +9,10 @@ import { PaperModel } from "@/models";
 
 interface PaperProps {
   papers: PaperModel[];
+  lng: string;
 }
 
-export default function PaperClient({ papers }: PaperProps) {
+export default function PaperClient({ papers, lng }: PaperProps) {
   const [filteredData, setFilteredData] = useState<PaperModel[]>([]);
   const [breakpoint, setBreakpoint] = useState<string>("");
 
@@ -52,7 +53,7 @@ export default function PaperClient({ papers }: PaperProps) {
               />
             </div>
             <div className="flex-1">
-              <PaperList paperData={filteredData} />
+              <PaperList paperData={filteredData} lng={lng} />
             </div>
           </div>
         ) : (
@@ -73,7 +74,7 @@ export default function PaperClient({ papers }: PaperProps) {
                 />
               </div>
             </div>
-            <PaperList paperData={filteredData} />
+            <PaperList paperData={filteredData} lng={lng} />
           </div>
         )}
       </div>
