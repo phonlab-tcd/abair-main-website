@@ -13,7 +13,9 @@ import {
 import { themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
 import { microphonePermissionAllowed } from "@/components/Media/utils";
-const Recognition = () => {
+import { useTranslation } from "@/app/i18n/client";
+
+const Recognition = ({ lng }: any) => {
   const [microphonePermission, setMicrophonePermission] = useState(false);
   const [askPermission, setAskPermission] = useState(false);
   const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
@@ -32,6 +34,7 @@ const Recognition = () => {
   const [breakpoint, setBreakpoint] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
+  const { t } = useTranslation(lng);
 
   const handleResize = () => {
     setBreakpoint(getBreakpoint());
@@ -121,14 +124,14 @@ const Recognition = () => {
       className={`z-10 w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge bg-white`}
     >
       <div className="w-full h-[40px] lg:h-[48px] bg-recognition-400 flex justify-center">
-        <div className="flex items-center text-xl lg:text-2xl font-mono text-white">
-          Recognition
+        <div className="flex items-center text-lg lg:text-xl font-mono text-white">
+          {t("pages.home.listen")}
         </div>
       </div>
       <div className="w-full  relative h-synthRecCardInner lg:h-synthRecCardLargeInner">
         <div className="h-[24px] lg:h-[32px] w-full flex justify-center items-end">
-          <div className="text-sm lg:text-base font-light text-recognition-700">
-            go to a quiet space &#8680; tap microphone &#8680; speak
+          <div className="text-xs lg:text-base font-light text-recognition-700">
+            {t("pages.home.listenInstructions")}
           </div>
         </div>
         <div className="lg:-mt-2 flex flex-row h-full">
@@ -210,12 +213,13 @@ const Recognition = () => {
             </div>
 
             <div className="absolute bottom-1 right-2 lg:right-4">
-              <Link href={`/recognition`}>
+              <Link href={`/${lng}/recognition`}>
                 <Button
                   colors="bg-inherit text-recognition-500 text-sm hover:text-recognition-600 hover:underline"
                   sizes="py-0.5 px-1 rounded-sm"
                 >
-                  more options <span className="text-3xl">&#8594;</span>
+                  {t("pages.home.advancedRecognitionOptions")}
+                  <span className="text-3xl">&#8594;</span>
                 </Button>
               </Link>
             </div>

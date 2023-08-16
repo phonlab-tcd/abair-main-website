@@ -6,15 +6,17 @@ import NewsFilters from "./NewsFilters";
 import { NewsModel } from "@/models";
 import { getBreakpoint } from "@/utils";
 import { AccordionClient } from "@/components";
+import { useTranslation } from "@/app/i18n/client";
 
 interface NewsProps {
   news: NewsModel[];
-  lng: string;
+  lng: any;
 }
 
 export default function NewsClient({ news, lng }: NewsProps) {
   const [filteredData, setFilteredData] = useState<NewsModel[]>([]);
   const [breakpoint, setBreakpoint] = useState<string>("");
+  const { t } = useTranslation(lng);
 
   const handleResize = () => {
     setBreakpoint(getBreakpoint());
@@ -40,10 +42,11 @@ export default function NewsClient({ news, lng }: NewsProps) {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full max-w-6xl min-h-screen">
-        <div className="text-4xl lg:text-6xl text-black text-center py-4">
-          News
+      <div className="w-full mt-8  max-w-6xl min-h-screen">
+        <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
+          {t("infoHeader.home.news.title")}
         </div>
+
         {["xl", "lg"].includes(breakpoint) ? (
           <div className="flex ">
             <div className="flex-none w-48 m-2">
@@ -51,6 +54,7 @@ export default function NewsClient({ news, lng }: NewsProps) {
                 largeScreen={true}
                 newsData={news}
                 onFilteredData={handleFilteredData}
+                lng={lng}
               />
             </div>
             <div className="flex-1">
@@ -70,6 +74,7 @@ export default function NewsClient({ news, lng }: NewsProps) {
                       largeScreen={false}
                       newsData={news}
                       onFilteredData={handleFilteredData}
+                      lng={lng}
                     />
                   }
                 />

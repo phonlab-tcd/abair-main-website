@@ -15,10 +15,11 @@ import {
 } from "abair-web-components";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/models";
+import { useTranslation } from "@/app/i18n/client";
 
 import { getBreakpoint } from "@/utils";
 
-const Page = () => {
+const Page = ({ lng }: any) => {
   const [availableGenders, setAvailableGenders] = useState<
     (string | undefined)[] | undefined
   >(undefined);
@@ -40,6 +41,7 @@ const Page = () => {
   const [breakpoint, setBreakpoint] = useState<string>("");
   const [synthesisPitch, setSynthesisPitch] = useState(100);
   const [synthesisSpeed, setSynthesisSpeed] = useState(100);
+  const { t } = useTranslation(lng);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
@@ -188,7 +190,7 @@ const Page = () => {
     <div className="w-full min-h-screen flex justify-center">
       <div className="w-full mt-8 max-w-2xl">
         <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
-          Synthesis
+          {t("pages.home.speak")}
         </div>
 
         <div className="w-full my-4">

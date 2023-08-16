@@ -12,9 +12,10 @@ import {
 } from "abair-web-components";
 import { themeColors, themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
-import { microphonePermissionAllowed } from "@/components/Media/utils";
+// import { microphonePermissionAllowed } from "@/components/Media/utils";
+import { useTranslation } from "@/app/i18n/client";
 
-const Page = () => {
+const Page = ({ lng }: any) => {
   const [microphonePermission, setMicrophonePermission] = useState(false);
   const [askPermission, setAskPermission] = useState(false);
   const [recognisedTextShowing, setRecognisedTextShowing] = useState(false);
@@ -33,6 +34,7 @@ const Page = () => {
   const [breakpoint, setBreakpoint] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
+  const { t } = useTranslation(lng);
 
   const handleResize = () => {
     setBreakpoint(getBreakpoint());
@@ -111,7 +113,7 @@ const Page = () => {
     <div className="w-full min-h-screen flex justify-center">
       <div className="w-full mt-8 max-w-2xl">
         <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
-          Recognition
+          {t("pages.home.listen")}
         </div>
         <div className="h-full w-full ">
           <div className="w-full pt-6">

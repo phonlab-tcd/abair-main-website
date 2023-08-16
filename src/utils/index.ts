@@ -1,3 +1,4 @@
 import getBreakpoint from "./getBreakpoint";
+import validateEmail from "./validateEmail";
 
-export { getBreakpoint };
+export { getBreakpoint, validateEmail };

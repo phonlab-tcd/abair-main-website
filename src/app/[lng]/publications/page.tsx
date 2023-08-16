@@ -5,7 +5,7 @@ import PaperClient from "./components/PaperClient";
 export default async function Page({
   params: { lng },
 }: {
-  params: { lng: string };
+  params: { lng: any };
 }) {
   const { data: papers } = await supabase
     .from("ab_publications")

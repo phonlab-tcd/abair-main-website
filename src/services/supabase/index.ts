@@ -1,5 +1,6 @@
-import { getPublications } from "@/services/supabase/publications";
-import { getPeople } from "@/services/supabase/people";
-import supabase from "@/services/supabase/supabase";
+import { getPublications } from "./publications";
+import { getPeople } from "./people";
+import { createInterest } from "./neartu";
+import supabase from "./supabase";
 
-export { supabase, getPublications, getPeople };
+export { supabase, getPublications, getPeople, createInterest };

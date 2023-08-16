@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useTranslation } from "@/app/i18n/client";
 
 interface DateRangePickerProps {
   startYear: number;
@@ -6,6 +9,7 @@ interface DateRangePickerProps {
   onStartYearChange: (startYear: number) => void;
   onEndYearChange: (endYear: number) => void;
   onApplyYearRange: () => void;
+  lng: string;
 }
 
 const DateRangePicker: React.FC<DateRangePickerProps> = ({
@@ -14,7 +18,10 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   onStartYearChange,
   onEndYearChange,
   onApplyYearRange,
+  lng,
 }) => {
+  const { t } = useTranslation(lng);
+
   const handleStartYearChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -32,7 +39,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   return (
     <div>
       <div className="flex">
-        <label>From</label>
+        <label>{t("search.from")}</label>
         <select
           className="border rounded px-3 py-2 ml-4"
           value={startYear}
@@ -47,7 +54,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
         </select>
       </div>
       <div className="flex">
-        <label>To</label>
+        <label>{t("search.to")}</label>
         <select
           className="border rounded px-3 py-2 ml-4"
           value={endYear}

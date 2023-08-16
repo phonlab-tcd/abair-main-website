@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params?: { id: number };
+  params?: { id: number; lng: any };
 }
 
 export default async function Page({ params }: PageProps) {
@@ -38,10 +38,12 @@ export default async function Page({ params }: PageProps) {
         <div className="max-w-6xl">
           <div className="flex-grow">
             <h1 className="text-3xl font-semibold mb-2 text-center">
-              {news.title_en}
+              {params?.lng === "en" ? news.title_en : news.title_ga}
             </h1>
             <div className="text-gray-600 text-lg text-center">{news.date}</div>
-            <p className="text-gray-800 mb-4 text-center">{news.blurb_en}</p>
+            <p className="text-gray-800 mb-4 text-center">
+              {params?.lng === "en" ? news.blurb_en : news.blurb_ga}
+            </p>
             <div className="flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0 justify-center">
               {news.images.map((image: any, index: number) => (
                 <div
@@ -61,8 +63,11 @@ export default async function Page({ params }: PageProps) {
             {/* <div className="text-gray-800" style={{ whiteSpace: "pre-line" }}>
               {news.body_en.replace(/~/g, "\n")}
             </div> */}
-            <div className="text-gray-800" style={{ whiteSpace: "pre-line" }}>
-              {news.body_en}
+            <div
+              className="text-gray-800 py-4 lg:py-8"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {params?.lng === "en" ? news.body_en : news.body_ga}
             </div>
           </div>
         </div>

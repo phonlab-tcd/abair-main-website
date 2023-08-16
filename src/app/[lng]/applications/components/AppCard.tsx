@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface AppCardProps {
   id: number;
@@ -6,9 +7,9 @@ interface AppCardProps {
   name: string;
   url: string;
   category: number;
-  description_en: string;
-  description_ga: string;
+  description: string;
   image: string;
+  comingSoonMsg: string;
 }
 
 const AppCard = ({
@@ -17,8 +18,9 @@ const AppCard = ({
   name,
   url,
   category,
-  description_en,
+  description,
   image,
+  comingSoonMsg,
 }: AppCardProps) => {
   const isDisabled = url === "#";
 
@@ -36,20 +38,22 @@ const AppCard = ({
         rel="noopener noreferrer"
       >
         <div className="flex space-x-4">
-          <img
+          <Image
             src={image}
             alt={name}
+            width={250}
+            height={200}
             className="w-[250px] h-[200px] object-cover rounded-md"
           />
           <div className="flex-grow">
             <h2 className="text-lg font-semibold">{name}</h2>
-            <p className="text-gray-800">{description_en}</p>
+            <p className="text-gray-800">{description}</p>
           </div>
         </div>
       </a>
       {isDisabled && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-400 bg-opacity-50">
-          <p className="text-white text-2xl font-semibold">COMING SOON</p>
+          <p className="text-white text-2xl font-semibold">{comingSoonMsg}</p>
         </div>
       )}
     </div>

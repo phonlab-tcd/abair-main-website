@@ -11,9 +11,6 @@
     "signUp": "Sign Up",
     "profile": "Profile",
     "contact": "Contact",
-    "neartu": "Neartú",
-    "APIs": "APIs",
-    "corpora": "Corpora",
     "consent": "Consent",
     "forgotPassword": "Forgot Password",
     "updatePassword": "Update Password"
@@ -21,7 +18,7 @@
   "infoHeader": {
     "home": {
       "main": {
-        "title": "State-of-the-art Speech and Language Technologies for Irish"
+        "title": "State-of-the-art Speech and Language Technologies for Irish."
       },
       "mileGlor": {
         "title": "A Thousand Voices",
@@ -61,13 +58,32 @@
       }
     }
   },
+  "search": {
+    "category": "category",
+    "all": "all",
+    "education": "education",
+    "presentation": "presentation",
+    "speech": "speech",
+    "award": "prizes",
+    "launch": "launch",
+    "misc": "misc",
+    "sort": "sort",
+    "mostRecent": "most recent",
+    "oldest": "oldest",
+    "dateRange": "date range",
+    "from": "from",
+    "to": "to",
+    "search": "search"
+  },
   "pages": {
     "home": {
-      "speak": "speak",
-      "listen": "listen",
+      "SOTA": "STATE \u2022 OF \u2022 THE \u2022 ART",
+      "speechAndLangTech": "Speech & Language Technologies for Irish",
+      "speak": "ABAIR - Speech Synthesis",
+      "listen": "ÉIST - Speech Recogniton",
       "writeHere": "type here",
-      "speakInstructions": "choose dialect & gender > type > synthesise",
-      "listenInstructions": "go to a quiet space > tap microphone > speak",
+      "speakInstructions": "choose dialect & gender ⇨ type ⇨ synthesise",
+      "listenInstructions": "go to a quiet space ⇨ tap microphone ⇨ speak",
       "seeAll": "see all",
       "technologyCards": {
         "synthesis": {
@@ -136,7 +152,10 @@
       "ahead": "Machine learning has improved considerably over the last couple of years and we are always trying to use the latest technology to improve our software and to provide facilities to the public."
     },
     "applications": {
-      "comingSoon": "coming soon"
+      "comingSoon": "coming soon",
+      "education": "education",
+      "public": "public",
+      "accessibility": "accessibility"
     },
     "recognition": {
       "privacyTitle": "Privacy",

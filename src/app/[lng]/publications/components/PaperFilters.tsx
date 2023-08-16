@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { PaperModel } from "@/models";
@@ -8,17 +10,20 @@ import {
   SortMenu,
   SearchBar,
 } from "@/components";
+import { useTranslation } from "@/app/i18n/client";
 
 interface PaperFiltersProps {
   largeScreen: boolean;
   paperData: PaperModel[];
   onFilteredData: (filteredData: PaperModel[]) => void;
+  lng: any;
 }
 
 const PaperFilters = ({
   largeScreen,
   paperData,
   onFilteredData,
+  lng,
 }: PaperFiltersProps) => {
   const [categories, setCategories] = useState<(string | undefined)[]>([]);
 
@@ -28,6 +33,7 @@ const PaperFilters = ({
   const [endYear, setEndYear] = useState(2022);
   const [yearRangeSelected, setYearRangeSelected] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation(lng);
 
   const filterPaperData = (
     category: string,
@@ -85,7 +91,7 @@ const PaperFilters = ({
     <div className="w-full justify-center bg-teal-400">
       <AccordionClient
         search={true}
-        title="category"
+        title={t("search.category")}
         open={largeScreen}
         content={
           <CategoryFilter
@@ -101,12 +107,13 @@ const PaperFilters = ({
                 searchQuery
               );
             }}
+            lng={lng}
           />
         }
       />
       <AccordionClient
         search={true}
-        title="sort by"
+        title={t("search.sortBy")}
         open={largeScreen}
         content={
           <SortMenu
@@ -121,13 +128,14 @@ const PaperFilters = ({
                 searchQuery
               );
             }}
+            lng={lng}
           />
         }
       />
 
       <AccordionClient
         search={true}
-        title="date range"
+        title={t("search.dateRange")}
         open={largeScreen}
         content={
           <DateRangePicker
@@ -165,12 +173,13 @@ const PaperFilters = ({
                 searchQuery
               );
             }}
+            lng={lng}
           />
         }
       />
       <AccordionClient
         search={true}
-        title="search"
+        title={t("search.search")}
         open={largeScreen}
         content={
           <SearchBar
@@ -185,6 +194,7 @@ const PaperFilters = ({
                 searchQuery
               )
             }
+            lng={lng}
           />
         }
       />

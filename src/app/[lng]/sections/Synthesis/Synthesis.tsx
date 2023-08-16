@@ -6,19 +6,10 @@ import { Map, GenderButtons, PopupBackground } from "@/components";
 import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/models";
-import {
-  delayToStartSynthesisCardFlash,
-  cardFlashDuration,
-} from "../animationTimings/animationTimings";
 import { getBreakpoint } from "@/utils";
+import { useTranslation } from "@/app/i18n/client";
 
-interface SynthesisProps {
-  flashSynthesisTitleColor?: string;
-}
-
-const Synthesis = ({
-  flashSynthesisTitleColor = "bg-synthesis-600",
-}: SynthesisProps) => {
+const Synthesis = ({ lng }: any) => {
   const [availableGenders, setAvailableGenders] = useState<
     (string | undefined)[] | undefined
   >(undefined);
@@ -38,6 +29,7 @@ const Synthesis = ({
   const [breakpoint, setBreakpoint] = useState<string>("");
   const audioRef = useRef<HTMLAudioElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
+  const { t } = useTranslation(lng);
 
   const handleResize = () => {
     setBreakpoint(getBreakpoint());
@@ -161,15 +153,15 @@ const Synthesis = ({
       className={`w-synthRecCard shadow-lg lg:w-synthRecCardLarge relative h-synthRecCard lg:h-synthRecCardLarge bg-white`}
     >
       <div className="w-full h-[40px] lg:h-[48px] bg-synthesis-500 flex justify-center">
-        <div className="flex items-center text-xl lg:text-2xl font-mono text-white">
-          Synthesis
+        <div className="flex items-center text-lg lg:text-xl font-mono text-white">
+          {t("pages.home.speak")}
         </div>
       </div>
 
       <div className="w-full relative h-synthRecCardInner lg:h-synthRecCardLargeInner ">
         <div className="h-[24px] lg:h-[32px] w-full flex justify-center items-end">
-          <div className="text-sm lg:text-base font-light text-synthesis-700">
-            select dialect & gender &#8680; type &#8680; generate speech
+          <div className="text-xs lg:text-base font-light text-synthesis-700">
+            {t("pages.home.speakInstructions")}
           </div>
         </div>
         <div className="flex flex-row lg:-mt-2">
@@ -216,12 +208,13 @@ const Synthesis = ({
               )}
             </div>
             <div className="absolute bottom-1 right-2 lg:right-4">
-              <Link href={`/synthesis`}>
+              <Link href={`/${lng}/synthesis`}>
                 <Button
                   colors="bg-inherit text-synthesis-500 text-sm hover:text-synthesis-600 hover:underline"
                   sizes="py-0.5 px-1 rounded-sm"
                 >
-                  more options <span className="text-3xl">&#8594;</span>
+                  {t("pages.home.advancedSynthesisOptions")}
+                  <span className="text-3xl">&#8594;</span>
                 </Button>
               </Link>
             </div>

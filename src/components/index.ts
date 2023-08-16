@@ -1,4 +1,3 @@
-import DropdownMenu from "./DropdownMenu/DropdownMenu";
 import GenderButtons from "./GenderButtons/GenderButtons";
 import FadeInText from "./FadeInText/FadeInText";
 import TypingText from "./TypingText/TypingText";
@@ -20,7 +19,6 @@ import SearchBar from "./Filters/SearchBar";
 
 export {
   NewsCard,
-  DropdownMenu,
   FadeInText,
   TypingText,
   CanvasDrawLine,

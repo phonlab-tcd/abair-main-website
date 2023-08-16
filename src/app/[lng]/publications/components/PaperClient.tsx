@@ -6,6 +6,7 @@ import PaperFilters from "./PaperFilters";
 import { getBreakpoint } from "@/utils";
 import { AccordionClient } from "@/components";
 import { PaperModel } from "@/models";
+import { useTranslation } from "@/app/i18n/client";
 
 interface PaperProps {
   papers: PaperModel[];
@@ -15,6 +16,7 @@ interface PaperProps {
 export default function PaperClient({ papers, lng }: PaperProps) {
   const [filteredData, setFilteredData] = useState<PaperModel[]>([]);
   const [breakpoint, setBreakpoint] = useState<string>("");
+  const { t } = useTranslation(lng);
 
   useEffect(() => {
     if (papers) {
@@ -39,9 +41,9 @@ export default function PaperClient({ papers, lng }: PaperProps) {
   }, []);
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full max-w-6xl min-h-screen">
-        <div className="text-4xl lg:text-6xl text-black text-center py-4">
-          Publications
+      <div className="w-full mt-8 max-w-6xl min-h-screen">
+        <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
+          {t("infoHeader.home.publications.title")}
         </div>
         {["xl", "lg"].includes(breakpoint) ? (
           <div className="flex ">
@@ -50,6 +52,7 @@ export default function PaperClient({ papers, lng }: PaperProps) {
                 largeScreen={true}
                 paperData={papers}
                 onFilteredData={handleFilteredData}
+                lng={lng}
               />
             </div>
             <div className="flex-1">
@@ -69,6 +72,7 @@ export default function PaperClient({ papers, lng }: PaperProps) {
                       largeScreen={false}
                       paperData={papers}
                       onFilteredData={handleFilteredData}
+                      lng={lng}
                     />
                   }
                 />

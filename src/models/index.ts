@@ -58,4 +58,10 @@ interface synthesisVoiceModel {
   voicenames?: string[];
 }
 
-export type { PaperModel, PersonModel, ApplicationModel, NewsModel, synthesisVoiceModel };
+export type {
+  PaperModel,
+  PersonModel,
+  ApplicationModel,
+  NewsModel,
+  synthesisVoiceModel,
+};

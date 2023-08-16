@@ -12,8 +12,6 @@
     "neartu": "Neartú",
     "profile": "Próifíl",
     "contact": "Teagmháil",
-    "APIs": "APIs",
-    "corpora": "Corpora",
     "consent": "Consent",
     "forgotPassword": "Dearmad ar Pasfhocal",
     "updatePassword": "Pasfhocal a Nuashonrú"
@@ -61,13 +59,33 @@
       }
     }
   },
+
+  "search": {
+    "category": "catagóir",
+    "all": "gach rud",
+    "education": "oideachas",
+    "award": "duaiseanna",
+    "presentation": "cur i lathair",
+    "speech": "cur i lathair",
+    "misc": "éagsúil",
+    "launch": "seoladh",
+    "sortBy": "sórtáil",
+    "mostRecent": "is déanaí",
+    "oldest": "is sine",
+    "dateRange": "raon dáta",
+    "from": "ó",
+    "to": "go",
+    "search": "cuardaigh"
+  },
   "pages": {
     "home": {
-      "speak": "ABAIR",
-      "listen": "ÉIST",
+      "SOTA": "STATE \u2022 OF \u2022 THE \u2022 ART",
+      "speechAndLangTech": "Teicneolaíocht Urlabhra agus Teanga don Ghaeilge",
+      "speak": "ABAIR - Guthanna Sintéiseacha",
+      "listen": "ÉIST - Aithint Chainte",
       "writeHere": "scríobh anseo",
-      "speakInstructions": "roghnaigh canúint & inscne > scríobh rud éigin > déan sintéis",
-      "listenInstructions": "téigh go háit chiúin > cliceáil ar an micreafón > labhair amach",
+      "speakInstructions": "roghnaigh canúint & inscne ⇨ scríobh rud éigin ⇨ déan sintéis",
+      "listenInstructions": "téigh go háit chiúin ⇨ cliceáil ar an micreafón ⇨ labhair amach",
       "seeAll": "féach gach scéal",
 
       "technologyCards": {
@@ -82,6 +100,7 @@
       "advancedRecognitionOptions": "tuilleadh roghanna aitheanta cainte",
       "go": "ar aghaidh"
     },
+
     "auth": {
       "login": "Logáil Isteach",
       "logout": "Logáil Amach",
@@ -136,7 +155,10 @@
       "ahead": "Tá feabhas thar chuimse tagtha ar an ríomhfhoghlaim le cúpla bliain anuas agus bíonn muid i gcónaí ag iarraidh leas a bhaint as na teicneolaíochtaí is nua chun snas a chur ar ár gcuid bogearraí agus áiseanna nua a chur ar fáil don phobal."
     },
     "applications": {
-      "comingSoon": "le teacht"
+      "comingSoon": "le teacht",
+      "education": "oideachas",
+      "public": "don phobal",
+      "accessibility": "rochtain"
     },
     "recognition": {
       "privacyTitle": "Príobháideachas",

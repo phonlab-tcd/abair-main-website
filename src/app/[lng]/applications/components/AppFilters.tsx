@@ -1,16 +1,21 @@
+"use client";
 import { ApplicationModel } from "@/models";
 import React, { useState } from "react";
+import { useTranslation } from "@/app/i18n/client";
 
 interface ApplicationFiltersProps {
   applicationData: ApplicationModel[];
   onFilteredData: (filteredData: ApplicationModel[]) => void;
+  lng: any;
 }
 
 const AppFilters = ({
   applicationData,
   onFilteredData,
+  lng,
 }: ApplicationFiltersProps) => {
   const [selectedCategory, setSelectedCategory] = useState<number>(1);
+  const { t } = useTranslation(lng);
 
   const filterApplicationData = (category: number) => {
     const filteredData = applicationData.filter(
@@ -31,7 +36,7 @@ const AppFilters = ({
           } px-4 py-2 font-medium transition duration-500 ease-in-out`}
           onClick={() => filterApplicationData(1)}
         >
-          Education
+          {t("pages.applications.education").toUpperCase()}
         </button>
         <button
           className={`${
@@ -41,7 +46,7 @@ const AppFilters = ({
           } px-4 py-2 font-medium transition duration-500 ease-in-out`}
           onClick={() => filterApplicationData(3)}
         >
-          Public
+          {t("pages.applications.public").toUpperCase()}
         </button>
         <button
           className={`${
@@ -51,7 +56,7 @@ const AppFilters = ({
           } px-4 py-2 font-medium transition duration-500 ease-in-out`}
           onClick={() => filterApplicationData(2)}
         >
-          Accessibility
+          {t("pages.applications.accessibility").toUpperCase()}
         </button>
       </span>
     </div>

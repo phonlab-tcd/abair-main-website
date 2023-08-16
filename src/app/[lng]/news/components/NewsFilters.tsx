@@ -1,4 +1,6 @@
+"use client";
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useState } from "react";
 import { NewsModel } from "@/models";
 import {
@@ -8,17 +10,20 @@ import {
   DateRangePicker,
   SearchBar,
 } from "@/components";
+import { useTranslation } from "@/app/i18n/client";
 
 interface NewsFiltersProps {
   largeScreen: boolean;
   newsData: NewsModel[];
   onFilteredData: (filteredData: NewsModel[]) => void;
+  lng: any;
 }
 
 const NewsFilters = ({
   largeScreen,
   newsData,
   onFilteredData,
+  lng,
 }: NewsFiltersProps) => {
   const [categories, setCategories] = useState<(string | undefined)[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -27,6 +32,7 @@ const NewsFilters = ({
   const [endDate, setEndDate] = useState("");
   const [dateRangeSelected, setDateRangeSelected] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation(lng);
 
   const filterNewsData = (
     category: string,
@@ -85,7 +91,7 @@ const NewsFilters = ({
     <div className="w-full justify-center bg-teal-400">
       <AccordionClient
         search={true}
-        title="category"
+        title={t("search.category")}
         open={largeScreen}
         content={
           <CategoryFilter
@@ -95,12 +101,13 @@ const NewsFilters = ({
               setSelectedCategory(category);
               filterNewsData(category, sortBy, startDate, endDate, searchQuery);
             }}
+            lng={lng}
           />
         }
       />
       <AccordionClient
         search={true}
-        title="sort by"
+        title={t("search.sortBy")}
         open={largeScreen}
         content={
           <SortMenu
@@ -115,13 +122,14 @@ const NewsFilters = ({
                 searchQuery
               );
             }}
+            lng={lng}
           />
         }
       />
 
       <AccordionClient
         search={true}
-        title="date range"
+        title={t("search.dateRange")}
         open={largeScreen}
         content={
           <DateRangePicker
@@ -164,7 +172,7 @@ const NewsFilters = ({
       />
       <AccordionClient
         search={true}
-        title="search"
+        title={t("search.search")}
         open={largeScreen}
         content={
           <SearchBar
@@ -179,6 +187,7 @@ const NewsFilters = ({
                 searchQuery
               )
             }
+            lng={lng}
           />
         }
       />

@@ -1,8 +1,8 @@
 const routes = [
-  {
-    path: "/about",
-    name: "about",
-  },
+  // {
+  //   path: "/about",
+  //   name: "about",
+  // },
   {
     path: "/synthesis",
     name: "synthesis",
@@ -15,10 +15,10 @@ const routes = [
     path: "/applications",
     name: "applications",
   },
-  {
-    path: "/contact",
-    name: "contact",
-  },
+  // {
+  //   path: "/contact",
+  //   name: "contact",
+  // },
   {
     path: "/news",
     name: "news",

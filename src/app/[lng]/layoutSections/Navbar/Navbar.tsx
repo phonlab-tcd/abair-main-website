@@ -2,9 +2,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { DropdownMenu } from "@/components";
-import languageDropdownArgs from "./languageDropdownArgs";
-import userDropdownArgs from "./userDropdownArgs";
+// import { DropdownMenu } from "@/components";
+// import languageDropdownArgs from "./languageDropdownArgs";
+// import userDropdownArgs from "./userDropdownArgs";
 
 import Link from "next/link";
 import { Button, Sidebar } from "abair-web-components";
@@ -22,10 +22,10 @@ const Navbar = ({ lng }: any) => {
   const { t } = useTranslation(lng);
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log("lng:", lng);
-    console.log("pathname:", pathname.slice(3, pathname.length));
-  }, []);
+  // useEffect(() => {
+  //   console.log("lng:", lng);
+  //   console.log("pathname:", pathname.slice(3, pathname.length));
+  // }, []);
 
   return (
     <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">
@@ -109,7 +109,7 @@ const Navbar = ({ lng }: any) => {
           <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
-          <div className="h-full flex items-center">
+          <div className="h-full flex items-center pr-2 lg:pr-4">
             <Link
               href={`/${lng === "en" ? "ga" : "en"}${pathname.slice(
                 3,
@@ -120,7 +120,8 @@ const Navbar = ({ lng }: any) => {
                 sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
                 colors="hover:bg-grey-100 text-primary-700"
               >
-                {lng.toUpperCase()}
+                {/* {lng.toUpperCase()} */}
+                GA/EN
               </Button>
             </Link>
           </div>
@@ -180,7 +181,7 @@ const Navbar = ({ lng }: any) => {
                 sizes="text-left text-sm lg:text-base py-2 pl-4 w-full"
                 colors="text-primary-700 hover:bg-grey-100"
               >
-                {route.name}
+                {t(`pageTitles.${route.name}`)}
               </Button>
             </Link>
           ))}

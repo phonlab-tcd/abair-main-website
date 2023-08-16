@@ -20,18 +20,19 @@ export default async function Page({
         <TopImages />
       </div>
       <div className="py-4 md:py-6 flex w-full justify-center relative">
-        <TopText />
+        {/* @ts-expect-error Server Component */}
+        <TopText lng={lng} />
       </div>
       <div className="flex w-full justify-center relative">
-        <CoreTechnologies />
+        <CoreTechnologies lng={lng} />
       </div>
 
       <div className="flex w-full justify-center relative bg-white">
-        <Applications />
+        <Applications lng={lng} />
       </div>
       <div className="flex w-full justify-center relative">
         {/* @ts-expect-error Server Component */}
-        <News />
+        <News lng={lng} />
       </div>
       <div className="flex w-full justify-center relative bg-white">
         {/* @ts-expect-error Server Component */}
