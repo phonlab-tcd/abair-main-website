@@ -105,6 +105,14 @@ const Navbar = ({ lng }: any) => {
                   </Link>
                 )
             )}
+            <Link href={`https://abair.ie`}>
+              <Button
+                sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
+                colors="hover:bg-grey-100 text-primary-700"
+              >
+                Prev. Site
+              </Button>
+            </Link>
           </div>
           <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
