@@ -3,8 +3,8 @@ import Image from "next/image";
 const Footer = async ({ lng }: any) => {
   return (
     <div className="p-1 flex relativ w-full justify-center bg-grey-200">
-      <div className="w-full max-w-6xl">
-        <div className="flex flex-wrap justify-center">
+      <div className="w-full max-w-2xl lg:max-w-5xl">
+        <div className="flex flex-wrap justify-between">
           <div className="m-1 lg:mx-4">
             <a href="https://www.chg.gov.ie/">
               <Image
