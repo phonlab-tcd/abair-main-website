@@ -21,12 +21,6 @@ export function middleware(req) {
   if (!lng) lng = acceptLanguage.get(req.headers.get("Accept-Language"));
   if (!lng) lng = fallbackLng;
 
-  console.log("lng:", lng);
-  console.log(
-    'req.headers.get("Accept-Language"):',
-    req.headers.get("Accept-Language")
-  );
-
   // Redirect if lng in path is not supported
   if (
     !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
@@ -35,7 +29,17 @@ export function middleware(req) {
     return NextResponse.redirect(
       new URL(`/${lng}${req.nextUrl.pathname}`, req.url)
     );
+  } else if (
+    languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`))
+  ) {
+    const lng = req.nextUrl.pathname
+      .split("/")
+      .filter((part) => part !== "")[0];
+    const response = NextResponse.next();
+    if (lng) response.cookies.set(cookieName, lng);
+    return response;
   }
+  console.log("req.headers:", req.headers.get("referer"));
 
   if (req.headers.has("referer")) {
     const refererUrl = new URL(req.headers.get("referer"));

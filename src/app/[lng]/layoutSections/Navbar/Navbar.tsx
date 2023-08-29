@@ -76,11 +76,7 @@ const Navbar = ({ lng }: any) => {
               >
                 <div className="relative w-10 lg:w-14 h-8 lg:h-10">
                   <Image
-                    src={
-                      abairLogoHover
-                        ? "/images/abair-logo-outline-green.png"
-                        : "/images/abair-logo-outline-green.png"
-                    }
+                    src={"/images/abair.ie_hollow_vector.svg"}
                     fill={true}
                     alt="ABAIR logo"
                   />

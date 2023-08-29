@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar, Footer } from "@/app/[lng]/layoutSections";
 import { dir } from "i18next";
 import { languages } from "../i18n/settings";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "ABAIR",
@@ -14,7 +15,7 @@ export async function generateStaticParams() {
 }
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
   params: { lng: string };
 }
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className="bg-grey-100">
+      <body className="bg-white">
         <Navbar lng={lng} />
 
         <div className="pt-12 lg:pt-16">{children}</div>
