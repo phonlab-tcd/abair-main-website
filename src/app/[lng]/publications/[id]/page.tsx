@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps) {
   const { data: publication } = await supabase
     .from("ab_publications")
     .select(
-      "id, created_at, title, abstract, pdf_url, year_published, authors, publication_category"
+      "id, created_at, title, abstract, pdf_url, year_published, authors, publication_category, publication"
     )
     .match({ id: params?.id })
     .single();
@@ -46,6 +46,9 @@ export default async function Page({ params }: PageProps) {
             </h1>
             <div className="text-gray-600 text-lg text-center">
               {publication.year_published}
+            </div>
+            <div className="text-gray-800 text-lg text-center">
+              {publication.publication}
             </div>
             <p className="text-gray-1000 mb-4 text-center italic">
               {publication.authors.join(",  ")}
