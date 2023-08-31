@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
     .single();
 
   if (!news) {
-    notFound();
+    return <h1>no news</h1>;
   }
 
   return (

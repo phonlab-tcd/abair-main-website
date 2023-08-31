@@ -1,5 +1,4 @@
 import supabase from "@/services/supabase/supabase";
-import { notFound } from "next/navigation";
 import LinkedPublications from "./components/LinkedPublications";
 
 export async function generateStaticParams() {
@@ -28,19 +27,19 @@ export default async function Page({ params }: PageProps) {
   const { data: publication } = await supabase
     .from("ab_publications")
     .select(
-      "id, created_at, title, abstract, pdf_url, year_published, authors, publication_category, publication"
+      "id, created_at, title, abstract, pdf_url, year_published, people( id, name ), publication_category, publication"
     )
     .match({ id: params?.id })
     .single();
 
   if (!publication) {
-    notFound();
+    return <h1>no publications</h1>;
   }
 
   const { data: publicationData } = await supabase
     .from("ab_publications")
     .select(
-      "id, created_at, title, abstract, pdf_url, year_published, authors, publication_category, publication"
+      "id, created_at, title, abstract, pdf_url, year_published, people( id, name ), publication_category, publication"
     );
 
   return (
@@ -59,7 +58,7 @@ export default async function Page({ params }: PageProps) {
               {publication.publication}
             </div>
             <p className="text-gray-1000 mb-4 text-center italic">
-              {publication.authors.join(",  ")}
+              {publication.people.map((p) => p.name).join(",  ")}
             </p>
             <p className="text-gray-800 mb-4">{publication.abstract}</p>
 

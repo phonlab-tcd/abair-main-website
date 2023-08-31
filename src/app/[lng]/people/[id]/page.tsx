@@ -29,7 +29,7 @@ export default async function Page({ params }: PageProps) {
   console.log("fds");
 
   if (!person) {
-    notFound();
+    return <h1>no people</h1>;
   }
 
   return <pre>{JSON.stringify(person, null, 2)}</pre>;
