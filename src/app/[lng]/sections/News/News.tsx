@@ -1,5 +1,6 @@
 import { supabase } from "@/services/supabase";
-import { NewsCard, Button } from "abair-web-components";
+import { NewsCard } from "@/components/NewsCard";
+import { Button } from "@/components/Button";
 import Link from "next/link";
 import { useTranslation } from "@/app/i18n";
 

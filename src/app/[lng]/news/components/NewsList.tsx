@@ -1,6 +1,6 @@
 "use client";
 
-import { NewsCard } from "abair-web-components";
+import { NewsCard } from "@/components/NewsCard";
 import { NewsModel } from "@/models";
 import Link from "next/link";
 import { useTranslation } from "@/app/i18n/client";

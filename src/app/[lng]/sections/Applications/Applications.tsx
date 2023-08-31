@@ -3,7 +3,7 @@ import { getBreakpoint } from "@/utils";
 /* eslint-disable react-hooks/exhaustive-deps */
 import Link from "next/link";
 
-import { Button } from "abair-web-components";
+import { Button } from "@/components/Button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";

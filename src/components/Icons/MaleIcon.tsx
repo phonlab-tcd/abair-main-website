@@ -1,20 +1,21 @@
 interface MaleIconProps {
   color?: string;
+  hoverColor?: string;
   selected?: boolean;
+  hover?: boolean;
   height?: number;
   width?: number;
 }
 
 const MaleIcon = ({
   color = "#BBB",
-  selected = false,
   height = 30,
   width = 30,
 }: MaleIconProps) => {
   return (
     <svg
       width={`${width}px`}
-      height={`${width}px`}
+      height={`${height}px`}
       viewBox="0 0 20 20"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +26,9 @@ const MaleIcon = ({
       <g
         id="Page-1"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       >
         <g
           id="Dribbble-Light-Preview"

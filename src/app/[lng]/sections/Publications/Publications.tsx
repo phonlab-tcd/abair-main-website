@@ -1,6 +1,7 @@
 import { supabase } from "@/services/supabase";
-import { Button, PublicationCard } from "abair-web-components";
-import { AccordionClient } from "@/components";
+import { Button } from "@/components/Button";
+import { PublicationCard } from "@/components/PublicationCard";
+import { AccordionClient } from "@/components/Accordion";
 import Link from "next/link";
 import { useTranslation } from "@/app/i18n";
 

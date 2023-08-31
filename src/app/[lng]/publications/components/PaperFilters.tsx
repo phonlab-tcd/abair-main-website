@@ -4,12 +4,8 @@
 import React, { useEffect, useState } from "react";
 import { PaperModel } from "@/models";
 import DateRangePicker from "./DateRangePicker";
-import {
-  AccordionClient,
-  CategoryFilter,
-  SortMenu,
-  SearchBar,
-} from "@/components";
+import { AccordionClient } from "@/components/Accordion";
+import { CategoryFilter, SortMenu, SearchBar } from "@/components/Filters";
 import { useTranslation } from "@/app/i18n/client";
 
 interface PaperFiltersProps {

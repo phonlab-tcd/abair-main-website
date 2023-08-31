@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import PaperList from "./PaperList";
 import PaperFilters from "./PaperFilters";
 import { getBreakpoint } from "@/utils";
-import { AccordionClient } from "@/components";
+import { AccordionClient } from "@/components/Accordion";
 import { PaperModel } from "@/models";
 import { useTranslation } from "@/app/i18n/client";
 
@@ -21,6 +21,7 @@ export default function PaperClient({ papers, lng }: PaperProps) {
   useEffect(() => {
     if (papers) {
       setFilteredData(papers);
+      console.log("papers:", papers);
     }
   }, [papers]);
 

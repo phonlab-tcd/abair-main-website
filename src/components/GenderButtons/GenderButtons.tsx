@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { themeColors } from "@/theme";
-import { MaleIcon, FemaleIcon, Button } from "abair-web-components";
+import { MaleIcon, FemaleIcon } from "@/components/Icons";
 import { Dispatch, SetStateAction } from "react";
 
 interface GenderButtonsProps {

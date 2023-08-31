@@ -1,15 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Media, RecognitionWaveVisual, PopupBackground } from "@/components";
-import {
-  Button,
-  PlaybackCard,
-  MicrophoneIcon,
-  StopIcon,
-} from "abair-web-components";
+import { Media } from "@/components/Media";
+import { RecognitionWaveVisual } from "@/components/RecognitionWaveVisual";
+import { PopupBackground } from "@/components/PopupBackground";
+import { Button } from "@/components/Button";
+import { PlaybackCard } from "@/components/PlaybackCard";
+import { MicrophoneIcon, StopIcon } from "@/components/Icons";
 import { themeColors, themeWidth } from "@/theme";
 import { getBreakpoint } from "@/utils";
 // import { microphonePermissionAllowed } from "@/components/Media/utils";

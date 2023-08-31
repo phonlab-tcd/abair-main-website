@@ -10,7 +10,7 @@ export default async function Page({
   const { data: papers } = await supabase
     .from("ab_publications")
     .select(
-      "id, created_at, title, abstract, pdf_url, year_published, authors, publication_category"
+      `id, created_at, title, abstract, pdf_url, year_published, people( name ), publication_category`
     );
 
   if (!papers) {

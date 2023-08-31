@@ -1,3 +1,3 @@
-import RecognitionRecordStopButtons from './RecognitionRecordStopButtons';
+import RecognitionRecordStopButtons from "./RecognitionRecordStopButtons";
 
-export default RecognitionRecordStopButtons;
+export { RecognitionRecordStopButtons };

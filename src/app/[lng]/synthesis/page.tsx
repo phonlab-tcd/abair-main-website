@@ -1,22 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import Link from "next/link";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { Map, GenderButtons, PopupBackground } from "@/components";
+import { Map } from "@/components/Map";
+import { GenderButtons } from "@/components/GenderButtons";
 import {
   SpeakIcon,
-  Button,
-  PlaybackCard,
-  Slider,
   SpeedometerIcon,
   PitchIcon,
   ModelIcon,
   SpeakerIcon,
-} from "abair-web-components";
+} from "@/components/Icons";
+import { Button } from "@/components/Button";
+import { PlaybackCard } from "@/components/PlaybackCard";
+import { Slider } from "@/components/Slider";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/models";
 import { useTranslation } from "@/app/i18n/client";
-
 import { getBreakpoint } from "@/utils";
 
 const Page = ({ lng }: any) => {

@@ -1,8 +1,8 @@
 import React from "react";
-import { PublicationCard } from "abair-web-components";
+import { PublicationCard } from "@/components/PublicationCard";
 import { PaperModel } from "@/models";
 import Link from "next/link";
-import { AccordionClient } from "@/components";
+import { AccordionClient } from "@/components/Accordion";
 
 interface PaperListProps {
   paperData: PaperModel[];

@@ -1,4 +1,5 @@
-import { MicrophoneIcon, StopIcon, Button } from "abair-web-components";
+import { MicrophoneIcon, StopIcon } from "@/components/Icons";
+import { Button } from "@/components/Button";
 import { Dispatch, SetStateAction } from "react";
 
 // import { useShowTempConsent, useTempConsent } from "@/store/consent";

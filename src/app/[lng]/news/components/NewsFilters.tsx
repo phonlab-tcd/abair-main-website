@@ -3,13 +3,13 @@
 
 import React, { useEffect, useState } from "react";
 import { NewsModel } from "@/models";
+import { AccordionClient } from "@/components/Accordion";
 import {
-  AccordionClient,
   CategoryFilter,
   SortMenu,
   DateRangePicker,
   SearchBar,
-} from "@/components";
+} from "@/components/Filters";
 import { useTranslation } from "@/app/i18n/client";
 
 interface NewsFiltersProps {

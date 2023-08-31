@@ -5,7 +5,7 @@ import NewsList from "./NewsList";
 import NewsFilters from "./NewsFilters";
 import { NewsModel } from "@/models";
 import { getBreakpoint } from "@/utils";
-import { AccordionClient } from "@/components";
+import { AccordionClient } from "@/components/Accordion";
 import { useTranslation } from "@/app/i18n/client";
 
 interface NewsProps {

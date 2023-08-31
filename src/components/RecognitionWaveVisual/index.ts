@@ -1,3 +1,3 @@
-import RecognitionWaveVisual from './RecognitionWaveVisual';
+import RecognitionWaveVisual from "./RecognitionWaveVisual";
 
-export default RecognitionWaveVisual;
+export { RecognitionWaveVisual };

@@ -1,4 +1,4 @@
-import { Button } from "abair-web-components";
+import { Button } from "@/components/Button";
 import { Recognition, Synthesis } from "../index";
 import Link from "next/link";
 

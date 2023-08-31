@@ -2,8 +2,12 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Map, GenderButtons, PopupBackground } from "@/components";
-import { SpeakIcon, Button, PlaybackCard } from "abair-web-components";
+import { Map } from "@/components/Map";
+import { GenderButtons } from "@/components/GenderButtons";
+import { PopupBackground } from "@/components/PopupBackground";
+import { SpeakIcon } from "@/components/Icons";
+import { Button } from "@/components/Button";
+import { PlaybackCard } from "@/components/PlaybackCard";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/models";
 import { getBreakpoint } from "@/utils";

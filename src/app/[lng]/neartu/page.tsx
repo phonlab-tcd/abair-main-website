@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 
-import { Button } from "abair-web-components";
 import Image from "next/image";
 
 import { validateEmail } from "@/utils";
