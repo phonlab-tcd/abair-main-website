@@ -7,6 +7,7 @@ interface PaperModel {
   year_published?: number;
   authors?: string[];
   publication_category?: string;
+  publication?: string
 }
 
 interface PersonModel {

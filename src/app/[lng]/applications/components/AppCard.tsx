@@ -41,9 +41,7 @@ const AppCard = ({
           <Image
             src={image}
             alt={name}
-            width={250}
-            height={200}
-            className="w-[250px] h-[200px] object-cover rounded-md"
+            className="w-[100px] h-[80px] object-cover rounded-md md:w-[175px] md:h-[140px] lg:w-[250px] lg:h-[200px]"
           />
           <div className="flex-grow">
             <h2 className="text-lg font-semibold">{name}</h2>
