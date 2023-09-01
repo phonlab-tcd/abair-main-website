@@ -14,7 +14,7 @@ import { Button } from "@/components/Button";
 import { PlaybackCard } from "@/components/PlaybackCard";
 import { Slider } from "@/components/Slider";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
-import { synthesisVoiceModel } from "@/models";
+import { synthesisVoiceModel } from "@/types/abair";
 import { useTranslation } from "@/app/i18n/client";
 import { getBreakpoint } from "@/utils";
 

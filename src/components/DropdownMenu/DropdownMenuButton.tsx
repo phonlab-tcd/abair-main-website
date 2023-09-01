@@ -1,9 +1,9 @@
-import ThumbnailImage, {
-  ThumbnailImageProps,
-} from "@/components/ThumbnailImage";
+// import ThumbnailImage, {
+//   ThumbnailImageProps,
+// } from "@/components/ThumbnailImage";
 
 interface DropdownMenuButtonProps {
-  image?: ThumbnailImageProps;
+  // image?: ThumbnailImageProps;
   label?: string;
   onClickHandler: () => void;
   isOpen: boolean;
@@ -15,7 +15,7 @@ const DropdownMenuButton = ({
   onClickHandler = () => {
     console.log("menu Button clicked");
   },
-  image,
+  // image,
   isOpen = false,
   showArrow = false,
 }: DropdownMenuButtonProps) => {
@@ -29,7 +29,7 @@ const DropdownMenuButton = ({
       }
       type="button"
     >
-      {image !== undefined && (
+      {/* {image !== undefined && (
         <div className={label !== undefined ? "pr-2" : ""}>
           <ThumbnailImage
             URL={image.URL}
@@ -38,7 +38,7 @@ const DropdownMenuButton = ({
             borderColor={image.borderColor}
           />
         </div>
-      )}
+      )} */}
       {label !== undefined && (
         <p className="text-inherit text-sm lg:text-base">{label}</p>
       )}

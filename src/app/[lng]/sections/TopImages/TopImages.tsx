@@ -5,11 +5,6 @@ import imageCarouselData from "./imageCarouselData";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-interface ImageCarouselDataModel {
-  path: string;
-  ratio: number;
-}
-
 const TopImages = () => {
   const [breakpoint, setBreakpoint] = useState<string>("");
 

@@ -1,18 +1,20 @@
 // SidebarPaperCard.tsx
-import { PaperModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
+
 import Link from "next/link";
 import React from "react";
 
 interface SidebarPaperCardProps {
-  publication: PaperModel;
+  publication: Tables<"ab_publications">;
 }
 
 const SidebarPaperCard = ({ publication }: SidebarPaperCardProps) => {
-  if (publication.authors) {
-    let authorString = publication.authors.join(", ");
-    if (publication.authors.length > 1) {
-      const firstAuthor = publication.authors.slice(0, 1);
-      authorString = `${firstAuthor} et al.`;
+  if (publication.people) {
+    let authorString = publication.people.map((p) => p.name).join(", ");
+    if (publication.people.length > 1) {
+      const firstAuthor = publication.people.slice(0, 1);
+      // authorString = `${firstAuthor.name} et al.`;
+      authorString = `error here (fix line above)`;
     }
     return (
       <Link

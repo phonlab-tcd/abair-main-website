@@ -3,6 +3,7 @@
 import { useState } from "react";
 import irelandMapData from "./irelandMapData";
 import { themeColors } from "@/theme";
+
 interface mapDataModel {
   name: string;
   coordinates: string;

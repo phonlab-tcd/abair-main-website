@@ -4,8 +4,8 @@ import { MouseEvent, useEffect, useState, useRef } from "react";
 
 interface DropdownMenuProps {
   label?: string;
-  dropdownMenuItems: DropdownMenuItemProps[];
-  image?: ThumbnailImageProps;
+  // dropdownMenuItems: DropdownMenuItemProps[];
+  // image?: ThumbnailImageProps;
   dropdownPosition?: "left" | "right";
   showArrow?: boolean;
   border?: boolean;
@@ -13,8 +13,8 @@ interface DropdownMenuProps {
 
 const DropdownMenu = ({
   label,
-  dropdownMenuItems,
-  image,
+  // dropdownMenuItems,
+  // image,
   dropdownPosition = "left",
   showArrow = false,
   border,
@@ -43,13 +43,13 @@ const DropdownMenu = ({
 
   return (
     <div ref={menuRef} className={"relative h-full"}>
-      <DropdownMenuButton
+      {/* <DropdownMenuButton
         onClickHandler={toggleMenu}
         isOpen={isOpen}
         label={label}
         image={image}
         showArrow={showArrow}
-      />
+      /> */}
       {isOpen && (
         <div
           className={[
@@ -57,7 +57,7 @@ const DropdownMenu = ({
             dropdownPosition === "right" ? "left-0" : "right-0",
           ].join(" ")}
         >
-          <ul>
+          {/* <ul>
             {Array.isArray(dropdownMenuItems) &&
               dropdownMenuItems.map((dropdownMenuItem, i) => (
                 <DropdownMenuItem
@@ -69,7 +69,7 @@ const DropdownMenu = ({
                   onClickHandler={dropdownMenuItem.onClickHandler}
                 />
               ))}
-          </ul>
+          </ul> */}
         </div>
       )}
       {/* </div> */}

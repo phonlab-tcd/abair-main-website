@@ -1,12 +1,12 @@
-// import Image from "next/image";
+import Image from "next/image";
 
 interface NewsCardProps {
-  date?: string;
-  title?: string;
-  blurb?: string;
-  imageURL?: string;
-  news_category?: string;
-  category_string?: string;
+  date: string | null;
+  title: string | null;
+  blurb: string | null;
+  imageURL: string;
+  news_category: string | null;
+  category_string: string | null;
   altText?: string;
 }
 
@@ -21,8 +21,10 @@ const NewsCard = ({
 }: NewsCardProps) => {
   return (
     <div className="relative h-[440px] w-[290px] p-3 bg-white shadow-lg rounded-sm">
-      <img
+      <Image
         src={imageURL}
+        height={180}
+        width={180}
         alt={altText}
         className="rounded-md h-[180px] w-full object-cover object-center "
       />

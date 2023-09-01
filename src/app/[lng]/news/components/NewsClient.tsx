@@ -3,18 +3,20 @@
 import React, { useState, useEffect } from "react";
 import NewsList from "./NewsList";
 import NewsFilters from "./NewsFilters";
-import { NewsModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
 import { getBreakpoint } from "@/utils";
 import { AccordionClient } from "@/components/Accordion";
 import { useTranslation } from "@/app/i18n/client";
 
 interface NewsProps {
-  news: NewsModel[];
+  news: Tables<"news_stories">[];
   lng: any;
 }
 
 export default function NewsClient({ news, lng }: NewsProps) {
-  const [filteredData, setFilteredData] = useState<NewsModel[]>([]);
+  const [filteredData, setFilteredData] = useState<Tables<"news_stories">[]>(
+    []
+  );
   const [breakpoint, setBreakpoint] = useState<string>("");
   const { t } = useTranslation(lng);
 
@@ -36,7 +38,7 @@ export default function NewsClient({ news, lng }: NewsProps) {
     }
   }, [news]);
 
-  const handleFilteredData = (data: NewsModel[]) => {
+  const handleFilteredData = (data: Tables<"news_stories">[]) => {
     setFilteredData(data);
   };
 

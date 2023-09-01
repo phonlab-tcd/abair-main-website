@@ -1,4 +1,4 @@
-import { synthesisVoiceModel } from "@/models";
+import { synthesisVoiceModel } from "@/types/abair";
 
 const returnDialectCode = (dialect: string) => {
   if (dialect === "Connemara") {

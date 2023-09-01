@@ -40,7 +40,7 @@ const CategoryFilter = ({
           <label>
             <input
               type="checkbox"
-              value={category}
+              value={category ? category : undefined}
               checked={selectedCategory === category}
               onChange={handleCategoryChange}
             />

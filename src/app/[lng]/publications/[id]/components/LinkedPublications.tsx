@@ -1,21 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import { PaperModel, PersonModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
 import SidebarPaperCard from "./SidebarPaperCard";
 
 interface LinkedPublicationsProps {
-  publicationData: PaperModel[] | null;
-  currentPublication: PaperModel;
+  publicationData: Tables<"ab_publications">[];
+  currentPublication: Tables<"ab_publications">;
 }
 
 const LinkedPublications = ({
   publicationData,
   currentPublication,
 }: LinkedPublicationsProps) => {
-  //1=category
-
-  //2=authors
-
   const [selectedFilter, setSelectedFilter] = useState(1);
   if (selectedFilter == 1 && publicationData) {
     publicationData = publicationData.filter(
@@ -29,12 +25,15 @@ const LinkedPublications = ({
   else if (selectedFilter == 2 && publicationData) {
     publicationData = publicationData.filter(
       (paper) =>
-        countCommonNames(paper.authors, currentPublication.authors) >= 3 &&
+        countCommonNames(paper.people, currentPublication.people) >= 3 &&
         paper.id !== currentPublication.id
     );
   }
 
-  function countCommonNames(array1?: PersonModel[], array2?: PersonModel[]) {
+  function countCommonNames(
+    array1?: Tables<"people">[],
+    array2?: Tables<"people">[]
+  ) {
     if (!array1 || !array2) {
       return -1;
     }
@@ -81,15 +80,19 @@ const LinkedPublications = ({
         </div>
 
         <div>
-          {publicationData.slice(0, 3).map((currentPublication: PaperModel) => (
-            <SidebarPaperCard
-              key={currentPublication.id}
-              publication={currentPublication}
-            />
-          ))}
+          {publicationData
+            .slice(0, 3)
+            .map((currentPublication: Tables<"ab_publications">) => (
+              <SidebarPaperCard
+                key={currentPublication.id}
+                publication={currentPublication}
+              />
+            ))}
         </div>
       </>
     );
+  } else {
+    return null;
   }
 };
 

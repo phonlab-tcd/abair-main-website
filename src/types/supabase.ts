@@ -11,37 +11,34 @@ export interface Database {
     Tables: {
       ab_publications: {
         Row: {
-          abstract: string | null
-          author_list: Json | null
+          abstract: string
           created_at: string | null
           id: number
-          pdf_url: string | null
-          publication: string | null
-          publication_category: string | null
-          title: string | null
-          year_published: number | null
+          pdf_url: string
+          publication: string
+          publication_category: string
+          title: string
+          year_published: number
         }
         Insert: {
-          abstract?: string | null
-          author_list?: Json | null
+          abstract: string
           created_at?: string | null
           id?: number
-          pdf_url?: string | null
-          publication?: string | null
-          publication_category?: string | null
-          title?: string | null
-          year_published?: number | null
+          pdf_url: string
+          publication: string
+          publication_category: string
+          title: string
+          year_published: number
         }
         Update: {
-          abstract?: string | null
-          author_list?: Json | null
+          abstract?: string
           created_at?: string | null
           id?: number
-          pdf_url?: string | null
-          publication?: string | null
-          publication_category?: string | null
-          title?: string | null
-          year_published?: number | null
+          pdf_url?: string
+          publication?: string
+          publication_category?: string
+          title?: string
+          year_published?: number
         }
         Relationships: []
       }
@@ -68,34 +65,34 @@ export interface Database {
       }
       applications: {
         Row: {
-          category: number | null
-          created_at: string | null
-          description_en: string | null
-          description_ga: string | null
+          category: number
+          created_at: string
+          description_en: string
+          description_ga: string
           id: number
-          image: string | null
-          name: string | null
-          url: string | null
+          image: string
+          name: string
+          url: string
         }
         Insert: {
-          category?: number | null
-          created_at?: string | null
-          description_en?: string | null
-          description_ga?: string | null
+          category: number
+          created_at?: string
+          description_en: string
+          description_ga: string
           id?: number
-          image?: string | null
-          name?: string | null
-          url?: string | null
+          image: string
+          name: string
+          url: string
         }
         Update: {
-          category?: number | null
-          created_at?: string | null
-          description_en?: string | null
-          description_ga?: string | null
+          category?: number
+          created_at?: string
+          description_en?: string
+          description_ga?: string
           id?: number
-          image?: string | null
-          name?: string | null
-          url?: string | null
+          image?: string
+          name?: string
+          url?: string
         }
         Relationships: []
       }
@@ -450,45 +447,45 @@ export interface Database {
       }
       news_stories: {
         Row: {
-          blurb_en: string | null
-          blurb_ga: string | null
-          body_en: string | null
-          body_ga: string | null
+          blurb_en: string
+          blurb_ga: string
+          body_en: string
+          body_ga: string
           created_at: string | null
-          date: string | null
+          date: string
           id: number
-          images: Json | null
-          news_category: string | null
-          title_en: string | null
-          title_ga: string | null
+          images: Json
+          news_category: string
+          title_en: string
+          title_ga: string
           video: string | null
         }
         Insert: {
-          blurb_en?: string | null
-          blurb_ga?: string | null
-          body_en?: string | null
-          body_ga?: string | null
+          blurb_en?: string
+          blurb_ga: string
+          body_en?: string
+          body_ga: string
           created_at?: string | null
-          date?: string | null
+          date: string
           id?: number
-          images?: Json | null
-          news_category?: string | null
-          title_en?: string | null
-          title_ga?: string | null
+          images?: Json
+          news_category: string
+          title_en?: string
+          title_ga: string
           video?: string | null
         }
         Update: {
-          blurb_en?: string | null
-          blurb_ga?: string | null
-          body_en?: string | null
-          body_ga?: string | null
+          blurb_en?: string
+          blurb_ga?: string
+          body_en?: string
+          body_ga?: string
           created_at?: string | null
-          date?: string | null
+          date?: string
           id?: number
-          images?: Json | null
-          news_category?: string | null
-          title_en?: string | null
-          title_ga?: string | null
+          images?: Json
+          news_category?: string
+          title_en?: string
+          title_ga?: string
           video?: string | null
         }
         Relationships: [
@@ -502,34 +499,28 @@ export interface Database {
       }
       people: {
         Row: {
-          bio: string | null
-          connected_news: Json | null
-          connected_publications: Json | null
+          bio: string
           created_at: string | null
           id: number
-          image: string | null
-          name: string | null
-          role: string | null
+          image: string
+          name: string
+          role: string
         }
         Insert: {
-          bio?: string | null
-          connected_news?: Json | null
-          connected_publications?: Json | null
+          bio: string
           created_at?: string | null
           id?: number
-          image?: string | null
-          name?: string | null
-          role?: string | null
+          image: string
+          name: string
+          role: string
         }
         Update: {
-          bio?: string | null
-          connected_news?: Json | null
-          connected_publications?: Json | null
+          bio?: string
           created_at?: string | null
           id?: number
-          image?: string | null
-          name?: string | null
-          role?: string | null
+          image?: string
+          name?: string
+          role?: string
         }
         Relationships: [
           {

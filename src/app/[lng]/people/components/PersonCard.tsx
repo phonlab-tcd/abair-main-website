@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
-import { PersonModel } from "@/models";
 
-const PersonCard = ({ id, name, bio, image, role }: PersonModel) => {
+interface PersonCardProps {
+  image: string;
+  id: number;
+  name: string;
+  bio: string;
+  role: string;
+}
+
+const PersonCard = ({ image, id, name, bio, role }: PersonCardProps) => {
   return (
     <Link href={`/people/${id}`}>
       <div className="relative min-h-[250px] h-[400px] p-[16px] bg-white shadow-md rounded-md transition-colors duration-300 hover:bg-green-100">
         <img
-          src={image}
+          src={image ? image : undefined}
           alt={`image of ${name}`}
           className="max-h-[200px] w-full object-cover object-center rounded-[4px] mb-[8px]"
         />

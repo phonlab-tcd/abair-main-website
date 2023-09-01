@@ -2,7 +2,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from "react";
-import { NewsModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
+
 import { AccordionClient } from "@/components/Accordion";
 import {
   CategoryFilter,
@@ -14,8 +15,8 @@ import { useTranslation } from "@/app/i18n/client";
 
 interface NewsFiltersProps {
   largeScreen: boolean;
-  newsData: NewsModel[];
-  onFilteredData: (filteredData: NewsModel[]) => void;
+  newsData: Tables<"news_stories">[];
+  onFilteredData: (filteredData: Tables<"news_stories">[]) => void;
   lng: any;
 }
 
@@ -41,7 +42,7 @@ const NewsFilters = ({
     endDate: string,
     searchQuery: string
   ) => {
-    let filteredData: NewsModel[] = newsData;
+    let filteredData: Tables<"news_stories">[] = newsData;
 
     if (startDate && endDate && dateRangeSelected) {
       const startDateObj = new Date(startDate);

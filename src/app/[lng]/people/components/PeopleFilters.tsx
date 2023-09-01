@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import RoleFilter from "./RoleFilter";
-import { PersonModel } from "@/models";
-interface PeopleFiltersModel {
-  peopleData: PersonModel[];
-  onFilteredData: (filteredData: PersonModel[]) => void;
+import { Tables } from "@/types/supabase-helpers";
+
+interface PeopleFiltersProps {
+  peopleData: Tables<"people">[];
+  onFilteredData: (filteredData: Tables<"people">[]) => void;
 }
 
-const PeopleFilters = ({ peopleData, onFilteredData }: PeopleFiltersModel) => {
+const PeopleFilters = ({ peopleData, onFilteredData }: PeopleFiltersProps) => {
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filterPeopleData = (selectedRoles: string[], searchQuery: string) => {
-    let filteredData: PersonModel[] = peopleData;
+    let filteredData: Tables<"people">[] = peopleData;
 
     console.log("original data: ");
     console.log(filteredData);
@@ -31,7 +32,8 @@ const PeopleFilters = ({ peopleData, onFilteredData }: PeopleFiltersModel) => {
       filteredData = filteredData.filter(
         (person) =>
           person.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          person.bio.toLowerCase().includes(searchQuery.toLowerCase())
+          (person.bio &&
+            person.bio.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     } else {
       filteredData = filteredData.filter((person) => person.role !== "");

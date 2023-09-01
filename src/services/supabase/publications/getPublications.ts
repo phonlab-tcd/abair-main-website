@@ -1,13 +1,13 @@
 import supabase from "@/services/supabase/supabase";
+import { Tables } from "@/types/supabase-helpers";
 
 const getPublications = async () => {
   try {
     const { data, error } = await supabase
       .from("ab_publications")
-      .select(
-        `id, created_at, title, abstract, pdf_url, year_published, authors`
-      )
-      .order("year_published", { ascending: false });
+      .select(`*, people(*)`)
+      .order("year_published", { ascending: false })
+      .returns<Tables<"ab_publications"> & { people: Tables<"people"> }>();
 
     if (data) {
       return data;

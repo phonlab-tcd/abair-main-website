@@ -3,15 +3,15 @@
 import React, { useState, useEffect } from "react";
 import PeopleList from "./PeopleList";
 import PeopleFilters from "./PeopleFilters";
-import { PersonModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
 
 interface PeopleProps {
-  people: PersonModel[];
+  people: Tables<"people">[];
 }
 
 export default function PeopleClient({ people }: PeopleProps) {
-  const [filteredData, setFilteredData] = useState<PersonModel[]>([]);
-  const [initialData, setInitialData] = useState<PersonModel[]>([]);
+  const [filteredData, setFilteredData] = useState<Tables<"people">[]>([]);
+  const [initialData, setInitialData] = useState<Tables<"people">[]>([]);
   useEffect(() => {
     if (people) {
       const sortedData = people.sort((a, b) => a.id - b.id); // Sort by ID in ascending order
@@ -20,7 +20,7 @@ export default function PeopleClient({ people }: PeopleProps) {
     }
   }, [people]);
 
-  const handleFilteredData = (data: PersonModel[]) => {
+  const handleFilteredData = (data: Tables<"people">[]) => {
     setFilteredData(data);
   };
 

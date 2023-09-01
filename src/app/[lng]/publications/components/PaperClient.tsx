@@ -5,16 +5,19 @@ import PaperList from "./PaperList";
 import PaperFilters from "./PaperFilters";
 import { getBreakpoint } from "@/utils";
 import { AccordionClient } from "@/components/Accordion";
-import { PaperModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
+
 import { useTranslation } from "@/app/i18n/client";
 
 interface PaperProps {
-  papers: PaperModel[];
+  papers: Tables<"ab_publications">[];
   lng: string;
 }
 
 export default function PaperClient({ papers, lng }: PaperProps) {
-  const [filteredData, setFilteredData] = useState<PaperModel[]>([]);
+  const [filteredData, setFilteredData] = useState<Tables<"ab_publications">[]>(
+    []
+  );
   const [breakpoint, setBreakpoint] = useState<string>("");
   const { t } = useTranslation(lng);
 
@@ -25,7 +28,7 @@ export default function PaperClient({ papers, lng }: PaperProps) {
     }
   }, [papers]);
 
-  const handleFilteredData = (data: PaperModel[]) => {
+  const handleFilteredData = (data: Tables<"ab_publications">[]) => {
     setFilteredData(data);
   };
 

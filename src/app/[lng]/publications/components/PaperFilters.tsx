@@ -2,16 +2,16 @@
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { PaperModel } from "@/models";
 import DateRangePicker from "./DateRangePicker";
 import { AccordionClient } from "@/components/Accordion";
 import { CategoryFilter, SortMenu, SearchBar } from "@/components/Filters";
 import { useTranslation } from "@/app/i18n/client";
+import { Tables } from "@/types/supabase-helpers";
 
 interface PaperFiltersProps {
   largeScreen: boolean;
-  paperData: PaperModel[];
-  onFilteredData: (filteredData: PaperModel[]) => void;
+  paperData: Tables<"ab_publications">[];
+  onFilteredData: (filteredData: Tables<"ab_publications">[]) => void;
   lng: any;
 }
 
@@ -38,7 +38,7 @@ const PaperFilters = ({
     endYear: number,
     searchQuery: string
   ) => {
-    let filteredData: PaperModel[] = paperData;
+    let filteredData: Tables<"ab_publications">[] = paperData;
 
     if (startYear && endYear && yearRangeSelected) {
       filteredData = filteredData.filter((paper) => {
@@ -68,8 +68,10 @@ const PaperFilters = ({
     }
 
     if (searchQuery) {
-      filteredData = filteredData.filter((paper) =>
-        paper.title.toLowerCase().includes(searchQuery.toLowerCase())
+      filteredData = filteredData.filter(
+        (paper) =>
+          paper.title &&
+          paper.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 

@@ -5,11 +5,11 @@ interface DropdownMenuItemProps {
   disabled?: boolean;
   onClickHandler: () => void;
   title?: boolean;
-  image: ReactNode;
+  children: ReactNode;
 }
 
 const DropdownMenuItem = ({
-  image,
+  children,
   label,
   disabled = false,
   title = false,

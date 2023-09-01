@@ -3,6 +3,7 @@ import { NewsCard } from "@/components/NewsCard";
 import { Button } from "@/components/Button";
 import Link from "next/link";
 import { useTranslation } from "@/app/i18n";
+import { Tables } from "@/types/supabase-helpers";
 
 const News = async ({ lng }: any) => {
   const { t } = await useTranslation(lng);
@@ -42,7 +43,7 @@ const News = async ({ lng }: any) => {
                   title={lng === "en" ? news.title_en : news.title_ga}
                   blurb={lng === "en" ? news.blurb_en : news.blurb_ga}
                   date={news.date}
-                  imageURL={news.images[0] ? news.images[0].url : ""}
+                  imageURL={news.images ? news.images[0].url : ""}
                   news_category={news.news_category}
                   category_string={`${t("search." + news.news_category)}`}
                 />

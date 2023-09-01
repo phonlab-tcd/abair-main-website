@@ -1,11 +1,12 @@
 import React from "react";
 import { PublicationCard } from "@/components/PublicationCard";
-import { PaperModel } from "@/models";
+
 import Link from "next/link";
 import { AccordionClient } from "@/components/Accordion";
+import { Tables } from "@/types/supabase-helpers";
 
 interface PaperListProps {
-  paperData: PaperModel[];
+  paperData: Tables<"ab_publications">[];
   lng: string;
 }
 
@@ -20,7 +21,7 @@ const PaperList = ({ paperData, lng }: PaperListProps) => {
                 {publication.title}
               </div>
             </Link>
-            <PublicationCard {...publication}>
+            <PublicationCard paper={publication}>
               <AccordionClient
                 title="abstract"
                 content={publication.abstract}

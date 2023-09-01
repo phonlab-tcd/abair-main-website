@@ -1,12 +1,13 @@
 "use client";
 
 import { NewsCard } from "@/components/NewsCard";
-import { NewsModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
+
 import Link from "next/link";
 import { useTranslation } from "@/app/i18n/client";
 
 interface NewsListProps {
-  newsData: NewsModel[];
+  newsData: Tables<"news_stories">[];
   lng: any;
 }
 
@@ -30,6 +31,7 @@ const NewsList = ({ newsData, lng }: NewsListProps) => {
               imageURL={news.images[0].url}
               news_category={news.news_category}
               category_string={`${t("search." + news.news_category)}`}
+              altText={"to do"}
             />
           </Link>
         </div>

@@ -9,7 +9,7 @@ import { SpeakIcon } from "@/components/Icons";
 import { Button } from "@/components/Button";
 import { PlaybackCard } from "@/components/PlaybackCard";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
-import { synthesisVoiceModel } from "@/models";
+import { synthesisVoiceModel } from "@/types/abair";
 import { getBreakpoint } from "@/utils";
 import { useTranslation } from "@/app/i18n/client";
 

@@ -26,9 +26,7 @@ interface PageProps {
 export default async function Page({ params }: PageProps) {
   const { data: publication } = await supabase
     .from("ab_publications")
-    .select(
-      "id, created_at, title, abstract, pdf_url, year_published, people( id, name ), publication_category, publication"
-    )
+    .select("*")
     .match({ id: params?.id })
     .single();
 
@@ -38,9 +36,7 @@ export default async function Page({ params }: PageProps) {
 
   const { data: publicationData } = await supabase
     .from("ab_publications")
-    .select(
-      "id, created_at, title, abstract, pdf_url, year_published, people( id, name ), publication_category, publication"
-    );
+    .select("*");
 
   return (
     <div className="w-full min-h-screen">
@@ -58,7 +54,8 @@ export default async function Page({ params }: PageProps) {
               {publication.publication}
             </div>
             <p className="text-gray-1000 mb-4 text-center italic">
-              {publication.people.map((p) => p.name).join(",  ")}
+              {publication.people &&
+                publication.people.map((p) => p.name).join(",  ")}
             </p>
             <p className="text-gray-800 mb-4">{publication.abstract}</p>
 
@@ -80,10 +77,12 @@ export default async function Page({ params }: PageProps) {
 
               {/* Publication Cards */}
               <div>
-                <LinkedPublications
-                  publicationData={publicationData}
-                  currentPublication={publication}
-                />
+                {publicationData !== null && (
+                  <LinkedPublications
+                    publicationData={publicationData}
+                    currentPublication={publication}
+                  />
+                )}
               </div>
             </div>
           </div>

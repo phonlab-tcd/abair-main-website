@@ -1,17 +1,19 @@
 "use client";
-import { ApplicationModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
 import { useEffect, useState } from "react";
 import AppFilters from "./AppFilters";
 import AppCard from "./AppCard";
 import { useTranslation } from "@/app/i18n/client";
 
 interface ApplicationProps {
-  applications: ApplicationModel[];
+  applications: Tables<"applications">[];
   lng: any;
 }
 
 export default function AppClient({ applications, lng }: ApplicationProps) {
-  const [filteredData, setFilteredData] = useState<ApplicationModel[]>([]);
+  const [filteredData, setFilteredData] = useState<Tables<"applications">[]>(
+    []
+  );
   const { t } = useTranslation(lng);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function AppClient({ applications, lng }: ApplicationProps) {
     }
   }, [applications]);
 
-  const handleFilteredData = (data: ApplicationModel[]) => {
+  const handleFilteredData = (data: Tables<"applications">[]) => {
     setFilteredData(data);
   };
 

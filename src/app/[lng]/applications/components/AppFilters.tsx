@@ -1,11 +1,12 @@
 "use client";
-import { ApplicationModel } from "@/models";
+import { Tables } from "@/types/supabase-helpers";
+
 import React, { useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 
 interface ApplicationFiltersProps {
-  applicationData: ApplicationModel[];
-  onFilteredData: (filteredData: ApplicationModel[]) => void;
+  applicationData: Tables<"applications">[];
+  onFilteredData: (filteredData: Tables<"applications">[]) => void;
   lng: any;
 }
 

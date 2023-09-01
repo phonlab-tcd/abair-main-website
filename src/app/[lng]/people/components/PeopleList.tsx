@@ -1,19 +1,12 @@
 import React from "react";
 import PersonCard from "./PersonCard";
+import { Tables } from "@/types/supabase-helpers";
 
-interface People {
-  id: number;
-  name: string;
-  image: string;
-  bio: string;
-  role: string;
+interface PeopleListProps {
+  peopleData: Tables<"people">[];
 }
 
-interface NewsListProps {
-  peopleData: People[];
-}
-
-const PeopleList: React.FC<NewsListProps> = ({ peopleData }) => {
+const PeopleList = ({ peopleData }: PeopleListProps) => {
   return (
     <div className="p-4">
       <div className="flex mb-4"></div>

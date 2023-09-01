@@ -10,9 +10,7 @@ const Publications = async ({ lng }: any) => {
 
   const { data: publicationsData } = await supabase
     .from("ab_publications")
-    .select(
-      "id, title, publication, year_published, abstract, pdf_url, authors, publication_category"
-    )
+    .select("*")
     .order("year_published", { ascending: false });
 
   if (!publicationsData) {
@@ -40,7 +38,7 @@ const Publications = async ({ lng }: any) => {
                   {publication.title}
                 </div>
               </Link>
-              <PublicationCard {...publication}>
+              <PublicationCard paper={publication}>
                 <div>
                   <AccordionClient
                     title="abstract"
