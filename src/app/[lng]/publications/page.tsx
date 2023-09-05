@@ -9,7 +9,8 @@ export default async function Page({
 }) {
   const { data: papers } = await supabase
     .from("ab_publications")
-    .select(`*, people( * )`);
+    .select(`*, people( * )`)
+    .order("year_published", { ascending: false });
 
   if (!papers) {
     return <p>No Publications Found</p>;

@@ -10,7 +10,7 @@ const Publications = async ({ lng }: any) => {
 
   const { data: publicationsData } = await supabase
     .from("ab_publications")
-    .select("*")
+    .select(`*, people( * )`)
     .order("year_published", { ascending: false });
 
   if (!publicationsData) {

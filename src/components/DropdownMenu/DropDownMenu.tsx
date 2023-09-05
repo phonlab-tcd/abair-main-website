@@ -1,23 +1,27 @@
 "use client";
 
 import { MouseEvent, useEffect, useState, useRef } from "react";
+import DropdownMenuButton from "./DropdownMenuButton";
+import DropdownMenuItem, { DropdownMenuItemProps } from "./DropdownMenuItem";
+import { ImageModel } from "@/types/supabase-helpers";
 
 interface DropdownMenuProps {
   label?: string;
-  // dropdownMenuItems: DropdownMenuItemProps[];
-  // image?: ThumbnailImageProps;
+  dropdownMenuItems: DropdownMenuItemProps[];
   dropdownPosition?: "left" | "right";
   showArrow?: boolean;
   border?: boolean;
+  image?: ImageModel;
+  pathname?: string;
 }
 
 const DropdownMenu = ({
   label,
-  // dropdownMenuItems,
-  // image,
+  dropdownMenuItems,
+  image,
   dropdownPosition = "left",
   showArrow = false,
-  border,
+  pathname,
 }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -43,13 +47,14 @@ const DropdownMenu = ({
 
   return (
     <div ref={menuRef} className={"relative h-full"}>
-      {/* <DropdownMenuButton
+      <DropdownMenuButton
         onClickHandler={toggleMenu}
         isOpen={isOpen}
         label={label}
         image={image}
         showArrow={showArrow}
-      /> */}
+        width={20}
+      />
       {isOpen && (
         <div
           className={[
@@ -57,7 +62,7 @@ const DropdownMenu = ({
             dropdownPosition === "right" ? "left-0" : "right-0",
           ].join(" ")}
         >
-          {/* <ul>
+          <ul>
             {Array.isArray(dropdownMenuItems) &&
               dropdownMenuItems.map((dropdownMenuItem, i) => (
                 <DropdownMenuItem
@@ -66,14 +71,14 @@ const DropdownMenu = ({
                   title={dropdownMenuItem.title}
                   label={dropdownMenuItem.label}
                   image={dropdownMenuItem.image}
-                  onClickHandler={dropdownMenuItem.onClickHandler}
+                  handleClick={dropdownMenuItem.handleClick}
                 />
               ))}
-          </ul> */}
+          </ul>
         </div>
       )}
-      {/* </div> */}
     </div>
+    // </div>
   );
 };
 

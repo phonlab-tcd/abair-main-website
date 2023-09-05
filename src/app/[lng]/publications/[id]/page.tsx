@@ -68,14 +68,14 @@ export default async function Page({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Vertical Sidebar */}
+          {/* Vertical Sidebar 
           <div className="flex-shrink-0 w-1/4 min-w-[288px] min-h-[800px] bg-primary-100 p-4">
             <div className="text-gray-800">
               <h2 className="text-xl font-semibold mb-2 text-center">
                 Related Publications
               </h2>
 
-              {/* Publication Cards */}
+
               <div>
                 {publicationData !== null && (
                   <LinkedPublications
@@ -85,7 +85,7 @@ export default async function Page({ params }: PageProps) {
                 )}
               </div>
             </div>
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>

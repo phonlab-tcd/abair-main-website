@@ -1,5 +1,7 @@
 import DropdownMenu from "./DropDownMenu";
 import DropdownMenuButton from "./DropdownMenuButton";
-import DropdownMenuItem from "./DropdownMenuItem";
+import DropdownMenuItem, { DropdownMenuItemProps } from "./DropdownMenuItem";
 
 export { DropdownMenu, DropdownMenuButton, DropdownMenuItem };
+
+export type { DropdownMenuItemProps };

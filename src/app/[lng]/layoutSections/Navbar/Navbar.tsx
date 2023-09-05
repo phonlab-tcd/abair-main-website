@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
+import languageDropdownArgs from "./languageDropdownArgs";
+import userDropdownArgs from "./userDropdownArgs";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Sidebar } from "@/components/Sidebar";
@@ -10,6 +11,7 @@ import { routes } from "@/routes";
 import Image from "next/image";
 import { useTranslation } from "@/app/i18n/client";
 import { usePathname } from "next/navigation";
+import { DropdownMenu } from "@/components/DropdownMenu";
 
 const Navbar = ({ lng }: any) => {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -18,11 +20,6 @@ const Navbar = ({ lng }: any) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const { t } = useTranslation(lng);
   const pathname = usePathname();
-
-  // useEffect(() => {
-  //   console.log("lng:", lng);
-  //   console.log("pathname:", pathname.slice(3, pathname.length));
-  // }, []);
 
   return (
     <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">
@@ -126,14 +123,24 @@ const Navbar = ({ lng }: any) => {
               </Button>
             </Link>
           </div>
-          {/* <DropdownMenu
-            label="GA"
+          <DropdownMenu
+            label={lng}
             dropdownMenuItems={languageDropdownArgs}
+            image={
+              languageDropdownArgs.find((lDA) => {
+                return lDA.label === lng;
+              })?.image
+            }
+            pathname={pathname}
+          />
+          <DropdownMenu
+            dropdownMenuItems={userDropdownArgs}
             image={{
-              URL: "/images/ie.svg",
-              width: "w-4 lg:w-6",
+              url: "/images/defaultProfileAvatar.png",
+              alt: "profile pic",
             }}
-          /> */}
+            showArrow={true}
+          />
           {/* <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-white-900"></div>
           </div>

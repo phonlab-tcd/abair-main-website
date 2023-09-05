@@ -1,13 +1,13 @@
-// import ThumbnailImage, {
-//   ThumbnailImageProps,
-// } from "@/components/ThumbnailImage";
+import { ImageModel } from "@/types/supabase-helpers";
+import Image from "next/image";
 
 interface DropdownMenuButtonProps {
-  // image?: ThumbnailImageProps;
   label?: string;
   onClickHandler: () => void;
   isOpen: boolean;
   showArrow: boolean;
+  image?: ImageModel;
+  width: number;
 }
 
 const DropdownMenuButton = ({
@@ -15,9 +15,10 @@ const DropdownMenuButton = ({
   onClickHandler = () => {
     console.log("menu Button clicked");
   },
-  // image,
+  image,
   isOpen = false,
   showArrow = false,
+  width,
 }: DropdownMenuButtonProps) => {
   return (
     <button
@@ -29,16 +30,21 @@ const DropdownMenuButton = ({
       }
       type="button"
     >
-      {/* {image !== undefined && (
+      {image !== undefined && (
         <div className={label !== undefined ? "pr-2" : ""}>
-          <ThumbnailImage
-            URL={image.URL}
-            width={image.width}
-            border={image.border}
-            borderColor={image.borderColor}
-          />
+          <div
+            id="imageContainer"
+            className={[width, "flex-none rounded-full"].join(" ")}
+          >
+            <Image
+              src={image.url}
+              width={width}
+              height={width}
+              alt={image.alt}
+            />
+          </div>
         </div>
-      )} */}
+      )}
       {label !== undefined && (
         <p className="text-inherit text-sm lg:text-base">{label}</p>
       )}

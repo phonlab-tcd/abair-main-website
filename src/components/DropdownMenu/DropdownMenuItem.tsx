@@ -1,20 +1,22 @@
-import { ReactNode } from "react";
+import { ImageModel } from "@/types/supabase-helpers";
+import Image from "next/image";
+import { MouseEvent } from "react";
 
 interface DropdownMenuItemProps {
   label?: string;
   disabled?: boolean;
-  onClickHandler: () => void;
   title?: boolean;
-  children: ReactNode;
+  image?: ImageModel;
+  handleClick?: (e: MouseEvent) => void;
 }
 
 const DropdownMenuItem = ({
-  children,
   label,
   disabled = false,
   title = false,
-  onClickHandler = () => {
-    console.log("placholder item clicked");
+  image,
+  handleClick = (e: MouseEvent) => {
+    console.log("e:", e);
   },
 }: DropdownMenuItemProps) => {
   return (
@@ -28,11 +30,11 @@ const DropdownMenuItem = ({
             ? "text-grey-300"
             : "text-grey-500 hover:bg-grey-100",
         ].join(" ")}
-        onClick={onClickHandler}
+        onClick={handleClick}
         disabled={title || disabled}
       >
         <div className="flex items-center ">
-          {children !== undefined && (
+          {image !== undefined && (
             <div
               className={[
                 label !== undefined ? "pr-2" : "",
@@ -40,7 +42,17 @@ const DropdownMenuItem = ({
               ].join(" ")}
             >
               <div id="imageContainer" className={"w-8 flex-none"}>
-                {children}
+                <div
+                  id="imageContainer"
+                  className={"w-8 flex-none rounded-full"}
+                >
+                  <Image
+                    src={image.url}
+                    width={20}
+                    height={20}
+                    alt={image.alt}
+                  />
+                </div>
               </div>
             </div>
           )}

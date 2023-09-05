@@ -2,7 +2,12 @@
 const nextConfig = {
   output: "standalone",
   images: {
-    domains: ["pdntukcptgktuzpynlsv.supabase.co"],
+    domains: [
+      "pdntukcptgktuzpynlsv.supabase.co",
+      "abair.ie",
+      "abair.tcd.ie",
+      "www.abair.tcd.ie",
+    ],
   },
 };
 

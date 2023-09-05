@@ -50,7 +50,7 @@ export default function PaperClient({ papers, lng }: PaperProps) {
           {t("infoHeader.home.publications.title")}
         </div>
         {["xl", "lg"].includes(breakpoint) ? (
-          <div className="flex ">
+          <div className="flex">
             <div className="flex-none w-48 m-2">
               <PaperFilters
                 largeScreen={true}
