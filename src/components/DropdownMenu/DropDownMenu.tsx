@@ -4,6 +4,7 @@ import { MouseEvent, useEffect, useState, useRef } from "react";
 import DropdownMenuButton from "./DropdownMenuButton";
 import DropdownMenuItem, { DropdownMenuItemProps } from "./DropdownMenuItem";
 import { ImageModel } from "@/types/supabase-helpers";
+import { getBreakpoint } from "@/utils";
 
 interface DropdownMenuProps {
   label?: string;
@@ -12,7 +13,6 @@ interface DropdownMenuProps {
   showArrow?: boolean;
   border?: boolean;
   image?: ImageModel;
-  pathname?: string;
 }
 
 const DropdownMenu = ({
@@ -21,14 +21,17 @@ const DropdownMenu = ({
   image,
   dropdownPosition = "left",
   showArrow = false,
-  pathname,
 }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const [breakpoint, setBreakpoint] = useState<string>("");
 
+  const handleResize = () => {
+    setBreakpoint(getBreakpoint());
+  };
   const handleClickOutside = (event: MouseEvent<Element, MouseEvent>) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setIsOpen(false);
@@ -53,7 +56,7 @@ const DropdownMenu = ({
         label={label}
         image={image}
         showArrow={showArrow}
-        width={20}
+        width={showArrow ? 28 : 24}
       />
       {isOpen && (
         <div
@@ -71,7 +74,9 @@ const DropdownMenu = ({
                   title={dropdownMenuItem.title}
                   label={dropdownMenuItem.label}
                   image={dropdownMenuItem.image}
-                  handleClick={dropdownMenuItem.handleClick}
+                  handleClick={() => {
+                    setIsOpen(false);
+                  }}
                 />
               ))}
           </ul>

@@ -58,9 +58,6 @@ const Navbar = ({ lng }: any) => {
             <Link href={"/"}>
               <button
                 className="mx-2 md:px-1 lg:px-2 h-full"
-                onClick={() => {
-                  console.log("go home");
-                }}
                 onMouseEnter={() => {
                   setAbairLogoHover(true);
                 }}
@@ -84,7 +81,8 @@ const Navbar = ({ lng }: any) => {
           <div className="pr-2 lg:pr-4 hidden md:block">
             {routes.map(
               (route, i) =>
-                route && (
+                route &&
+                route.showInNavbar && (
                   <Link key={i} href={`/${lng}${route.path}`}>
                     <Button
                       sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
@@ -95,34 +93,11 @@ const Navbar = ({ lng }: any) => {
                   </Link>
                 )
             )}
-            <Link href={`https://abair.ie`}>
-              <Button
-                sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
-                colors="hover:bg-grey-100 text-primary-700"
-              >
-                Prev. Site
-              </Button>
-            </Link>
           </div>
           <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
-          <div className="h-full flex items-center pr-2 lg:pr-4">
-            <Link
-              href={`/${lng === "en" ? "ga" : "en"}${pathname.slice(
-                3,
-                pathname.length
-              )}`}
-            >
-              <Button
-                sizes="text-sm lg:text-lg p-1 lg:p-2 h-full"
-                colors="hover:bg-grey-100 text-primary-700"
-              >
-                {/* {lng.toUpperCase()} */}
-                GA/EN
-              </Button>
-            </Link>
-          </div>
+
           <DropdownMenu
             label={lng}
             dropdownMenuItems={languageDropdownArgs}
@@ -131,8 +106,10 @@ const Navbar = ({ lng }: any) => {
                 return lDA.label === lng;
               })?.image
             }
-            pathname={pathname}
           />
+          <div className="h-full flex items-center">
+            <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
+          </div>
           <DropdownMenu
             dropdownMenuItems={userDropdownArgs}
             image={{
@@ -141,28 +118,6 @@ const Navbar = ({ lng }: any) => {
             }}
             showArrow={true}
           />
-          {/* <div className="h-full flex items-center">
-            <div className="h-8 lg:h-10 border-l border-white-900"></div>
-          </div>
-          {loggedIn ? (
-            <DropdownMenu
-              dropdownMenuItems={userDropdownArgs}
-              image={{
-                URL: "/images/defaultProfileAvatar.png",
-                width: "w-8 lg:w-10",
-              }}
-              showArrow={true}
-            />
-          ) : (
-            <div className="h-full flex items-center p-2 lg:p-4">
-              <Button
-                sizes="px-2 lg:px-4 py-1 lg:py-1 text-sm lg:text-lg"
-                colors="border border-white hover:border-black-600 hover:text-black-600 hover:bg-black-100"
-              >
-                login/sign up
-              </Button>
-            </div>
-          )} */}
         </div>
       </div>
 
