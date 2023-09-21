@@ -13,4 +13,10 @@ const userLoggedInDropdownArgs: DropdownMenuItemProps[] = [
   },
 ];
 
-export default userLoggedInDropdownArgs;
+const userLoggedOutDropdownArgs: DropdownMenuItemProps[] = [
+  {
+    label: "Login/Signup",
+  },
+];
+
+export { userLoggedInDropdownArgs, userLoggedOutDropdownArgs };

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { languages } from "@/app/i18n/settings";
 import { usePathname } from "next/navigation";
+import { supabase } from "@/services/supabase";
 
 interface DropdownMenuItemProps {
   label?: string;
@@ -20,6 +21,9 @@ const DropdownMenuItem = ({
   handleClick,
 }: DropdownMenuItemProps) => {
   const pathname = usePathname();
+  const authCallback = `${
+    process.env.NEXT_PUBLIC_AUTH_URL
+  }?ref=${encodeURIComponent(window.location.href + "/authCallback")}`;
 
   const getHrefFromLabel = (label?: string): string => {
     let href = "";
@@ -29,11 +33,19 @@ const DropdownMenuItem = ({
       } else if (label === "Profile") {
         console.log("in Profile");
         href = `${pathname.slice(0, 3)}/profile`;
+      } else if (label === "Login/Signup") {
+        href = authCallback;
       } else if (label === "Log Out") {
+        logout();
       }
     }
     console.log("pathname:", pathname.slice(0, 3));
+
     return href;
+  };
+
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut();
   };
 
   return (

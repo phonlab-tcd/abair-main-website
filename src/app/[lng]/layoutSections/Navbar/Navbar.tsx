@@ -2,7 +2,10 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import languageDropdownArgs from "./languageDropdownArgs";
-import userDropdownArgs from "./userDropdownArgs";
+import {
+  userLoggedInDropdownArgs,
+  userLoggedOutDropdownArgs,
+} from "./userDropdownArgs";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Sidebar } from "@/components/Sidebar";
@@ -14,7 +17,7 @@ import { usePathname } from "next/navigation";
 import { DropdownMenu } from "@/components/DropdownMenu";
 
 const Navbar = ({ lng }: any) => {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [abairLogoHover, setAbairLogoHover] = useState(false);
   const [burgerMenuHover, setBurgerMenuHover] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -110,14 +113,25 @@ const Navbar = ({ lng }: any) => {
           <div className="h-full flex items-center">
             <div className="h-8 lg:h-10 border-l border-grey-200 hidden md:block"></div>
           </div>
-          <DropdownMenu
-            dropdownMenuItems={userDropdownArgs}
-            image={{
-              url: "/images/defaultProfileAvatar.png",
-              alt: "profile pic",
-            }}
-            showArrow={true}
-          />
+          {loggedIn ? (
+            <DropdownMenu
+              dropdownMenuItems={userLoggedInDropdownArgs}
+              image={{
+                url: "/images/defaultProfileAvatar.png",
+                alt: "profile pic",
+              }}
+              showArrow={true}
+            />
+          ) : (
+            <DropdownMenu
+              dropdownMenuItems={userLoggedOutDropdownArgs}
+              image={{
+                url: "/images/defaultProfileAvatar.png",
+                alt: "profile pic",
+              }}
+              showArrow={true}
+            />
+          )}
         </div>
       </div>
 
