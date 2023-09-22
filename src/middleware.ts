@@ -1,5 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { fallbackLng, languages } from "./app/i18n/settings";
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { Database } from "@/types/supabase-helpers";
 
 export const config = {
   matcher: [
@@ -9,10 +11,10 @@ export const config = {
 
 const langCookieName = "i18next";
 
-export function middleware(req) {
+export async function middleware(req: NextRequest) {
   let lng;
   if (req.cookies.has(langCookieName))
-    lng = req.cookies.get(langCookieName).value;
+    lng = req.cookies.get(langCookieName)!.value;
   if (!lng) lng = fallbackLng;
 
   if (
@@ -35,5 +37,11 @@ export function middleware(req) {
     return response;
   }
 
-  return NextResponse.next();
+  // supabase auth for next.js https://supabase.com/docs/guides/auth/auth-helpers/nextjs
+
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient<Database>({ req, res });
+  await supabase.auth.getSession();
+
+  return res;
 }

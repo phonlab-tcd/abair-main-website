@@ -15,6 +15,8 @@ import Image from "next/image";
 import { useTranslation } from "@/app/i18n/client";
 import { usePathname } from "next/navigation";
 import { DropdownMenu } from "@/components/DropdownMenu";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import type { Database } from "@/types/supabase-helpers";
 
 const Navbar = ({ lng }: any) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,6 +25,18 @@ const Navbar = ({ lng }: any) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const { t } = useTranslation(lng);
   const pathname = usePathname();
+  const supabase = createClientComponentClient<Database>();
+
+  useEffect(() => {
+    supabase.auth.getSession().then((session) => {
+      console.log("session:", session);
+      session.data.session ? setLoggedIn(true) : setLoggedIn(false);
+    });
+  }, []);
+
+  const logout = () => {
+    supabase.auth.signOut();
+  };
 
   return (
     <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">
