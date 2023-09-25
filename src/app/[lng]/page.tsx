@@ -28,14 +28,14 @@ export default async function Page({
           <CoreTechnologies lng={lng} />
         </div>
       </div>
-      <div className="flex w-full justify-center relative">
+      <div className="flex w-full justify-center relative bg-white">
         <Applications lng={lng} />
       </div>
-      <div className="flex w-full justify-center relative bg-grey-100">
+      <div className="flex w-full justify-center relative">
         {/* @ts-expect-error Server Component */}
         <News lng={lng} />
       </div>
-      <div className="flex w-full justify-center relative">
+      <div className="flex w-full justify-center relative bg-white">
         {/* @ts-expect-error Server Component */}
         <Publications lng={lng} />
       </div>

@@ -1,11 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import languageDropdownArgs from "./languageDropdownArgs";
-import {
-  userLoggedInDropdownArgs,
-  userLoggedOutDropdownArgs,
-} from "./userDropdownArgs";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Sidebar } from "@/components/Sidebar";
@@ -17,6 +12,7 @@ import { usePathname } from "next/navigation";
 import { DropdownMenu } from "@/components/DropdownMenu";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import type { Database } from "@/types/supabase-helpers";
+import { DropdownMenuItemProps } from "@/components/DropdownMenu";
 
 const Navbar = ({ lng }: any) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -27,16 +23,48 @@ const Navbar = ({ lng }: any) => {
   const pathname = usePathname();
   const supabase = createClientComponentClient<Database>();
 
+  const userLoggedInDropdownArgs: DropdownMenuItemProps[] = [
+    {
+      label: "Jim Jimson",
+      title: true,
+    },
+    {
+      label: "Profile",
+    },
+    {
+      label: "Log Out",
+    },
+  ];
+
+  const userLoggedOutDropdownArgs: DropdownMenuItemProps[] = [
+    {
+      label: "Login/Signup",
+    },
+  ];
+
+  const languageDropdownArgs: DropdownMenuItemProps[] = [
+    {
+      label: "ga",
+      image: {
+        url: "/images/ie.svg",
+        alt: "Ireland Flag",
+      },
+    },
+    {
+      label: "en",
+      image: {
+        url: "/images/us.svg",
+        alt: "U.S. Flag",
+      },
+    },
+  ];
+
   useEffect(() => {
     supabase.auth.getSession().then((session) => {
       console.log("session:", session);
       session.data.session ? setLoggedIn(true) : setLoggedIn(false);
     });
   }, []);
-
-  const logout = () => {
-    supabase.auth.signOut();
-  };
 
   return (
     <div className="fixed w-screen shadow-md bg-white flex justify-center z-[1001]">

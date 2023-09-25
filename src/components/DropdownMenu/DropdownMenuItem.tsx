@@ -9,7 +9,6 @@ interface DropdownMenuItemProps {
   disabled?: boolean;
   title?: boolean;
   image?: ImageModel;
-  handleClick?: () => void;
 }
 
 const DropdownMenuItem = ({
@@ -17,12 +16,14 @@ const DropdownMenuItem = ({
   disabled = false,
   title = false,
   image,
-  handleClick,
 }: DropdownMenuItemProps) => {
   const pathname = usePathname();
   const authCallback = `${
     process.env.NEXT_PUBLIC_AUTH_URL
   }?ref=${encodeURIComponent(window.location.href + "/auth/callback")}`;
+  const signOutCallback = `${
+    process.env.NEXT_PUBLIC_AUTH_URL
+  }sign-out?ref=${encodeURIComponent(window.location.href + "/auth/callback")}`;
 
   const getHrefFromLabel = (label?: string): string => {
     let href = "";
@@ -35,10 +36,9 @@ const DropdownMenuItem = ({
       } else if (label === "Login/Signup") {
         href = authCallback;
       } else if (label === "Log Out") {
-        logout();
+        href = signOutCallback;
       }
     }
-    console.log("pathname:", pathname.slice(0, 3));
 
     return href;
   };
@@ -56,7 +56,6 @@ const DropdownMenuItem = ({
               : "text-grey-500 hover:bg-grey-100",
           ].join(" ")}
           disabled={title || disabled}
-          onClick={handleClick}
         >
           <div className="flex items-center ">
             {image !== undefined && (

@@ -12,13 +12,15 @@ export async function GET(request: NextRequest) {
   const access_token = requestUrl.searchParams.get("access_token");
   const refresh_token = requestUrl.searchParams.get("refresh_token");
 
+  const supabase = createRouteHandlerClient<Database>({ cookies });
   if (access_token && refresh_token) {
-    const supabase = createRouteHandlerClient<Database>({ cookies });
     const value = await supabase.auth.setSession({
       refresh_token: refresh_token,
       access_token: access_token,
     });
-    console.log("value:", value);
+  } else {
+    const value = await supabase.auth.signOut();
+    console.log("signing out");
   }
 
   // URL to redirect to after sign in process completes

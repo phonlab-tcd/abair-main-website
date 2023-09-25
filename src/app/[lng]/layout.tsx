@@ -25,7 +25,7 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className="bg-white">
+      <body className="bg-grey-100">
         <Navbar lng={lng} />
 
         <div className="pt-12 lg:pt-16">{children}</div>

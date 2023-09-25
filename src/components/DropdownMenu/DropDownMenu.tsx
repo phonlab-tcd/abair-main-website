@@ -74,9 +74,6 @@ const DropdownMenu = ({
                   title={dropdownMenuItem.title}
                   label={dropdownMenuItem.label}
                   image={dropdownMenuItem.image}
-                  handleClick={() => {
-                    setIsOpen(false);
-                  }}
                 />
               ))}
           </ul>
