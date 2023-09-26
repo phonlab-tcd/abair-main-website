@@ -9,12 +9,13 @@ interface SidebarPaperCardProps {
 }
 
 const SidebarPaperCard = ({ publication }: SidebarPaperCardProps) => {
+  console.log(publication.people);
   if (publication.people) {
     let authorString = publication.people.map((p) => p.name).join(", ");
     if (publication.people.length > 1) {
       const firstAuthor = publication.people.slice(0, 1);
-      // authorString = `${firstAuthor.name} et al.`;
-      authorString = `error here (fix line above)`;
+      //authorString = `${firstAuthor.toString} et al.`;
+      authorString = "Neasa Ni Chiarain et al";
     }
     return (
       <Link
