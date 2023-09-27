@@ -40,6 +40,8 @@ const LinkedPublications = ({
 
     let commonCount = 0;
 
+    console.log(array1.toLocaleString);
+    console.log(array2.toLocaleString);
     for (const name1 of array1) {
       for (const name2 of array2) {
         if (name1 === name2) {
