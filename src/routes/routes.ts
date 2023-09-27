@@ -38,10 +38,11 @@ const routes = [
     name: "profile",
     showInNavbar: false,
   },
-  // {
-  //   path: "/people",
-  //   name: "people",
-  // },
+  {
+    path: "/people",
+    name: "people",
+    showInNavbar: true,
+  },
 ];
 
 export default routes;

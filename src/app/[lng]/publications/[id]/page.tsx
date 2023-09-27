@@ -41,7 +41,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="w-full bg-white min-h-screen">
       {/* Top Bar */}
-      <div className="w-full bg-gray-200 p-4">
+      <div className="w-full bg-grey-100 p-4">
         <div className="mx-[50px] md:mx-[100px] lg:mx-[170px]">
           <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-2 ">
             {publication.title}

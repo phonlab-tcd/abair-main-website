@@ -37,36 +37,38 @@ export default function AppClient({ applications, lng }: ApplicationProps) {
   const sortedData = [...cardsWithUrl, ...cardsWithoutUrl];
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-full mt-8 max-w-2xl min-h-screen">
-        <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
-          {t("infoHeader.home.applications.title")}
-        </div>
-        <div className="flex justify-center mt-4 lg:mt-8">
-          <AppFilters
-            applicationData={applications}
-            onFilteredData={handleFilteredData}
-            lng={lng}
-          />
-        </div>
-        <div className="my-8 space-y-4 mx-auto max-w-6xl">
-          {sortedData.map((application, index) => (
-            <AppCard
-              key={index}
-              id={application.id}
-              name={application.name}
-              url={application.url}
-              category={application.category}
-              description={
-                lng === "en"
-                  ? application.description_en
-                  : application.description_ga
-              }
-              image={application.image}
-              created_at={application.created_at}
-              comingSoonMsg={lng === "en" ? "coming soon" : "le teacht"}
+    <div className="w-full flex flex-col justify-center">
+      <div className="w-full flex justify-center items-center text-grey-800 text-2xl sm:text-3xl h-[112px] lg:h-[160px] font-mono">
+        {t("infoHeader.home.applications.title")}
+      </div>
+      <div className="w-full flex bg-white justify-center">
+        <div className="w-full mt-8 max-w-6xl min-h-screen">
+          <div className="flex justify-center mt-4 lg:mt-8">
+            <AppFilters
+              applicationData={applications}
+              onFilteredData={handleFilteredData}
+              lng={lng}
             />
-          ))}
+          </div>
+          <div className="my-8 space-y-4 mx-auto max-w-6xl">
+            {sortedData.map((application, index) => (
+              <AppCard
+                key={index}
+                id={application.id}
+                name={application.name}
+                url={application.url}
+                category={application.category}
+                description={
+                  lng === "en"
+                    ? application.description_en
+                    : application.description_ga
+                }
+                image={application.image}
+                created_at={application.created_at}
+                comingSoonMsg={lng === "en" ? "coming soon" : "le teacht"}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

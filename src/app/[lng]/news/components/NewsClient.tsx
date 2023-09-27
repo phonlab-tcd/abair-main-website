@@ -43,48 +43,49 @@ export default function NewsClient({ news, lng }: NewsProps) {
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-full mt-8  max-w-6xl min-h-screen">
-        <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
-          {t("infoHeader.home.news.title")}
-        </div>
-
-        {["xl", "lg"].includes(breakpoint) ? (
-          <div className="flex ">
-            <div className="flex-none w-48 m-2">
-              <NewsFilters
-                largeScreen={true}
-                newsData={news}
-                onFilteredData={handleFilteredData}
-                lng={lng}
-              />
-            </div>
-            <div className="flex-1">
-              <NewsList newsData={filteredData} lng={lng} />
-            </div>
-          </div>
-        ) : (
-          <div>
-            <div className="flex w-full justify-center">
-              <div className="w-72 bg-teal-400">
-                <AccordionClient
-                  title="filters"
-                  open={false}
-                  search={true}
-                  content={
-                    <NewsFilters
-                      largeScreen={false}
-                      newsData={news}
-                      onFilteredData={handleFilteredData}
-                      lng={lng}
-                    />
-                  }
+    <div className="w-full flex flex-col justify-center">
+      <div className="w-full flex justify-center items-center text-grey-800 text-2xl sm:text-3xl h-[112px] lg:h-[160px] font-mono">
+        {t("infoHeader.home.news.title")}
+      </div>
+      <div className="w-full flex bg-white justify-center">
+        <div className="w-full mt-8  max-w-6xl min-h-screen">
+          {["xl", "lg"].includes(breakpoint) ? (
+            <div className="flex ">
+              <div className="flex-none w-48 m-2">
+                <NewsFilters
+                  largeScreen={true}
+                  newsData={news}
+                  onFilteredData={handleFilteredData}
+                  lng={lng}
                 />
               </div>
+              <div className="flex-1">
+                <NewsList newsData={filteredData} lng={lng} />
+              </div>
             </div>
-            <NewsList newsData={filteredData} lng={lng} />
-          </div>
-        )}
+          ) : (
+            <div>
+              <div className="flex w-full justify-center">
+                <div className="w-72 bg-teal-400">
+                  <AccordionClient
+                    title="filters"
+                    open={false}
+                    search={true}
+                    content={
+                      <NewsFilters
+                        largeScreen={false}
+                        newsData={news}
+                        onFilteredData={handleFilteredData}
+                        lng={lng}
+                      />
+                    }
+                  />
+                </div>
+              </div>
+              <NewsList newsData={filteredData} lng={lng} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

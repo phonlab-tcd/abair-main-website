@@ -38,10 +38,10 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
   return (
     <div>
-      <div className="flex">
-        <label>{t("search.from")}</label>
+      <div className="flex my-1">
+        <label className="w-8">{t("search.from")}</label>
         <select
-          className="border rounded px-3 py-2 ml-4"
+          className="rounded px-2 ml-4 bg-white border border-grey-500 hover:cursor-pointer"
           value={startYear}
           onChange={handleStartYearChange}
         >
@@ -54,9 +54,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
         </select>
       </div>
       <div className="flex">
-        <label>{t("search.to")}</label>
+        <label className="w-8">{t("search.to")}</label>
         <select
-          className="border rounded px-3 py-2 ml-4"
+          className="rounded px-2 ml-4 bg-white border border-grey-500 hover:cursor-pointer"
           value={endYear}
           onChange={handleEndYearChange}
         >

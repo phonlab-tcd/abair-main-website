@@ -108,190 +108,192 @@ const Page = ({ lng }: any) => {
   }, [awaitingTranscription]);
 
   return (
-    <div className="w-full min-h-screen flex justify-center">
-      <div className="w-full mt-8 max-w-2xl">
-        <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
-          {t("pages.home.listen")}
-        </div>
-        <div className="h-full w-full ">
-          <div className="w-full pt-6">
-            <div className=" bg-inherit w-full h-28 px-8">
-              <div className="relative h-full flex justify-center">
-                <div className="absolute h-full w-[304px] sm:w-[412px]">
-                  {voiceRecording ? (
-                    <div className="w-full h-20 sm:h-28 absolute left-2 right-2 top-0">
-                      <RecognitionWaveVisual
-                        backgroundColor={themeColors.grey[100]}
-                        stream={stream}
-                        height={["xs"].includes(breakpoint) ? 80 : 112}
-                        width={
-                          ["xs"].includes(breakpoint)
-                            ? themeWidth.synthRecCard - 64 - 8
-                            : themeWidth.synthRecCardLarge - 64 - 8
-                        }
-                      />
-                    </div>
-                  ) : (
-                    <>
-                      <div className="w-full h-10 sm:h-14 border-b-2 border-recognition-200"></div>
-                      <div className="w-full h-10 sm:h-14 border-t-2 border-recognition-200"></div>
-                    </>
-                  )}
-                  <div
-                    className={`w-4 h-4 ${
-                      voiceRecording
-                        ? "bg-recognition-500"
-                        : "bg-recognition-200"
-                    } rounded-full absolute top-8 sm:top-12 -left-2`}
-                  ></div>
+    <div className="w-full flex flex-col justify-center">
+      <div className="w-full flex justify-center items-center text-grey-800 text-2xl sm:text-3xl h-[112px] lg:h-[160px] font-mono">
+        {t("pages.home.listen")}
+      </div>
+      <div className="w-full flex bg-white justify-center min-h-screen ">
+        <div className="w-full mt-8 max-w-2xl">
+          <div className="h-full w-full ">
+            <div className="w-full pt-6">
+              <div className=" bg-inherit w-full h-28 px-8">
+                <div className="relative h-full flex justify-center">
+                  <div className="absolute h-full w-[304px] sm:w-[412px]">
+                    {voiceRecording ? (
+                      <div className="w-full h-20 sm:h-28 absolute left-2 right-2 top-0">
+                        <RecognitionWaveVisual
+                          backgroundColor={themeColors.grey[100]}
+                          stream={stream}
+                          height={["xs"].includes(breakpoint) ? 80 : 112}
+                          width={
+                            ["xs"].includes(breakpoint)
+                              ? themeWidth.synthRecCard - 64 - 8
+                              : themeWidth.synthRecCardLarge - 64 - 8
+                          }
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <div className="w-full h-10 sm:h-14 border-b-2 border-recognition-200"></div>
+                        <div className="w-full h-10 sm:h-14 border-t-2 border-recognition-200"></div>
+                      </>
+                    )}
+                    <div
+                      className={`w-4 h-4 ${
+                        voiceRecording
+                          ? "bg-recognition-500"
+                          : "bg-recognition-200"
+                      } rounded-full absolute top-8 sm:top-12 -left-2`}
+                    ></div>
 
-                  <div
-                    className={`w-4 h-4 ${
-                      voiceRecording
-                        ? "bg-recognition-500"
-                        : "bg-recognition-200"
-                    } rounded-full absolute top-8 sm:top-12 -right-2`}
-                  ></div>
+                    <div
+                      className={`w-4 h-4 ${
+                        voiceRecording
+                          ? "bg-recognition-500"
+                          : "bg-recognition-200"
+                      } rounded-full absolute top-8 sm:top-12 -right-2`}
+                    ></div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex justify-center items-center -mt-[2px] lg:mt-[6px] h-12 lg:h-16 relative">
-              {awaitingTranscription ? (
-                <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center">
-                  <div className="w-6 h-6 border-t-2 border-r-2 border-recognition-400 border-solid rounded-full animate-spin"></div>
-                </div>
-              ) : !voiceRecording ? (
-                <div className="flex justify-center items-center p-2 lg:p-4 h-12 lg:h-16">
+              <div className="flex justify-center items-center -mt-[2px] lg:mt-[6px] h-12 lg:h-16 relative">
+                {awaitingTranscription ? (
+                  <div className="w-full h-full absolute top-0 left-0 flex justify-center items-center">
+                    <div className="w-6 h-6 border-t-2 border-r-2 border-recognition-400 border-solid rounded-full animate-spin"></div>
+                  </div>
+                ) : !voiceRecording ? (
+                  <div className="flex justify-center items-center p-2 lg:p-4 h-12 lg:h-16">
+                    <Button
+                      sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                      colors="bg-recognition-400 hover:bg-recognition-500"
+                      onClick={handleClick}
+                    >
+                      <MicrophoneIcon
+                        height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                        width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
+                        color="white"
+                      />
+                    </Button>
+                  </div>
+                ) : (
                   <Button
                     sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
                     colors="bg-recognition-400 hover:bg-recognition-500"
-                    onClick={handleClick}
+                    onClick={() => {
+                      setVoiceRecording(false);
+                    }}
                   >
-                    <MicrophoneIcon
+                    <StopIcon
                       height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
                       width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
                       color="white"
                     />
                   </Button>
-                </div>
-              ) : (
-                <Button
-                  sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
-                  colors="bg-recognition-400 hover:bg-recognition-500"
-                  onClick={() => {
-                    setVoiceRecording(false);
-                  }}
-                >
-                  <StopIcon
-                    height={["lg", "xl"].includes(breakpoint) ? 26 : 22}
-                    width={["lg", "xl"].includes(breakpoint) ? 26 : 22}
-                    color="white"
-                  />
-                </Button>
-              )}
-              {askPermission && (
-                <div className="w-full px-2 h-64 transition-all duration-600 absolute max-w-xl">
-                  <PopupBackground>
-                    <div className="w-full h-full px-2 transition-all duration-600 relative  p-4">
-                      {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
-                      <Button
-                        colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
-                        sizes="absolute top-1 -right-1 font-bold rounded-full px-2"
-                        onClick={() => {
-                          setAskPermission(false);
-                        }}
-                      >
-                        x
-                      </Button>
-                      <div className="w-full h-full border-2 bg-white border-recognition-400 rounded-md">
-                        <div className="flex flex-col w-full h-full justify-center items-center">
-                          <div className="text-lg text-center text-recognition-700">
-                            I am over 16 years old and I give permission...
-                          </div>
-                          <div className="flex w-full justify-center">
-                            <div className="p-2">
-                              <Button
-                                sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
-                                colors="bg-recognition-400 hover:bg-recognition-500 text-white"
-                                onClick={() => {
-                                  setAskPermission(false);
-                                }}
-                              >
-                                No
-                              </Button>
+                )}
+                {askPermission && (
+                  <div className="w-full px-2 h-64 transition-all duration-600 absolute max-w-xl">
+                    <PopupBackground>
+                      <div className="w-full h-full px-2 transition-all duration-600 relative  p-4">
+                        {/* <div className="absolute -top-3 right-1 border-2 border-recognition-500 font-bold rounded-full px-2 bg-white text-recognition-500"> */}
+                        <Button
+                          colors="border-2 border-recognition-400 bg-white text-recognition-400 hover:bg-recognition-50"
+                          sizes="absolute top-1 -right-1 font-bold rounded-full px-2"
+                          onClick={() => {
+                            setAskPermission(false);
+                          }}
+                        >
+                          x
+                        </Button>
+                        <div className="w-full h-full border-2 bg-white border-recognition-400 rounded-md">
+                          <div className="flex flex-col w-full h-full justify-center items-center">
+                            <div className="text-lg text-center text-recognition-700">
+                              I am over 16 years old and I give permission...
                             </div>
-                            <div className="p-2">
-                              <Button
-                                sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
-                                colors="bg-applications-500 hover:bg-applications-600 text-white"
-                                onClick={() => {
-                                  setAskPermission(false);
-                                  setMicrophonePermission(true);
-                                }}
-                              >
-                                Yes
-                              </Button>
+                            <div className="flex w-full justify-center">
+                              <div className="p-2">
+                                <Button
+                                  sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                                  colors="bg-recognition-400 hover:bg-recognition-500 text-white"
+                                  onClick={() => {
+                                    setAskPermission(false);
+                                  }}
+                                >
+                                  No
+                                </Button>
+                              </div>
+                              <div className="p-2">
+                                <Button
+                                  sizes="w-28 lg:w-32 p-1 flex justify-center rounded-sm"
+                                  colors="bg-applications-500 hover:bg-applications-600 text-white"
+                                  onClick={() => {
+                                    setAskPermission(false);
+                                    setMicrophonePermission(true);
+                                  }}
+                                >
+                                  Yes
+                                </Button>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </PopupBackground>
+                    </PopupBackground>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="w-full flex justify-center mt-8">
+              {recognisedTextShowing && (
+                <div className="w-full px-2 transition-all duration-600 relative max-w-xl">
+                  <PlaybackCard
+                    text={transcription}
+                    version="recognition"
+                    recentlyCopied={recentlyCopied}
+                    sidebar={false}
+                    handleCopy={() => {
+                      setRecentlyCopied(true);
+                      setTimeout(() => {
+                        setRecentlyCopied(false);
+                      }, 2000);
+                    }}
+                    handlePlay={() => {
+                      playRecognitionAudio();
+                    }}
+                    handleStop={() => {
+                      stopRecognitionAudio();
+                    }}
+                    handleDownload={() => {
+                      downloadRecognitionAudio();
+                    }}
+                    audioPlaying={recognitionAudioPlaying}
+                    small={["xs"].includes(breakpoint) ? true : false}
+                  >
+                    <audio
+                      src={recognitionAudio}
+                      ref={audioRef}
+                      onEnded={stopRecognitionAudio}
+                    />
+                    <a href={""} ref={anchorRef} download={"tester.wav"} />
+                  </PlaybackCard>
                 </div>
               )}
             </div>
           </div>
-          <div className="w-full flex justify-center mt-8">
-            {recognisedTextShowing && (
-              <div className="w-full px-2 transition-all duration-600 relative max-w-xl">
-                <PlaybackCard
-                  text={transcription}
-                  version="recognition"
-                  recentlyCopied={recentlyCopied}
-                  sidebar={false}
-                  handleCopy={() => {
-                    setRecentlyCopied(true);
-                    setTimeout(() => {
-                      setRecentlyCopied(false);
-                    }, 2000);
-                  }}
-                  handlePlay={() => {
-                    playRecognitionAudio();
-                  }}
-                  handleStop={() => {
-                    stopRecognitionAudio();
-                  }}
-                  handleDownload={() => {
-                    downloadRecognitionAudio();
-                  }}
-                  audioPlaying={recognitionAudioPlaying}
-                  small={["xs"].includes(breakpoint) ? true : false}
-                >
-                  <audio
-                    src={recognitionAudio}
-                    ref={audioRef}
-                    onEnded={stopRecognitionAudio}
-                  />
-                  <a href={""} ref={anchorRef} download={"tester.wav"} />
-                </PlaybackCard>
-              </div>
-            )}
-          </div>
         </div>
+        {microphonePermission && (
+          <Media
+            stream={stream}
+            setStream={setStream}
+            mediaRecorder={mediaRecorder}
+            setMediaRecorder={setMediaRecorder}
+            setRecognitionAudio={setRecognitionAudio}
+            setTranscription={setTranscription}
+            voiceRecording={voiceRecording}
+            setAwaitingTranscription={setAwaitingTranscription}
+          />
+        )}
       </div>
-      {microphonePermission && (
-        <Media
-          stream={stream}
-          setStream={setStream}
-          mediaRecorder={mediaRecorder}
-          setMediaRecorder={setMediaRecorder}
-          setRecognitionAudio={setRecognitionAudio}
-          setTranscription={setTranscription}
-          voiceRecording={voiceRecording}
-          setAwaitingTranscription={setAwaitingTranscription}
-        />
-      )}
     </div>
   );
 };

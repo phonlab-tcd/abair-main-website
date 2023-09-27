@@ -186,177 +186,178 @@ const Page = ({ lng }: any) => {
   };
 
   return (
-    <div className="w-full min-h-screen flex justify-center">
-      <div className="w-full mt-8 max-w-2xl">
-        <div className="w-full text-center text-grey-800 text-2xl sm:text-3xl font-mono">
-          {t("pages.home.speak")}
-        </div>
-
-        <div className="w-full my-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 w-full">
-            <div className="w-full flex flex-col">
-              <div className="w-full justify-center flex">
-                <Map height={300} setDialect={setDialect} dialect={dialect} />
+    <div className="w-full flex flex-col justify-center">
+      <div className="w-full flex justify-center items-center text-grey-800 text-2xl sm:text-3xl h-[112px] lg:h-[160px] font-mono">
+        {t("pages.home.speak")}
+      </div>
+      <div className="w-full flex bg-white justify-center min-h-screen ">
+        <div className="w-full mt-8 max-w-2xl">
+          <div className="w-full my-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 w-full">
+              <div className="w-full flex flex-col">
+                <div className="w-full justify-center flex">
+                  <Map height={300} setDialect={setDialect} dialect={dialect} />
+                </div>
               </div>
-            </div>
 
-            <div className="w-full flex justify-center items-center">
-              <div className="w-full max-w-xs flex flex-col sm:pr-14 px-1">
-                <div className="w-full h-14  flex items-center">
-                  <div className="px-1">
-                    <PitchIcon height={32} width={32} />
-                  </div>
-                  <div className="w-full px-1">
-                    <Slider
-                      min={50}
-                      value={synthesisPitch}
-                      max={150}
-                      handleChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setSynthesisPitch(parseInt(e.target.value));
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="w-full h-14  flex items-center">
-                  <div className="px-1">
-                    <SpeedometerIcon height={32} width={32} />
-                  </div>
-                  <div className="w-full px-1">
-                    <Slider
-                      min={50}
-                      value={synthesisSpeed}
-                      max={150}
-                      handleChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setSynthesisSpeed(parseInt(e.target.value));
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="w-full h-14  flex items-center">
-                  <div className="px-1">
-                    <SpeakerIcon height={32} width={32} />
-                  </div>
-                  <div className="w-full px-1 flex flex-wrap justify-around">
-                    {voiceOptions?.map((v, i) => (
-                      <Button
-                        key={i}
-                        onClick={() => {
-                          setSelectedVoice(v);
+              <div className="w-full flex justify-center items-center">
+                <div className="w-full max-w-xs flex flex-col sm:pr-14 px-1">
+                  <div className="w-full h-14  flex items-center">
+                    <div className="px-1">
+                      <PitchIcon height={32} width={32} />
+                    </div>
+                    <div className="w-full px-1">
+                      <Slider
+                        min={50}
+                        value={synthesisPitch}
+                        max={150}
+                        handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+                          setSynthesisPitch(parseInt(e.target.value));
                         }}
-                        sizes="font-mono py-1 px-2 flex justify-center rounded-xl text-white"
-                        colors={`${
-                          v === selectedVoice
-                            ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
-                            : "bg-inherit hover:bg-synthesis-100 border border-synthesis-500 text-synthesis-500"
-                        }`}
-                      >
-                        {v.name}
-                      </Button>
-                    ))}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="w-full h-14  flex items-center">
-                  <div className="px-1">
-                    <ModelIcon height={32} width={32} />
+                  <div className="w-full h-14  flex items-center">
+                    <div className="px-1">
+                      <SpeedometerIcon height={32} width={32} />
+                    </div>
+                    <div className="w-full px-1">
+                      <Slider
+                        min={50}
+                        value={synthesisSpeed}
+                        max={150}
+                        handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+                          setSynthesisSpeed(parseInt(e.target.value));
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="w-full px-1 flex flex-wrap justify-around">
-                    {selectedVoice &&
-                      selectedVoice.voices?.map((v, i) => (
+                  <div className="w-full h-14  flex items-center">
+                    <div className="px-1">
+                      <SpeakerIcon height={32} width={32} />
+                    </div>
+                    <div className="w-full px-1 flex flex-wrap justify-around">
+                      {voiceOptions?.map((v, i) => (
                         <Button
                           key={i}
                           onClick={() => {
-                            setSelectedModel(v);
+                            setSelectedVoice(v);
                           }}
-                          sizes="font-mono py-1 px-2 flex justify-center rounded-xl"
+                          sizes="font-mono py-1 px-2 flex justify-center rounded-xl text-white"
                           colors={`${
-                            v === selectedModel
+                            v === selectedVoice
                               ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
                               : "bg-inherit hover:bg-synthesis-100 border border-synthesis-500 text-synthesis-500"
                           }`}
                         >
-                          {v}
+                          {v.name}
                         </Button>
                       ))}
+                    </div>
+                  </div>
+                  <div className="w-full h-14  flex items-center">
+                    <div className="px-1">
+                      <ModelIcon height={32} width={32} />
+                    </div>
+                    <div className="w-full px-1 flex flex-wrap justify-around">
+                      {selectedVoice &&
+                        selectedVoice.voices?.map((v, i) => (
+                          <Button
+                            key={i}
+                            onClick={() => {
+                              setSelectedModel(v);
+                            }}
+                            sizes="font-mono py-1 px-2 flex justify-center rounded-xl"
+                            colors={`${
+                              v === selectedModel
+                                ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
+                                : "bg-inherit hover:bg-synthesis-100 border border-synthesis-500 text-synthesis-500"
+                            }`}
+                          >
+                            {v}
+                          </Button>
+                        ))}
+                    </div>
+                  </div>
+                  <div className="w-full h-14 flex">
+                    <div className="w-12 h-full"></div>
+                    <GenderButtons
+                      height={40}
+                      availableGenders={availableGenders}
+                      setGender={setGender}
+                      gender={gender}
+                    />
                   </div>
                 </div>
-                <div className="w-full h-14 flex">
-                  <div className="w-12 h-full"></div>
-                  <GenderButtons
-                    height={40}
-                    availableGenders={availableGenders}
-                    setGender={setGender}
-                    gender={gender}
-                  />
-                </div>
               </div>
+            </div>
+            <div className="w-full flex justify-center">
+              <div className="p-3 w-full max-w-xl">
+                <textarea
+                  onChange={(e) => setSynthesisText(e.target.value)}
+                  value={synthesisText}
+                  className="p-1 bg-white text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2 "
+                ></textarea>
+              </div>
+            </div>
+            <div className="flex justify-center items-center h-12 lg:h-14 relative">
+              {awaitingSynthesis ? (
+                <div className="w-full absolute top-5 left-0 flex justify-center items-center">
+                  <div className="w-6 h-6 border-t-2 border-r-2 border-synthesis-400 border-solid rounded-full animate-spin"></div>
+                </div>
+              ) : (
+                <Button
+                  sizes="w-28 sm:w-40 p-1 sm:p-0.5 flex justify-center rounded-sm"
+                  colors="bg-synthesis-500 hover:bg-synthesis-600"
+                  onClick={initTTS}
+                >
+                  <SpeakIcon
+                    height={["xs"].includes(breakpoint) ? 22 : 32}
+                    width={["xs"].includes(breakpoint) ? 22 : 32}
+                    color="white"
+                  />
+                </Button>
+              )}
             </div>
           </div>
           <div className="w-full flex justify-center">
-            <div className="p-3 w-full max-w-xl">
-              <textarea
-                onChange={(e) => setSynthesisText(e.target.value)}
-                value={synthesisText}
-                className="p-1 bg-white text-sm lg:text-base w-full h-28 focus:outline-0 resize-none ring-1 focus:ring-2 "
-              ></textarea>
-            </div>
-          </div>
-          <div className="flex justify-center items-center h-12 lg:h-14 relative">
-            {awaitingSynthesis ? (
-              <div className="w-full absolute top-5 left-0 flex justify-center items-center">
-                <div className="w-6 h-6 border-t-2 border-r-2 border-synthesis-400 border-solid rounded-full animate-spin"></div>
+            {synthesisedTextShowing && (
+              <div className="w-full px-2 transition-all duration-600 relative max-w-xl">
+                <PlaybackCard
+                  text={synthesisText}
+                  version="synthesis"
+                  recentlyCopied={recentlyCopied}
+                  sidebar={["xs"].includes(breakpoint) ? false : true}
+                  handleCopy={() => {
+                    setRecentlyCopied(true);
+                    setTimeout(() => {
+                      setRecentlyCopied(false);
+                    }, 2000);
+                  }}
+                  dialect={dialect}
+                  gender={gender}
+                  handlePlay={() => {
+                    playSynthesisAudio();
+                  }}
+                  handleStop={() => {
+                    stopSynthesisAudio();
+                  }}
+                  handleDownload={() => {
+                    downloadSynthesisAudio();
+                  }}
+                  audioPlaying={synthesisAudioPlaying}
+                  small={["xs"].includes(breakpoint) ? true : false}
+                >
+                  <audio
+                    src={synthesisAudio}
+                    ref={audioRef}
+                    onEnded={stopSynthesisAudio}
+                  />
+                  <a href={""} ref={anchorRef} download={"tester.wav"} />
+                </PlaybackCard>
               </div>
-            ) : (
-              <Button
-                sizes="w-28 sm:w-40 p-1 sm:p-0.5 flex justify-center rounded-sm"
-                colors="bg-synthesis-500 hover:bg-synthesis-600"
-                onClick={initTTS}
-              >
-                <SpeakIcon
-                  height={["xs"].includes(breakpoint) ? 22 : 32}
-                  width={["xs"].includes(breakpoint) ? 22 : 32}
-                  color="white"
-                />
-              </Button>
             )}
           </div>
-        </div>
-        <div className="w-full flex justify-center">
-          {synthesisedTextShowing && (
-            <div className="w-full px-2 transition-all duration-600 relative max-w-xl">
-              <PlaybackCard
-                text={synthesisText}
-                version="synthesis"
-                recentlyCopied={recentlyCopied}
-                sidebar={["xs"].includes(breakpoint) ? false : true}
-                handleCopy={() => {
-                  setRecentlyCopied(true);
-                  setTimeout(() => {
-                    setRecentlyCopied(false);
-                  }, 2000);
-                }}
-                dialect={dialect}
-                gender={gender}
-                handlePlay={() => {
-                  playSynthesisAudio();
-                }}
-                handleStop={() => {
-                  stopSynthesisAudio();
-                }}
-                handleDownload={() => {
-                  downloadSynthesisAudio();
-                }}
-                audioPlaying={synthesisAudioPlaying}
-                small={["xs"].includes(breakpoint) ? true : false}
-              >
-                <audio
-                  src={synthesisAudio}
-                  ref={audioRef}
-                  onEnded={stopSynthesisAudio}
-                />
-                <a href={""} ref={anchorRef} download={"tester.wav"} />
-              </PlaybackCard>
-            </div>
-          )}
         </div>
       </div>
     </div>
