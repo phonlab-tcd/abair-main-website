@@ -20,12 +20,12 @@ const Navbar = ({ lng }: any) => {
   const [burgerMenuHover, setBurgerMenuHover] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const { t } = useTranslation(lng);
-  const pathname = usePathname();
+  const [username, setUsername] = useState("anon");
   const supabase = createClientComponentClient<Database>();
 
   const userLoggedInDropdownArgs: DropdownMenuItemProps[] = [
     {
-      label: "Jim Jimson",
+      label: username,
       title: true,
     },
     {
@@ -61,8 +61,13 @@ const Navbar = ({ lng }: any) => {
 
   useEffect(() => {
     supabase.auth.getSession().then((session) => {
-      console.log("session:", session);
-      session.data.session ? setLoggedIn(true) : setLoggedIn(false);
+      if (session.data.session) {
+        setLoggedIn(true);
+        session.data.session.user.email &&
+          setUsername(session.data.session.user.email);
+      } else {
+        setLoggedIn(false);
+      }
     });
   }, []);
 
