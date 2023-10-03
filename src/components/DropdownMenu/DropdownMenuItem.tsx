@@ -20,10 +20,19 @@ const DropdownMenuItem = ({
   const pathname = usePathname();
   const authCallback = `${
     process.env.NEXT_PUBLIC_AUTH_URL
-  }?ref=${encodeURIComponent(window.location.href + "/auth/callback")}`;
+  }?ref=${encodeURIComponent(
+    window.location.origin + pathname.slice(0, 3) + "/auth/callback"
+  )}`;
   const signOutCallback = `${
     process.env.NEXT_PUBLIC_AUTH_URL
-  }sign-out?ref=${encodeURIComponent(window.location.href + "/auth/callback")}`;
+  }sign-out?ref=${encodeURIComponent(
+    window.location.origin + pathname.slice(0, 3) + "/auth/callback"
+  )}`;
+  const profileCallback = `${
+    process.env.NEXT_PUBLIC_AUTH_URL
+  }profile?ref=${encodeURIComponent(
+    window.location.origin + pathname.slice(0, 3) + "/auth/callback"
+  )}`;
 
   const getHrefFromLabel = (label?: string): string => {
     let href = "";
@@ -32,7 +41,7 @@ const DropdownMenuItem = ({
         href = `/${label}${pathname.slice(3, pathname.length)}`;
       } else if (label === "Profile") {
         console.log("in Profile");
-        href = `${pathname.slice(0, 3)}/profile`;
+        href = profileCallback;
       } else if (label === "Login/Signup") {
         href = authCallback;
       } else if (label === "Log Out") {
