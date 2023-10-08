@@ -36,7 +36,19 @@ const AppCard = ({
   } else if (name === "An Scéalaí") {
     backgroundColour = "bg-[#897165]";
   } else if (name === "Mol an Óige") {
-    backgroundColour = "bg-[#b2afa6]";
+    backgroundColour = "bg-[#D42F2E]";
+  } else if (name === "An Scéalaí") {
+    backgroundColour = "bg-[#cccec9]";
+  } else if (name === "Mol an Óige") {
+    backgroundColour = "bg-[#D42F2E]";
+  } else if (name === "An Scéalaí") {
+    backgroundColour = "bg-[#897165]";
+  } else if (name === "Mol an Óige") {
+    backgroundColour = "bg-[#D42F2E]";
+  } else if (name === "An Scéalaí") {
+    backgroundColour = "bg-[#897165]";
+  } else if (name === "Mol an Óige") {
+    backgroundColour = "bg-[#D42F2E]";
   }
 
   return (
@@ -46,7 +58,7 @@ const AppCard = ({
       } p-4 ${
         isDisabled ? "" : "cursor-pointer hover:bg-primary-200 duration-500"
       } */
-      className={`relative w-[300px] h-[350px] ${backgroundColour} p-0.5 my-4 mx-2 rounded-xl hover:shadow-md`}
+      className={`relative w-[300px] h-[350px] ${backgroundColour} p-0.5 my-4 mx-2 rounded-xl hover:shadow-xl`}
     >
       <a
         href={isDisabled ? undefined : url}
@@ -61,7 +73,7 @@ const AppCard = ({
             height={200}
             style={imageStyle}
             //className="w-full h-[150px] object-cover rounded-md md:w-[175px] md:h-[140px] lg:w-[250px] lg:h-[200px]"
-            className="w-full h-[200px] object-cover rounded-md"
+            className="w-full h-[200px] object-cover rounded-lg"
           />
         </div>
         <div className="flex-grow mx-2">

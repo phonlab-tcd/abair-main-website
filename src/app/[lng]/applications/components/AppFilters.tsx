@@ -31,7 +31,7 @@ const AppFilters = ({
       <button
         className={`${
           selectedCategory === 1
-            ? "bg-primary-500 text-white"
+            ? "bg-gray-600 text-white"
             : "text-gray-600 hover:text-primary-500"
         } px-4 py-2 font-medium transition duration-500 ease-in-out`}
         onClick={() => filterApplicationData(1)}
@@ -41,7 +41,7 @@ const AppFilters = ({
       <button
         className={`${
           selectedCategory === 3
-            ? "bg-primary-500 text-white"
+            ? "bg-gray-600 text-white"
             : "text-gray-600 hover:text-primary-500"
         } px-4 py-2 font-medium transition duration-500 ease-in-out`}
         onClick={() => filterApplicationData(3)}
@@ -51,7 +51,7 @@ const AppFilters = ({
       <button
         className={`${
           selectedCategory === 2
-            ? "bg-primary-500 text-white"
+            ? "bg-gray-600 text-white"
             : "text-gray-600 hover:text-primary-500"
         } px-4 py-2 font-medium transition duration-500 ease-in-out`}
         onClick={() => filterApplicationData(2)}
