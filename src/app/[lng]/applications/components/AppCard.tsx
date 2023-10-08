@@ -11,6 +11,7 @@ interface AppCardProps {
   description: string;
   image: string;
   comingSoonMsg: string;
+  colour: string;
 }
 
 const imageStyle = {
@@ -27,30 +28,12 @@ const AppCard = ({
   description,
   image,
   comingSoonMsg,
+  colour,
 }: AppCardProps) => {
   const isDisabled = url === "#";
 
-  let backgroundColour = "bg-primary-500";
-  if (name === "An Bat Mírialta") {
-    backgroundColour = "bg-[#489492]";
-  } else if (name === "An Scéalaí") {
-    backgroundColour = "bg-[#897165]";
-  } else if (name === "Mol an Óige") {
-    backgroundColour = "bg-[#D42F2E]";
-  } else if (name === "An Scéalaí") {
-    backgroundColour = "bg-[#cccec9]";
-  } else if (name === "Mol an Óige") {
-    backgroundColour = "bg-[#D42F2E]";
-  } else if (name === "An Scéalaí") {
-    backgroundColour = "bg-[#897165]";
-  } else if (name === "Mol an Óige") {
-    backgroundColour = "bg-[#D42F2E]";
-  } else if (name === "An Scéalaí") {
-    backgroundColour = "bg-[#897165]";
-  } else if (name === "Mol an Óige") {
-    backgroundColour = "bg-[#D42F2E]";
-  }
-
+  console.log("colour of " + name + " is: " + colour);
+  // colour = "bg-primary-200";
   return (
     <div
       /*className={`border ${
@@ -58,7 +41,7 @@ const AppCard = ({
       } p-4 ${
         isDisabled ? "" : "cursor-pointer hover:bg-primary-200 duration-500"
       } */
-      className={`relative w-[300px] h-[350px] ${backgroundColour} p-0.5 my-4 mx-2 rounded-xl hover:shadow-xl`}
+      className={`relative w-[300px] h-[350px] ${colour} p-0.5 my-4 mx-2 rounded-xl`}
     >
       <a
         href={isDisabled ? undefined : url}

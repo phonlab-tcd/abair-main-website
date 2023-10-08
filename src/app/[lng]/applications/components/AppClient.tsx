@@ -70,6 +70,7 @@ export default function AppClient({ applications, lng }: ApplicationProps) {
                 image={application.image}
                 created_at={application.created_at}
                 comingSoonMsg={lng === "en" ? "coming soon" : "le teacht"}
+                colour={application.colour}
               />
             ))}
           </div>
