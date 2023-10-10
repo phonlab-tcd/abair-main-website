@@ -20,7 +20,7 @@ export default function AuthCallback() {
         })
         .then(() => {
           console.log(value);
-          redirect(process.env.NEXT_PUBLIC_BASE_URL as string);
+          window.location.href = process.env.NEXT_PUBLIC_BASE_URL as string;
         });
     } else {
       alert("Access token or Refresh token is NULL");
