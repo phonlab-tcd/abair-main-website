@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
   const refresh_token = requestUrl.searchParams.get("refresh_token");
 
   const supabase = createRouteHandlerClient<Database>({ cookies });
+
   if (access_token && refresh_token) {
     const value = await supabase.auth.setSession({
       refresh_token: refresh_token,
