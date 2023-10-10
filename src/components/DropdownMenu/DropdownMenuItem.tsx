@@ -18,21 +18,11 @@ const DropdownMenuItem = ({
   image,
 }: DropdownMenuItemProps) => {
   const pathname = usePathname();
-  const authCallback = `${
-    process.env.NEXT_PUBLIC_AUTH_URL
-  }?ref=${encodeURIComponent(
-    window.location.origin + pathname.slice(0, 3) + "/auth/callback"
-  )}`;
-  const signOutCallback = `${
-    process.env.NEXT_PUBLIC_AUTH_URL
-  }sign-out?ref=${encodeURIComponent(
-    window.location.origin + pathname.slice(0, 3) + "/auth/callback"
-  )}`;
-  const profileCallback = `${
-    process.env.NEXT_PUBLIC_AUTH_URL
-  }profile?ref=${encodeURIComponent(
-    window.location.origin + pathname.slice(0, 3) + "/auth/callback"
-  )}`;
+  const callbackUrl = encodeURIComponent(`${window.location.protocol}//${window.location.host}${pathname.slice(0, 3)}/auth/callback`);
+
+  const authCallback = `${process.env.NEXT_PUBLIC_AUTH_URL}?ref=${callbackUrl}`;
+  const signOutCallback = `${process.env.NEXT_PUBLIC_AUTH_URL}sign-out?ref=${callbackUrl}`;
+  const profileCallback = `${process.env.NEXT_PUBLIC_AUTH_URL}profile?ref=${callbackUrl}`;
 
   const getHrefFromLabel = (label?: string): string => {
     let href = "";
