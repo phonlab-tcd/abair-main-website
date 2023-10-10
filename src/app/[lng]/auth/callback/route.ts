@@ -25,7 +25,8 @@ export async function GET(request: NextRequest) {
   }
 
   // URL to redirect to after sign in process completes
-  const url = request.nextUrl.clone();
-  url.pathname = "/";
-  return NextResponse.redirect(url);
+  // const url = request.nextUrl.clone();
+  // url.pathname = "/";
+  // return NextResponse.redirect(url);
+  window.location.href = process.env.NEXT_PUBLIC_BASE_URL as string;
 }
