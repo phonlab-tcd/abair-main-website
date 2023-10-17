@@ -67,7 +67,7 @@ const getSynthesis = async (
 
   try {
     const response = await fetch(
-      "https://abair.ie/api2/synthesise",
+      "https://phoneticsrv3.lcs.tcd.ie/api2/synthesise",
       requestOptions
     );
     const data = await response.json();
