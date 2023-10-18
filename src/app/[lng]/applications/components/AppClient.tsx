@@ -50,7 +50,11 @@ export default function AppClient({ applications, lng }: ApplicationProps) {
               lng={lng}
             />
           </div>
-          <div className="my-8 space-y-4 mx-auto max-w-6xl">
+          <div
+            className="my-4 flex flex-wrap w-full justify-center min-w-[400px]"
+            //className="my-4 space-x-4 space-y-4 mx-auto flex flex-wrap w-full justify-center max-w-6xl">
+          >
+            {" "}
             {sortedData.map((application, index) => (
               <AppCard
                 key={index}
@@ -66,6 +70,7 @@ export default function AppClient({ applications, lng }: ApplicationProps) {
                 image={application.image}
                 created_at={application.created_at}
                 comingSoonMsg={lng === "en" ? "coming soon" : "le teacht"}
+                colour={application.colour}
               />
             ))}
           </div>
