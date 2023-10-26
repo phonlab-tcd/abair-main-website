@@ -39,7 +39,7 @@ const Applications = ({ lng }: any) => {
       <div className="flex justify-center w-full py-4 px-2">
         <Link href={`/${lng}/applications`}>
           <Image
-            src={"/images/frontPageImages/applications.png"}
+            src={"/images/frontPageImages/applications_414x1200.webp"}
             width={800}
             height={400}
             alt="ABAIR applications image"

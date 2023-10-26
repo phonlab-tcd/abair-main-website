@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const TopImages = () => {
-  const [breakpoint, setBreakpoint] = useState<string>("");
+  const [breakpoint, setBreakpoint] = useState<string>(getBreakpoint());
 
   const handleResize = () => {
     setBreakpoint(getBreakpoint());
@@ -21,7 +21,11 @@ const TopImages = () => {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden h-full">
+    <div
+      className={`w-full overflow-hidden ${
+        ["lg", "xl"].includes(breakpoint) ? "h-[180px]" : "h-[128px]"
+      } border`}
+    >
       <div className="relative flex overflowx-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {imageCarouselData.map((image, index) => (
