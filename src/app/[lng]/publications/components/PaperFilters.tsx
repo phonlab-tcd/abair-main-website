@@ -27,7 +27,7 @@ const PaperFilters = ({
   const [sortBy, setSortBy] = useState("");
   const [startYear, setStartYear] = useState(2017);
   const [endYear, setEndYear] = useState(2022);
-  const [yearRangeSelected, setYearRangeSelected] = useState(false);
+  const [yearRangeSelected, setYearRangeSelected] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const { t } = useTranslation(lng);
 
@@ -41,6 +41,7 @@ const PaperFilters = ({
     let filteredData: Tables<"ab_publications">[] = paperData;
 
     if (startYear && endYear && yearRangeSelected) {
+      //console.log("filtering by year with start year: " + startYear + "\n and end year: " + endYear);
       filteredData = filteredData.filter((paper) => {
         const paperDate = paper.year_published;
         if (paperDate) {
@@ -75,6 +76,8 @@ const PaperFilters = ({
       );
     }
 
+    //console.log("filtering");
+    //console.log(filteredData)
     onFilteredData(filteredData);
   };
 

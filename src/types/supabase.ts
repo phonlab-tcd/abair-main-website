@@ -73,6 +73,7 @@ export interface Database {
           image: string
           name: string
           url: string
+          colour: string
         }
         Insert: {
           category: number
@@ -83,6 +84,7 @@ export interface Database {
           image: string
           name: string
           url: string
+          colour: string
         }
         Update: {
           category?: number
@@ -93,6 +95,7 @@ export interface Database {
           image?: string
           name?: string
           url?: string
+          colour?: string
         }
         Relationships: []
       }
