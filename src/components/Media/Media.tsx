@@ -80,7 +80,6 @@ const Media = ({
           convertBlobToBase64(blob).then((result: any) => {
             postAudio(result.slice(22)).then((data: any) => {
               setAwaitingTranscription(false);
-              console.log("transcriptions:", data.transcriptions);
               setTranscription(data.transcriptions[0].utterance);
             });
           });

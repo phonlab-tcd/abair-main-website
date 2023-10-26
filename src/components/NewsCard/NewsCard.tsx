@@ -20,7 +20,7 @@ const NewsCard = ({
   altText = "alt text",
 }: NewsCardProps) => {
   return (
-    <div className="relative h-[440px] w-[290px] p-3 bg-white shadow-lg rounded-sm">
+    <div className="relative h-[440px] w-[290px] p-3 bg-white rounded-sm">
       <Image
         src={imageURL}
         height={180}

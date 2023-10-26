@@ -1,4 +1,12 @@
 const postAudio = async (audioData: string) => {
+  console.log(
+    "body:",
+    JSON.stringify({
+      recogniseBlob: audioData,
+      developer: true,
+      method: "online2bin",
+    })
+  );
   try {
     const response = await fetch(
       "https://phoneticsrv3.lcs.tcd.ie/asr_api/recognise",
