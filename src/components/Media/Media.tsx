@@ -40,9 +40,9 @@ const Media = ({
       if (voiceRecording) {
         resetRecognitionTranscriptionStates();
         mediaRecorder.start();
-        console.log("starting recording");
+        // console.log("starting recording");
       } else {
-        console.log("stopping recording");
+        // console.log("stopping recording");
         mediaRecorder.stop();
       }
     }
