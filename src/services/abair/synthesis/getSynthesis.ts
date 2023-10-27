@@ -19,6 +19,8 @@ const getVoiceType = (model: string) => {
     return "exthts";
   } else if (model === "HTS-WORLD") {
     return "exthts-WORLD";
+  } else if (model === "PIPER") {
+    return "piper";
   } else {
     return "";
   }
