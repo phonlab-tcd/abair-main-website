@@ -243,7 +243,7 @@ const Page = ({ lng }: any) => {
                           onClick={() => {
                             setSelectedVoice(v);
                           }}
-                          sizes="font-mono py-1 px-2 flex justify-center rounded-xl text-white"
+                          sizes="font-mono py-1 px-2 flex justify-center rounded-xl"
                           colors={`${
                             v === selectedVoice
                               ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
