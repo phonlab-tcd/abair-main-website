@@ -61,6 +61,7 @@ const PeopleFilters = ({
         open={largeScreen}
         content={
           <RoleFilter
+            lng={lng}
             selectedRole={selectedRole}
             onRoleChange={(role) => {
               setSelectedRole(role);

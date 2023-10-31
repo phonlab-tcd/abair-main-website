@@ -6,6 +6,7 @@ interface synthesisVoiceModel {
   shortCode?: string;
   voices?: string[];
   voicenames?: string[];
+  heritage?: boolean;
 }
 
 export type { synthesisVoiceModel };

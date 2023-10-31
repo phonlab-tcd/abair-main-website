@@ -73,7 +73,6 @@ const Page = ({ lng }: any) => {
       const availableGenders = synthesisVoices
         .filter((v) => v.locale === dialect)
         .map((v) => v.gender);
-      console.log("availableGenders:", availableGenders);
       setAvailableGenders(Array.from(new Set(availableGenders)));
     }
   }, [dialect]);
@@ -111,17 +110,7 @@ const Page = ({ lng }: any) => {
         setSelectedModel(selectedVoice.voices[0]);
       }
     }
-    console.log("selectedVoice:", selectedVoice);
   }, [selectedVoice]);
-
-  useEffect(() => {
-    console.log("selectedModel:", selectedModel);
-  }, [selectedModel]);
-
-  useEffect(() => {
-    console.log("pitch:", synthesisPitch);
-    console.log("speed:", synthesisSpeed);
-  }, [synthesisPitch, synthesisSpeed]);
 
   const playSynthesisAudio = () => {
     if (audioRef.current !== undefined) {
@@ -246,8 +235,16 @@ const Page = ({ lng }: any) => {
                           sizes="font-mono py-1 px-2 flex justify-center rounded-xl"
                           colors={`${
                             v === selectedVoice
-                              ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
-                              : "bg-inherit hover:bg-synthesis-100 border border-synthesis-500 text-synthesis-500"
+                              ? `${
+                                  v.heritage
+                                    ? "bg-orange-400 hover:bg-orange-500 border-orange-400"
+                                    : "bg-synthesis-500 hover:bg-synthesis-600 border-synthesis-500"
+                                } text-white border`
+                              : `${
+                                  v.heritage
+                                    ? "hover:bg-orange-100 border-orange-500 text-orange-500"
+                                    : "hover:bg-synthesis-100 border-synthesis-500 text-synthesis-500"
+                                } bg-inherit border`
                           }`}
                         >
                           {v.name}
@@ -291,6 +288,11 @@ const Page = ({ lng }: any) => {
                 </div>
               </div>
             </div>
+            {selectedVoice && selectedVoice.heritage && (
+              <div className="text-center text-orange-500 text-lg">
+                -- {t("pages.synthesis.heritage voice")} --
+              </div>
+            )}
             <div className="w-full flex justify-center">
               <div className="p-3 w-full max-w-xl">
                 <textarea

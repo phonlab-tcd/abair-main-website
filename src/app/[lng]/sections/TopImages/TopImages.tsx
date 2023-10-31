@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { getBreakpoint } from "@/utils";
 import imageCarouselData from "./imageCarouselData";
@@ -6,19 +6,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const TopImages = () => {
-  const [breakpoint, setBreakpoint] = useState<string>("xl");
+  // const [breakpoint, setBreakpoint] = useState<string>("xl");
 
-  const handleResize = () => {
-    setBreakpoint(getBreakpoint());
-  };
+  // const handleResize = () => {
+  //   setBreakpoint(getBreakpoint());
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize();
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <div className={`w-full overflow-hidden h-[150px] border`}>

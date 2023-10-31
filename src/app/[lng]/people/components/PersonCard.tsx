@@ -1,9 +1,12 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 // import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "@/app/i18n/client";
 
 interface PersonCardProps {
+  lng: any;
   image: string;
   id: number;
   name: string;
@@ -11,7 +14,9 @@ interface PersonCardProps {
   role: string;
 }
 
-const PersonCard = ({ image, id, name, bio, role }: PersonCardProps) => {
+const PersonCard = ({ lng, image, id, name, bio, role }: PersonCardProps) => {
+  const { t } = useTranslation(lng);
+
   return (
     // <Link href={`/people/${id}`}>
     <div className="relative min-h-[250px] h-[400px] p-[16px] bg-white shadow-md rounded-md transition-colors duration-300">
@@ -29,7 +34,7 @@ const PersonCard = ({ image, id, name, bio, role }: PersonCardProps) => {
           {"id: " + id}
         </p> */}
         <span className="text-[12px] font-bold ml-[8px] py-[4px] px-[8px] rounded-[4px] bg-primary-300 text-white">
-          {role}
+          {t(`pages.people.${role}`)}
         </span>
       </div>
     </div>

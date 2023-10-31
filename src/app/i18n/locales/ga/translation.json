@@ -80,7 +80,7 @@
   },
   "pages": {
     "home": {
-      "SOTA": "STATE \u2022 OF \u2022 THE \u2022 ART",
+      "SOTA": "Taighde \u2022 Úrscothach",
       "speechAndLangTech": "Teicneolaíocht Urlabhra agus Teanga don Ghaeilge",
       "speak": "ABAIR - Guthanna Sintéiseacha",
       "listen": "ÉIST - Aithint Chainte",
@@ -183,6 +183,18 @@
       "munster": "Mumha",
       "minimumThreeLetters": "3 litir ar a laghad",
       "save": "sábháil"
+    },
+    "people": {
+      "All": "Gach Rud",
+      "Software Engineer": "Forbróir Bogearraí",
+      "Professor": "Ollamh",
+      "Postdoc": "Taighdeoir Iardhochtúireachta",
+      "PhD Student": "Mac Léinn PhD",
+      "Masters Student": "Mac Léinn Máistreachta",
+      "Undergraduate Student": "Taighde Úrscothach"
+    },
+    "synthesis": {
+      "heritage voice": "guth oidhreachta"
     }
   },
   "errorMessages": {

@@ -1,14 +1,19 @@
+"use client";
 import React, { useEffect } from "react";
+import { useTranslation } from "@/app/i18n/client";
 
 interface RoleFilterProps {
+  lng: any;
   selectedRole: string;
   onRoleChange: (roles: string) => void;
 }
 
 const RoleFilter: React.FC<RoleFilterProps> = ({
+  lng,
   selectedRole,
   onRoleChange,
 }) => {
+  const { t } = useTranslation(lng);
   const roleOptions: string[] = [
     "All",
     "Software Engineer",
@@ -27,7 +32,7 @@ const RoleFilter: React.FC<RoleFilterProps> = ({
   }, [selectedRole, onRoleChange]);
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const role = event.target.value;
+    const role = event.target.id;
     const isRoleSelected = selectedRole === role;
 
     // Remove "All" from selectedRoles before processing the checkboxes
@@ -48,11 +53,12 @@ const RoleFilter: React.FC<RoleFilterProps> = ({
           <label>
             <input
               type="checkbox"
+              id={role}
               value={role}
               checked={selectedRole === role}
               onChange={handleCategoryChange}
             />
-            <span className="px-1">{role}</span>
+            <span className="px-1">{t(`pages.people.${role}`)}</span>
           </label>
         </div>
       ))}

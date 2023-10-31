@@ -180,6 +180,18 @@
       "munster": "Munster",
       "minimumThreeLetters": "At least 3 letters",
       "save": "save"
+    },
+    "people": {
+      "All": "All",
+      "Software Engineer": "Software Engineer",
+      "Professor": "Professor",
+      "Postdoc": "Postdoc",
+      "PhD Student": "PhD Student",
+      "Masters Student": "Masters Student",
+      "Undergraduate Student": "Undergraduate Student"
+    },
+    "synthesis": {
+      "heritage voice": "heritage"
     }
   },
   "errorMessages": {
