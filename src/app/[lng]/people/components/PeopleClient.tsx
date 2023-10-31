@@ -57,7 +57,7 @@ export default function PeopleClient({ people, lng }: PeopleProps) {
                 />
               </div>
               <div className="flex-1">
-                <PeopleList peopleData={filteredData} />
+                <PeopleList lng={lng} peopleData={filteredData} />
               </div>
             </div>
           ) : (
@@ -79,7 +79,7 @@ export default function PeopleClient({ people, lng }: PeopleProps) {
                   />
                 </div>
               </div>
-              <PeopleList peopleData={filteredData} />
+              <PeopleList lng={lng} peopleData={filteredData} />
             </div>
           )}
         </div>
