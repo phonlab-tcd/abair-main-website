@@ -22,17 +22,17 @@ const routes = [
   //   path: "/contact",
   //   name: "contact",
   // },
-  {
-    path: "/news",
-    name: "news",
-    showInNavbar: true,
-  },
+  // {
+  //   path: "/news",
+  //   name: "news",
+  //   showInNavbar: true,
+  // },
 
-  {
-    path: "/publications",
-    name: "publications",
-    showInNavbar: true,
-  },
+  // {
+  //   path: "/publications",
+  //   name: "publications",
+  //   showInNavbar: true,
+  // },
   {
     path: "/profile",
     name: "profile",

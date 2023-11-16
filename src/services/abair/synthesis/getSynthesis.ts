@@ -33,6 +33,14 @@ const getSynthesis = async (
   pitch: number,
   speed: number
 ) => {
+  console.log(
+    "code:",
+    returnDialectCode(currentVoice.locale as string) +
+      "_" +
+      currentVoice.shortCode +
+      "_" +
+      getVoiceType(model)
+  );
   const requestOptions = {
     method: "POST",
     headers: {

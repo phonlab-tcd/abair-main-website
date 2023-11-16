@@ -31,14 +31,14 @@ export default async function Page({
       <div className="flex w-full justify-center relative bg-white">
         <Applications lng={lng} />
       </div>
-      <div className="flex w-full justify-center relative">
-        {/* @ts-expect-error Server Component */}
-        <News lng={lng} />
-      </div>
-      <div className="flex w-full justify-center relative bg-white">
-        {/* @ts-expect-error Server Component */}
-        <Publications lng={lng} />
-      </div>
+      {/* <div className="flex w-full justify-center relative"> */}
+      {/* need to add ts error here */}
+      {/* <News lng={lng} /> */}
+      {/* </div> */}
+      {/* <div className="flex w-full justify-center relative bg-white"> */}
+      {/* need to add ts error here */}
+      {/* <Publications lng={lng} /> */}
+      {/* </div> */}
     </div>
   );
 }
