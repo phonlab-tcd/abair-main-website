@@ -43,6 +43,11 @@ const routes = [
     name: "people",
     showInNavbar: true,
   },
+  {
+    path: "/geabaire",
+    name: "Geabaire",
+    showInNavbar: false
+  }
 ];
 
 export default routes;
