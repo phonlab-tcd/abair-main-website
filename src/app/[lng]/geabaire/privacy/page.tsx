@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
                     providing the Geabaire app and its features to you. These service providers are:
                     <ul>
                         <li>Cloudflare: We use Cloudflare to protect the Geabaire app from malicious activity and to
-                            improve the app's performance.</li>
+                            improve the app&apos;s performance.</li>
                         <li>Supabase: We use Supabase to store and manage the data collected through the Geabaire
                             app.</li>
                         <li>
