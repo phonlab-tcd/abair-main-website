@@ -36,8 +36,7 @@ const GeabaireContactForm = () => {
 
   return (
     <>
-      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer>
-      </Script>
+      <Script id="turnstile-script" src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer/>
       <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
         {notice && (
           <div className={"rounded p-3 px-5 text-white font-bold " + noticeColor}>

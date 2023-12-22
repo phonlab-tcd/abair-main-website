@@ -37,7 +37,7 @@ export default function SupportPage() {
                         <div className="space-y-4">
                             <div>
                                 <h3 className="text-xl font-semibold">How do I reset my password?</h3>
-                                <p>This currently isn't possible via a self-service system, please contact our support.</p>
+                                <p>This currently isn&apos;t possible via a self-service system, please contact our support.</p>
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold">Where can I documentation?</h3>
