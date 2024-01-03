@@ -40,8 +40,12 @@ export default function SupportPage() {
                                 <p>This currently isn&apos;t possible via a self-service system, please contact our support.</p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-semibold">Where can I documentation?</h3>
+                                <h3 className="text-xl font-semibold">Where can I find documentation?</h3>
                                 <p>Unfortunately as Geabaire is currently in private beta we do not presently have public documentation.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold">Where can I get an invite code</h3>
+                                <p>You can request one using the contact form below. Please note that these are not guarenteed.</p>
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold">Where can I find the privacy policy?</h3>
