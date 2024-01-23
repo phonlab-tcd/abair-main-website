@@ -36,30 +36,79 @@ export default function SupportPage() {
                         <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Frequently Asked Questions</h2>
                         <div className="space-y-4">
                             <div>
+                                <h3 className="text-xl font-semibold">I would like to join the TestFlight.</h3>
+                                <p>Right now we are not accepting additional people in the Geabaire beta.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold">Where can I get an invite code</h3>
+                                <p>You can request one using the contact form below, although these are only available for those in the TestFlight.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold">Can I use my Geabaire app acount on the website?</h3>
+                                <p>Yes, you can use Geabaire from your web browser with your pre-existing account  <Link href={"https://geabaire.abair.ie"} className='text-cyan-700 font-bold'>here</Link>.</p>
+                            </div>
+                            <div>
                                 <h3 className="text-xl font-semibold">How do I reset my password?</h3>
                                 <p>This currently isn&apos;t possible via a self-service system, please contact our support.</p>
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold">Where can I find documentation?</h3>
-                                <p>Unfortunately as Geabaire is currently in private beta we do not presently have public documentation.</p>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold">Where can I get an invite code</h3>
-                                <p>You can request one using the contact form below. Please note that these are not guarenteed.</p>
+                                <p>The only publicly available documentation at present are the videos and PDFs linked below.</p>
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold">Where can I find the privacy policy?</h3>
                                 <p>You can find our privacy policy <Link href={"/en/geabaire/privacy"} className='text-cyan-700 font-bold'>here</Link>.</p>
                             </div>
-                            {/* Add more FAQs as needed */}
+                            <div>
+                                <h3 className="text-xl font-semibold">I found a bug...</h3>
+                                <p>Please write to us using the contact form below to make us aware of bugs you have encountered. Ensure to include replication steps. Report crashes via TestFlight.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold">I have a feature idea...</h3>
+                                <p>Please write to us using the contact form below to give us your ideas, we are a small team and we can't cater to everyone, but we will do our best.</p>
+                            </div>
+
+                            <div>
+                                <h3 className="text-xl font-semibold">Is the app available for Android?</h3>
+                                <p>Right now we are only having an iOS Beta, however the Android version of the app is at an equal stage of development.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="my-8 px-4">
+                        <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Documents</h2>
+                        <div className="space-y-4">
+                            <div>
+                                <h3 className="text-xl font-semibold">Geabaire — Leagan Gaeilge [PDF]</h3>
+                                <p>View <Link href={"https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/publications/Geabaire%20-%20Leagan%20Gaeilge-compressed.pdf"} className='text-cyan-700 font-bold'>here</Link>.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold">Geabaire — Leagan Bearla (English) [PDF]</h3>
+                                <p>View <Link href={"https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/publications/Geabaire%20-%20Leagan%20Bearla-compressed.pdf"} className='text-cyan-700 font-bold'>here</Link>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="my-8 px-4">
+                        <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Videos</h2>
+                        <div className="space-y-4">
+                            <h3 className="text-1xl lg:text-2xl font-semibold text-center mb-6">Irish (Leagan Gaeilge)</h3>
+                            <div className="flex justify-center">
+                                <iframe className='w-full max-w-xl' width="560" height="315" src="https://www.youtube.com/embed/0WWz6T_5FV4?si=OaHgYBUz93QHlMfW" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                            </div>
+                            <h3 className="text-1xl lg:text-2xl font-semibold text-center mb-6">English (Leagan Bearla)</h3>
+                            <div className="flex justify-center">
+                                <iframe className='w-full max-w-xl' width="560" height="315" src="https://www.youtube.com/embed/GiLjw-Joyhg?si=N5UwlDfjhJwHNW6y" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                            </div>
+
                         </div>
                     </div>
 
                     {/* Contact Form */}
                     <div className="my-8 px-4">
                         <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Contact Us</h2>
-                        {/* {use(ContactForm)} */}
-                        <GeabaireContactForm/>
+
+                        <GeabaireContactForm />
                     </div>
 
                     {/* Additional Contact Info */}
