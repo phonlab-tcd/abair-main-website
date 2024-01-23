@@ -65,7 +65,7 @@ export default function SupportPage() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold">I have a feature idea...</h3>
-                                <p>Please write to us using the contact form below to give us your ideas, we are a small team and we can't cater to everyone, but we will do our best.</p>
+                                <p>Please write to us using the contact form below to give us your ideas, we are a small team and we can&apos;t cater to everyone, but we will do our best.</p>
                             </div>
 
                             <div>
