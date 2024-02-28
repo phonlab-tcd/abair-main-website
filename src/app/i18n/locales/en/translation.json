@@ -191,7 +191,14 @@
       "Undergraduate Student": "Undergraduate Student"
     },
     "synthesis": {
-      "heritage voice": "heritage"
+      "heritage voice": "heritage",
+      "model": "model",
+      "speed": "speed",
+      "speaker": "speaker",
+      "pitch": "pitch",
+      "gender": "gender",
+      "basic": "basic",
+      "AI": "AI"
     }
   },
   "errorMessages": {

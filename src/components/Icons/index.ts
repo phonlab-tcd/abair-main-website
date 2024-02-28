@@ -1,5 +1,6 @@
 import MaleIcon from "./MaleIcon";
 import FemaleIcon from "./FemaleIcon";
+import GenderIcon from "./GenderIcon";
 import PlayIcon from "./PlayIcon";
 import StopIcon from "./StopIcon";
 import CopyIcon from "./CopyIcon";
@@ -16,6 +17,7 @@ import SpeakerIcon from "./SpeakIcon";
 export {
   MaleIcon,
   FemaleIcon,
+  GenderIcon,
   PlayIcon,
   StopIcon,
   CopyIcon,

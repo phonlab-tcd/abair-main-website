@@ -91,14 +91,9 @@ const Page = ({ lng }: any) => {
   useEffect(() => {
     if (gender && dialect && synthesisVoices) {
       const selectedVoices = synthesisVoices.filter(
-        (v) =>
-          v.locale === dialect &&
-          v.gender === gender &&
-          v.voices !== undefined &&
-          v.voices.length !== 0
+        (v) => v.locale === dialect && v.gender === gender
       );
       if (selectedVoices.length > 0) {
-        console.log("selectedVoices:", selectedVoices);
         setVoiceOptions(selectedVoices);
       }
     }
@@ -106,7 +101,6 @@ const Page = ({ lng }: any) => {
 
   useEffect(() => {
     if (voiceOptions) {
-      console.log("voiceOptions:", voiceOptions);
       setSelectedVoice(voiceOptions[0]);
     }
   }, [voiceOptions]);
@@ -285,32 +279,22 @@ const Page = ({ lng }: any) => {
                     </div>
                     <div className="w-full px-1 flex flex-wrap justify-around">
                       {selectedVoice &&
-                        selectedVoice.voices?.map((v, i) =>
-                          v !== "PIPER" ? (
-                            <div key={i} className="group relative">
-                              <span className="absolute w-32 bottom-10 scale-0 rounded border-2 delay-700 bg-white p-2 text-xs text-primary group-hover:scale-100">
-                                {v === "HTS"
-                                  ? t("pages.synthesis.basic")
-                                  : t("pages.synthesis.AI")}
-                              </span>
-                              <Button
-                                onClick={() => {
-                                  setSelectedModel(v);
-                                }}
-                                sizes="font-mono py-1 px-2 flex justify-center rounded-xl"
-                                colors={`${
-                                  v === selectedModel
-                                    ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
-                                    : "bg-inherit hover:bg-synthesis-100 border border-synthesis-500 text-synthesis-500"
-                                }`}
-                              >
-                                {v === "HTS"
-                                  ? t("pages.synthesis.basic")
-                                  : t("pages.synthesis.AI")}
-                              </Button>
-                            </div>
-                          ) : null
-                        )}
+                        selectedVoice.voices?.map((v, i) => (
+                          <Button
+                            key={i}
+                            onClick={() => {
+                              setSelectedModel(v);
+                            }}
+                            sizes="font-mono py-1 px-2 flex justify-center rounded-xl"
+                            colors={`${
+                              v === selectedModel
+                                ? "bg-synthesis-500 hover:bg-synthesis-600 text-white border border-synthesis-500 "
+                                : "bg-inherit hover:bg-synthesis-100 border border-synthesis-500 text-synthesis-500"
+                            }`}
+                          >
+                            {v}
+                          </Button>
+                        ))}
                     </div>
                   </div>
                   <div className="w-full h-14 flex">

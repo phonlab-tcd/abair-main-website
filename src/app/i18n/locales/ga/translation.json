@@ -194,7 +194,14 @@
       "Undergraduate Student": "Taighde Úrscothach"
     },
     "synthesis": {
-      "heritage voice": "guth oidhreachta"
+      "heritage voice": "guth oidhreachta",
+      "model": "samhaltán",
+      "speed": "luas",
+      "speaker": "cainteoir",
+      "pitch": "tuinairde",
+      "gender": "inscne",
+      "basic": "bunata",
+      "AI": "AI"
     }
   },
   "errorMessages": {
