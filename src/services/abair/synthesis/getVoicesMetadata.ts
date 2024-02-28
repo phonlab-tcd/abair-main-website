@@ -1,6 +1,6 @@
 const getVoicesMetadata = async () => {
   try {
-    const response = await fetch("https://synthesis.abair.ie/api/meta", {
+    const response = await fetch("https://api.abair.ie/v3/synthesis/metadata", {
       method: "GET",
     });
 

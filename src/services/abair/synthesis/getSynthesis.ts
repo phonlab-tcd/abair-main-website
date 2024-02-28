@@ -77,7 +77,7 @@ const getSynthesis = async (
 
   try {
     const response = await fetch(
-      "https://synthesis.abair.ie/api/synthesise",
+      "https://api.abair.ie/v3/synthesis",
       requestOptions
     );
     const data = await response.json();
