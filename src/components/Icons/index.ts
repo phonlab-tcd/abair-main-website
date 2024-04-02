@@ -13,6 +13,7 @@ import SpeedometerIcon from "./SpeedometerIcon";
 import MicrophoneIcon from "./MicrophoneIcon";
 import ModelIcon from "./ModelIcon";
 import SpeakerIcon from "./SpeakIcon";
+import QuestionIcon from "./QuestionIcon";
 
 export {
   MaleIcon,
@@ -30,4 +31,5 @@ export {
   MicrophoneIcon,
   ModelIcon,
   SpeakerIcon,
+  QuestionIcon,
 };

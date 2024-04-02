@@ -202,6 +202,18 @@
       "gender": "inscne",
       "basic": "bunúsach",
       "AI": "AI"
+    },
+    "synthesis-history": {
+      "history": "History of ABAIR Synthesis",
+      "origins": "Origins",
+      "origins-sub": "Speech Technologies for Irish",
+      "origins-detail": "The ABAIR project was set up By Professor Ailbhe Ní Chasaide in...",
+      "first-voice": "First Voice",
+      "first-voice-sub": "Speech Synthesis for ABAIR arrives",
+      "first-voice-detail": "The first speech synthesis voice for ABAIR was launched...",
+      "deep-learning": "AI Arrives",
+      "deep-learning-sub": "Deep Learning Changes the Landscape",
+      "deep-learning-detail": "A new era in Speech Synthesis was ushered in by the advancements made in artificial Neural Networks..."
     }
   },
   "errorMessages": {
@@ -221,5 +233,19 @@
       "failed": "something went wrong during image loading :("
     },
     "404": "No route for this URL"
+  },
+  "months": {
+    "Jan": "Ean",
+    "Feb": "Fea",
+    "Mar": "Már",
+    "Apr": "Aib",
+    "May": "Bea",
+    "Jun": "Mei",
+    "Jul": "Iúi",
+    "Aug": "Lún",
+    "Sep": "MFó",
+    "Oct": "DFó",
+    "Nov": "Sam",
+    "Dec": "Nol"
   }
 }

@@ -10,6 +10,7 @@ import {
   ModelIcon,
   GenderIcon,
   SpeakerIcon,
+  QuestionIcon,
 } from "@/components/Icons";
 import { Button } from "@/components/Button";
 import { PlaybackCard } from "@/components/PlaybackCard";
@@ -186,6 +187,7 @@ const Page = ({ lng }: any) => {
       <div className="w-full flex justify-center items-center text-grey-800 text-2xl sm:text-3xl h-[112px] lg:h-[160px] font-mono">
         {t("pages.home.speak")}
       </div>
+
       <div className="w-full flex bg-white justify-center min-h-screen ">
         <div className="w-full mt-8 max-w-2xl">
           <div className="w-full my-4">
@@ -276,8 +278,17 @@ const Page = ({ lng }: any) => {
                   </div>
                   <div className="w-full h-14  flex items-center">
                     <div className="px-1 w-20">
-                      <div className="flex justify-center">
-                        <ModelIcon height={32} width={32} />
+                      <div className="flex justify-center relative">
+                        {/* <div className="absolute right-12 bottom-0">
+                          <QuestionIcon
+                            height={24}
+                            width={24}
+                            color={"rgb(96 165 250)"}
+                          />
+                        </div> */}
+                        <button>
+                          <ModelIcon height={32} width={32} />
+                        </button>
                       </div>
                       <div className="text-gray-400 text-xs text-center">
                         {t("pages.synthesis.model")}
