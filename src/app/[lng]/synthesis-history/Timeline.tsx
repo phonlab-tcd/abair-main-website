@@ -2,6 +2,9 @@
 
 import { useTranslation } from "@/app/i18n/client";
 import Image from "next/image";
+import { PlaybackCardSmall } from "@/components/PlaybackCard";
+import { getBreakpoint } from "@/utils";
+import { useState } from "react";
 
 interface TimelineProps {
   lng: string;
@@ -9,6 +12,11 @@ interface TimelineProps {
 
 const Timeline = ({ lng }: TimelineProps) => {
   const { t } = useTranslation(lng);
+  const [breakpoint, setBreakpoint] = useState<string>("");
+
+  const handleResize = () => {
+    setBreakpoint(getBreakpoint());
+  };
 
   return (
     <div className="w-full max-w-3xl mx-auto">
@@ -59,6 +67,13 @@ const Timeline = ({ lng }: TimelineProps) => {
 
           <div className="text-slate-500">
             {t("pages.synthesis-history.first-voice-detail")}
+          </div>
+          <div className="mt-4">
+            <PlaybackCardSmall
+              text="cad é mar atá tú"
+              dialect="Ulster"
+              src="https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/audio/aine-hts.wav"
+            />
           </div>
         </div>
 
