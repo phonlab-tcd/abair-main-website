@@ -31,6 +31,34 @@ export default function SupportPage() {
                         Geabaire — Support
                     </div>
 
+                    <div className="my-8 px-4">
+                        <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Documents</h2>
+                        <div className="space-y-4">
+                            <div>
+                                <h3 className="text-xl font-semibold">Geabaire — Leagan Gaeilge [PDF]</h3>
+                                <p>View <Link href={"https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/publications/Geabaire%20-%20Leagan%20Gaeilge-compressed.pdf"} className='text-cyan-700 font-bold'>here</Link>.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold">Geabaire — Leagan Bearla (English) [PDF]</h3>
+                                <p>View <Link href={"https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/publications/Geabaire%20-%20Leagan%20Bearla-compressed.pdf"} className='text-cyan-700 font-bold'>here</Link>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="my-8 px-4">
+                        <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Videos</h2>
+                        <div className="space-y-4">
+                            <h3 className="text-1xl lg:text-2xl font-semibold text-center mb-6">Irish (Leagan Gaeilge)</h3>
+                            <div className="flex justify-center">
+                                <iframe className='w-full max-w-xl' width="560" height="315" src="https://www.youtube.com/embed/0WWz6T_5FV4?si=OaHgYBUz93QHlMfW" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                            </div>
+                            <h3 className="text-1xl lg:text-2xl font-semibold text-center mb-6">English (Leagan Bearla)</h3>
+                            <div className="flex justify-center">
+                                <iframe className='w-full max-w-xl' width="560" height="315" src="https://www.youtube.com/embed/GiLjw-Joyhg?si=N5UwlDfjhJwHNW6y" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* FAQ Section */}
                     <div className="my-8 px-4">
                         <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Frequently Asked Questions</h2>
@@ -72,35 +100,6 @@ export default function SupportPage() {
                                 <h3 className="text-xl font-semibold">Is the app available for Android?</h3>
                                 <p>Right now we are only having an iOS Beta, however the Android version of the app is at an equal stage of development.</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="my-8 px-4">
-                        <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Documents</h2>
-                        <div className="space-y-4">
-                            <div>
-                                <h3 className="text-xl font-semibold">Geabaire — Leagan Gaeilge [PDF]</h3>
-                                <p>View <Link href={"https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/publications/Geabaire%20-%20Leagan%20Gaeilge-compressed.pdf"} className='text-cyan-700 font-bold'>here</Link>.</p>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold">Geabaire — Leagan Bearla (English) [PDF]</h3>
-                                <p>View <Link href={"https://pdntukcptgktuzpynlsv.supabase.co/storage/v1/object/public/abair-bucket/publications/Geabaire%20-%20Leagan%20Bearla-compressed.pdf"} className='text-cyan-700 font-bold'>here</Link>.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="my-8 px-4">
-                        <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-6">Videos</h2>
-                        <div className="space-y-4">
-                            <h3 className="text-1xl lg:text-2xl font-semibold text-center mb-6">Irish (Leagan Gaeilge)</h3>
-                            <div className="flex justify-center">
-                                <iframe className='w-full max-w-xl' width="560" height="315" src="https://www.youtube.com/embed/0WWz6T_5FV4?si=OaHgYBUz93QHlMfW" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                            </div>
-                            <h3 className="text-1xl lg:text-2xl font-semibold text-center mb-6">English (Leagan Bearla)</h3>
-                            <div className="flex justify-center">
-                                <iframe className='w-full max-w-xl' width="560" height="315" src="https://www.youtube.com/embed/GiLjw-Joyhg?si=N5UwlDfjhJwHNW6y" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                            </div>
-
                         </div>
                     </div>
 
