@@ -48,7 +48,7 @@ const Footer = async ({ lng }: any) => {
         </div>
         {lng === "en" ? (
           <div className="text-center m-1 text-sm lg:text-base text-grey-600">
-            Copyright © 2008&ndash;2023{" "}
+            Copyright © 2008&ndash;2024{" "}
             <a href="http://www.tcd.ie/slscs/clcs/psl/">
               Phonetics and Speech Laboratory
             </a>
