@@ -28,11 +28,11 @@ const routes = [
   //   showInNavbar: true,
   // },
 
-  // {
-  //   path: "/publications",
-  //   name: "publications",
-  //   showInNavbar: true,
-  // },
+  {
+    path: "/publications",
+    name: "publications",
+    showInNavbar: true,
+  },
   {
     path: "/profile",
     name: "profile",
@@ -46,8 +46,8 @@ const routes = [
   {
     path: "/geabaire",
     name: "Geabaire",
-    showInNavbar: false
-  }
+    showInNavbar: false,
+  },
 ];
 
 export default routes;

@@ -35,10 +35,12 @@ export default async function Page({
       {/* need to add ts error here */}
       {/* <News lng={lng} /> */}
       {/* </div> */}
-      {/* <div className="flex w-full justify-center relative bg-white"> */}
-      {/* need to add ts error here */}
-      {/* <Publications lng={lng} /> */}
-      {/* </div> */}
+      <div className="flex w-full justify-center relative">
+        {/* need to add ts error here */}
+        {/* @ts-expect-error Server Component */}
+
+        <Publications lng={lng} />
+      </div>
     </div>
   );
 }
