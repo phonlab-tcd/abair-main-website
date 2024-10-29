@@ -447,7 +447,7 @@ export default async function Page({
   return (
     <div className="w-full flex flex-col justify-center">
       <div className="w-full flex bg-white justify-center min-h-screen ">
-        <div className="w-full mt-8 max-w-2xl">
+        <div className="w-full mt-8 max-w-4xl">
           <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold text-gray-800 mb-6">
               2023 Foilseacháin
