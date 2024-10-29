@@ -38,11 +38,11 @@ const routes = [
     name: "profile",
     showInNavbar: false,
   },
-  {
-    path: "/people",
-    name: "people",
-    showInNavbar: true,
-  },
+  // {
+  //   path: "/people",
+  //   name: "people",
+  //   showInNavbar: true,
+  // },
   {
     path: "/geabaire",
     name: "Geabaire",
