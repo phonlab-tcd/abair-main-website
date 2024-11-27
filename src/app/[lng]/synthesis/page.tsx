@@ -17,7 +17,8 @@ import { Slider } from "@/components/Slider";
 import { getVoicesMetadata, getSynthesis } from "@/services/abair/synthesis";
 import { synthesisVoiceModel } from "@/types/abair";
 import { useTranslation } from "@/app/i18n/client";
-import { getBreakpoint } from "@/utils";
+import { getBreakpoint, phonemeArrayToHTML } from "@/utils";
+import PhonemeToggle from "./PhonemeToggle";
 
 const Page = ({ lng }: any) => {
   const [availableGenders, setAvailableGenders] = useState<
@@ -29,13 +30,14 @@ const Page = ({ lng }: any) => {
     synthesisVoiceModel[] | undefined
   >(undefined);
   const [selectedVoice, setSelectedVoice] = useState<synthesisVoiceModel>();
-  const [selectedModel, setSelectedModel] = useState("NEMO");
+  const [selectedModel, setSelectedModel] = useState("PIPER");
   const [voiceOptions, setVoiceOptions] = useState<synthesisVoiceModel[]>();
 
   const [synthesisedTextShowing, setSynthesisedTextShowing] = useState(false);
   const [recentlyCopied, setRecentlyCopied] = useState(false);
   const [synthesisAudioPlaying, setSynthesisAudioPlaying] = useState(false);
   const [synthesisText, setSynthesisText] = useState("");
+  const [synthesisPhonemes, setSynthesisPhonemes] = useState("");
   const [synthesisAudio, setSynthesisAudio] = useState("");
   const [awaitingSynthesis, setAwaitingSynthesis] = useState(false);
   const [breakpoint, setBreakpoint] = useState<string>("");
@@ -98,7 +100,7 @@ const Page = ({ lng }: any) => {
           v.voices.length !== 0
       );
       if (selectedVoices.length > 0) {
-        console.log("selectedVoices:", selectedVoices);
+        // console.log("selectedVoices:", selectedVoices);
         setVoiceOptions(selectedVoices);
       }
     }
@@ -114,6 +116,7 @@ const Page = ({ lng }: any) => {
   useEffect(() => {
     if (selectedVoice && !selectedVoice.voices?.includes(selectedModel)) {
       if (selectedVoice.voices) {
+        console.log("selectedVoice.voices[0]", selectedVoice.voices[0]);
         setSelectedModel(selectedVoice.voices[0]);
       }
     }
@@ -168,6 +171,9 @@ const Page = ({ lng }: any) => {
           synthesisSpeed / 100
         ).then((res: any) => {
           setSynthesisAudio("data:audio/wav;base64," + res.audioContent);
+          if (res.phonemes) {
+            setSynthesisPhonemes(phonemeArrayToHTML(res.phonemes)); //
+          }
           setAwaitingSynthesis(false);
           setSynthesisedTextShowing(true);
           setSynthesisText(synthesisText);
@@ -286,7 +292,7 @@ const Page = ({ lng }: any) => {
                     <div className="w-full px-1 flex flex-wrap justify-around">
                       {selectedVoice &&
                         selectedVoice.voices?.map((v, i) =>
-                          v !== "PIPER" ? (
+                          !["NEMO", "DNN"].includes(v) ? (
                             <div key={i} className="group relative">
                               <span className="absolute w-32 bottom-10 scale-0 rounded border-2 delay-700 bg-white p-2 text-xs text-primary group-hover:scale-100">
                                 {v === "HTS"
@@ -401,6 +407,12 @@ const Page = ({ lng }: any) => {
                   />
                   <a href={""} ref={anchorRef} download={"tester.wav"} />
                 </PlaybackCard>
+                {synthesisPhonemes && (
+                  <PhonemeToggle
+                    text={t("pages.synthesis.phonemes")}
+                    phonemes={synthesisPhonemes}
+                  />
+                )}
               </div>
             )}
           </div>

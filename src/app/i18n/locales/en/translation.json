@@ -198,7 +198,8 @@
       "pitch": "pitch",
       "gender": "gender",
       "basic": "basic",
-      "AI": "AI"
+      "AI": "AI",
+      "phonemes": "phonemes"
     }
   },
   "errorMessages": {

@@ -201,7 +201,8 @@
       "pitch": "tuinairde",
       "gender": "inscne",
       "basic": "bunúsach",
-      "AI": "AI"
+      "AI": "AI",
+      "phonemes": "fóinéimí"
     }
   },
   "errorMessages": {

@@ -1,0 +1,427 @@
+﻿[
+  {
+    "mrpai": "pj",
+    "xSampa": "p'",
+    "htmlIpa": "p&#x02B2;"
+  },
+  {
+    "mrpai": "p",
+    "xSampa": "p",
+    "htmlIpa": "p&#x02E0;"
+  },
+  {
+    "mrpai": "bj",
+    "xSampa": "b'",
+    "htmlIpa": "b&#x02B2;"
+  },
+  {
+    "mrpai": "b",
+    "xSampa": "b",
+    "htmlIpa": "b&#x02E0;"
+  },
+  {
+    "mrpai": "fj",
+    "xSampa": "f'",
+    "htmlIpa": "f&#x02B2;"
+  },
+  {
+    "mrpai": "f",
+    "xSampa": "f",
+    "htmlIpa": "f&#x02E0;"
+  },
+  {
+    "mrpai": "vj",
+    "xSampa": "v'",
+    "htmlIpa": "v&#x02B2;"
+  },
+  {
+    "mrpai": "v",
+    "xSampa": "v",
+    "htmlIpa": "v&#x02E0;"
+  },
+  {
+    "mrpai": "w",
+    "xSampa": "w",
+    "htmlIpa": "w"
+  },
+  {
+    "mrpai": "mj_d",
+    "xSampa": "m'_d",
+    "htmlIpa": "m&#x0325;&#x02B2;"
+  },
+  {
+    "mrpai": "m_d",
+    "xSampa": "m_d",
+    "htmlIpa": "m&#x0325;&#x02E0;"
+  },
+  {
+    "mrpai": "mj",
+    "xSampa": "m'",
+    "htmlIpa": "m&#x02B2;"
+  },
+  {
+    "mrpai": "m",
+    "xSampa": "m",
+    "htmlIpa": "m&#x02E0;"
+  },
+  {
+    "mrpai": "tjsj",
+    "xSampa": "t's'",
+    "htmlIpa": "&#x02A7;"
+  },
+  {
+    "mrpai": "djzj",
+    "xSampa": "d'z'",
+    "htmlIpa": "&#x02A4;"
+  },
+  {
+    "mrpai": "t_",
+    "xSampa": "t_-",
+    "htmlIpa": "t"
+  },
+  {
+    "mrpai": "tj",
+    "xSampa": "t'",
+    "htmlIpa": "t&#x02B2;"
+  },
+  {
+    "mrpai": "t",
+    "xSampa": "t",
+    "htmlIpa": "t&#x032A;&#x02E0;"
+  },
+  {
+    "mrpai": "d_",
+    "xSampa": "d_-",
+    "htmlIpa": "d"
+  },
+  {
+    "mrpai": "dj",
+    "xSampa": "d'",
+    "htmlIpa": "d&#x02B2;"
+  },
+  {
+    "mrpai": "d",
+    "xSampa": "d",
+    "htmlIpa": "d&#x032A;&#x02E0;"
+  },
+  {
+    "mrpai": "llj_d",
+    "xSampa": "ll'_d",
+    "htmlIpa": "l&#x030A;&#x033B;&#x02B2;"
+  },
+  {
+    "mrpai": "ll_d",
+    "xSampa": "ll_d",
+    "htmlIpa": "l&#x030A;&#x033B;&#x02E0;"
+  },
+  {
+    "mrpai": "llj",
+    "xSampa": "ll'",
+    "htmlIpa": "l&#x033B;&#x02B2;"
+  },
+  {
+    "mrpai": "ll",
+    "xSampa": "ll",
+    "htmlIpa": "l&#x033B;&#x02E0;"
+  },
+  {
+    "mrpai": "lj_d",
+    "xSampa": "l'_d",
+    "htmlIpa": "l&#x0325;&#x02B2;"
+  },
+  {
+    "mrpai": "l_d",
+    "xSampa": "l_d",
+    "htmlIpa": "l&#x0325;&#x02E0;"
+  },
+  {
+    "mrpai": "lj",
+    "xSampa": "l'",
+    "htmlIpa": "l&#x02B2;"
+  },
+  {
+    "mrpai": "l",
+    "xSampa": "l",
+    "htmlIpa": "l&#x02E0;"
+  },
+  {
+    "mrpai": "nnj_d",
+    "xSampa": "nn'_d",
+    "htmlIpa": "n&#x030A;&#x033B;&#x02B2;"
+  },
+  {
+    "mrpai": "nn_d",
+    "xSampa": "nn_d",
+    "htmlIpa": "n&#x030A;&#x033B;&#x02E0;"
+  },
+  {
+    "mrpai": "nnj",
+    "xSampa": "nn'",
+    "htmlIpa": "n&#x033B;&#x02B2;"
+  },
+  {
+    "mrpai": "nn",
+    "xSampa": "nn",
+    "htmlIpa": "n&#x033B;&#x02E0;"
+  },
+  {
+    "mrpai": "nj_d",
+    "xSampa": "n'_d",
+    "htmlIpa": "n&#x0325;&#x02B2;"
+  },
+  {
+    "mrpai": "n_d",
+    "xSampa": "n_d",
+    "htmlIpa": "n&#x0325;&#x02E0;"
+  },
+  {
+    "mrpai": "nj",
+    "xSampa": "n'",
+    "htmlIpa": "n&#x02B2;"
+  },
+  {
+    "mrpai": "n",
+    "xSampa": "n",
+    "htmlIpa": "n&#x02E0;"
+  },
+  {
+    "mrpai": "rr",
+    "xSampa": "rr",
+    "htmlIpa": "r"
+  },
+  {
+    "mrpai": "rj_d",
+    "xSampa": "r'_d",
+    "htmlIpa": "&#x027E;&#x0325;&#x02B2;"
+  },
+  {
+    "mrpai": "r_d",
+    "xSampa": "r_d",
+    "htmlIpa": "&#x027E;&#x0325;&#x02E0;"
+  },
+  {
+    "mrpai": "rj",
+    "xSampa": "r'",
+    "htmlIpa": "&#x027E;&#x02B2;"
+  },
+  {
+    "mrpai": "r",
+    "xSampa": "r",
+    "htmlIpa": "&#x027E;&#x02E0;"
+  },
+  {
+    "mrpai": "sj",
+    "xSampa": "s'",
+    "htmlIpa": "&#x0283;"
+  },
+  {
+    "mrpai": "s",
+    "xSampa": "s",
+    "htmlIpa": "s&#x02E0;"
+  },
+  {
+    "mrpai": "zj",
+    "xSampa": "z'",
+    "htmlIpa": "z&#x02B2;"
+  },
+  {
+    "mrpai": "z",
+    "xSampa": "z",
+    "htmlIpa": "z&#x02E0;"
+  },
+  {
+    "mrpai": "kj",
+    "xSampa": "k'",
+    "htmlIpa": "c"
+  },
+  {
+    "mrpai": "k",
+    "xSampa": "k",
+    "htmlIpa": "k"
+  },
+  {
+    "mrpai": "gj",
+    "xSampa": "g'",
+    "htmlIpa": "&#x025F;"
+  },
+  {
+    "mrpai": "g",
+    "xSampa": "g",
+    "htmlIpa": "&#x0261;"
+  },
+  {
+    "mrpai": "xj",
+    "xSampa": "x'",
+    "htmlIpa": "&#x00E7;"
+  },
+  {
+    "mrpai": "x",
+    "xSampa": "x",
+    "htmlIpa": "x"
+  },
+  {
+    "mrpai": "gfj",
+    "xSampa": "G'",
+    "htmlIpa": "j"
+  },
+  {
+    "mrpai": "gf",
+    "xSampa": "G",
+    "htmlIpa": "&#x0263;"
+  },
+  {
+    "mrpai": "ngj_d",
+    "xSampa": "N'_d",
+    "htmlIpa": "&#x0272;&#x030A;"
+  },
+  {
+    "mrpai": "ng_d",
+    "xSampa": "N_d",
+    "htmlIpa": "&#x014B;&#x030A;"
+  },
+  {
+    "mrpai": "ngj",
+    "xSampa": "N'",
+    "htmlIpa": "&#x0272;"
+  },
+  {
+    "mrpai": "ng",
+    "xSampa": "N",
+    "htmlIpa": "&#x014B;"
+  },
+  {
+    "mrpai": "hj",
+    "xSampa": "h'",
+    "htmlIpa": "h&#x02B2;"
+  },
+  {
+    "mrpai": "h",
+    "xSampa": "h",
+    "htmlIpa": "h"
+  },
+  {
+    "mrpai": "ii",
+    "xSampa": "i:",
+    "htmlIpa": "i&#x02D0;"
+  },
+  {
+    "mrpai": "i_o",
+    "xSampa": "i_o",
+    "htmlIpa": "&#x026A;"
+  },
+  {
+    "mrpai": "i",
+    "xSampa": "i",
+    "htmlIpa": "i"
+  },
+  {
+    "mrpai": "ee_o",
+    "xSampa": "e:_o",
+    "htmlIpa": "&#x025B;&#x02D0;"
+  },
+  {
+    "mrpai": "ee",
+    "xSampa": "e:",
+    "htmlIpa": "e&#x02D0;"
+  },
+  {
+    "mrpai": "e_o",
+    "xSampa": "e_o",
+    "htmlIpa": "&#x025B;"
+  },
+  {
+    "mrpai": "e",
+    "xSampa": "e",
+    "htmlIpa": "e"
+  },
+  {
+    "mrpai": "aa_r",
+    "xSampa": "a:_r",
+    "htmlIpa": "a&#x031D;&#x02D0;"
+  },
+  {
+    "mrpai": "aa",
+    "xSampa": "a:",
+    "htmlIpa": "a&#x02D0;"
+  },
+  {
+    "mrpai": "a_r",
+    "xSampa": "a_r",
+    "htmlIpa": "a&#x031D;"
+  },
+  {
+    "mrpai": "a",
+    "xSampa": "a",
+    "htmlIpa": "a"
+  },
+  {
+    "mrpai": "uu_c",
+    "xSampa": "u:_c",
+    "htmlIpa": "&#x026F;&#x02D0;"
+  },
+  {
+    "mrpai": "uu",
+    "xSampa": "u:",
+    "htmlIpa": "u&#x02D0;"
+  },
+  {
+    "mrpai": "u",
+    "xSampa": "u",
+    "htmlIpa": "u"
+  },
+  {
+    "mrpai": "oo_o",
+    "xSampa": "o:_o",
+    "htmlIpa": "&#x0254;&#x02D0;"
+  },
+  {
+    "mrpai": "oo",
+    "xSampa": "o:",
+    "htmlIpa": "o&#x02D0;"
+  },
+  {
+    "mrpai": "o_o",
+    "xSampa": "o_o",
+    "htmlIpa": "&#x0254;"
+  },
+  {
+    "mrpai": "o",
+    "xSampa": "o",
+    "htmlIpa": "o"
+  },
+  {
+    "mrpai": "@",
+    "xSampa": "@",
+    "htmlIpa": "&#x0259;"
+  },
+  {
+    "mrpai": "ai",
+    "xSampa": "ai",
+    "htmlIpa": "ai"
+  },
+  {
+    "mrpai": "au",
+    "xSampa": "au",
+    "htmlIpa": "au"
+  },
+  {
+    "mrpai": "ia",
+    "xSampa": "ia",
+    "htmlIpa": "ia"
+  },
+  {
+    "mrpai": "i@",
+    "xSampa": "i@",
+    "htmlIpa": "i&#x02D1;&#x0259;"
+  },
+  {
+    "mrpai": "ua",
+    "xSampa": "ua",
+    "htmlIpa": "ua"
+  },
+  {
+    "mrpai": "u@",
+    "xSampa": "u@",
+    "htmlIpa": "u&#x02D1;&#x0259;"
+  }
+]
