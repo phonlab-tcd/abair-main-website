@@ -135,7 +135,7 @@ const Synthesis = ({ lng }: any) => {
     if (synthesisText !== "") {
       setAwaitingSynthesis(true);
       if (selectedVoice) {
-        getSynthesis(synthesisText, selectedVoice, "NEMO", 1, 1).then(
+        getSynthesis(synthesisText, selectedVoice, "PIPER", 1, 1).then(
           (res: any) => {
             setSynthesisAudio("data:audio/wav;base64," + res.audioContent);
             setAwaitingSynthesis(false);
