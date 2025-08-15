@@ -15,7 +15,8 @@ const Footer = async ({ lng }: any) => {
               />
             </a>
           </div>
-          <div className="m-1 lg:mx-4">
+            <div className="m-1 lg:mx-4 flex items-center">
+
             <a href="https://www.chg.gov.ie/">
               <Image
                 src={"/images/funders/DCHG_logo_small.png"}
@@ -26,6 +27,7 @@ const Footer = async ({ lng }: any) => {
             </a>
           </div>
           <div className="m-1 lg:mx-4">
+
             <a href="https://www.chg.gov.ie/gaeltacht/20-year-strategy-for-the-irish-language-2010-2030/">
               <Image
                 src={"/images/funders/COGG_logo_red.png"}
